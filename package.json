@@ -1,0 +1,25 @@
+{
+  "name": "asw_sii_aeat",
+  "version": "1.0.0",
+  "description": "Solución basada en node para el cumplimiento del sistema inmediato de información (SII)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ariadna-Software/asw_sii_aeat.git"
+  },
+  "keywords": [
+    "SII"
+  ],
+  "author": "Rafael Garcia (rafa@myariadna.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ariadna-Software/asw_sii_aeat/issues"
+  },
+  "homepage": "https://github.com/Ariadna-Software/asw_sii_aeat#readme",
+  "dependencies": {
+    "soap": "^0.18.0"
+  }
+}

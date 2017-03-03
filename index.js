@@ -1,0 +1,1 @@
+console.log("(C) Ariadna Software SL // SII");
