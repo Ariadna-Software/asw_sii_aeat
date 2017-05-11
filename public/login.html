@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en-us" id="extr-page">
+
+<head>
+    <meta charset="utf-8">
+    <title> GDES-PIPELINE </title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- #CSS Links -->
+    <!-- Basic Styles -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+    <!-- SmartAdmin RTL Support -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
+    <!-- #FAVICONS -->
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <!-- #GOOGLE FONT -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+    <!-- #APP SCREEN / ICONS -->
+    <!-- Specifying a Webpage Icon for Web Clip 
+        Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+    <link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
+    <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Startup image for web apps -->
+    <link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+</head>
+
+<body class="animated fadeInDown I18N">
+    <header id="header">
+        <div id="logo-group">
+            <span id="logo"> <img src="img/logo_gdes.png" alt="GDES-PIPELINE"> </span>
+        </div>
+        <span id="extr-page-header-space" class="txt-primary">(c) Ariadna Software S.L. 2017-2018 </span>
+    </header>
+    <div id="main" role="main" style="background-image:url(img/fondo.jpg); background-size:cover;background-repeat: no-repeat;background-position: center center;">
+        <!-- MAIN CONTENT -->
+        <div id="content" class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+                    <h1 class="txt-color-white login-header-big" data-i18n="app_titulo">
+                            GDES-PIPELINE 
+                        </h1>
+                    <h2 id="version" class="txt-color-white">VRS 1.0.1.0</h2>
+                    <h2 class="txt-color-white" data-i18n="app_descripcion">GESTIÓN DE OFERTAS</h2>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+                    <div class="well no-padding">
+                        <form action="index.html" id="login-form" class="smart-form client-form">
+                            <header data-i18n="login.acceso">
+                                Acceso al sitio
+                            </header>
+                            <fieldset>
+                                <section>
+                                    <label class="label" data-i18n="login.login">Login</label>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-user"></i>
+                                        <input type="text" name="login" data-bind="value: login">
+                                        <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>
+                                        <span data-i18n="login.valLogin"> Por favor, introduzca su login</span></b>
+                                    </label>
+                                </section>
+                                <section>
+                                    <label class="label" data-i18n="login.password">Password</label>
+                                    <label class="input">
+                                        <i class="icon-append fa fa-lock"></i>
+                                        <input type="password" name="password" data-bind="value: password">
+                                        <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> 
+                                        <span data-i18n="login.valPassword">Introduzca su password</span></b>
+                                    </label>
+                                    <div class="note">
+                                        <a href="#" data-i18n="login.olvido">He olvidado el login o password</a>
+                                    </div>
+                                </section>
+                                <section>
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="remember" checked="">
+                                        <i></i><span data-i18n="login.conectado">Permanecer conectado</span>
+                                    </label>
+                                </section>
+                            </fieldset>
+                            <footer>
+                                <span id="mensaje" class="txt-color-red"></span>
+                                <button id="btnLogin" type="submit" class="btn btn-primary" data-i18n="login.btnLogin">
+                                    Entrar
+                                </button>
+                            </footer>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================================================== -->
+    <!-- PACE LOADER -->
+    <script src="js/plugin/pace/pace.min.js"></script>
+    <!-- JQUERY -->
+    <script src="js/libs/jquery/jquery-2.1.1.min.js"></script>
+    <script src="js/libs/jquery/jquery-ui-1.10.3.min.js"></script>
+    <script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+    <script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+    <!-- Otras librerias necesarias -->
+    <script src="js/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="js/libs/sprintf/sprintf.min.js"></script>
+    <script src="js/libs/numeral/numeral.js"></script>
+    <script src="js/libs/knockout/knockout-3.1.0.js"></script>
+    <script src="js/libs/moment/moment.js"></script>
+    <script src="js/libs/notification/SmartNotification.min.js"></script>
+    <!-- Idiomas -->
+    <script src="js/libs/i18next/i18next-1.9.0.js"></script>
+    <script src="locales/validator-languages.js"></script>
+    <script src="locales/datepicker-languages.js"></script>
+    <script src="locales/datatable-languages.js"></script>
+    <script src="locales/select2-languages.js"></script>
+    <script src="locales/numeral-languages.js"></script>
+    <!-- SADMIN -->
+    <script src="js/libs/sadmin/app.config.js"></script>
+    <script src="js/libs/sadmin/app.min.js"></script>
+    <!-- Configuraciones -->
+    <script src="config/myconfig.js"></script>
+    <script src="js/app/comun.js"></script>
+    <!-- Funciones propias comunes [conservar el orden] -->
+    <script src="js/comun/comun.idiomas.js"></script>
+    <script src="js/comun/comun.notificaciones.js"></script>
+    <script src="js/comun/comun.ajax.js"></script>
+    <script src="js/comun/comun.general.js"></script>
+    <!-- Funciones propias de esta página -->
+    <script src="js/app/login.js"></script>
+    <script type="text/javascript">
+    (function($) {
+        $(document).ready(function() {
+            apiPaginaLogin.ini();
+        });
+    })(jQuery);
+    </script>
+</body>
+
+</html>

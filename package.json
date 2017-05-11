@@ -1,25 +1,43 @@
 {
-  "name": "asw_sii_aeat",
-  "version": "1.0.0",
-  "description": "Solución basada en node para el cumplimiento del sistema inmediato de información (SII)",
+  "name": "gdes_pipeline",
+  "version": "1.0.1",
+  "description": "ASWSII AEAT",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ariadna-Software/asw_sii_aeat.git"
+    "url": "git+https://github.com/Ariadna-Software/asw_sii_aeat"
   },
   "keywords": [
-    "SII"
+    "node",
+    "gdes_pipeline"
   ],
-  "author": "Rafael Garcia (rafa@myariadna.com)",
-  "license": "MIT",
+  "author": "'Rafael Garcia <'rafa@myariadna.com'>",
+  "license": "CC-BY-NC-4.0",
   "bugs": {
     "url": "https://github.com/Ariadna-Software/asw_sii_aeat/issues"
   },
-  "homepage": "https://github.com/Ariadna-Software/asw_sii_aeat#readme",
+  "homepage": "https://github.com/Ariadna-Software/asw_sii_aeat/#readme",
   "dependencies": {
-    "soap": "^0.18.0"
+    "async": "^2.0.0",
+    "body-parser": "^1.14.0",
+    "connect": "^3.4.0",
+    "cors": "^2.7.1",
+    "edge": "^4.0.0",
+    "express": "^4.13.3",
+    "formidable": "^1.0.17",
+    "moment": "^2.10.6",
+    "multer": "^1.1.0",
+    "mysql": "^2.0.0",
+    "nodemailer": "2.4.2",
+    "numeral": "^1.5.3",
+    "serve-index": "^1.7.2",
+    "soap": "^0.19.0",
+    "sprintf-js": "^1.0.3"
+  },
+  "devDependencies": {
+    "mysql": "^2.12.0"
   }
 }

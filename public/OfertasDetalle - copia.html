@@ -1,0 +1,621 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title> GDES-PIPELINE </title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- #CSS Links -->
+    <!-- Basic Styles -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+    <!-- SmartAdmin RTL Support -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css">
+    <!-- Pivot table -->
+    <link rel="stylesheet" type="text/css" href="css/ariadna.css" />
+    <!-- #FAVICONS -->
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <!-- #GOOGLE FONT -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+    <!-- #APP SCREEN / ICONS -->
+    <!-- Specifying a Webpage Icon for Web Clip 
+        Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+    <link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
+    <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Startup image for web apps -->
+    <link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+</head>
+
+<body class="animated fadeInDown I18N">
+    <!-- #HEADER -->
+    <header id="header" style="background-color:#FFFFFF; background-image:none;">
+        <!-- #PROJECTS: projects dropdown -->
+        <div>
+            <span id="logo"> <img src="/img/logo_gdes.png" alt="GDES-PIPELINE"> </span>
+        </div>
+        <div>
+        </div>
+        <div style="padding-left:5px">
+            <h1 data-i18n="app_titulo">GDES PIPELINE</h1>
+        </div>
+        <div class="pull-right">
+            <div id="hide-menu" class="btn-header pull-right">
+                <span>
+                    <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu">
+                        <i class="fa fa-reorder"></i>
+                    </a>
+                </span>
+            </div>
+            <div id="logout" class="btn-header transparent pull-right">
+                <span>
+                    <a href="login.html" title="Salir">
+                        <i class="fa fa-sign-out"></i>
+                    </a>
+                </span>
+            </div>
+            <div id="fullscreen" class="btn-header transparent pull-right">
+                <span>
+                    <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen">
+                        <i class="fa fa-arrows-alt"></i>
+                    </a>
+                </span>
+            </div>
+            <ul class="header-dropdown-list hidden-xs">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img id="language-flag" src="img/blank.gif" class="flag flag-es" alt="Español (España)"> <span id="language-abrv"> ES</span> <i class="fa fa-angle-down"></i> </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="javascript:void(0);" onclick="apiComunIdiomas.cambiaIdioma('en');"><img src="img/blank.gif" class="flag flag-us" alt="en-US"> English (US)</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="apiComunIdiomas.cambiaIdioma('es');"><img src="img/blank.gif" class="flag flag-es" alt="es"> Español (España)</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <aside id="left-panel">
+        <div class="login-info">
+            <span>
+                <a href="javascript:void(0);" id="show-shortcut">
+                    <i class="fa fa-user fa-2x"></i>
+                    <span id="nombreUsuario"></span>
+            </a>
+            </span>
+        </div>
+        <!-- NAVIGATION : -->
+        <nav>
+            <ul>
+                <li id="inicio">
+                    <a href="index.html" title="Inicio">
+                        <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent" data-i18n="menu.inicio">INICIO</span>
+                    </a>
+                </li>
+                <li id="administracion">
+                    <a href="#">
+                        <i class="fa fa-lg fa-fw fa-bank"></i> <span class="menu-item-parent" data-i18n="menu.administracion.cab">ADMINISTRACIÓN</span>
+                    </a>
+                    <ul>
+                        <li id="gruposUsuarios">
+                            <a href="GruposUsuariosGeneral.html">
+                                <i class="fa fa-users"></i> <span data-i18n="menu.administracion.gruposUsuarios">Grupos Usuarios</span>
+                            </a>
+                        </li>
+                        <li id="usuarios">
+                            <a href="UsuariosGeneral.html">
+                                <i class="fa fa-user"></i> <span data-i18n="menu.administracion.usuarios">Usuarios</span>
+                            </a>
+                        </li>
+                        <li id="responsables">
+                            <a href="ResponsablesGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.responsables">Responsables</span>
+                            </a>
+                        </li>
+                        <li id="empresas">
+                            <a href="EmpresasGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.empresas">Empresas</span>
+                            </a>
+                        </li>
+                        <li id="paises">
+                            <a href="PaisesGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.paises">Paises</span>
+                            </a>
+                        </li>
+                        <li id="areas">
+                            <a href="AreasGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.areas">Areas</span>
+                            </a>
+                        </li>
+                        <li id="centros">
+                            <a href="CentrosGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.centros">Centros</span>
+                            </a>
+                        </li>
+                        <li id="gruposActividades">
+                            <a href="GruposActividadesGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.gruposActividades">GruposActividades</span>
+                            </a>
+                        </li>
+                        <li id="tiposActividades">
+                            <a href="TiposActividadesGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.tiposActividades">TiposActividades</span>
+                            </a>
+                        </li>
+                        <li id="tiposSoporte">
+                            <a href="TiposSoporteGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.tiposSoporte">TiposSoporte</span>
+                            </a>
+                        </li>
+                        <li id="tiposOferta">
+                            <a href="TiposOfertaGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.tiposOferta">TiposOferta</span>
+                            </a>
+                        </li>
+                        <li id="proyectos">
+                            <a href="ProyectosGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.proyectos">Proyectos</span>
+                            </a>
+                        </li>
+                        <li id="centrosEstablecidos">
+                            <a href="CentrosEstablecidosGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.centrosEstablecidos">CentrosEstablecidos</span>
+                            </a>
+                        </li>
+                        <li id="divisas">
+                            <a href="DivisasGeneral.html">
+                                <i class="fa fa-cog"></i> <span data-i18n="menu.administracion.divisas">Divisas</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="gestion">
+                    <a href="#">
+                        <i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent" data-i18n="menu.gestion.cab">GESTION</span>
+                    </a>
+                    <ul>
+                        <li id="ofertas">
+                            <a href="OfertasGeneral.html">
+                                <i class="fa fa-fw fa-file-o"></i> <span data-i18n="menu.gestion.ofertas">OferTas</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+        </nav>
+        <span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
+    </aside>
+    <!-- END NAVIGATION -->
+    <!-- MAIN PANEL -->
+    <div id="main" role="main" style="min-height: 800px;">
+        <div id="ribbon">
+            <ol class="breadcrumb">
+                <li data-i18n="ofertas.titulo">Grupo usuarios</li>
+            </ol>
+        </div>
+        <div id="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-title txt-color-blueDark">
+                        <i class="fa-fw fa fa-cog"></i> <span data-i18n="ofertas.titulo">Empresas</span> <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
+                    </h1>
+                </div>
+                <!-- end col -->
+            </div>
+            <section id="widget-grid" class="">
+                <div class="row" id="presentacion">
+                    <!-- NEW WIDGET START -->
+                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                            <header>
+                                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                <h2 data-i18n="ofertas.panel"> Panel</h2>
+                            </header>
+                            <div class="row">
+                                <form id="oferta-form" class="smart-form">
+                                    <div id="datosGenerales" style="border-style: solid; border-radius: 4px; border-width: 1px; padding:5px; margin: 2px;">
+                                        <fieldset>
+                                            <header data-i18n="ofertas.datosGenerales">
+                                                DATOS GENERALES
+                                            </header>
+                                            <div class="row">
+                                                <div class="col col-md-4">
+                                                    <label class="label" data-i18n="ofertas.responsable">Responsable:</label>
+                                                    <select class="aswselect2" id="cmbResponsables" name="cmbResponsables" data-bind="options: optionsResponsables, optionsText: 'nombre', optionsValue: 'responsableId', 
+                                                        value: sResponsable, valueAllowUnset: true, selectedOptions: selectedResponsables, selected2:{}">
+                                                    </select>
+                                                </div>
+                                                <div class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.area">Area:</label>
+                                                    <select class="aswselect2" id="cmbAreas" name="cmbAreas" data-bind="options: optionsAreas, optionsText: 'nombre', optionsValue: 'areaId', 
+                                                        value: sArea, valueAllowUnset: true, selectedOptions: selectedAreas, selected2:{}">
+                                                    </select>                                                    
+                                                </div>
+                                                <div class="col col-md-2">
+                                                <label class="label" data-i18n="ofertas.empresa">Empresa:</label>
+                                                    <select class="aswselect2" id="cmbEmpresas" name="cmbEmpresas" data-bind="options: optionsEmpresas, optionsText: 'nombre', optionsValue: 'empresaId', 
+                                                        value: sEmpresa, valueAllowUnset: true, selectedOptions: selectedEmpresas, selected2:{}">
+                                                    </select>                                                    
+                                                </div>
+                                                <div class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.pais">Pais:</label>
+                                                    <select class="aswselect2" id="cmbPaiss" name="cmbPaiss" data-bind="options: optionsPaiss, optionsText: 'nombre', optionsValue: 'paisId', 
+                                                        value: sPais, valueAllowUnset: true, selectedOptions: selectedPaiss, selected2:{}">
+                                                    </select>                                                    
+                                                </div>
+                                                <div class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.centrosEstablecidos">CES:</label>
+                                                    <select class="aswselect2" id="cmbCentroEstablecidos" name="cmbCentroEstablecidos" data-bind="options: optionsCentroEstablecidos, optionsText: 'nombre', optionsValue: 'centroEstablecidoId', 
+                                                        value: sCentroEstablecido, valueAllowUnset: true, selectedOptions: selectedCentroEstablecidos, selected2:{}">
+                                                    </select>                                                    
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div id="datosOferta" style="border-style: solid; border-radius: 4px; border-width: 1px; padding:5px; margin: 2px;">
+                                        <fieldset>
+                                            <header data-i18n="ofertas.datosOferta">
+                                                DATOS OFERTA
+                                            </header>
+                                            <div class="row">
+                                                <div class="col col-md-8">
+                                                    <label class="label" data-i18n="ofertas.descripcion">Descripcion:</label>
+                                                    <label class="textarea textarea-resizable">
+                                                        <textarea id="txtDescripcion" rows="3" class="custom-scroll" data-bind="value:descripcion"></textarea>
+                                                    </label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                <label class="label" data-i18n="ofertas.proyecto">Proyecto:</label>
+                                                    <select class="aswselect2" id="cmbProyectos" name="cmbProyectos" data-bind="options: optionsProyectos, optionsText: 'nombre', optionsValue: 'proyectoId', 
+                                                        value: sProyecto, valueAllowUnset: true, selectedOptions: selectedProyectos, selected2:{}">
+                                                    </select>                                                   
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.nombreCorto">Nom corto:</label>
+                                                    <label class="input">
+                                                        <input id="txtNombreCorto" name="txtNombreCorto" data-bind="value: nombreCorto">
+                                                    </label>
+                                                </section> 
+                                                <section class="col col-md-3">
+                                                    <label class="label" data-i18n="ofertas.cliente">CLI:</label>
+                                                    <label class="input">
+                                                        <input id="txtCliente" name="txtCliente" data-bind="value: cliente">
+                                                    </label>
+                                                </section>   
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.periodo">Periodo:</label>
+                                                    <label class="input">
+                                                        <input id="txtPeriodo" name="txtPeriodo" data-bind="value: periodo">
+                                                    </label>
+                                                </section>  
+                                               <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.fechaOferta">Fecha oferta:</label>
+                                                    <label class="input">
+                                                        <input id="txtFechaOferta" name="txtFechaOferta" data-bind="value: fechaOferta" class="datepicker" data-dateformat="dd/mm/yy">
+                                                    </label>
+                                                </section> 
+                                                <section class="col col-md-3">
+                                                    <label class="label" data-i18n="ofertas.centro">Centroa:</label>
+                                                    <select class="aswselect2" id="cmbCentros" name="cmbCentros" data-bind="options: optionsCentros, optionsText: 'nombre', optionsValue: 'centroId', 
+                                                        value: sCentro, valueAllowUnset: true, selectedOptions: selectedCentros, selected2:{}">
+                                                    </select>
+                                                </section>                                                                                                                                                                                            
+                                            </div>
+                                            <div class="row">
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.numeroOferta">N.Oferta:</label>
+                                                    <label class="input">
+                                                        <input id="txtNumeroOferta" name="txtNumeroOferta" data-bind="value: numeroOferta">
+                                                    </label>
+                                                </section>
+                                                <section class="col col-md-1">
+                                                    <label class="label" data-i18n="ofertas.version">VRS:</label>
+                                                    <label class="input">
+                                                        <input id="txtVersion" name="txtVersion" data-bind="value: version" disabled>
+                                                    </label>
+                                                </section>                                                
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.codigoGdes">CGES:</label>
+                                                    <label class="input">
+                                                        <input id="txtCodigoGdes" name="txtCodigoGDES" data-bind="value: codigoGdes">
+                                                    </label>
+                                                </section>   
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.numeroLicitacion">NLIC:</label>
+                                                    <label class="input">
+                                                        <input id="txtNumeroLicitacion" name="txtNumeroLicitacion" data-bind="value: numeroLicitacion">
+                                                    </label>
+                                                </section> 
+                                                <section class="col col-md-5">
+                                                    <label class="label" data-i18n="ofertas.tipoSoporte">TipoSoporte:</label>
+                                                    <select class="aswselect2" id="cmbTipoSoportes" name="cmbTipoSoportes" data-bind="options: optionsTipoSoportes, optionsText: 'nombre', optionsValue: 'tipoSoporteId', 
+                                                        value: sTipoSoporte, valueAllowUnset: true, selectedOptions: selectedTipoSoportes, selected2:{}">
+                                                    </select>
+                                                </section>                                                                                                                                              
+                                            </div>
+                                            <div class="row">
+                                                <section class="col col-md-4">
+                                                    <label class="label"><span data-i18n="ofertas.tipoOferta">TipoOferta:</span> 
+                                                    <a href="javascript:void(0);" rel="popover" data-placement="top" data-original-title="<i class='fa fa-lg fa-info-circle'></i>" data-i18n="[data-content]ofertas.ayudaTipoOferta" data-html="true">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>
+                                                    </label>
+                                                    <select class="aswselect2" id="cmbTipoOfertas" name="cmbTipoOfertas" data-bind="options: optionsTipoOfertas, optionsText: 'nombre', optionsValue: 'tipoOfertaId', 
+                                                        value: sTipoOferta, valueAllowUnset: true, selectedOptions: selectedTipoOfertas, selected2:{}">
+                                                    </select>
+                                                </section>
+                                                <section class="col col-md-4">
+                                                    <label class="label">
+                                                        <a href="javascript:void(0);" rel="popover" data-placement="top" data-original-title="<i class='fa fa-lg fa-info-circle'></i>" data-i18n="[data-content]ofertas.ayudaOfertaSingular" data-html="true">
+                                                            <i class='fa fa-lg fa-info-circle'></i>
+                                                        </a>                                                         
+                                                    </label>
+                                                    <label class="checkbox">
+                                                        <input id="chkOfertaSingular" type="checkbox" name="chkOfertaSingular" data-bind="checked: ofertaSingular">
+                                                        <i></i><span data-i18n="ofertas.ofertaSingular">ESD</span>
+                                                    </label>                                               
+                                                </section>   
+                                                <section class="col col-md-4">
+                                                    <label class="label" data-i18n="ofertas.tipoActividad">TipoActividad:</label>
+                                                    <select class="aswselect2" id="cmbTipoActividads" name="cmbTipoActividads" data-bind="options: optionsTipoActividads, optionsText: 'nombre', optionsValue: 'tipoActividadId', 
+                                                        value: sTipoActividad, valueAllowUnset: true, selectedOptions: selectedTipoActividads, selected2:{}">
+                                                    </select>
+                                                </section>                                                                                               
+                                            </div>
+                                            <div class="row">
+                                                <section class="col col-md-12">
+                                                    <label class="label" data-i18n="ofertas.personaContacto">PersonaContacto:</label>
+                                                    <label class="input">
+                                                        <input id="txtPersonaContacto" name="txtPersonaContacto" data-bind="value: personaContacto">
+                                                    </label>                                                
+                                                </section>
+                                            </div>                                            
+                                        </fieldset>
+                                    </div> 
+                                    <div id="datosEconomicos" style="border-style: solid; border-radius: 4px; border-width: 1px; padding:5px; margin: 2px;">
+                                        <fieldset>
+                                            <header data-i18n="ofertas.datosEconomicos">
+                                                DATOS ECON
+                                            </header> 
+                                            <div class="row">
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.importePresupuesto">Presupuesto:</label>
+                                                    <label class="input">
+                                                        <input id="txtImportePresupuesto" name="txtImportePresupuesto" data-bind="value: importePresupuesto">
+                                                    </label>
+                                                </section> 
+                                                <section class="col col-md-1">
+                                                    <label class="label">EQ</label>
+                                                    <h2> 1€ = </h2>
+                                                </section>
+                                                <section class="col col-md-1">
+                                                    <label class="label" data-i18n="ofertas.multiplicador">MUL:</label>
+                                                    <label class="input">
+                                                        <input id="txtMultiplicador" name="txtMultiplicador" data-bind="value: multiplicador">
+                                                    </label>
+                                                </section>   
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.divisa">DIVISA:</label>
+                                                    <select class="aswselect2" id="cmbDivisas" name="cmbDivisas" data-bind="options: optionsDivisas, optionsText: 'nombre', optionsValue: 'divisaId', 
+                                                        value: sDivisa, valueAllowUnset: true, selectedOptions: selectedDivisas, selected2:{}">
+                                                    </select>
+                                                </section>   
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.importePresupuestoDivisa">Imp Divisa:</label>
+                                                    <label class="input">
+                                                        <input id="txtImportePresupuestoDivisa" name="txtImportePresupuestoDivisa" data-bind="value: importePresupuestoDivisa">
+                                                    </label>
+                                                </section>     
+                                                <section class="col col-md-2">
+                                                    <div></div>
+                                                </section>
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.fechaDivisa">Fecha divisa:</label>
+                                                    <label class="input">
+                                                        <input id="txtDivisa" name="txtDivisa" data-bind="value: fechaDivisa" class="datepicker" data-dateformat="dd/mm/yy">
+                                                    </label>
+                                                </section>                                                                                                                                                                                   
+                                            </div> 
+                                            <div class="row">
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.margenContribucion">Margen:</label>
+                                                    <label class="input">
+                                                        <input id="txtMargenContribucion" name="txtMargenContribucion" data-bind="value: margenContribucion">
+                                                    </label>
+                                                </section> 
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.importeContribucion">Contribucion:</label>
+                                                    <label class="input">
+                                                        <input id="txtImporteContribucion" name="txtImporteContribucion" data-bind="value: importeContribucion">
+                                                    </label>
+                                                </section>
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.importeInversion">Inversion:</label>
+                                                    <label class="input">
+                                                        <input id="txtImporteInversion" name="txtImporteInversion" data-bind="value: importeInversion">
+                                                    </label>
+                                                </section>   
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.importeInversionDivisa">NLIC:</label>
+                                                    <label class="input">
+                                                        <input id="txtImporteImversionDivisa" name="txtImporteImversionDivisa" data-bind="value: importeInversionDivisa">
+                                                    </label>
+                                                </section> 
+                                                <section class="col col-md-2">
+                                                    <div></div>
+                                                </section>      
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.importeRetorno">Retorno:</label>
+                                                    <label class="input">
+                                                        <input id="txtImporteRetorno" name="txtImporteRetorno" data-bind="value: importeRetorno">
+                                                    </label>
+                                                </section>                                                                                                                                                                                        
+                                            </div>  
+                                            <div class="row">
+                                                <section class="col col-md-12">
+                                                    <label class="label" data-i18n="ofertas.autorizaciones">Autorizaciones:</label>
+                                                    <label class="textarea textarea-resizable">
+                                                        <textarea id="txtAutorizaciones" rows="3" class="custom-scroll" data-bind="value:autorizaciones"></textarea>
+                                                    </label>
+                                                </section>                                                      
+                                            </div>                                         
+                                        </fieldset>
+                                    </div>      
+                                    <div id="datosEstadoSituacion" style="border-style: solid; border-radius: 4px; border-width: 1px; padding:5px; margin: 2px;">
+                                        <fieldset>
+                                            <header data-i18n="ofertas.datosEstadoSituacion">
+                                                DATOS EYS
+                                            </header>
+                                            <div class="row">
+                                                <section class="col col-md-4">
+                                                    <label class="label" >
+                                                        <span data-i18n="ofertas.estado">Estado:</span>
+                                                        <a href="javascript:void(0);" rel="popover" data-placement="top" data-original-title="<i class='fa fa-lg fa-info-circle'></i>" data-i18n="[data-content]ofertas.ayudaEstado" data-html="true">
+                                                            <i class='fa fa-lg fa-info-circle'></i>
+                                                        </a>
+                                                    </label>
+                                                    <select class="aswselect2" id="cmbEstados" name="cmbEstados" data-bind="options: optionsEstados, optionsText: 'nombre', optionsValue: 'estadoId', 
+                                                        value: sEstado, valueAllowUnset: true, selectedOptions: selectedEstados, selected2:{}">
+                                                    </select>
+                                                </section> 
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.fechaUltimoEstado">Ultimo cambio estado:</label>
+                                                    <label class="input">
+                                                        <input id="txtFechaUltimoEstado" name="txtFechaUltimoEstado" data-bind="value: fechaUltimoEstado" class="datepicker" data-dateformat="dd/mm/yy">
+                                                    </label>
+                                                </section>                                                                                                 
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.fechaEntrega">Fecha entrega:</label>
+                                                    <label class="input">
+                                                        <input id="txtFechaEntrega" name="txtFechaEntrega" data-bind="value: fechaEntrega" class="datepicker" data-dateformat="dd/mm/yy">
+                                                    </label>
+                                                </section>
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.numeroPedido">N.Pedido:</label>
+                                                    <label class="input">
+                                                        <input id="txtNumeroPedido" name="txtNumeroPedido" data-bind="value: numeroPedido">
+                                                    </label>
+                                                </section>      
+                                                <section class="col col-md-2">
+                                                    <label class="label" data-i18n="ofertas.tiempoEmpleado">Tiempo:</label>
+                                                    <label class="input">
+                                                        <input id="txtTiempoEmpleado" name="txtTiempoEmpleado" data-bind="value: tiempoEmpleado">
+                                                    </label>
+                                                </section>                                                                                            
+                                            </div>
+                                            <div class="row">
+                                                <section class="col col-md-8">
+                                                    <label class="label" data-i18n="ofertas.observaciones">Observaciones:</label>
+                                                    <label class="textarea textarea-resizable">
+                                                        <textarea id="txtObservaciones" rows="3" class="custom-scroll" data-bind="value:observaciones"></textarea>
+                                                    </label>
+                                                </section> 
+                                                <section class="col col-md-4">
+                                                    <label class="label" data-i18n="ofertas.colaboradores">Colaboradores:</label>
+                                                    <label class="textarea textarea-resizable">
+                                                        <textarea id="txtColaboradores" rows="3" class="custom-scroll" data-bind="value:colaboradores"></textarea>
+                                                    </label>
+                                                </section>                                                  
+                                            </div>
+                                        </fieldset>   
+                                    </div>
+                                    <fieldset>
+                                        <div class="pull-right">
+                                            <button id="btnSalir" data-i18n="[title]salir" class="btn btn-warning btn-circle btn-lg">
+                                                <i class="fa fa-lg fa-sign-out"></i>
+                                            </button>
+                                            <button id="btnAceptar" data-i18n="[title]aceptar" class="btn btn-success btn-circle btn-lg">
+                                                <i class="fa fa-lg fa-check"></i>
+                                            </button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- END MAIN PANEL -->
+    <!-- PAGE FOOTER -->
+    <div class="page-footer">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <span class="txt-color-white">GDES-PIPELINE <span id="version">NO VERSION</span> <span class="hidden-xs"> - Aplicación general</span> © Ariadna Software S.L. 2017-2018</span>
+            </div>
+            <div class="col-xs-6 col-sm-6 text-right hidden-xs">
+                <div class="txt-color-white inline-block">
+                    <i class="txt-color-blueLight hidden-mobile"><i class="fa fa-phone"></i> <strong> &nbsp;</strong>
+                    <i class="fa fa-envelope"></i> <strong> &nbsp;</strong> </i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE FOOTER -->
+    <!--================================================== -->
+    <!-- PACE LOADER -->
+    <script src="js/plugin/pace/pace.min.js"></script>
+    <!-- JQUERY -->
+    <script src="js/libs/jquery/jquery-2.1.1.min.js"></script>
+    <script src="js/libs/jquery/jquery-ui-1.10.3.min.js"></script>
+    <script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+    <script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+    <!-- Otras librerias necesarias -->
+    <script src="js/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="js/libs/sprintf/sprintf.min.js"></script>
+    <script src="js/libs/numeral/numeral.js"></script>
+    <script src="js/libs/knockout/knockout-3.1.0.js"></script>
+    <script src="js/libs/moment/moment.js"></script>
+    <script src="js/libs/notification/SmartNotification.min.js"></script>
+    <script src="js/plugin/datatables/jquery.dataTables.min.js"></script>
+    <script src="js/plugin/datatables/dataTables.colVis.min.js"></script>
+    <script src="js/plugin/datatables/dataTables.tableTools.min.js"></script>
+    <script src="js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+    <script src="js/plugin/select2/select2.min.js"></script>
+    <!-- Idiomas -->
+    <script src="js/libs/i18next/i18next-1.9.0.js"></script>
+    <script src="locales/validator-languages.js"></script>
+    <script src="locales/datepicker-languages.js"></script>
+    <script src="locales/datatable-languages.js"></script>
+    <script src="locales/select2-languages.js"></script>
+    <script src="locales/numeral-languages.js"></script>
+    <!-- SADMIN -->
+    <script src="js/libs/sadmin/app.config.js"></script>
+    <script src="js/libs/sadmin/app.min.js"></script>
+    <!-- Configuraciones -->
+    <script src="config/myconfig.js"></script>
+    <script src="js/app/comun.js"></script>
+    <!-- Funciones propias comunes [conservar el orden] -->
+    <script src="js/comun/comun.idiomas.js"></script>
+    <script src="js/comun/comun.notificaciones.js"></script>
+    <script src="js/comun/comun.ajax.js"></script>
+    <script src="js/comun/comun.general.js"></script>
+    <!-- Funciones propias de esta página -->
+    <script src="js/app/ofertasDetalle.js"></script>
+    <script type="text/javascript">
+    (function($) {
+        $(document).ready(function() {
+            apiPaginaOfertasDetalle.ini();
+        });
+    })(jQuery);
+    </script>
+</body>
+
+</html>

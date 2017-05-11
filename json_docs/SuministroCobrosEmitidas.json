@@ -1,308 +1,324 @@
 {
-  "siiService": {
-    "SuministroCobrosEmitidas": {
-      "SuministroLRCobrosEmitidas": {
-        "input": {
-          "Cabecera": {
-            "IDVersionSii": "VersionSiiType|string|0.5",
-            "Titular": {
-              "NombreRazon": "TextMax40Type|string|maxLength",
-              "NIFRepresentante": "NIFType|string|length,pattern",
-              "NIF": "NIFType|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+    "siiService": {
+        "SuministroCobrosEmitidas": {
+            "SuministroLRCobrosEmitidas": {
+                "input": {
+                    "Cabecera": {
+                        "IDVersionSii": "VersionSiiType|string|0.6",
+                        "Titular": {
+                            "NombreRazon": "TextMax40Type|string|maxLength",
+                            "NIFRepresentante": "NIFType|string|length,pattern",
+                            "NIF": "NIFType|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "RegistroLRCobros[]": {
+                        "IDFactura": {
+                            "IDEmisorFactura": {
+                                "NIF": "NIFType|string|length,pattern"
+                            },
+                            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+                            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "Cobros": {
+                            "Cobro[]": {
+                                "Fecha": "fecha|string|length,pattern",
+                                "Importe": "ImporteSgn12.2Type|string|pattern",
+                                "Medio": "MedioPagoType|string|01,02,03,04",
+                                "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
+                                "targetNSAlias": "sii",
+                                "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                            },
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "siiLR",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroLR.xsd"
+                    }
+                },
+                "output": {
+                    "CSV": "string",
+                    "DatosPresentacion": {
+                        "NIFPresentador": "NIFType|string|length,pattern",
+                        "TimestampPresentacion": "Timestamp|string|length,pattern",
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "Cabecera": {
+                        "IDVersionSii": "VersionSiiType|string|0.6",
+                        "Titular": {
+                            "NombreRazon": "TextMax40Type|string|maxLength",
+                            "NIFRepresentante": "NIFType|string|length,pattern",
+                            "NIF": "NIFType|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "EstadoEnvio": "EstadoEnvioType|string|Correcto,ParcialmenteCorrecto,Incorrecto",
+                    "RespuestaLinea[]": {
+                        "IDFactura": {
+                            "IDEmisorFactura": {
+                                "NIF": "NIFType|string|length,pattern"
+                            },
+                            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+                            "NumSerieFacturaEmisorResumenFin": "TextoIDFacturaType|string|minLength,maxLength",
+                            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "EstadoRegistro": "EstadoRegistroType|string|Correcto,AceptadoConErrores,Incorrecto",
+                        "CodigoErrorRegistro": "ErrorDetalleType|integer|",
+                        "DescripcionErrorRegistro": "TextMax500Type|string|maxLength",
+                        "targetNSAlias": "siiR",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
+                    },
+                    "targetNSAlias": "siiR",
+                    "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
+                }
             },
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "RegistroLRCobros[]": {
-            "IDFactura": {
-              "IDEmisorFactura": { "NIF": "NIFType|string|length,pattern" },
-              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
-              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "Cobros": {
-              "Cobro[]": {
-                "Fecha": "fecha|string|length,pattern",
-                "Importe": "ImporteSgn12.2Type|string|pattern",
-                "Medio": "MedioPagoType|string|01,02,03,04,05",
-                "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
-                "targetNSAlias": "sii",
-                "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-              },
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "siiLR",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroLR.xsd"
-          }
+            "ConsultaLRCobrosEmitidas": {
+                "input": {
+                    "Cabecera": {
+                        "IDVersionSii": "VersionSiiType|string|0.6",
+                        "Titular": {
+                            "NombreRazon": "TextMax40Type|string|maxLength",
+                            "NIF": "NIFType|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "FiltroConsultaCobros": {
+                        "IDFactura": {
+                            "IDEmisorFactura": {
+                                "NIF": "NIFType|string|length,pattern"
+                            },
+                            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+                            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "ClavePaginacion": "double",
+                        "targetNSAlias": "siiLRC",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
+                    },
+                    "targetNSAlias": "siiLRC",
+                    "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
+                },
+                "output": {
+                    "Cabecera": {
+                        "IDVersionSii": "VersionSiiType|string|0.6",
+                        "Titular": {
+                            "NombreRazon": "TextMax40Type|string|maxLength",
+                            "NIF": "NIFType|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "IDFactura": {
+                        "IDEmisorFactura": {
+                            "NIF": "NIFType|string|length,pattern"
+                        },
+                        "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+                        "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "IndicadorPaginacion": "IndicadorPaginacionType|string|S,N",
+                    "ResultadoConsulta": "ResultadoConsultaType|string|ConDatos,SinDatos",
+                    "RegistroRespuestaConsultaCobros[]": {
+                        "DatosCobro": {
+                            "Fecha": "fecha|string|length,pattern",
+                            "Importe": "ImporteSgn12.2Type|string|pattern",
+                            "Medio": "MedioPagoType|string|01,02,03,04",
+                            "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "DatosPresentacion": {
+                            "NIFPresentador": "NIFType|string|length,pattern",
+                            "TimestampPresentacion": "Timestamp|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "siiLRRC",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
+                    },
+                    "ClavePaginacion": "double",
+                    "targetNSAlias": "siiLRRC",
+                    "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
+                }
+            }
         },
-        "output": {
-          "CSV": "string",
-          "DatosPresentacion": {
-            "NIFPresentador": "NIFType|string|length,pattern",
-            "TimestampPresentacion": "Timestamp|string|length,pattern",
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "Cabecera": {
-            "IDVersionSii": "VersionSiiType|string|0.5",
-            "Titular": {
-              "NombreRazon": "TextMax40Type|string|maxLength",
-              "NIFRepresentante": "NIFType|string|length,pattern",
-              "NIF": "NIFType|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+        "SuministroCobrosEmitidasPruebas": {
+            "SuministroLRCobrosEmitidas": {
+                "input": {
+                    "Cabecera": {
+                        "IDVersionSii": "VersionSiiType|string|0.6",
+                        "Titular": {
+                            "NombreRazon": "TextMax40Type|string|maxLength",
+                            "NIFRepresentante": "NIFType|string|length,pattern",
+                            "NIF": "NIFType|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "RegistroLRCobros[]": {
+                        "IDFactura": {
+                            "IDEmisorFactura": {
+                                "NIF": "NIFType|string|length,pattern"
+                            },
+                            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+                            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "Cobros": {
+                            "Cobro[]": {
+                                "Fecha": "fecha|string|length,pattern",
+                                "Importe": "ImporteSgn12.2Type|string|pattern",
+                                "Medio": "MedioPagoType|string|01,02,03,04",
+                                "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
+                                "targetNSAlias": "sii",
+                                "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                            },
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "siiLR",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroLR.xsd"
+                    }
+                },
+                "output": {
+                    "CSV": "string",
+                    "DatosPresentacion": {
+                        "NIFPresentador": "NIFType|string|length,pattern",
+                        "TimestampPresentacion": "Timestamp|string|length,pattern",
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "Cabecera": {
+                        "IDVersionSii": "VersionSiiType|string|0.6",
+                        "Titular": {
+                            "NombreRazon": "TextMax40Type|string|maxLength",
+                            "NIFRepresentante": "NIFType|string|length,pattern",
+                            "NIF": "NIFType|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "EstadoEnvio": "EstadoEnvioType|string|Correcto,ParcialmenteCorrecto,Incorrecto",
+                    "RespuestaLinea[]": {
+                        "IDFactura": {
+                            "IDEmisorFactura": {
+                                "NIF": "NIFType|string|length,pattern"
+                            },
+                            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+                            "NumSerieFacturaEmisorResumenFin": "TextoIDFacturaType|string|minLength,maxLength",
+                            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "EstadoRegistro": "EstadoRegistroType|string|Correcto,AceptadoConErrores,Incorrecto",
+                        "CodigoErrorRegistro": "ErrorDetalleType|integer|",
+                        "DescripcionErrorRegistro": "TextMax500Type|string|maxLength",
+                        "targetNSAlias": "siiR",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
+                    },
+                    "targetNSAlias": "siiR",
+                    "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
+                }
             },
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "EstadoEnvio": "EstadoEnvioType|string|Correcto,ParcialmenteCorrecto,Incorrecto",
-          "RespuestaLinea[]": {
-            "IDFactura": {
-              "IDEmisorFactura": { "NIF": "NIFType|string|length,pattern" },
-              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
-              "NumSerieFacturaEmisorResumenFin": "TextoIDFacturaType|string|minLength,maxLength",
-              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "EstadoRegistro": "EstadoRegistroType|string|Correcto,AceptadoConErrores,Incorrecto",
-            "CodigoErrorRegistro": "ErrorDetalleType|integer|",
-            "DescripcionErrorRegistro": "TextMax500Type|string|maxLength",
-            "targetNSAlias": "siiR",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
-          },
-          "targetNSAlias": "siiR",
-          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
+            "ConsultaLRCobrosEmitidas": {
+                "input": {
+                    "Cabecera": {
+                        "IDVersionSii": "VersionSiiType|string|0.6",
+                        "Titular": {
+                            "NombreRazon": "TextMax40Type|string|maxLength",
+                            "NIF": "NIFType|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "FiltroConsultaCobros": {
+                        "IDFactura": {
+                            "IDEmisorFactura": {
+                                "NIF": "NIFType|string|length,pattern"
+                            },
+                            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+                            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "ClavePaginacion": "double",
+                        "targetNSAlias": "siiLRC",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
+                    },
+                    "targetNSAlias": "siiLRC",
+                    "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
+                },
+                "output": {
+                    "Cabecera": {
+                        "IDVersionSii": "VersionSiiType|string|0.6",
+                        "Titular": {
+                            "NombreRazon": "TextMax40Type|string|maxLength",
+                            "NIF": "NIFType|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "IDFactura": {
+                        "IDEmisorFactura": {
+                            "NIF": "NIFType|string|length,pattern"
+                        },
+                        "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+                        "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+                        "targetNSAlias": "sii",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                    },
+                    "IndicadorPaginacion": "IndicadorPaginacionType|string|S,N",
+                    "ResultadoConsulta": "ResultadoConsultaType|string|ConDatos,SinDatos",
+                    "RegistroRespuestaConsultaCobros[]": {
+                        "DatosCobro": {
+                            "Fecha": "fecha|string|length,pattern",
+                            "Importe": "ImporteSgn12.2Type|string|pattern",
+                            "Medio": "MedioPagoType|string|01,02,03,04",
+                            "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "DatosPresentacion": {
+                            "NIFPresentador": "NIFType|string|length,pattern",
+                            "TimestampPresentacion": "Timestamp|string|length,pattern",
+                            "targetNSAlias": "sii",
+                            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                        },
+                        "targetNSAlias": "siiLRRC",
+                        "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
+                    },
+                    "ClavePaginacion": "double",
+                    "targetNSAlias": "siiLRRC",
+                    "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
+                }
+            }
         }
-      },
-      "ConsultaLRCobrosEmitidas": {
-        "input": {
-          "Cabecera": {
-            "IDVersionSii": "VersionSiiType|string|0.5",
-            "Titular": {
-              "NombreRazon": "TextMax40Type|string|maxLength",
-              "NIF": "NIFType|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "FiltroConsultaCobros": {
-            "IDFactura": {
-              "IDEmisorFactura": { "NIF": "NIFType|string|length,pattern" },
-              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
-              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "ClavePaginacion": "double",
-            "targetNSAlias": "siiLRC",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
-          },
-          "targetNSAlias": "siiLRC",
-          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
-        },
-        "output": {
-          "Cabecera": {
-            "IDVersionSii": "VersionSiiType|string|0.5",
-            "Titular": {
-              "NombreRazon": "TextMax40Type|string|maxLength",
-              "NIF": "NIFType|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "IDFactura": {
-            "IDEmisorFactura": { "NIF": "NIFType|string|length,pattern" },
-            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
-            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "IndicadorPaginacion": "IndicadorPaginacionType|string|S,N",
-          "ResultadoConsulta": "ResultadoConsultaType|string|ConDatos,SinDatos",
-          "RegistroRespuestaConsultaCobros[]": {
-            "DatosCobro": {
-              "Fecha": "fecha|string|length,pattern",
-              "Importe": "ImporteSgn12.2Type|string|pattern",
-              "Medio": "MedioPagoType|string|01,02,03,04,05",
-              "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "DatosPresentacion": {
-              "NIFPresentador": "NIFType|string|length,pattern",
-              "TimestampPresentacion": "Timestamp|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "siiLRRC",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
-          },
-          "ClavePaginacion": "double",
-          "targetNSAlias": "siiLRRC",
-          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
-        }
-      }
-    },
-    "SuministroCobrosEmitidasPruebas": {
-      "SuministroLRCobrosEmitidas": {
-        "input": {
-          "Cabecera": {
-            "IDVersionSii": "VersionSiiType|string|0.5",
-            "Titular": {
-              "NombreRazon": "TextMax40Type|string|maxLength",
-              "NIFRepresentante": "NIFType|string|length,pattern",
-              "NIF": "NIFType|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "RegistroLRCobros[]": {
-            "IDFactura": {
-              "IDEmisorFactura": { "NIF": "NIFType|string|length,pattern" },
-              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
-              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "Cobros": {
-              "Cobro[]": {
-                "Fecha": "fecha|string|length,pattern",
-                "Importe": "ImporteSgn12.2Type|string|pattern",
-                "Medio": "MedioPagoType|string|01,02,03,04,05",
-                "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
-                "targetNSAlias": "sii",
-                "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-              },
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "siiLR",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroLR.xsd"
-          }
-        },
-        "output": {
-          "CSV": "string",
-          "DatosPresentacion": {
-            "NIFPresentador": "NIFType|string|length,pattern",
-            "TimestampPresentacion": "Timestamp|string|length,pattern",
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "Cabecera": {
-            "IDVersionSii": "VersionSiiType|string|0.5",
-            "Titular": {
-              "NombreRazon": "TextMax40Type|string|maxLength",
-              "NIFRepresentante": "NIFType|string|length,pattern",
-              "NIF": "NIFType|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "EstadoEnvio": "EstadoEnvioType|string|Correcto,ParcialmenteCorrecto,Incorrecto",
-          "RespuestaLinea[]": {
-            "IDFactura": {
-              "IDEmisorFactura": { "NIF": "NIFType|string|length,pattern" },
-              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
-              "NumSerieFacturaEmisorResumenFin": "TextoIDFacturaType|string|minLength,maxLength",
-              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "EstadoRegistro": "EstadoRegistroType|string|Correcto,AceptadoConErrores,Incorrecto",
-            "CodigoErrorRegistro": "ErrorDetalleType|integer|",
-            "DescripcionErrorRegistro": "TextMax500Type|string|maxLength",
-            "targetNSAlias": "siiR",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
-          },
-          "targetNSAlias": "siiR",
-          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
-        }
-      },
-      "ConsultaLRCobrosEmitidas": {
-        "input": {
-          "Cabecera": {
-            "IDVersionSii": "VersionSiiType|string|0.5",
-            "Titular": {
-              "NombreRazon": "TextMax40Type|string|maxLength",
-              "NIF": "NIFType|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "FiltroConsultaCobros": {
-            "IDFactura": {
-              "IDEmisorFactura": { "NIF": "NIFType|string|length,pattern" },
-              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
-              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "ClavePaginacion": "double",
-            "targetNSAlias": "siiLRC",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
-          },
-          "targetNSAlias": "siiLRC",
-          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
-        },
-        "output": {
-          "Cabecera": {
-            "IDVersionSii": "VersionSiiType|string|0.5",
-            "Titular": {
-              "NombreRazon": "TextMax40Type|string|maxLength",
-              "NIF": "NIFType|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "ClavePaginacion": "double",
-          "IDFactura": {
-            "IDEmisorFactura": { "NIF": "NIFType|string|length,pattern" },
-            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
-            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
-            "targetNSAlias": "sii",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-          },
-          "IndicadorPaginacion": "IndicadorPaginacionType|string|S,N",
-          "RegistroRespuestaConsultaCobros[]": {
-            "DatosCobro": {
-              "Fecha": "fecha|string|length,pattern",
-              "Importe": "ImporteSgn12.2Type|string|pattern",
-              "Medio": "MedioPagoType|string|01,02,03,04,05",
-              "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "DatosPresentacion": {
-              "NIFPresentador": "NIFType|string|length,pattern",
-              "TimestampPresentacion": "Timestamp|string|length,pattern",
-              "targetNSAlias": "sii",
-              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
-            },
-            "targetNSAlias": "siiLRRC",
-            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
-          },
-          "ResultadoConsulta": "ResultadoConsultaType|string|ConDatos,SinDatos",
-          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd",
-          "targetNSAlias": "siiLRRC"
-        }
-      }
     }
-  }
 }

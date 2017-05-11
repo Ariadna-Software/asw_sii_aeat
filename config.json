@@ -1,0 +1,14 @@
+{
+    "apiPort": 5080,
+    "apiHost": "127.0.0.1",
+    "smtpConfig": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true, 
+        "auth": {
+            "user": "rafa@myariadna.com",
+            "pass": "aritel2011"
+        }
+    },
+    "destinatario": "rafa@myariadna.com,ragare@gmail.com"
+}
