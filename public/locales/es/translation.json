@@ -1,5 +1,81 @@
 {
-    "empresa": "GD Energy Services",
-    "app_titulo": "GDES PIPELINE (ES)",
-    "app_descripcion": "Gestión de ofertas"
+    "empresa": "Ariadna Software SL",
+    "app_titulo": "ASWSII (DEV)",
+    "app_descripcion": "Sistema Inmediato de Información SII",
+    "mostrar_ocultar": "Mostrar ocultar columnas",
+    "eliminar_pregunta": "¿Desea realmente eliminar este registro?",
+    "aceptar": "Aceptar",
+    "salir": "Salir",
+    "si": "SI",
+    "no": "NO",
+    "ayuda": "<div>AYUDA</div>",
+    "cerrar": "Haga clic aquí para cerrar el recuadro",
+    "error": {
+        "general": "Error",
+        "ajax_general": "Error comunicado",
+        "authorization": "No autorizado",
+        "close": "Cerrar"
+    },
+    "util": {
+        "date_iso": "YYYY-MM-DD",
+        "date_format": "DD/MM/YYYY",
+        "date_format2": "dd/mm/yy"
+    },
+    "menu": {
+        "inicio": "Inicio",
+        "administracion": {
+            "cab": "Administración",
+            "gruposUsuarios": "Grupos usuarios",
+            "usuarios": "Usuarios"
+        },
+        "gestion": {
+            "cab": "Gestión",
+            "facturasEmitidas": "Facturas emitidas"
+        }
+    },
+    "login": {
+        "acceso": "Acceso a la aplicación",
+        "login": "Usuario",
+        "password": "Contraseña",
+        "olvido": "He olvidado el usuario o la contraseña",
+        "conectado": "Permanecer conectado",
+        "btnLogin": "Entrar",
+        "valLogin": "Introduzca el login",
+        "valPassword": "Introduzca la contraseña"
+    },
+    "inicio": {
+        "titulo": "INICIO",
+        "panel": "Panel de inicio",
+        "cabecera": "Bienvenido a la aplicación ASWSII.",
+        "linea1": "Le recordamos que el uso de esta aplicación está sujeto a las normas internas de la empresa y de manera general a los compromisos de confidencialidad expresados en la LOPD",
+        "linea2": "Para poder acceder a las diferentes funcionalidades utilice el menú de la izquierda que le mostrará las opciones a las que tiene acceso"
+    },
+    "gruposUsuarios": {
+        "titulo": "Grupos de usuarios",
+        "panel": "Grupos de usuarios",
+        "nuevo": "Nuevo grupo usuario",
+        "nombre": "Nombre grupo",
+        "id": "ID",
+        "editar": "Editar grupo",
+        "eliminar": "Eliminar grupo",
+        "valNombre": "Nombre necesario"
+    },
+    "usuarios": {
+        "titulo": "Usuarios",
+        "panel": "Usuarios",
+        "nuevo": "Nuevo usuario",
+        "nombre": "Nombre usuario",
+        "id": "ID",
+        "editar": "Editar usuario",
+        "eliminar": "Eliminar usuario",
+        "valNombre": "Nombre necesario",
+        "grupo": "Grupo",
+        "pais": "Pais por defecto",
+        "empresa": "Empresa por defecto",
+        "area": "Area por defecto",
+        "centro": "Centro por defecto",
+        "codigoIdioma": "Codigo idioma",
+        "esAdministrador": "Este usuario es administrador",
+        "verOfertasGrupo": "Este usuario puede ver ofertas de los responsables de su grupo de usuarios"
+    }
 }
