@@ -150,7 +150,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-title txt-color-blueDark">
-                        <i class="fa-fw fa fa-user"></i> <span data-i18n="usuarios.titulo">Grupo usuarios</span> <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
+                        <i class="fa-fw fa fa-user"></i> <span data-i18n="usuarios.titulo">Grupo usuarios</span> <a href="#"
+                            title="Ayuda"><i class="fa fa-question"></i></a>
                     </h1>
                 </div>
                 <!-- end col -->
@@ -187,6 +188,15 @@
                                                 </label>
                                             </section>
                                         </div>
+                                        <div class="row">
+                                            <section class="col col-md-6">
+                                                <label class="checkbox">
+                                                        <input id="chkEsAdministrador" type="checkbox" name="chkEsAdministrador" data-bind="checked: esAdministrador">
+                                                        <i></i><span data-i18n="usuarios.esAdministrador">ESD</span>
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-6"></section>
+                                        </div>
                                     </fieldset>
                                     <fieldset>
                                         <div class="pull-right">
@@ -211,7 +221,7 @@
     <div class="page-footer">
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <span class="txt-color-white">ASWSII <span id="version">NO VERSION</span> <span class="hidden-xs"> - Aplicación general</span> © Ariadna Software S.L. 2017-2018</span>
+                <span class="txt-color-white">ASWSII <span id="version">NO VERSION</span> <span class="hidden-xs"> - Aplicación general</span>                © Ariadna Software S.L. 2017-2018</span>
             </div>
             <div class="col-xs-6 col-sm-6 text-right hidden-xs">
                 <div class="txt-color-white inline-block">
@@ -264,11 +274,11 @@
     <!-- Funciones propias de esta página -->
     <script src="js/app/usuariosDetalle.js"></script>
     <script type="text/javascript">
-    (function($) {
-        $(document).ready(function() {
-            apiPaginaUsuariosDetalle.ini();
-        });
-    })(jQuery);
+        (function ($) {
+            $(document).ready(function () {
+                apiPaginaUsuariosDetalle.ini();
+            });
+        })(jQuery);
     </script>
 </body>
 

@@ -49,12 +49,15 @@ var apiPaginaUsuariosDetalle = {
         vm.nombre(data.nombre);
         vm.codigoIdioma(data.codigoIdioma);
         apiPaginaUsuariosDetalle.cargarGrupos(data.grupoUsuarioId);
+        vm.esAdministrador(data.esAdministrador);
     },
     datosPagina: function () {
         var self = this;
         self.usuarioId = ko.observable();
         self.nombre = ko.observable();
         self.codigoIdioma = ko.observable();
+        self.esAdministrador = ko.observable();
+
 
         self.optionsGrupos = ko.observableArray([]);
         self.selectedGrupos = ko.observableArray([]);
@@ -66,6 +69,7 @@ var apiPaginaUsuariosDetalle = {
         var data = {
             usuarioId: vm.usuarioId(),
             nombre: vm.nombre(),
+            esAdministrador: vm.esAdministrador(),
             grupoUsuarioId: vm.sGrupo(),
             codigoIdioma: vm.codigoIdioma()
         };
