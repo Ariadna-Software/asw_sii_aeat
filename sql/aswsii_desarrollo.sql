@@ -322,7 +322,7 @@ CREATE TABLE `envio_facturas_emitidas` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.6' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
   `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
@@ -672,6 +672,46 @@ CREATE TABLE `envio_pagos_recibidas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `envio_pagos_recibidas` */
+
+/*Table structure for table `grupos_usuarios` */
+
+DROP TABLE IF EXISTS `grupos_usuarios`;
+
+CREATE TABLE `grupos_usuarios` (
+  `grupoUsuarioId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador único del grupo de usuario',
+  `nombre` varchar(255) NOT NULL COMMENT 'Nombre del grupo',
+  PRIMARY KEY (`grupoUsuarioId`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='Esta es la tabla que contiene los grupos de usuarios';
+
+/*Data for the table `grupos_usuarios` */
+
+insert  into `grupos_usuarios`(`grupoUsuarioId`,`nombre`) values 
+(1,'Administradores');
+
+/*Table structure for table `usuarios` */
+
+DROP TABLE IF EXISTS `usuarios`;
+
+CREATE TABLE `usuarios` (
+  `usuarioId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador único del usuario',
+  `grupoUsuarioId` int(11) DEFAULT NULL COMMENT 'Grupo al que pertenece',
+  `nombre` varchar(255) DEFAULT NULL COMMENT 'Nombre del usuario',
+  `codigoIdioma` varchar(255) DEFAULT NULL COMMENT 'Codigo de idioma según 639-1',
+  `login` varchar(255) DEFAULT NULL COMMENT 'Login con el que se presenta el usuario',
+  `password` varchar(255) DEFAULT NULL COMMENT 'Contraseña del usuario (por el moento en texto plano, luego será codificada)',
+  `getKeyTime` datetime DEFAULT NULL COMMENT 'Fecha y hora en la que se obtuvo la última clave API',
+  `expKeyTime` datetime DEFAULT NULL COMMENT 'Fecha y hora en la que expira la clave API',
+  `apiKey` varchar(255) DEFAULT NULL COMMENT 'Clave API utilizada para identificar al usuario en las llamadas',
+  `esAdministrador` tinyint(1) DEFAULT '0' COMMENT 'Indica si el usuario es administrador',
+  PRIMARY KEY (`usuarioId`),
+  KEY `usuarios_grupos` (`grupoUsuarioId`),
+  CONSTRAINT `usuarios_grupos` FOREIGN KEY (`grupoUsuarioId`) REFERENCES `grupos_usuarios` (`grupoUsuarioId`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='Tabla de usuarios. Todos los usuarios pertenecen a un grupo';
+
+/*Data for the table `usuarios` */
+
+insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values 
+(1,1,'Administrador','es','admin','admin','2017-05-12 09:08:55','2017-05-12 14:08:55','KGpOS',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
