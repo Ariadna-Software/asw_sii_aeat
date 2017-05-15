@@ -123,12 +123,12 @@
                         </li>
                         <li id="titulares">
                             <a href="TitularesGeneral.html">
-                                <i class="fa fa-user"></i> <span data-i18n="menu.administracion.titulares">Titulares</span>
+                                <i class="fa fa-address-book"></i> <span data-i18n="menu.administracion.titulares">Titulares</span>
                             </a>
                         </li>
                         <li id="emisores">
                             <a href="EmisoresGeneral.html">
-                                <i class="fa fa-user"></i> <span data-i18n="menu.administracion.emisores">Emisores</span>
+                                <i class="fa fa-address-book-o"></i> <span data-i18n="menu.administracion.emisores">Emisores</span>
                             </a>
                         </li>                                               
                     </ul>
@@ -153,14 +153,14 @@
     <div id="main" role="main" style="min-height: 800px;">
         <div id="ribbon">
             <ol class="breadcrumb">
-                <li data-i18n="usuarios.titulo">Grupo usuarios</li>
+                <li data-i18n="titulares.titulo">Grupo titulares</li>
             </ol>
         </div>
         <div id="content">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-title txt-color-blueDark">
-                        <i class="fa-fw fa fa-user"></i> <span data-i18n="usuarios.titulo">Grupo usuarios</span> <a href="#"
+                        <i class="fa-fw fa fa-user"></i> <span data-i18n="titulares.titulo">Grupo titulares</span> <a href="#"
                             title="Ayuda"><i class="fa fa-question"></i></a>
                     </h1>
                 </div>
@@ -173,39 +173,30 @@
                         <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
                             <header>
                                 <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                <h2 data-i18n="usuarios.panel"> Panel</h2>
+                                <h2 data-i18n="titulares.panel"> Panel</h2>
                             </header>
                             <div class="row">
                                 <form id="usuario-form" class="smart-form">
                                     <fieldset>
                                         <div class="row">
                                             <section class="col col-md-6">
-                                                <label class="label" data-i18n="usuarios.nombre">Nombre:</label>
+                                                <label class="label" data-i18n="titulares.nombreRazon">Nombre:</label>
                                                 <label class="input">
-                                                    <input id="txtNombre" name="txtNombre" data-bind="value: nombre">
+                                                    <input id="txtNombreRazon" name="txtNombreRazon" data-bind="value: nombreRazon">
                                                 </label>
                                             </section>
-                                            <section class="col col-md-4">
-                                                <label class="label" data-i18n="usuarios.grupo">Grupo:</label>
-                                                <select style="width:100%;" id="cmbGrupos" name="cmbGrupos" data-bind="options: optionsGrupos, optionsText: 'nombre', optionsValue: 'grupoUsuarioId', 
-                                                    value: sGrupo, valueAllowUnset: true, selectedOptions: selectedGrupos, selected2:{}">
-                                                </select>
-                                            </section>
-                                            <section class="col col-md-2">
-                                                <label class="label" data-i18n="usuarios.codigoIdioma">Nombre:</label>
+                                            <section class="col col-md-3">
+                                                <label class="label" data-i18n="titulares.nifTitular">Nif Titular:</label>
                                                 <label class="input">
-                                                    <input id="txtCodigoIdioma" name="txtCodigoIdioma" data-bind="value: codigoIdioma">
+                                                    <input id="txtNifTitular" name="txtNifTitular" data-bind="value: nifTitular">
                                                 </label>
                                             </section>
-                                        </div>
-                                        <div class="row">
-                                            <section class="col col-md-6">
-                                                <label class="checkbox">
-                                                        <input id="chkEsAdministrador" type="checkbox" name="chkEsAdministrador" data-bind="checked: esAdministrador">
-                                                        <i></i><span data-i18n="usuarios.esAdministrador">ESD</span>
-                                                    </label>
+                                            <section class="col col-md-3">
+                                                <label class="label" data-i18n="titulares.nifRepresentante">Nif Representante:</label>
+                                                <label class="input">
+                                                    <input id="txtNifRepresentante" name="txtNifRepresentante" data-bind="value: nifRepresentante">
+                                                </label>
                                             </section>
-                                            <section class="col col-md-6"></section>
                                         </div>
                                     </fieldset>
                                     <fieldset>
@@ -282,11 +273,11 @@
     <script src="js/comun/comun.ajax.js"></script>
     <script src="js/comun/comun.general.js"></script>
     <!-- Funciones propias de esta página -->
-    <script src="js/app/usuariosDetalle.js"></script>
+    <script src="js/app/titularesDetalle.js"></script>
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {
-                apiPaginaUsuariosDetalle.ini();
+                apiTitularesDetalle.ini();
             });
         })(jQuery);
     </script>

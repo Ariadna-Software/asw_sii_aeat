@@ -123,12 +123,12 @@
                         </li>
                         <li id="titulares">
                             <a href="TitularesGeneral.html">
-                                <i class="fa fa-user"></i> <span data-i18n="menu.administracion.titulares">Titulares</span>
+                                <i class="fa fa-address-book"></i> <span data-i18n="menu.administracion.titulares">Titulares</span>
                             </a>
                         </li>
                         <li id="emisores">
                             <a href="EmisoresGeneral.html">
-                                <i class="fa fa-user"></i> <span data-i18n="menu.administracion.emisores">Emisores</span>
+                                <i class="fa fa-address-book-o"></i> <span data-i18n="menu.administracion.emisores">Emisores</span>
                             </a>
                         </li>                                               
                     </ul>
@@ -153,14 +153,14 @@
     <div id="main" role="main" style="min-height: 800px;">
         <div id="ribbon">
             <ol class="breadcrumb">
-                <li data-i18n="usuarios.titulo">Grupo usuarios</li>
+                <li data-i18n="titulares.titulo">Grupo titulares</li>
             </ol>
         </div>
         <div id="content">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-title txt-color-blueDark">
-                        <i class="fa-fw fa fa-user"></i> <span data-i18n="usuarios.titulo">Usuarios</span> <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
+                        <i class="fa-fw fa fa-address-book"></i> <span data-i18n="titulares.titulo">Usuarios</span> <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
                     </h1>
                 </div>
                 <!-- end col -->
@@ -172,13 +172,13 @@
                         <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
                             <header>
                                 <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                <h2 data-i18n="usuarios.panel"> Panel</h2>
+                                <h2 data-i18n="titulares.panel"> Panel</h2>
                             </header>
                             <div class="row">
-                                <form id="usuarios-form" class="smart-form">
+                                <form id="titulares-form" class="smart-form">
                                     <fieldset>
                                         <div class="pull-right">
-                                            <button id="btnNuevo" data-i18n="[title]usuarios.nuevo" class="btn btn-success btn-circle btn-lg">
+                                            <button id="btnNuevo" data-i18n="[title]titulares.nuevo" class="btn btn-success btn-circle btn-lg">
                                                 <i class="fa fa-lg fa-plus"></i>
                                             </button>
                                         </div>
@@ -186,19 +186,19 @@
                                 </form>
                             </div>
                             <div class="row">
-                                <div id="tb_usuarios">
-                                    <table id="dt_usuarios" class="table table-striped table-bordered table-hover" width="100%">
+                                <div id="tb_titulares">
+                                    <table id="dt_titulares" class="table table-striped table-bordered table-hover" width="100%">
                                         <thead>
                                             <tr>
                                                 <th data-hide="phone">
-                                                    <span data-i18n="usuarios.id">ID</span>
+                                                    <span data-i18n="titulares.id">ID</span>
                                                 </th>
                                                 <th data-class="expand">
-                                                    <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
-                                                    <span data-i18n="usuarios.nombre">Nombre</span>
+                                                    <i class="fa fa-fw fa-address-book text-muted hidden-md hidden-sm hidden-xs"></i>
+                                                    <span data-i18n="titulares.nombre">Nombre</span>
                                                 </th>
                                                 <th data-hide="phone">
-                                                    <span data-i18n="usuarios.grupo">Grupo</span>
+                                                    <span data-i18n="titulares.nif">Nif</span>
                                                 </th>
                                                 <th style="text-align: center;">
                                                     <i class="fa fa-fw fa-cogs text-muted hidden-md hidden-sm hidden-xs"></i>
@@ -269,11 +269,11 @@
     <script src="js/comun/comun.ajax.js"></script>
     <script src="js/comun/comun.general.js"></script>
     <!-- Funciones propias de esta página -->
-    <script src="js/app/usuariosGeneral.js"></script>
+    <script src="js/app/titularesGeneral.js"></script>
     <script type="text/javascript">
     (function($) {
         $(document).ready(function() {
-            apiPaginaUsuariosGeneral.ini();
+            apiTitularesGeneral.ini();
         });
     })(jQuery);
     </script>

@@ -102,11 +102,15 @@
         "Mensaje": "Mensaje"
     },
     "titulares": {
-        "titulo": "Titulares de libros",
-        "panel": "Titulares de libros",
+        "titulo": "Titulares",
+        "panel": "Titulares",
         "nuevo": "Nuevo titular",
         "nombre": "Nombre titular",
+        "nombreRazon": "Nombre / Razón social",
+        "nifTitular": "NIF Titular",
+        "nifRepresentante": "NIF Representante",
         "id": "ID",
+        "nif": "NIF",
         "editar": "Editar titular",
         "eliminar": "Eliminar titular",
         "valNombre": "Nombre necesario"

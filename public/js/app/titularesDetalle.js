@@ -1,99 +1,80 @@
 ﻿/*
- usuarios.js
- Funciones propias de la página Usuarios.html
+ titulares.js
+ Funciones propias de la página Titulares.html
 */
 
-var usuario = apiComunGeneral.obtenerUsuario();
+var titular = apiComunGeneral.obtenerTitular();
 var data = null;
-var gruposUsuarioId = 0;
+var gruposTitularId = 0;
 var vm;
 
-var apiPaginaUsuariosDetalle = {
+var apiTitularesDetalle = {
     ini: function () {
-        apiComunGeneral.initPage(usuario);
-        apiComunAjax.establecerClave(usuario.apiKey);
+        apiComunGeneral.initPage(titular);
+        apiComunAjax.establecerClave(titular.apiKey);
 
-        vm = new apiPaginaUsuariosDetalle.datosPagina();
+        vm = new apiTitularesDetalle.datosPagina();
         ko.applyBindings(vm);
 
-        $('#usuarios').attr('class', 'active');
-        $('#usuario-form').submit(function () { return false; });
-        $('#btnAceptar').click(apiPaginaUsuariosDetalle.aceptar);
-        $('#btnSalir').click(apiPaginaUsuariosDetalle.salir);
-        $('#cmbGrupos').select2(select2_languages[usuario.codigoIdioma]);
-        apiPaginaUsuariosDetalle.cargarGrupos();        
+        $('#titulares').attr('class', 'active');
+        $('#titular-form').submit(function () { return false; });
+        $('#btnAceptar').click(apiTitularesDetalle.aceptar);
+        $('#btnSalir').click(apiTitularesDetalle.salir);
 
-        usuarioId = apiComunGeneral.gup("id");
-        if (usuarioId == 0) {
-            vm.usuarioId(0);
+        titularId = apiComunGeneral.gup("id");
+        if (titularId == 0) {
+            vm.titularId(0);
         } else {
-            apiPaginaUsuariosDetalle.cargarUsuario(usuarioId);
+            apiTitularesDetalle.cargarTitular(titularId);
         }
     },
-    cargarGrupos: function (id) {
-        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/grupos-usuarios", null, function (err, data) {
+    cargarTitular: function (id) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/titulares/" + id, null, function (err, data) {
             if (err) return;
-            var options = [{ grupoUsuarioId: 0, nombre: " " }].concat(data);
-            vm.optionsGrupos(options);
-            $("#cmbGrupos").val([id]).trigger('change');
-        });
-    },
-    cargarUsuario: function (id) {
-        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/usuarios/" + id, null, function (err, data) {
-            if (err) return;
-            apiPaginaUsuariosDetalle.cargarDatosPagina(data);
+            apiTitularesDetalle.cargarDatosPagina(data);
         });
     },
     cargarDatosPagina: function (data) {
-        vm.usuarioId(data.usuarioId);
-        vm.nombre(data.nombre);
-        vm.codigoIdioma(data.codigoIdioma);
-        apiPaginaUsuariosDetalle.cargarGrupos(data.grupoUsuarioId);
-        vm.esAdministrador(data.esAdministrador);
+        vm.titularId(data.titularId);
+        vm.nombreRazon(data.nombreRazon);
+        vm.nifTitular(data.nifTitular);
+        vm.nifRepresentante(data.nifRepresentante);
     },
     datosPagina: function () {
         var self = this;
-        self.usuarioId = ko.observable();
-        self.nombre = ko.observable();
-        self.codigoIdioma = ko.observable();
-        self.esAdministrador = ko.observable();
-
-
-        self.optionsGrupos = ko.observableArray([]);
-        self.selectedGrupos = ko.observableArray([]);
-        self.sGrupo = ko.observable();
-
+        self.titularId = ko.observable();
+        self.nombreRazon = ko.observable();
+        self.nifTitular = ko.observable();
+        self.nifRepresentante = ko.observable();
     },
     aceptar: function () {
-        if (!apiPaginaUsuariosDetalle.datosOk()) return;
+        if (!apiTitularesDetalle.datosOk()) return;
         var data = {
-            usuarioId: vm.usuarioId(),
-            nombre: vm.nombre(),
-            esAdministrador: vm.esAdministrador(),
-            grupoUsuarioId: vm.sGrupo(),
-            codigoIdioma: vm.codigoIdioma()
+            titularId: vm.titularId(),
+            nombreRazon: vm.nombreRazon(),
+            nifTitular: vm.nifTitular(),
+            nifRepresentante: vm.nifRepresentante()
         };
         var verb = "PUT";
-        if (vm.usuarioId() == 0) verb = "POST";
-        apiComunAjax.llamadaGeneral(verb, myconfig.apiUrl + "/api/usuarios", data, function (err, data) {
+        if (vm.titularId() == 0) verb = "POST";
+        apiComunAjax.llamadaGeneral(verb, myconfig.apiUrl + "/api/titulares", data, function (err, data) {
             if (err) return;
-            apiPaginaUsuariosDetalle.salir();
+            apiTitularesDetalle.salir();
         });
     },
     datosOk: function () {
-        $('#usuario-form').validate({
+        $('#titular-form').validate({
             rules: {
-                txtNombre: { required: true },
-                cmbGrupos: { required: true }
+                txtNombreRazon: { required: true }
             },
             errorPlacement: function (error, element) {
                 error.insertAfter(element.parent());
             }
         });
-        return $('#usuario-form').valid();
+        return $('#titular-form').valid();
     },
     salir: function () {
-        window.open(sprintf('UsuariosGeneral.html'), '_self');
+        window.open(sprintf('TitularesGeneral.html'), '_self');
     }
 }
 
