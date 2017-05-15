@@ -153,14 +153,14 @@
     <div id="main" role="main" style="min-height: 800px;">
         <div id="ribbon">
             <ol class="breadcrumb">
-                <li>Inicio</li>
+                <li data-i18n="facturasEmitidas.titulo">Facturas Emitidas</li>
             </ol>
         </div>
         <div id="content">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-title txt-color-blueDark">
-                        <i class="fa-fw fa fa-home"></i> <span data-i18n="inicio.titulo">Inicio *</span> <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
+                        <i class="fa-fw fa fa-file-o"></i> <span data-i18n="facturasEmitidas.titulo">Facturas Emitidas</span> <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
                     </h1>
                 </div>
                 <!-- end col -->
@@ -171,18 +171,32 @@
                     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
                             <header>
-                                <span class="widget-icon"> <i class="fa fa-home"></i> </span>
-                                <h2 data-i18n="inicio.panel"> Panel de inicio *</h2>
+                                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                <h2 data-i18n="facturasEmitidas.panel"> Panel</h2>
                             </header>
-                            <div>
-                                <div class="jarviswidget-editbox">
-                                    <input class="form-control" type="text">
-                                </div>
-                                <div class="widget-body">
-                                    <h1 data-i18n="inicio.cabecera">Bienvenido a la aplicación ASWSII.</h1>
-                                    <p data-i18n="inicio.linea1">Le recordamos que el uso de esta aplicación está sujeto a las normas internas de la empresa y de manera general a los compromisos de confidencialidad expresados en la LOPD</p>
-                                    <p data-i18n="inicio.linea2">Para poder acceder a las diferentes funcionalidades utilice el menú de la izquierda que le mostrará las opciones a las que tiene acceso</p>
-                                </div>
+                            <div class="row">
+                                <form id="facturaEmitida-form" class="smart-form">
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-md-12">
+                                                <label class="label" data-i18n="facturasEmitidas.nombre">Nombre:</label>
+                                                <label class="input">
+                                                    <input id="txtNombre" name="txtNombre" data-bind="value: nombre">
+                                                </label>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="pull-right">
+                                            <button id="btnSalir" data-i18n="[title]salir" class="btn btn-warning btn-circle btn-lg">
+                                                <i class="fa fa-lg fa-sign-out"></i>
+                                            </button>
+                                            <button id="btnAceptar" data-i18n="[title]aceptar" class="btn btn-success btn-circle btn-lg">
+                                                <i class="fa fa-lg fa-check"></i>
+                                            </button>
+                                        </div>
+                                    </fieldset>
+                                </form>
                             </div>
                         </div>
                     </article>
@@ -245,11 +259,11 @@
     <script src="js/comun/comun.ajax.js"></script>
     <script src="js/comun/comun.general.js"></script>
     <!-- Funciones propias de esta página -->
-    <script src="js/app/index.js"></script>
+    <script src="js/app/facturasEmitidasDetalle.js"></script>
     <script type="text/javascript">
     (function($) {
         $(document).ready(function() {
-            apiPaginaIndex.ini();
+            apiFacturasEmitidasDetalle.ini();
         });
     })(jQuery);
     </script>

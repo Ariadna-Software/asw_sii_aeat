@@ -26,7 +26,9 @@
         "administracion": {
             "cab": "Administración",
             "gruposUsuarios": "Grupos usuarios",
-            "usuarios": "Usuarios"
+            "usuarios": "Usuarios",
+            "titulares": "Titulares",
+            "emisores": "Emisores"
         },
         "gestion": {
             "cab": "Gestión",
@@ -77,5 +79,36 @@
         "codigoIdioma": "Codigo idioma",
         "esAdministrador": "Este usuario es administrador",
         "verOfertasGrupo": "Este usuario puede ver ofertas de los responsables de su grupo de usuarios"
+    },
+    "facturasEmitidas": {
+        "titulo": "Facturas Emitidas",
+        "panel": "Facturas Emitidas",
+        "nuevo": "Nueva factura emitida",
+        "nombre": "Nombre factura emitida",
+        "id": "ID",
+        "editar": "Editar factura emitida",
+        "eliminar": "Eliminar factura emitida",
+        "valNombre": "Nombre necesario",
+        "origen": "Origen",
+        "ejercicio": "Ejercicio",
+        "periodo": "Periodo",
+        "emisor": "Emisor",
+        "factura": "Factura",
+        "creacion": "Creado",
+        "inmediata": "Inmediata",
+        "enviada": "Enviada",
+        "resultado": "Resultado",
+        "CSV": "CSV",
+        "Mensaje": "Mensaje"
+    },
+    "titulares": {
+        "titulo": "Titulares de libros",
+        "panel": "Titulares de libros",
+        "nuevo": "Nuevo titular",
+        "nombre": "Nombre titular",
+        "id": "ID",
+        "editar": "Editar titular",
+        "eliminar": "Eliminar titular",
+        "valNombre": "Nombre necesario"
     }
 }

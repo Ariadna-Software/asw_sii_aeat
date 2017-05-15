@@ -65,6 +65,8 @@ app.use('/api', router);
 app.use('/api/grupos-usuarios', require('./lib/grupos-usuarios/grupos-usuarios.controller'));
 app.use('/api/usuarios', require('./lib/usuarios/usuarios.controller'));
 app.use('/api/correoElectronico', require('./lib/correoElectronico/correoElectronico.controller'));
+app.use('/api/facturasEmitidas', require('./lib/facturasEmitidas/facturasEmitidas.controller'));
+app.use('/api/titulares', require('./lib/titulares/titulares.controller'));
 
 // -- start server
 app.listen(config.apiPort);
