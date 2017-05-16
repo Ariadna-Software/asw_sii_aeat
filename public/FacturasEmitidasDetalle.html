@@ -178,23 +178,748 @@
                                 <form id="facturaEmitida-form" class="smart-form">
                                     <fieldset>
                                         <div class="row">
-                                            <h2>CABECERA</h2>
+                                            <h2>DATOS INTERNOS</h2>
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.nombre">Nombre:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.IDEnvioFacturasEmitidas">ID:</label>
                                                 <label class="input">
-                                                    <input id="txtNombre" name="txtNombre" data-bind="value: nombre">
-                                                </label>
+                                                        <input id="txtIDEnvioFacturasEmitidas" name="txtIDEnvioFacturasEmitidas" data-bind="value: IDEnvioFacturasEmitidas">
+                                                    </label>
                                             </section>
-                                            <section class="col col-md-5">
-
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.Origen">Origen:</label>
+                                                <label class="input">
+                                                        <input id="txtOrigen" name="txtOrigen" data-bind="value: Origen">
+                                                    </label>
                                             </section>
-                                            <section class="col col-md-5">
-
-                                                
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.FechaHoraCreacion">FechaHoraCreacion:</label>
+                                                <label class="input">
+                                                        <input id="txtFechaHoraCreacion" name="txtFechaHoraCreacion" data-bind="value: FechaHoraCreacion">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.EnvioInmediato">EnvioInmediato:</label>
+                                                <label class="input">
+                                                        <input id="txtEnvioInmediato" name="txtEnvioInmediato" data-bind="value: EnvioInmediato">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.Enviada">Enviada:</label>
+                                                <label class="input">
+                                                        <input id="txtEnviada" name="txtEnviada" data-bind="value: Enviada">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.Resultado">Resultado:</label>
+                                                <label class="input">
+                                                        <input id="txtResultado" name="txtResultado" data-bind="value: Resultado">
+                                                    </label>
                                             </section>
                                         </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.CSV">CSV:</label>
+                                                <label class="input">
+                                                        <input id="txtCSV" name="txtCSV" data-bind="value: CSV">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-5">
+                                                <label class="label" data-i18n="facturasEmitidas.Mensaje">Mensaje:</label>
+                                                <label class="input">
+                                                        <input id="txtMensaje" name="txtMensaje" data-bind="value: Mensaje">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-5">
+                                                <label class="label" data-i18n="facturasEmitidas.XML_Enviado">XML_Enviado:</label>
+                                                <label class="input">
+                                                        <input id="txtXML_Enviado" name="txtXML_Enviado" data-bind="value: XML_Enviado">
+                                                    </label>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="row">
+                                            <h2>CABECERA</h2>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-3">
+                                            </section>
+                                            <section class="col col-md-3">
+                                                <label class="label" data-i18n="facturasEmitidas.CAB_Titular_NombreRazon">CAB_Titular_NombreRazon:</label>
+                                                <label class="input">
+                                                        <input id="txtCAB_Titular_NombreRazon" name="txtCAB_Titular_NombreRazon" data-bind="value: CAB_Titular_NombreRazon">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-3">
+                                                <label class="label" data-i18n="facturasEmitidas.CAB_Titular_NIF">CAB_Titular_NIF:</label>
+                                                <label class="input">
+                                                        <input id="txtCAB_Titular_NIF" name="txtCAB_Titular_NIF" data-bind="value: CAB_Titular_NIF">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-3">
+                                                <label class="label" data-i18n="facturasEmitidas.CAB_Titular_NIFRepresentante">CAB_Titular_NIFRepresentante:</label>
+                                                <label class="input">
+                                                        <input id="txtCAB_Titular_NIFRepresentante" name="txtCAB_Titular_NIFRepresentante" data-bind="value: CAB_Titular_NIFRepresentante">
+                                                    </label>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="row">
+                                            <h2>DATOS REGISTRO</h2>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-1">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_PI_Ejercicio">REG_PI_Ejercicio:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_PI_Ejercicio" name="txtREG_PI_Ejercicio" data-bind="value: REG_PI_Ejercicio">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-1">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_PI_Periodo">REG_PI_Periodo:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_PI_Periodo" name="txtREG_PI_Periodo" data-bind="value: REG_PI_Periodo">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_IDF_IDEF_NIF">REG_IDF_IDEF_NIF:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_IDF_IDEF_NIF" name="txtREG_IDF_IDEF_NIF" data-bind="value: REG_IDF_IDEF_NIF">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_IDF_NumSerieFacturaEmisor">REG_IDF_NumSerieFacturaEmisor:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_IDF_NumSerieFacturaEmisor" name="txtREG_IDF_NumSerieFacturaEmisor" data-bind="value: REG_IDF_NumSerieFacturaEmisor">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_IDF_NumSerieFacturaEmisorResumenFin">REG_IDF_NumSerieFacturaEmisorResumenFin:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_IDF_NumSerieFacturaEmisorResumenFin" name="txtREG_IDF_NumSerieFacturaEmisorResumenFin" data-bind="value: REG_IDF_NumSerieFacturaEmisorResumenFin">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_IDF_FechaExpedicionFacturaEmisor">REG_IDF_FechaExpedicionFacturaEmisor:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_IDF_FechaExpedicionFacturaEmisor" name="txtREG_IDF_FechaExpedicionFacturaEmisor" data-bind="value: REG_IDF_FechaExpedicionFacturaEmisor">
+                                                    </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TipoFactura">REG_FE_TipoFactura:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TipoFactura" name="txtREG_FE_TipoFactura" data-bind="value: REG_FE_TipoFactura">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_FechaOperacion">REG_FE_FechaOperacion:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_FechaOperacion" name="txtREG_FE_FechaOperacion" data-bind="value: REG_FE_FechaOperacion">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_ClaveRegimenEspecialOTrascendencia">REG_FE_ClaveRegimenEspecialOTrascendencia:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_ClaveRegimenEspecialOTrascendencia" name="txtREG_FE_ClaveRegimenEspecialOTrascendencia" data-bind="value: REG_FE_ClaveRegimenEspecialOTrascendencia">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_ImporteTotal">REG_FE_ImporteTotal:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_ImporteTotal" name="txtREG_FE_ImporteTotal" data-bind="value: REG_FE_ImporteTotal">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_BaseImponibleACoste">REG_FE_BaseImponibleACoste:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_BaseImponibleACoste" name="txtREG_FE_BaseImponibleACoste" data-bind="value: REG_FE_BaseImponibleACoste">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_DescripcionOperacion">REG_FE_DescripcionOperacion:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_DescripcionOperacion" name="txtREG_FE_DescripcionOperacion" data-bind="value: REG_FE_DescripcionOperacion">
+                                                    </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <h4>Factura rectificativa</h4><br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TipoRectificativa">REG_FE_TipoRectificativa:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TipoRectificativa" name="txtREG_FE_TipoRectificativa" data-bind="value: REG_FE_TipoRectificativa">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_FR_IDR_NumSerieFacturaEmisor">REG_FE_FR_IDR_NumSerieFacturaEmisor:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_FR_IDR_NumSerieFacturaEmisor" name="txtREG_FE_FR_IDR_NumSerieFacturaEmisor" data-bind="value: REG_FE_FR_IDR_NumSerieFacturaEmisor">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor">REG_FE_FR_IDR_FechaExpedicionFacturaEmisor:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_FR_IDR_FechaExpedicionFacturaEmisor" name="txtREG_FE_FR_IDR_FechaExpedicionFacturaEmisor" data-bind="value: REG_FE_FR_IDR_FechaExpedicionFacturaEmisor">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_IR_BaseRectificada">REG_FE_IR_BaseRectificada:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_IR_BaseRectificada" name="txtREG_FE_IR_BaseRectificada" data-bind="value: REG_FE_IR_BaseRectificada">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_IR_CuotaRectificada">REG_FE_IR_CuotaRectificada:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_IR_CuotaRectificada" name="txtREG_FE_IR_CuotaRectificada" data-bind="value: REG_FE_IR_CuotaRectificada">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_IR_CuotaRecargoRectificado">REG_FE_IR_CuotaRecargoRectificado:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_IR_CuotaRecargoRectificado" name="txtREG_FE_IR_CuotaRecargoRectificado" data-bind="value: REG_FE_IR_CuotaRecargoRectificado">
+                                                    </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <h4>Varios</h4><br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_DI_DT_SituacionInmueble">REG_FE_DI_DT_SituacionInmueble:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_DI_DT_SituacionInmueble" name="txtREG_FE_DI_DT_SituacionInmueble" data-bind="value: REG_FE_DI_DT_SituacionInmueble">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_DI_DT_ReferenciaCatastral">REG_FE_DI_DT_ReferenciaCatastral:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_DI_DT_ReferenciaCatastral" name="txtREG_FE_DI_DT_ReferenciaCatastral" data-bind="value: REG_FE_DI_DT_ReferenciaCatastral">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_ImporteTransmisionSujetoAIVA">REG_FE_ImporteTransmisionSujetoAIVA:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_ImporteTransmisionSujetoAIVA" name="txtREG_FE_ImporteTransmisionSujetoAIVA" data-bind="value: REG_FE_ImporteTransmisionSujetoAIVA">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_EmitidaPorTercero">REG_FE_EmitidaPorTercero:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_EmitidaPorTercero" name="txtREG_FE_EmitidaPorTercero" data-bind="value: REG_FE_EmitidaPorTercero">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_VariosDestinatarios">REG_FE_VariosDestinatarios:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_VariosDestinatarios" name="txtREG_FE_VariosDestinatarios" data-bind="value: REG_FE_VariosDestinatarios">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_Cupon">REG_FE_Cupon:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_Cupon" name="txtREG_FE_Cupon" data-bind="value: REG_FE_Cupon">
+                                                    </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <h4>Contraparte</h4><br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_CNT_NombreRazon">REG_FE_CNT_NombreRazon:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_CNT_NombreRazon" name="txtREG_FE_CNT_NombreRazon" data-bind="value: REG_FE_CNT_NombreRazon">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_CNT_NIF">REG_FE_CNT_NIF:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_CNT_NIF" name="txtREG_FE_CNT_NIF" data-bind="value: REG_FE_CNT_NIF">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_CNT_NIFRepresentante">REG_FE_CNT_NIFRepresentante:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_CNT_NIFRepresentante" name="txtREG_FE_CNT_NIFRepresentante" data-bind="value: REG_FE_CNT_NIFRepresentante">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_CNT_IDOtro_CodigoPais">REG_FE_CNT_IDOtro_CodigoPais:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_CNT_IDOtro_CodigoPais" name="txtREG_FE_CNT_IDOtro_CodigoPais" data-bind="value: REG_FE_CNT_IDOtro_CodigoPais">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_CNT_IDOtro_IDType">REG_FE_CNT_IDOtro_IDType:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_CNT_IDOtro_IDType" name="txtREG_FE_CNT_IDOtro_IDType" data-bind="value: REG_FE_CNT_IDOtro_IDType">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_CNT_IDOtro_ID">REG_FE_CNT_IDOtro_ID:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_CNT_IDOtro_ID" name="txtREG_FE_CNT_IDOtro_ID" data-bind="value: REG_FE_CNT_IDOtro_ID">
+                                                    </label>
+                                            </section>
+                                        </div>
+                                        <!-- DESGLOSE NORMAL -->
+                                        <div class="row">
+                                            <h4>-- DESGLOSE NORMAL -- CASO Factura SUJETA Y EXENTA DE IVA</h4><br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_SU_EX_CausaExencion">REG_FE_TD_DF_SU_EX_CausaExencion:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DF_SU_EX_CausaExencion" name="txtREG_FE_TD_DF_SU_EX_CausaExencion" data-bind="value: REG_FE_TD_DF_SU_EX_CausaExencion">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_SU_EX_BaseImponible">REG_FE_TD_DF_SU_EX_BaseImponible:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DF_SU_EX_BaseImponible" name="txtREG_FE_TD_DF_SU_EX_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_EX_BaseImponible">
+                                                    </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <h4>-- DESGLOSE NORMAL -- CASO Factura SUJETA Y NO EXENTA DE IVA</h4><br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_SU_NEX_TipoNoExenta">REG_FE_TD_DF_SU_NEX_TipoNoExenta:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DF_SU_NEX_TipoNoExenta" name="txtREG_FE_TD_DF_SU_NEX_TipoNoExenta" data-bind="value: REG_FE_TD_DF_SU_NEX_TipoNoExenta">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-10">
+                                                <div class="row">
+                                                    <section class="col col-md-2"></section>
+                                                    <section class="col col-md-2">Tipo %</section>
+                                                    <section class="col col-md-2">Base</section>
+                                                    <section class="col col-md-2">Cuota</section>
+                                                    <section class="col col-md-2">Tipo Req. %</section>
+                                                    <section class="col col-md-2">Cuota Req.</section>
+                                                </div>
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA1</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA2</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>    
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA3</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>   
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA4</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>  
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA5</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>   
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA6</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>                                                                                                                                                                                                                                         
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <h4>-- DESGLOSE NORMAL -- CASO Factura NO SUJETA</h4><br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros">REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros" name="txtREG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros" data-bind="value: REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion">REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion" name="txtREG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion" data-bind="value: REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion">
+                                                    </label>
+                                            </section>
+                                        </div>      
+                                        <!-- DESGLOSE POR TIPO [SERVICIOS] -->
+                                        <div class="row">
+                                            <h4>-- DESGLOSE POR TIPO [SERVICIOS] -- CASO Factura SUJETA Y EXENTA DE IVA</h4><br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DTS_SU_EX_CausaExencion">REG_FE_TD_DTS_SU_EX_CausaExencion:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DTS_SU_EX_CausaExencion" name="txtREG_FE_TD_DTS_SU_EX_CausaExencion" data-bind="value: REG_FE_TD_DTS_SU_EX_CausaExencion">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DTS_SU_EX_BaseImponible">REG_FE_TD_DTS_SU_EX_BaseImponible:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DTS_SU_EX_BaseImponible" name="txtREG_FE_TD_DTS_SU_EX_BaseImponible" data-bind="value: REG_FE_TD_DTS_SU_EX_BaseImponible">
+                                                    </label>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <h4>-- DESGLOSE POR TIPO [SERVICIOS] -- CASO Factura SUJETA Y NO EXENTA DE IVA</h4><br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_SU_NEX_TipoNoExenta">REG_FE_TD_DF_SU_NEX_TipoNoExenta:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DF_SU_NEX_TipoNoExenta" name="txtREG_FE_TD_DF_SU_NEX_TipoNoExenta" data-bind="value: REG_FE_TD_DF_SU_NEX_TipoNoExenta">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-10">
+                                                <div class="row">
+                                                    <section class="col col-md-2"></section>
+                                                    <section class="col col-md-2">Tipo %</section>
+                                                    <section class="col col-md-2">Base</section>
+                                                    <section class="col col-md-2">Cuota</section>
+                                                    <section class="col col-md-2">Tipo Req. %</section>
+                                                    <section class="col col-md-2">Cuota Req.</section>
+                                                </div>
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA1</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA2</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>    
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA3</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>   
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA4</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>  
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA5</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>   
+                                                <div class="row">
+                                                    <section class="col col-md-2">IVA6</section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_TipoImpositivo" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_TipoImpositivo" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_TipoImpositivo">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_BaseImponible" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_BaseImponible" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_BaseImponible">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaRepercutida" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaRepercutida" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaRepercutida">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_TipoREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_TipoREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_TipoREquivalencia">
+                                                        </label>
+                                                    </section>
+                                                    <section class="col col-md-2">
+                                                        <label class="input">
+                                                            <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia">
+                                                        </label>
+                                                    </section>    
+                                                </div>                                                                                                                                                                                                                                         
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <h4>-- DESGLOSE POR TIPO [SERVICIOS] -- CASO Factura NO SUJETA</h4><br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros">REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros" name="txtREG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros" data-bind="value: REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion">REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion" name="txtREG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion" data-bind="value: REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion">
+                                                    </label>
+                                            </section>
+                                        </div>                                                                          
                                     </fieldset>
                                     <fieldset>
                                         <div class="pull-right">
