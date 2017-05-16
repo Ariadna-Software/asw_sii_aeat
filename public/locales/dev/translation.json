@@ -114,5 +114,16 @@
         "editar": "Editar titular",
         "eliminar": "Eliminar titular",
         "valNombre": "Nombre necesario"
+    },
+    "emisores": {
+        "titulo": "Emisores",
+        "panel": "Emisores",
+        "nuevo": "Nuevo emisor",
+        "nombre": "Nombre emisor",
+        "id": "ID",
+        "nif": "NIF",
+        "editar": "Editar emisor",
+        "eliminar": "Eliminar emisor",
+        "valNombre": "Nombre necesario"
     }
 }
