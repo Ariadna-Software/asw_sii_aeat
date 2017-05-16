@@ -1,80 +1,77 @@
 ﻿/*
- titulares.js
- Funciones propias de la página Titulares.html
+ emisores.js
+ Funciones propias de la página Emisores.html
 */
 
-var titular = apiComunGeneral.obtenerUsuario();
+var emisor = apiComunGeneral.obtenerUsuario();
 var data = null;
-var gruposTitularId = 0;
+var gruposEmisorId = 0;
 var vm;
 
-var apiTitularesDetalle = {
+var apiEmisoresDetalle = {
     ini: function () {
-        apiComunGeneral.initPage(titular);
-        apiComunAjax.establecerClave(titular.apiKey);
+        apiComunGeneral.initPage(emisor);
+        apiComunAjax.establecerClave(emisor.apiKey);
 
-        vm = new apiTitularesDetalle.datosPagina();
+        vm = new apiEmisoresDetalle.datosPagina();
         ko.applyBindings(vm);
 
-        $('#titulares').attr('class', 'active');
-        $('#titular-form').submit(function () { return false; });
-        $('#btnAceptar').click(apiTitularesDetalle.aceptar);
-        $('#btnSalir').click(apiTitularesDetalle.salir);
+        $('#emisores').attr('class', 'active');
+        $('#emisor-form').submit(function () { return false; });
+        $('#btnAceptar').click(apiEmisoresDetalle.aceptar);
+        $('#btnSalir').click(apiEmisoresDetalle.salir);
 
-        titularId = apiComunGeneral.gup("id");
-        if (titularId == 0) {
-            vm.titularId(0);
+        emisorId = apiComunGeneral.gup("id");
+        if (emisorId == 0) {
+            vm.emisorId(0);
         } else {
-            apiTitularesDetalle.cargarTitular(titularId);
+            apiEmisoresDetalle.cargarEmisor(emisorId);
         }
     },
-    cargarTitular: function (id) {
-        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/titulares/" + id, null, function (err, data) {
+    cargarEmisor: function (id) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/emisores/" + id, null, function (err, data) {
             if (err) return;
-            apiTitularesDetalle.cargarDatosPagina(data);
+            apiEmisoresDetalle.cargarDatosPagina(data);
         });
     },
     cargarDatosPagina: function (data) {
-        vm.titularId(data.titularId);
-        vm.nombreRazon(data.nombreRazon);
-        vm.nifTitular(data.nifTitular);
-        vm.nifRepresentante(data.nifRepresentante);
+        vm.emisorId(data.emisorId);
+        vm.nombre(data.nombre);
+        vm.nif(data.nif);
     },
     datosPagina: function () {
         var self = this;
-        self.titularId = ko.observable();
-        self.nombreRazon = ko.observable();
-        self.nifTitular = ko.observable();
-        self.nifRepresentante = ko.observable();
+        self.emisorId = ko.observable();
+        self.nombre = ko.observable();
+        self.nif = ko.observable();
     },
     aceptar: function () {
-        if (!apiTitularesDetalle.datosOk()) return;
+        if (!apiEmisoresDetalle.datosOk()) return;
         var data = {
-            titularId: vm.titularId(),
-            nombreRazon: vm.nombreRazon(),
-            nifTitular: vm.nifTitular(),
-            nifRepresentante: vm.nifRepresentante()
+            emisorId: vm.emisorId(),
+            nombre: vm.nombre(),
+            nif: vm.nif()
         };
         var verb = "PUT";
-        if (vm.titularId() == 0) verb = "POST";
-        apiComunAjax.llamadaGeneral(verb, myconfig.apiUrl + "/api/titulares", data, function (err, data) {
+        if (vm.emisorId() == 0) verb = "POST";
+        apiComunAjax.llamadaGeneral(verb, myconfig.apiUrl + "/api/emisores", data, function (err, data) {
             if (err) return;
-            apiTitularesDetalle.salir();
+            apiEmisoresDetalle.salir();
         });
     },
     datosOk: function () {
-        $('#titular-form').validate({
+        $('#emisor-form').validate({
             rules: {
-                txtNombreRazon: { required: true }
+                txtNombre: { required: true }
             },
             errorPlacement: function (error, element) {
                 error.insertAfter(element.parent());
             }
         });
-        return $('#titular-form').valid();
+        return $('#emisor-form').valid();
     },
     salir: function () {
-        window.open(sprintf('TitularesGeneral.html'), '_self');
+        window.open(sprintf('EmisoresGeneral.html'), '_self');
     }
 }
 

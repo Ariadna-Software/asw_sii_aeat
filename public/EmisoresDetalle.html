@@ -122,8 +122,8 @@
                             </a>
                         </li>
                         <li id="titulares">
-                            <a href="TitularesGeneral.html">
-                                <i class="fa fa-address-book"></i> <span data-i18n="menu.administracion.titulares">Titulares</span>
+                            <a href="EmisoresGeneral.html">
+                                <i class="fa fa-address-book"></i> <span data-i18n="menu.administracion.titulares">Emisores</span>
                             </a>
                         </li>
                         <li id="emisores">
@@ -153,14 +153,14 @@
     <div id="main" role="main" style="min-height: 800px;">
         <div id="ribbon">
             <ol class="breadcrumb">
-                <li data-i18n="titulares.titulo">Grupo titulares</li>
+                <li data-i18n="emisores.titulo">Grupo emisores</li>
             </ol>
         </div>
         <div id="content">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-title txt-color-blueDark">
-                        <i class="fa-fw fa fa-address-book"></i> <span data-i18n="titulares.titulo">Grupo titulares</span> <a href="#"
+                        <i class="fa-fw fa fa-address-book"></i> <span data-i18n="emisores.titulo">Grupo emisores</span> <a href="#"
                             title="Ayuda"><i class="fa fa-question"></i></a>
                     </h1>
                 </div>
@@ -173,30 +173,25 @@
                         <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
                             <header>
                                 <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                <h2 data-i18n="titulares.panel"> Panel</h2>
+                                <h2 data-i18n="emisores.panel"> Panel</h2>
                             </header>
                             <div class="row">
-                                <form id="titular-form" class="smart-form">
+                                <form id="emisor-form" class="smart-form">
                                     <fieldset>
                                         <div class="row">
                                             <section class="col col-md-6">
-                                                <label class="label" data-i18n="titulares.nombreRazon">Nombre:</label>
+                                                <label class="label" data-i18n="emisores.nombre">Nombre:</label>
                                                 <label class="input">
-                                                    <input id="txtNombreRazon" name="txtNombreRazon" data-bind="value: nombreRazon">
+                                                    <input id="txtNombre" name="txtNombre" data-bind="value: nombre">
                                                 </label>
                                             </section>
                                             <section class="col col-md-3">
-                                                <label class="label" data-i18n="titulares.nifTitular">Nif Titular:</label>
+                                                <label class="label" data-i18n="emisores.nif">Nif Titular:</label>
                                                 <label class="input">
-                                                    <input id="txtNifTitular" name="txtNifTitular" data-bind="value: nifTitular">
+                                                    <input id="txtNif" name="txtNif" data-bind="value: nif">
                                                 </label>
                                             </section>
-                                            <section class="col col-md-3">
-                                                <label class="label" data-i18n="titulares.nifRepresentante">Nif Representante:</label>
-                                                <label class="input">
-                                                    <input id="txtNifRepresentante" name="txtNifRepresentante" data-bind="value: nifRepresentante">
-                                                </label>
-                                            </section>
+                                            <section class="col col-md-3"></section>
                                         </div>
                                     </fieldset>
                                     <fieldset>
@@ -273,11 +268,11 @@
     <script src="js/comun/comun.ajax.js"></script>
     <script src="js/comun/comun.general.js"></script>
     <!-- Funciones propias de esta página -->
-    <script src="js/app/titularesDetalle.js"></script>
+    <script src="js/app/emisoresDetalle.js"></script>
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {
-                apiTitularesDetalle.ini();
+                apiEmisoresDetalle.ini();
             });
         })(jQuery);
     </script>
