@@ -130,7 +130,7 @@
                             <a href="EmisoresGeneral.html">
                                 <i class="fa fa-address-book-o"></i> <span data-i18n="menu.administracion.emisores">Emisores</span>
                             </a>
-                        </li>                                               
+                        </li>
                     </ul>
                 </li>
                 <li id="gestion">
@@ -160,7 +160,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-title txt-color-blueDark">
-                        <i class="fa-fw fa fa-file-o"></i> <span data-i18n="facturasEmitidas.titulo">Facturas Emitidas</span> <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
+                        <i class="fa-fw fa fa-file-o"></i> <span data-i18n="facturasEmitidas.titulo">Facturas Emitidas</span>                        <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
                     </h1>
                 </div>
                 <!-- end col -->
@@ -178,11 +178,21 @@
                                 <form id="facturaEmitida-form" class="smart-form">
                                     <fieldset>
                                         <div class="row">
-                                            <section class="col col-md-12">
+                                            <h2>CABECERA</h2>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.nombre">Nombre:</label>
                                                 <label class="input">
                                                     <input id="txtNombre" name="txtNombre" data-bind="value: nombre">
                                                 </label>
+                                            </section>
+                                            <section class="col col-md-5">
+
+                                            </section>
+                                            <section class="col col-md-5">
+
+                                                
                                             </section>
                                         </div>
                                     </fieldset>
@@ -209,7 +219,7 @@
     <div class="page-footer">
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <span class="txt-color-white">ASWSII <span id="version">NO VERSION</span> <span class="hidden-xs"> - Aplicación general</span> © Ariadna Software S.L. 2017-2018</span>
+                <span class="txt-color-white">ASWSII <span id="version">NO VERSION</span> <span class="hidden-xs"> - Aplicación general</span>                © Ariadna Software S.L. 2017-2018</span>
             </div>
             <div class="col-xs-6 col-sm-6 text-right hidden-xs">
                 <div class="txt-color-white inline-block">
@@ -261,11 +271,11 @@
     <!-- Funciones propias de esta página -->
     <script src="js/app/facturasEmitidasDetalle.js"></script>
     <script type="text/javascript">
-    (function($) {
-        $(document).ready(function() {
-            apiFacturasEmitidasDetalle.ini();
-        });
-    })(jQuery);
+        (function ($) {
+            $(document).ready(function () {
+                apiFacturasEmitidasDetalle.ini();
+            });
+        })(jQuery);
     </script>
 </body>
 
