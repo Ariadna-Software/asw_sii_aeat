@@ -3,7 +3,7 @@
  Funciones propias de la página Titulares.html
 */
 
-var titular = apiComunGeneral.obtenerTitular();
+var titular = apiComunGeneral.obtenerUsuario();
 var data = null;
 var gruposTitularId = 0;
 var vm;
