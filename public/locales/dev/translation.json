@@ -150,7 +150,12 @@
         "REG_FE_TD_DTS_SU_EX_BaseImponible": "Base imponible",
         "REG_FE_TD_DTS_SU_NEX_TipoNoExenta": "Tipo No Exenta",
         "REG_FE_TD_DTS_NSU_ImportePorArticulos7_14_Otros": "Importe Art. 7.14",
-        "REG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion": "Importe TAI Regla Loc."
+        "REG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion": "Importe TAI Regla Loc.",
+        "REG_FE_TD_DTE_SU_EX_CausaExencion": "Causa exención",
+        "REG_FE_TD_DTE_SU_EX_BaseImponible": "Base imponible",
+        "REG_FE_TD_DTE_SU_NEX_TipoNoExenta": "Tipo No Exenta",
+        "REG_FE_TD_DTE_NSU_ImportePorArticulos7_14_Otros": "Importe Art. 7.14",
+        "REG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion": "Importe TAI Regla Loc."        
         
     },
     "titulares": {
