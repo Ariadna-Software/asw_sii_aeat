@@ -1,0 +1,390 @@
+{
+  "siiService": {
+    "SuministroPagosRecibidas": {
+      "SuministroLRPagosRecibidas": {
+        "input": {
+          "Cabecera": {
+            "IDVersionSii": "VersionSiiType|string|0.7",
+            "Titular": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIFRepresentante": "NIFType|string|length,pattern",
+              "NIF": "NIFType|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "RegistroLRPagos[]": {
+            "IDFactura": {
+              "IDEmisorFactura": {
+                "NombreRazon": "TextMax120Type|string|maxLength",
+                "NIF": "NIFType|string|length,pattern",
+                "IDOtro": {
+                  "CodigoPais": "CountryType2|string|AF,AL,DE,AD,AO,AI,AQ,AG,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BE,BZ,BJ,BM,BY,BO,BA,BW,BV,BR,BN,BG,BF,BI,BT,CV,KY,KH,CM,CA,CF,CC,CO,KM,CG,CD,CK,KP,KR,CI,CR,HR,CU,TD,CZ,CL,CN,CY,CW,DK,DM,DO,EC,EG,AE,ER,SK,SI,ES,US,EE,ET,FO,PH,FI,FJ,FR,GA,GM,GE,GS,GH,GI,GD,GR,GL,GU,GT,GG,GN,GQ,GW,GY,HT,HM,HN,HK,HU,IN,ID,IR,IQ,IE,IM,IS,IL,IT,JM,JP,JE,JO,KZ,KE,KG,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,XG,MO,MK,MG,MY,MW,MV,ML,MT,FK,MP,MA,MH,MU,MR,YT,UM,MX,FM,MD,MC,MN,ME,MS,MZ,MM,NA,NR,CX,NP,NI,NE,NG,NU,NF,NO,NC,NZ,IO,OM,NL,BQ,PK,PW,PA,PG,PY,PE,PN,PF,PL,PT,PR,QA,GB,RW,RO,RU,SB,SV,WS,AS,KN,SM,SX,PM,VC,SH,LC,ST,SN,RS,SC,SL,SG,SY,SO,LK,SZ,ZA,SD,SS,SE,CH,SR,TH,TW,TZ,TJ,PS,TF,TL,TG,TK,TO,TT,TN,TC,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,VG,VI,WF,YE,DJ,ZM,ZW",
+                  "IDType": "PersonaFisicaJuridicaIDTypeType|string|02,03,04,05,06,07",
+                  "ID": "TextMax20Type|string|maxLength",
+                  "targetNSAlias": "sii",
+                  "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                }
+              },
+              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "Pagos": {
+              "Pago[]": {
+                "Fecha": "fecha|string|length,pattern",
+                "Importe": "ImporteSgn12.2Type|string|pattern",
+                "Medio": "MedioPagoType|string|01,02,03,04",
+                "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
+                "targetNSAlias": "sii",
+                "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+              },
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "siiLR",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroLR.xsd"
+          }
+        },
+        "output": {
+          "CSV": "string",
+          "DatosPresentacion": {
+            "NIFPresentador": "NIFType|string|length,pattern",
+            "TimestampPresentacion": "Timestamp|string|length,pattern",
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "Cabecera": {
+            "IDVersionSii": "VersionSiiType|string|0.7",
+            "Titular": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIFRepresentante": "NIFType|string|length,pattern",
+              "NIF": "NIFType|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "EstadoEnvio": "EstadoEnvioType|string|Correcto,ParcialmenteCorrecto,Incorrecto",
+          "RespuestaLinea[]": {
+            "IDFactura": {
+              "IDEmisorFactura": {
+                "NombreRazon": "TextMax120Type|string|maxLength",
+                "NIF": "NIFType|string|length,pattern",
+                "IDOtro": {
+                  "CodigoPais": "CountryType2|string|AF,AL,DE,AD,AO,AI,AQ,AG,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BE,BZ,BJ,BM,BY,BO,BA,BW,BV,BR,BN,BG,BF,BI,BT,CV,KY,KH,CM,CA,CF,CC,CO,KM,CG,CD,CK,KP,KR,CI,CR,HR,CU,TD,CZ,CL,CN,CY,CW,DK,DM,DO,EC,EG,AE,ER,SK,SI,ES,US,EE,ET,FO,PH,FI,FJ,FR,GA,GM,GE,GS,GH,GI,GD,GR,GL,GU,GT,GG,GN,GQ,GW,GY,HT,HM,HN,HK,HU,IN,ID,IR,IQ,IE,IM,IS,IL,IT,JM,JP,JE,JO,KZ,KE,KG,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,XG,MO,MK,MG,MY,MW,MV,ML,MT,FK,MP,MA,MH,MU,MR,YT,UM,MX,FM,MD,MC,MN,ME,MS,MZ,MM,NA,NR,CX,NP,NI,NE,NG,NU,NF,NO,NC,NZ,IO,OM,NL,BQ,PK,PW,PA,PG,PY,PE,PN,PF,PL,PT,PR,QA,GB,RW,RO,RU,SB,SV,WS,AS,KN,SM,SX,PM,VC,SH,LC,ST,SN,RS,SC,SL,SG,SY,SO,LK,SZ,ZA,SD,SS,SE,CH,SR,TH,TW,TZ,TJ,PS,TF,TL,TG,TK,TO,TT,TN,TC,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,VG,VI,WF,YE,DJ,ZM,ZW",
+                  "IDType": "PersonaFisicaJuridicaIDTypeType|string|02,03,04,05,06,07",
+                  "ID": "TextMax20Type|string|maxLength",
+                  "targetNSAlias": "sii",
+                  "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                }
+              },
+              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "EstadoRegistro": "EstadoRegistroType|string|Correcto,AceptadoConErrores,Incorrecto",
+            "CodigoErrorRegistro": "ErrorDetalleType|integer|",
+            "DescripcionErrorRegistro": "TextMax500Type|string|maxLength",
+            "CSV": "string",
+            "targetNSAlias": "siiR",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
+          },
+          "targetNSAlias": "siiR",
+          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
+        }
+      },
+      "ConsultaLRPagosRecibidas": {
+        "input": {
+          "Cabecera": {
+            "IDVersionSii": "VersionSiiType|string|0.7",
+            "Titular": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIF": "NIFType|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "FiltroConsultaPagos": {
+            "IDFactura": {
+              "IDEmisorFactura": {
+                "NombreRazon": "TextMax120Type|string|maxLength",
+                "NIF": "NIFType|string|length,pattern",
+                "IDOtro": {
+                  "CodigoPais": "CountryType2|string|AF,AL,DE,AD,AO,AI,AQ,AG,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BE,BZ,BJ,BM,BY,BO,BA,BW,BV,BR,BN,BG,BF,BI,BT,CV,KY,KH,CM,CA,CF,CC,CO,KM,CG,CD,CK,KP,KR,CI,CR,HR,CU,TD,CZ,CL,CN,CY,CW,DK,DM,DO,EC,EG,AE,ER,SK,SI,ES,US,EE,ET,FO,PH,FI,FJ,FR,GA,GM,GE,GS,GH,GI,GD,GR,GL,GU,GT,GG,GN,GQ,GW,GY,HT,HM,HN,HK,HU,IN,ID,IR,IQ,IE,IM,IS,IL,IT,JM,JP,JE,JO,KZ,KE,KG,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,XG,MO,MK,MG,MY,MW,MV,ML,MT,FK,MP,MA,MH,MU,MR,YT,UM,MX,FM,MD,MC,MN,ME,MS,MZ,MM,NA,NR,CX,NP,NI,NE,NG,NU,NF,NO,NC,NZ,IO,OM,NL,BQ,PK,PW,PA,PG,PY,PE,PN,PF,PL,PT,PR,QA,GB,RW,RO,RU,SB,SV,WS,AS,KN,SM,SX,PM,VC,SH,LC,ST,SN,RS,SC,SL,SG,SY,SO,LK,SZ,ZA,SD,SS,SE,CH,SR,TH,TW,TZ,TJ,PS,TF,TL,TG,TK,TO,TT,TN,TC,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,VG,VI,WF,YE,DJ,ZM,ZW",
+                  "IDType": "PersonaFisicaJuridicaIDTypeType|string|02,03,04,05,06,07",
+                  "ID": "TextMax20Type|string|maxLength",
+                  "targetNSAlias": "sii",
+                  "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                }
+              },
+              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "ClavePaginacion": "double",
+            "targetNSAlias": "siiLRC",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
+          },
+          "targetNSAlias": "siiLRC",
+          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
+        },
+        "output": {
+          "Cabecera": {
+            "IDVersionSii": "VersionSiiType|string|0.7",
+            "Titular": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIF": "NIFType|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "IDFactura": {
+            "IDEmisorFactura": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIF": "NIFType|string|length,pattern",
+              "IDOtro": {
+                "CodigoPais": "CountryType2|string|AF,AL,DE,AD,AO,AI,AQ,AG,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BE,BZ,BJ,BM,BY,BO,BA,BW,BV,BR,BN,BG,BF,BI,BT,CV,KY,KH,CM,CA,CF,CC,CO,KM,CG,CD,CK,KP,KR,CI,CR,HR,CU,TD,CZ,CL,CN,CY,CW,DK,DM,DO,EC,EG,AE,ER,SK,SI,ES,US,EE,ET,FO,PH,FI,FJ,FR,GA,GM,GE,GS,GH,GI,GD,GR,GL,GU,GT,GG,GN,GQ,GW,GY,HT,HM,HN,HK,HU,IN,ID,IR,IQ,IE,IM,IS,IL,IT,JM,JP,JE,JO,KZ,KE,KG,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,XG,MO,MK,MG,MY,MW,MV,ML,MT,FK,MP,MA,MH,MU,MR,YT,UM,MX,FM,MD,MC,MN,ME,MS,MZ,MM,NA,NR,CX,NP,NI,NE,NG,NU,NF,NO,NC,NZ,IO,OM,NL,BQ,PK,PW,PA,PG,PY,PE,PN,PF,PL,PT,PR,QA,GB,RW,RO,RU,SB,SV,WS,AS,KN,SM,SX,PM,VC,SH,LC,ST,SN,RS,SC,SL,SG,SY,SO,LK,SZ,ZA,SD,SS,SE,CH,SR,TH,TW,TZ,TJ,PS,TF,TL,TG,TK,TO,TT,TN,TC,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,VG,VI,WF,YE,DJ,ZM,ZW",
+                "IDType": "PersonaFisicaJuridicaIDTypeType|string|02,03,04,05,06,07",
+                "ID": "TextMax20Type|string|maxLength",
+                "targetNSAlias": "sii",
+                "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+              }
+            },
+            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "IndicadorPaginacion": "IndicadorPaginacionType|string|S,N",
+          "ResultadoConsulta": "ResultadoConsultaType|string|ConDatos,SinDatos",
+          "RegistroRespuestaConsultaPagos[]": {
+            "DatosPago": {
+              "Fecha": "fecha|string|length,pattern",
+              "Importe": "ImporteSgn12.2Type|string|pattern",
+              "Medio": "MedioPagoType|string|01,02,03,04",
+              "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "DatosPresentacion": {
+              "NIFPresentador": "NIFType|string|length,pattern",
+              "TimestampPresentacion": "Timestamp|string|length,pattern",
+              "CSV": "string",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "siiLRRC",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
+          },
+          "ClavePaginacion": "double",
+          "targetNSAlias": "siiLRRC",
+          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
+        }
+      }
+    },
+    "SuministroPagosRecibidasPruebas": {
+      "SuministroLRPagosRecibidas": {
+        "input": {
+          "Cabecera": {
+            "IDVersionSii": "VersionSiiType|string|0.7",
+            "Titular": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIFRepresentante": "NIFType|string|length,pattern",
+              "NIF": "NIFType|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "RegistroLRPagos[]": {
+            "IDFactura": {
+              "IDEmisorFactura": {
+                "NombreRazon": "TextMax120Type|string|maxLength",
+                "NIF": "NIFType|string|length,pattern",
+                "IDOtro": {
+                  "CodigoPais": "CountryType2|string|AF,AL,DE,AD,AO,AI,AQ,AG,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BE,BZ,BJ,BM,BY,BO,BA,BW,BV,BR,BN,BG,BF,BI,BT,CV,KY,KH,CM,CA,CF,CC,CO,KM,CG,CD,CK,KP,KR,CI,CR,HR,CU,TD,CZ,CL,CN,CY,CW,DK,DM,DO,EC,EG,AE,ER,SK,SI,ES,US,EE,ET,FO,PH,FI,FJ,FR,GA,GM,GE,GS,GH,GI,GD,GR,GL,GU,GT,GG,GN,GQ,GW,GY,HT,HM,HN,HK,HU,IN,ID,IR,IQ,IE,IM,IS,IL,IT,JM,JP,JE,JO,KZ,KE,KG,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,XG,MO,MK,MG,MY,MW,MV,ML,MT,FK,MP,MA,MH,MU,MR,YT,UM,MX,FM,MD,MC,MN,ME,MS,MZ,MM,NA,NR,CX,NP,NI,NE,NG,NU,NF,NO,NC,NZ,IO,OM,NL,BQ,PK,PW,PA,PG,PY,PE,PN,PF,PL,PT,PR,QA,GB,RW,RO,RU,SB,SV,WS,AS,KN,SM,SX,PM,VC,SH,LC,ST,SN,RS,SC,SL,SG,SY,SO,LK,SZ,ZA,SD,SS,SE,CH,SR,TH,TW,TZ,TJ,PS,TF,TL,TG,TK,TO,TT,TN,TC,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,VG,VI,WF,YE,DJ,ZM,ZW",
+                  "IDType": "PersonaFisicaJuridicaIDTypeType|string|02,03,04,05,06,07",
+                  "ID": "TextMax20Type|string|maxLength",
+                  "targetNSAlias": "sii",
+                  "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                }
+              },
+              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "Pagos": {
+              "Pago[]": {
+                "Fecha": "fecha|string|length,pattern",
+                "Importe": "ImporteSgn12.2Type|string|pattern",
+                "Medio": "MedioPagoType|string|01,02,03,04",
+                "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
+                "targetNSAlias": "sii",
+                "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+              },
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "siiLR",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroLR.xsd"
+          }
+        },
+        "output": {
+          "CSV": "string",
+          "DatosPresentacion": {
+            "NIFPresentador": "NIFType|string|length,pattern",
+            "TimestampPresentacion": "Timestamp|string|length,pattern",
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "Cabecera": {
+            "IDVersionSii": "VersionSiiType|string|0.7",
+            "Titular": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIFRepresentante": "NIFType|string|length,pattern",
+              "NIF": "NIFType|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "EstadoEnvio": "EstadoEnvioType|string|Correcto,ParcialmenteCorrecto,Incorrecto",
+          "RespuestaLinea[]": {
+            "IDFactura": {
+              "IDEmisorFactura": {
+                "NombreRazon": "TextMax120Type|string|maxLength",
+                "NIF": "NIFType|string|length,pattern",
+                "IDOtro": {
+                  "CodigoPais": "CountryType2|string|AF,AL,DE,AD,AO,AI,AQ,AG,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BE,BZ,BJ,BM,BY,BO,BA,BW,BV,BR,BN,BG,BF,BI,BT,CV,KY,KH,CM,CA,CF,CC,CO,KM,CG,CD,CK,KP,KR,CI,CR,HR,CU,TD,CZ,CL,CN,CY,CW,DK,DM,DO,EC,EG,AE,ER,SK,SI,ES,US,EE,ET,FO,PH,FI,FJ,FR,GA,GM,GE,GS,GH,GI,GD,GR,GL,GU,GT,GG,GN,GQ,GW,GY,HT,HM,HN,HK,HU,IN,ID,IR,IQ,IE,IM,IS,IL,IT,JM,JP,JE,JO,KZ,KE,KG,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,XG,MO,MK,MG,MY,MW,MV,ML,MT,FK,MP,MA,MH,MU,MR,YT,UM,MX,FM,MD,MC,MN,ME,MS,MZ,MM,NA,NR,CX,NP,NI,NE,NG,NU,NF,NO,NC,NZ,IO,OM,NL,BQ,PK,PW,PA,PG,PY,PE,PN,PF,PL,PT,PR,QA,GB,RW,RO,RU,SB,SV,WS,AS,KN,SM,SX,PM,VC,SH,LC,ST,SN,RS,SC,SL,SG,SY,SO,LK,SZ,ZA,SD,SS,SE,CH,SR,TH,TW,TZ,TJ,PS,TF,TL,TG,TK,TO,TT,TN,TC,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,VG,VI,WF,YE,DJ,ZM,ZW",
+                  "IDType": "PersonaFisicaJuridicaIDTypeType|string|02,03,04,05,06,07",
+                  "ID": "TextMax20Type|string|maxLength",
+                  "targetNSAlias": "sii",
+                  "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                }
+              },
+              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "EstadoRegistro": "EstadoRegistroType|string|Correcto,AceptadoConErrores,Incorrecto",
+            "CodigoErrorRegistro": "ErrorDetalleType|integer|",
+            "DescripcionErrorRegistro": "TextMax500Type|string|maxLength",
+            "CSV": "string",
+            "targetNSAlias": "siiR",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
+          },
+          "targetNSAlias": "siiR",
+          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaSuministro.xsd"
+        }
+      },
+      "ConsultaLRPagosRecibidas": {
+        "input": {
+          "Cabecera": {
+            "IDVersionSii": "VersionSiiType|string|0.7",
+            "Titular": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIF": "NIFType|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "FiltroConsultaPagos": {
+            "IDFactura": {
+              "IDEmisorFactura": {
+                "NombreRazon": "TextMax120Type|string|maxLength",
+                "NIF": "NIFType|string|length,pattern",
+                "IDOtro": {
+                  "CodigoPais": "CountryType2|string|AF,AL,DE,AD,AO,AI,AQ,AG,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BE,BZ,BJ,BM,BY,BO,BA,BW,BV,BR,BN,BG,BF,BI,BT,CV,KY,KH,CM,CA,CF,CC,CO,KM,CG,CD,CK,KP,KR,CI,CR,HR,CU,TD,CZ,CL,CN,CY,CW,DK,DM,DO,EC,EG,AE,ER,SK,SI,ES,US,EE,ET,FO,PH,FI,FJ,FR,GA,GM,GE,GS,GH,GI,GD,GR,GL,GU,GT,GG,GN,GQ,GW,GY,HT,HM,HN,HK,HU,IN,ID,IR,IQ,IE,IM,IS,IL,IT,JM,JP,JE,JO,KZ,KE,KG,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,XG,MO,MK,MG,MY,MW,MV,ML,MT,FK,MP,MA,MH,MU,MR,YT,UM,MX,FM,MD,MC,MN,ME,MS,MZ,MM,NA,NR,CX,NP,NI,NE,NG,NU,NF,NO,NC,NZ,IO,OM,NL,BQ,PK,PW,PA,PG,PY,PE,PN,PF,PL,PT,PR,QA,GB,RW,RO,RU,SB,SV,WS,AS,KN,SM,SX,PM,VC,SH,LC,ST,SN,RS,SC,SL,SG,SY,SO,LK,SZ,ZA,SD,SS,SE,CH,SR,TH,TW,TZ,TJ,PS,TF,TL,TG,TK,TO,TT,TN,TC,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,VG,VI,WF,YE,DJ,ZM,ZW",
+                  "IDType": "PersonaFisicaJuridicaIDTypeType|string|02,03,04,05,06,07",
+                  "ID": "TextMax20Type|string|maxLength",
+                  "targetNSAlias": "sii",
+                  "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+                }
+              },
+              "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+              "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "ClavePaginacion": "double",
+            "targetNSAlias": "siiLRC",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
+          },
+          "targetNSAlias": "siiLRC",
+          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/ConsultaLR.xsd"
+        },
+        "output": {
+          "Cabecera": {
+            "IDVersionSii": "VersionSiiType|string|0.7",
+            "Titular": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIF": "NIFType|string|length,pattern",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "IDFactura": {
+            "IDEmisorFactura": {
+              "NombreRazon": "TextMax120Type|string|maxLength",
+              "NIF": "NIFType|string|length,pattern",
+              "IDOtro": {
+                "CodigoPais": "CountryType2|string|AF,AL,DE,AD,AO,AI,AQ,AG,SA,DZ,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BE,BZ,BJ,BM,BY,BO,BA,BW,BV,BR,BN,BG,BF,BI,BT,CV,KY,KH,CM,CA,CF,CC,CO,KM,CG,CD,CK,KP,KR,CI,CR,HR,CU,TD,CZ,CL,CN,CY,CW,DK,DM,DO,EC,EG,AE,ER,SK,SI,ES,US,EE,ET,FO,PH,FI,FJ,FR,GA,GM,GE,GS,GH,GI,GD,GR,GL,GU,GT,GG,GN,GQ,GW,GY,HT,HM,HN,HK,HU,IN,ID,IR,IQ,IE,IM,IS,IL,IT,JM,JP,JE,JO,KZ,KE,KG,KI,KW,LA,LS,LV,LB,LR,LY,LI,LT,LU,XG,MO,MK,MG,MY,MW,MV,ML,MT,FK,MP,MA,MH,MU,MR,YT,UM,MX,FM,MD,MC,MN,ME,MS,MZ,MM,NA,NR,CX,NP,NI,NE,NG,NU,NF,NO,NC,NZ,IO,OM,NL,BQ,PK,PW,PA,PG,PY,PE,PN,PF,PL,PT,PR,QA,GB,RW,RO,RU,SB,SV,WS,AS,KN,SM,SX,PM,VC,SH,LC,ST,SN,RS,SC,SL,SG,SY,SO,LK,SZ,ZA,SD,SS,SE,CH,SR,TH,TW,TZ,TJ,PS,TF,TL,TG,TK,TO,TT,TN,TC,TM,TR,TV,UA,UG,UY,UZ,VU,VA,VE,VN,VG,VI,WF,YE,DJ,ZM,ZW",
+                "IDType": "PersonaFisicaJuridicaIDTypeType|string|02,03,04,05,06,07",
+                "ID": "TextMax20Type|string|maxLength",
+                "targetNSAlias": "sii",
+                "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+              }
+            },
+            "NumSerieFacturaEmisor": "TextoIDFacturaType|string|minLength,maxLength",
+            "FechaExpedicionFacturaEmisor": "fecha|string|length,pattern",
+            "targetNSAlias": "sii",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+          },
+          "IndicadorPaginacion": "IndicadorPaginacionType|string|S,N",
+          "ResultadoConsulta": "ResultadoConsultaType|string|ConDatos,SinDatos",
+          "RegistroRespuestaConsultaPagos[]": {
+            "DatosPago": {
+              "Fecha": "fecha|string|length,pattern",
+              "Importe": "ImporteSgn12.2Type|string|pattern",
+              "Medio": "MedioPagoType|string|01,02,03,04",
+              "Cuenta_O_Medio": "TextMax34Type|string|maxLength",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "DatosPresentacion": {
+              "NIFPresentador": "NIFType|string|length,pattern",
+              "TimestampPresentacion": "Timestamp|string|length,pattern",
+              "CSV": "string",
+              "targetNSAlias": "sii",
+              "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/SuministroInformacion.xsd"
+            },
+            "targetNSAlias": "siiLRRC",
+            "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
+          },
+          "ClavePaginacion": "double",
+          "targetNSAlias": "siiLRRC",
+          "targetNamespace": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii/fact/ws/RespuestaConsultaLR.xsd"
+        }
+      }
+    }
+  }
+}
