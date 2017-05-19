@@ -49,7 +49,7 @@ var apiFacturasEmitidasDetalle = {
     cargarDatosPagina: function (data) {
         vm.IDEnvioFacturasEmitidas(data.IDEnvioFacturasEmitidas);
         vm.Origen(data.Origen);
-        vm.FechaHoraCreacion(data.FechaHoraCreacion);
+        vm.FechaHoraCreacion(moment(data.FechaHoraCreacion).format(i18n.t('util.date_format')));
         vm.EnvioInmediato(data.EnvioInmediato);
         vm.Enviada(data.Enviada);
         vm.Resultado(data.Resultado);
@@ -72,13 +72,13 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_FE_TipoFactura(data.REG_FE_TipoFactura);
         vm.REG_FE_TipoRectificativa(data.REG_FE_TipoRectificativa);
         vm.REG_FE_FA_IDFA_NumSerieFacturaEmisor(data.REG_FE_FA_IDFA_NumSerieFacturaEmisor);
-        vm.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor(data.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor);
+        vm.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor(moment(data.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
         vm.REG_FE_FR_IDR_NumSerieFacturaEmisor(data.REG_FE_FR_IDR_NumSerieFacturaEmisor);
-        vm.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor(data.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor);
+        vm.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor(moment(data.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
         vm.REG_FE_IR_BaseRectificada(data.REG_FE_IR_BaseRectificada);
         vm.REG_FE_IR_CuotaRectificada(data.REG_FE_IR_CuotaRectificada);
         vm.REG_FE_IR_CuotaRecargoRectificado(data.REG_FE_IR_CuotaRecargoRectificado);
-        vm.REG_FE_FechaOperacion(data.REG_FE_FechaOperacion);
+        vm.REG_FE_FechaOperacion(moment(data.REG_FE_FechaOperacion).format(i18n.t('util.date_format')));
         vm.REG_FE_ClaveRegimenEspecialOTrascendencia(data.REG_FE_ClaveRegimenEspecialOTrascendencia);
         vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1);
         vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2);
@@ -214,11 +214,11 @@ var apiFacturasEmitidasDetalle = {
         // Titulares
         self.optionsTitulares = ko.observableArray([]);
         self.selectedTitulares = ko.observableArray([]);
-        self.sTitular = ko.observable();        
+        self.sTitular = ko.observable();
         // Emisores
         self.optionsEmisores = ko.observableArray([]);
         self.selectedEmisores = ko.observableArray([]);
-        self.sEmisor = ko.observable();           
+        self.sEmisor = ko.observable();
         // Cabecera
         self.CAB_IDVersionSii = ko.observable();
         self.CAB_Titular_NombreRazon = ko.observable();
@@ -517,6 +517,13 @@ var apiFacturasEmitidasDetalle = {
             REG_FE_TD_DTE_NSU_ImportePorArticulos7_14_Otros: vm.REG_FE_TD_DTE_NSU_ImportePorArticulos7_14_Otros(),
             REG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion: vm.REG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion()
         };
+
+        if (vm.FechaHoraCreacion()) data.FechaHoraCreacion = moment(vm.FechaHoraCreacion(), i18n.t('util.date_format')).format(i18n.t('util.date_iso'));
+        if (vm.REG_IDF_FechaExpedicionFacturaEmisor()) data.REG_IDF_FechaExpedicionFacturaEmisor = moment(vm.REG_IDF_FechaExpedicionFacturaEmisor(), i18n.t('util.date_format')).format(i18n.t('util.date_iso'));
+        if (vm.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor()) data.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor = moment(vm.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor(), i18n.t('util.date_format')).format(i18n.t('util.date_iso'));
+        if (vm.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor()) data.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor = moment(vm.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor(), i18n.t('util.date_format')).format(i18n.t('util.date_iso'));
+        if (vm.REG_FE_FechaOperacion()) data.REG_FE_FechaOperacion = moment(vm.REG_FE_FechaOperacion(), i18n.t('util.date_format')).format(i18n.t('util.date_iso'));
+
         var verb = "PUT";
         if (vm.IDEnvioFacturasEmitidas() == 0) verb = "POST";
         apiComunAjax.llamadaGeneral(verb, myconfig.apiUrl + "/api/facturasEmitidas", data, function (err, data) {
@@ -571,7 +578,7 @@ var apiFacturasEmitidasDetalle = {
             if (err) return;
             vm.REG_IDF_IDEF_NIF(data.nif);
         });
-    }        
+    }
 }
 
 
