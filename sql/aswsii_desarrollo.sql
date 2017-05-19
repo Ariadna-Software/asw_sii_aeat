@@ -94,7 +94,7 @@ CREATE TABLE `anulacion_facturas_emitidas` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
   `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
@@ -204,6 +204,21 @@ CREATE TABLE `anulacion_operaciones_seguros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='En esta tabla se guardan los mensajes que debe de procesar la utilidad de envío de facturas emitidas al sistema SII. Debe grabar un registro por cada una de las facturas que quiera enviar o modificar tras su envío.';
 
 /*Data for the table `anulacion_operaciones_seguros` */
+
+/*Table structure for table `emisores` */
+
+DROP TABLE IF EXISTS `emisores`;
+
+CREATE TABLE `emisores` (
+  `emisorId` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(40) DEFAULT NULL,
+  `nif` varchar(9) DEFAULT NULL,
+  PRIMARY KEY (`emisorId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `emisores` */
+
+insert  into `emisores`(`emisorId`,`nombre`,`nif`) values (2,'Ariadna Software SL','B96470190');
 
 /*Table structure for table `envio_bienes_inversion` */
 
@@ -322,8 +337,8 @@ CREATE TABLE `envio_facturas_emitidas` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.6' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
@@ -343,7 +358,9 @@ CREATE TABLE `envio_facturas_emitidas` (
   `REG_FE_IR_CuotaRectificada` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - ImporteRectificacion - CuotaRectificada\nCuota de la factura sustituidas. Es decir, la cuota original de la factura que se quiere rectificar. Aunque el campo admite nulos si el tipo de la factura es rectificativa, entonces su información es obligatoria.\n',
   `REG_FE_IR_CuotaRecargoRectificado` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - ImporteRectificacion - CuotaRecargoRectificado\nCuota de recargo de la factura sustituidas. Es decir, la cuota de recargo original de la factura que se quiere rectificar. Aunque el campo admite nulos si el tipo de la factura es rectificativa, entonces su información es obligatoria, en el caso de que haya cuota de recargo.\n',
   `REG_FE_FechaOperacion` date DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - FechaOperacion\nFecha en la que se ha realizado la operación siempre que sea diferente a la fecha de expedición. La columna es tipo DATE y se informa como ''DD-MM-YYYY''\n',
-  `REG_FE_ClaveRegimenEspecialOTrascendencia` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - ClaveRegimenEspecialOTrascendencia\nClave que identificará el tipo de operación o el régimen especial con transcendencia tributaria. Posibles valores:\n01 = Operación de régimen común\n02 = Exportación\n03 = Operaciones a las que se aplique el régimen especial de bienes usados, objetos de arte, antigüedades y objetos de colección (135-139 de LIVA)\n04 = Régimen especial oro de inversión\n05 = Régimen especial agencias de viajes\n06 = Régimen especial grupo de entidades en IVA\n07 = Régimen especial grupo de entidades en IVA (Nivel Avanzado)\n08 = Régimen especial criterio de caja\n09 = Operaciones sujetas al IPSI / IGIC\n10 = Facturación de las prestaciones de servicios de agencias de viaje que actúan como mediadoras en nombre y por cuenta ajena (D.A.4ª RD1619/2012)\n11 = Cobros por cuenta de terceros de honorarios profesionales ....\n12 = Operaciones de seguros\n13 = Op. de arrendamiento sujetas a retención\n14 = Op. de arrendamiento no sujetos a retención\n15 = Op. de arren',
+  `REG_FE_ClaveRegimenEspecialOTrascendencia` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - ClaveRegimenEspecialOTrascendencia\nClave que identificará el tipo de operación o el régimen especial con transcendencia tributaria. Posibles valores:\n01 = Operación de régimen general.\n02  = Exportación.\n03  = Operaciones a las que se aplique el régimen especial de bienes usados, objetos de arte, antigüedades y objetos de colección.\n04  = Régimen especial del oro de inversión.\n05  = Régimen especial de las agencias de viajes.\n06  = Régimen especial grupo de entidades en IVA (Nivel Avanzado)\n07  = Régimen especial del criterio de caja.\n08  = Operaciones sujetas al IPSI / IGIC (Impuesto sobre la Producción, los Servicios y la Importación / Impuesto General Indirecto Canario).\n09  = Facturación de las prestaciones de servicios de agencias de viaje que actúan como mediadoras en nombre y por cuenta ajena (D.A.4ª RD1619/2012)\nXX = Hay mas tipos, consultar docs....',
+  `REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - ClaveRegimenEspecialOTrascendencia\nClave que identificará el tipo de operación o el régimen especial con transcendencia tributaria. Posibles valores:\n01 = Operación de régimen general.\n02  = Exportación.\n03  = Operaciones a las que se aplique el régimen especial de bienes usados, objetos de arte, antigüedades y objetos de colección.\n04  = Régimen especial del oro de inversión.\n05  = Régimen especial de las agencias de viajes.\n06  = Régimen especial grupo de entidades en IVA (Nivel Avanzado)\n07  = Régimen especial del criterio de caja.\n08  = Operaciones sujetas al IPSI / IGIC (Impuesto sobre la Producción, los Servicios y la Importación / Impuesto General Indirecto Canario).\n09  = Facturación de las prestaciones de servicios de agencias de viaje que actúan como mediadoras en nombre y por cuenta ajena (D.A.4ª RD1619/2012)\nXX = Hay mas tipos, consultar docs....',
+  `REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - ClaveRegimenEspecialOTrascendencia\nClave que identificará el tipo de operación o el régimen especial con transcendencia tributaria. Posibles valores:\n01 = Operación de régimen general.\n02  = Exportación.\n03  = Operaciones a las que se aplique el régimen especial de bienes usados, objetos de arte, antigüedades y objetos de colección.\n04  = Régimen especial del oro de inversión.\n05  = Régimen especial de las agencias de viajes.\n06  = Régimen especial grupo de entidades en IVA (Nivel Avanzado)\n07  = Régimen especial del criterio de caja.\n08  = Operaciones sujetas al IPSI / IGIC (Impuesto sobre la Producción, los Servicios y la Importación / Impuesto General Indirecto Canario).\n09  = Facturación de las prestaciones de servicios de agencias de viaje que actúan como mediadoras en nombre y por cuenta ajena (D.A.4ª RD1619/2012)\nXX = Hay mas tipos, consultar docs....',
   `REG_FE_ImporteTotal` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - ImporteTotal\nImporte total de la factura. No es obligatorio su cumplimentación, AEAT obtiene sus totales de la suma de bases y cuotas.',
   `REG_FE_BaseImponibleACoste` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - BaseImponibleACoste\nSe utiliza sólo en los grupos de IVA.',
   `REG_FE_DescripcionOperacion` text COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - DescripcionOperacion\nDescripción del objeto de la factura. Aunque es un campo TEXT, en realidad el máximo de caracteres en la comunicación serán 500.',
@@ -352,16 +369,16 @@ CREATE TABLE `envio_facturas_emitidas` (
   `REG_FE_ImporteTransmisionSujetoAIVA` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - ImporteTransmisionSujetoAIVA\nImporte por este concepto, si es aplicable.',
   `REG_FE_EmitidaPorTercero` varchar(1) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - EmitidaPorTeceros\nIdentificador que especifica si la factura ha sido emitida por un tercero. Si no se informa este campo se entenderá que tiene valor “N”.\nPosibles valores:\nS = Si\nN = No',
   `REG_FE_VariosDestinatarios` varchar(1) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida -VariosDestinatarios\nIdentificador que especifica si la factura tiene varios destinatarios. Si no se informa este campo se entenderá que tiene valor “N”.\nPosibles valores:\n"S" = Si / "N" = No',
-  `REG_FE_Cupon` varchar(1) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - Cupon\nIdentificador que especifica si la factura tipo R5 o F4 tiene minoración de la base imponible por la concesión de cupones, bonificaciones o descuentos cuando solo se expide el original de la factura. Si no se informa este campo se entenderá "N"\nPosibles valores:\n"S" = Si / "N" = No',
-  `REG_FE_CNT_NombreRazon` varchar(40) NOT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
+  `REG_FE_Cupon` varchar(1) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - Cupon\nIdentificador que especifica si la factura tipo R1, R5 o F4 tiene minoración de la base imponible por la concesión de cupones, bonificaciones o descuentos cuando solo se expide el original de la factura. Si no se informa este campo se entenderá "N"\nPosibles valores:\n"S" = Si / "N" = No',
+  `REG_FE_CNT_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
   `REG_FE_CNT_NIFRepresentante` varchar(45) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - Contraparte - NIFRepresentante\nNIF del representante de la contraparte de la operación',
   `REG_FE_CNT_NIF` varchar(9) NOT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - Contraparte - NIF\nIdentificador del NIF contraparte de la operación (cliente) de facturas expedidas',
   `REG_FE_CNT_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - Contraparte - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
   `REG_FE_CNT_IDOtro_IDType` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - Contraparte - IDOtro - IDType\nClave para establecer el tipo de identificación en el pais de residencia. Posibles valores:\n02 = NIF-IVA\n03 = PASAPORTE\n04 = DOCUMENTO OFICIAL DE IDENTIFICACIÓN EXPEDIDO POR EL PAIS O TERRITORIO DE RESIDENCIA\n05 = CERTIFICADO DE RESIDENCIA\n06 = OTRO DOCUMENTO PROBATORIO\n',
   `REG_FE_CNT_IDOtro_ID` varchar(20) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - Contraparte - IDOtro - ID\nNúmero de identificación en el país de residencia',
-  `REG_FE_TD_DF_SU_EX_CausaExencion` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - Sujeta - Exenta -CausaExencion\nCampo que especifica la causa de la exención en los supuestos que aplique. Posibles valores:\nE1 = Exenta por el artículo 20\nE2 = Exenta por el artículo 21\nE3 = Exenta por el artículo 22\nE4 = Exenta por el artículo 24\nE5 = Exenta por el artículo 25\nE6 = Exenta por Otros',
+  `REG_FE_TD_DF_SU_EX_CausaExencion` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - Sujeta - Exenta -CausaExencion\nCampo que especifica la causa de la exención en los supuestos que aplique. Posibles valores:\nE1 = Exenta por el artículo 20\nE2 = Exenta por el artículo 21\nE3 = Exenta por el artículo 22\nE4 = Exenta por el artículo 24\nE5 = Exenta por el artículo 25\nE6 = Exenta por otros\nE6 = Exenta por otros.\nE6 = Exenta por Otros',
   `REG_FE_TD_DF_SU_EX_BaseImponible` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - Sujeta - Exenta - BaseImponible\nImporte en euros correspondiente a la parte Sujeta / Exenta',
-  `REG_FE_TD_DF_SU_NEX_TipoNoExenta` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - Sujeta - NoExenta -TipoNoExenta\nTipo de operación sujeta y no exenta para la diferenciación de inversión de sujeto pasivo. Posibles valores:\nS1 = Sujeta – No Exenta\nS2 = Sujeta – No Exenta - Inv. Suj. Pasivo',
+  `REG_FE_TD_DF_SU_NEX_TipoNoExenta` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - Sujeta - NoExenta -TipoNoExenta\nTipo de operación sujeta y no exenta para la diferenciación de inversión de sujeto pasivo. Posibles valores:\nS1 = Sujeta – No Exenta\nS2 = Sujeta – No Exenta - Inv. Suj. Pasivo\nS3 = No exenta - Sin inversión sujeto pasivo y con inversión de sujeto pasivo',
   `REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo` decimal(5,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - Sujeta - NoExenta - DesgloseIVA - DetallaIVA1 - TipoImpositivo.\nPorcentaje aplicado sobre la Base Imponible para calcular la cuota.',
   `REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible` decimal(14,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - Sujeta - NoExenta - DesgloseIVA - DetalleIVA1 - BaseImponible.\nMagnitud dineraria sobre la cual se aplica un determinado tipo impositivo',
   `REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida` decimal(14,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - Sujeta - NoExenta - DesgloseIVA - DetalleIVA1 - CuotaRepercutida.\nCuota resultante de aplicar a la base imponible un determinado tipo impositivo',
@@ -394,9 +411,9 @@ CREATE TABLE `envio_facturas_emitidas` (
   `REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia` decimal(14,2) DEFAULT NULL COMMENT 'IVA 6 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - Sujeta - NoExenta -DesgloseIVA - DetalleIVA6 - CuotaRecargoEquivalencia.\nCuota resultante de aplicar a la base imponible el tipo de recargo de equivalencia',
   `REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - NoSujeta - ImportePorArticulos7_14_Otros\nImporte en euros si la sujeción es por el art. 7,14, otros',
   `REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseFactura - NoSujeta - ImporteTAIReglasLocalizacion\nImporte en euros si la sujeción es por operaciones no sujetas en el TAI porreglas de localización',
-  `REG_FE_TD_DTS_SU_EX_CausaExencion` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - Sujenta - Exenta - CausaExencion\nCampo que especifica la causa de la exención en los supuestos que aplique. Posibles valores:\nE1 = Exenta por el artículo 20\nE2 = Exenta por el artículo 21\nE3 = Exenta por el artículo 22\nE4 = Exenta por el artículo 24\nE5 = Exenta por el artículo 25\nE6 = Exenta por Otros',
+  `REG_FE_TD_DTS_SU_EX_CausaExencion` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - Sujenta - Exenta - CausaExencion\nCampo que especifica la causa de la exención en los supuestos que aplique. Posibles valores:\nE1 = Exenta por el artículo 20\nE2 = Exenta por el artículo 21\nE3 = Exenta por el artículo 22\nE4 = Exenta por el artículo 24\nE5 = Exenta por el artículo 25\nE6 = Exenta por otros\nE6 = Exenta por otros.\nE6 = Exenta por Otros',
   `REG_FE_TD_DTS_SU_EX_BaseImponible` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - Sujeta - Exenta - BaseImponible\nImporte en euros correspondiente a la parte Sujeta / Exenta',
-  `REG_FE_TD_DTS_SU_NEX_TipoNoExenta` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - Sujeta - NoExenta - TipoNoExenta\nTipo de operación sujeta y no exenta para la diferenciación de inversión de sujeto pasivo. Posibles valores:\nS1 = Sujeta – No Exenta\nS2 = Sujeta – No Exenta - Inv. Suj. Pasivo',
+  `REG_FE_TD_DTS_SU_NEX_TipoNoExenta` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - Sujeta - NoExenta - TipoNoExenta\nTipo de operación sujeta y no exenta para la diferenciación de inversión de sujeto pasivo. Posibles valores:\nS1 = Sujeta – No Exenta\nS2 = Sujeta – No Exenta - Inv. Suj. Pasivo\nS3 = No exenta - Sin invesrión sujeto pasivo y con inversión sujeto pasivo.',
   `REG_FE_TD_DTS_SU_NEX_DI_DT1_TipoImpositivo` decimal(5,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - Sujeta - NoExenta - DesgloseIVA - DetalleIVA1 - TipoImpositivo.\nPorcentaje aplicado sobre la Base Imponible para calcular la cuota.',
   `REG_FE_TD_DTS_SU_NEX_DI_DT1_BaseImponible` decimal(14,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - Sujeta - NoExenta - DesgloseIVA - DetalleIVA1 - BaseImponible.\nMagnitud dineraria sobre la cual se aplica un determinado tipo impositivo',
   `REG_FE_TD_DTS_SU_NEX_DI_DT1_CuotaRepercutida` decimal(14,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - Sujeta - NoExenta - DesgloseIVA - DetalleIVA1 - CuotaRepercutida.\nCuota resultante de aplicar a la base imponible un determinado tipo impositivo',
@@ -417,9 +434,9 @@ CREATE TABLE `envio_facturas_emitidas` (
   `REG_FE_TD_DTS_SU_NEX_DI_DT6_CuotaRepercutida` decimal(14,2) DEFAULT NULL COMMENT 'IVA 6 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - Sujeta - NoExenta - DesgloseIVA - DetalleIVA6 - CuotaRepercutida.\nCuota resultante de aplicar a la base imponible un determinado tipo impositivo',
   `REG_FE_TD_DTS_NSU_ImportePorArticulos7_14_Otros` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose -> DesgloseTipoOperacion -> Servicios -> NoSujeta - ImportePorArticulos7_14_Otros\nImporte en euros si la sujeción es por el art. 7,14, otros',
   `REG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Servicios - NoSujeta - ImporteTAIReglasLocalizacion\nImporte en euros si la sujeción es por operaciones no sujetas en el TAI porreglas de localización',
-  `REG_FE_TD_DTE_SU_EX_CausaExencion` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion -> Entrega - Sujeta - Exenta - CausaExencion\nCampo que especifica la causa de la exención en los supuestos que aplique. Posibles valores:\nE1 = Exenta por el artículo 20\nE2 = Exenta por el artículo 21\nE3 = Exenta por el artículo 22\nE4 = Exenta por el artículo 24\nE5 = Exenta por el artículo 25\nE6 = Exenta por Otros',
+  `REG_FE_TD_DTE_SU_EX_CausaExencion` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion -> Entrega - Sujeta - Exenta - CausaExencion\nCampo que especifica la causa de la exención en los supuestos que aplique. Posibles valores:\nE1 = Exenta por el artículo 20\nE2 = Exenta por el artículo 21\nE3 = Exenta por el artículo 22\nE4 = Exenta por el artículo 24\nE5 = Exenta por el artículo 25\nE6 = Exenta por otros\nE6 = Exenta por Otros',
   `REG_FE_TD_DTE_SU_EX_BaseImponible` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Entrega - Sujeta - Exenta - BaseImponible\nImporte en euros correspondiente a la parte Sujeta / Exenta',
-  `REG_FE_TD_DTE_SU_NEX_TipoNoExenta` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Entrega - Sujeta - NoExenta - TipoNoExenta\nTipo de operación sujeta y no exenta para la diferenciación de inversión de sujeto pasivo. Posibles valores:\nS1 = Sujeta – No Exenta\nS2 = Sujeta – No Exenta - Inv. Suj. Pasivo',
+  `REG_FE_TD_DTE_SU_NEX_TipoNoExenta` varchar(2) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Entrega - Sujeta - NoExenta - TipoNoExenta\nTipo de operación sujeta y no exenta para la diferenciación de inversión de sujeto pasivo. Posibles valores:\nS1 = Sujeta – No Exenta\nS2 = Sujeta – No Exenta - Inv. Suj. Pasivo\nS3 = No exenta - Sin inversión sujeto pasivo y con inversión del sujeto pasivo',
   `REG_FE_TD_DTE_SU_NEX_DI_DT1_TipoImpositivo` decimal(5,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Entrega - Sujeta - NoExenta - DesgloseIVA - DetallaIVA1 - TipoImpositivo.\nPorcentaje aplicado sobre la Base Imponible para calcular la cuota.',
   `REG_FE_TD_DTE_SU_NEX_DI_DT1_BaseImponible` decimal(14,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Entrega - Sujeta - NoExenta - DesgloseIVA - DetalleIVA1 - BaseImponible.\nMagnitud dineraria sobre la cual se aplica un determinado tipo impositivo',
   `REG_FE_TD_DTE_SU_NEX_DI_DT1_CuotaRepercutida` decimal(14,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasEmitidas - FacturaExpedida - TipoDesglose - DesgloseTipoOperacion - Entrega - Sujeta - NoExenta - DesgloseIVA - DetalleIVA1 - CuotaRepercutida.\nCuota resultante de aplicar a la base imponible un determinado tipo impositivo',
@@ -681,12 +698,27 @@ CREATE TABLE `grupos_usuarios` (
   `grupoUsuarioId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador único del grupo de usuario',
   `nombre` varchar(255) NOT NULL COMMENT 'Nombre del grupo',
   PRIMARY KEY (`grupoUsuarioId`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='Esta es la tabla que contiene los grupos de usuarios';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Esta es la tabla que contiene los grupos de usuarios';
 
 /*Data for the table `grupos_usuarios` */
 
-insert  into `grupos_usuarios`(`grupoUsuarioId`,`nombre`) values 
-(1,'Administradores');
+insert  into `grupos_usuarios`(`grupoUsuarioId`,`nombre`) values (1,'Administradores');
+
+/*Table structure for table `titulares` */
+
+DROP TABLE IF EXISTS `titulares`;
+
+CREATE TABLE `titulares` (
+  `titularId` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreRazon` varchar(40) DEFAULT NULL,
+  `nifTitular` varchar(9) DEFAULT NULL,
+  `nifRepresentante` varchar(9) DEFAULT NULL,
+  PRIMARY KEY (`titularId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `titulares` */
+
+insert  into `titulares`(`titularId`,`nombreRazon`,`nifTitular`,`nifRepresentante`) values (2,'Ariadna Software SL','B96470190','25375586P');
 
 /*Table structure for table `usuarios` */
 
@@ -706,12 +738,11 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`usuarioId`),
   KEY `usuarios_grupos` (`grupoUsuarioId`),
   CONSTRAINT `usuarios_grupos` FOREIGN KEY (`grupoUsuarioId`) REFERENCES `grupos_usuarios` (`grupoUsuarioId`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='Tabla de usuarios. Todos los usuarios pertenecen a un grupo';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Tabla de usuarios. Todos los usuarios pertenecen a un grupo';
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values 
-(1,1,'Administrador','es','admin','admin','2017-05-12 09:08:55','2017-05-12 14:08:55','KGpOS',1);
+insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values (1,1,'Administrador','es','admin','admin','2017-05-17 08:35:29','2017-05-17 13:35:29','WDsjh',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

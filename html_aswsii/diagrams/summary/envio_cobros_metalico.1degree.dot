@@ -1,0 +1,52 @@
+// dot 2.38.0 on Windows 10 10.0
+// SchemaSpy rev 590
+digraph "envio_cobros_metalico" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "envio_cobros_metalico" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">envio_cobros_metalico</TD></TR>
+      <TR><TD PORT="IDEnvioCobrosMetalico" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">IDEnvioCobrosMetalico</TD></TR>
+      <TR><TD PORT="Origen" COLSPAN="3" ALIGN="LEFT">Origen</TD></TR>
+      <TR><TD PORT="FechaHoraCreacion" COLSPAN="3" ALIGN="LEFT">FechaHoraCreacion</TD></TR>
+      <TR><TD PORT="EnvioInmediato" COLSPAN="3" ALIGN="LEFT">EnvioInmediato</TD></TR>
+      <TR><TD PORT="Enviada" COLSPAN="3" ALIGN="LEFT">Enviada</TD></TR>
+      <TR><TD PORT="Resultado" COLSPAN="3" ALIGN="LEFT">Resultado</TD></TR>
+      <TR><TD PORT="CSV" COLSPAN="3" ALIGN="LEFT">CSV</TD></TR>
+      <TR><TD PORT="Mensaje" COLSPAN="3" ALIGN="LEFT">Mensaje</TD></TR>
+      <TR><TD PORT="XML_Enviado" COLSPAN="3" ALIGN="LEFT">XML_Enviado</TD></TR>
+      <TR><TD PORT="CAB_IDVersionSii" COLSPAN="3" ALIGN="LEFT">CAB_IDVersionSii</TD></TR>
+      <TR><TD PORT="CAB_Titular_NombreRazon" COLSPAN="3" ALIGN="LEFT">CAB_Titular_NombreRazon</TD></TR>
+      <TR><TD PORT="CAB_Titular_NIFRepresentante" COLSPAN="3" ALIGN="LEFT">CAB_Titular_NIFRepresentante</TD></TR>
+      <TR><TD PORT="CAB_Titular_NIF" COLSPAN="3" ALIGN="LEFT">CAB_Titular_NIF</TD></TR>
+      <TR><TD PORT="CAB_TipoComunicacion" COLSPAN="3" ALIGN="LEFT">CAB_TipoComunicacion</TD></TR>
+      <TR><TD PORT="REG_PI_Ejercicio" COLSPAN="3" ALIGN="LEFT">REG_PI_Ejercicio</TD></TR>
+      <TR><TD PORT="REG_PI_Periodo" COLSPAN="3" ALIGN="LEFT">REG_PI_Periodo</TD></TR>
+      <TR><TD PORT="REG_CNT_NombreRazon" COLSPAN="3" ALIGN="LEFT">REG_CNT_NombreRazon</TD></TR>
+      <TR><TD PORT="REG_CNT_NIFRepresentante" COLSPAN="3" ALIGN="LEFT">REG_CNT_NIFRepresentante</TD></TR>
+      <TR><TD PORT="REG_CNT_NIF" COLSPAN="3" ALIGN="LEFT">REG_CNT_NIF</TD></TR>
+      <TR><TD PORT="REG_CNT_IDOtro_CodigoPais" COLSPAN="3" ALIGN="LEFT">REG_CNT_IDOtro_CodigoPais</TD></TR>
+      <TR><TD PORT="REG_CNT_IDOtro_IDType" COLSPAN="3" ALIGN="LEFT">REG_CNT_IDOtro_IDType</TD></TR>
+      <TR><TD PORT="REG_CNT_IDOtro_ID" COLSPAN="3" ALIGN="LEFT">REG_CNT_IDOtro_ID</TD></TR>
+      <TR><TD PORT="REG_ImporteTotal" COLSPAN="3" ALIGN="LEFT">REG_ImporteTotal</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/envio_cobros_metalico.html"
+    tooltip="envio_cobros_metalico"
+  ];
+}
