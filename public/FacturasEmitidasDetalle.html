@@ -245,23 +245,27 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-3">
+                                                <label class="label" data-i18n="facturasEmitidas.titular">Titular:</label>
+                                                <select style="width:100%;" id="cmbTitulares" name="cmbTitulares" data-bind="options: optionsTitulares, optionsText: 'nombreRazon', optionsValue: 'titularId', 
+                                                    value: sTitular, valueAllowUnset: true, selectedOptions: selectedTitulares, selected2:{}">
+                                                </select>                                                
                                             </section>
                                             <section class="col col-md-3">
                                                 <label class="label" data-i18n="facturasEmitidas.CAB_Titular_NombreRazon">CAB_Titular_NombreRazon:</label>
                                                 <label class="input">
-                                                        <input id="txtCAB_Titular_NombreRazon" name="txtCAB_Titular_NombreRazon" data-bind="value: CAB_Titular_NombreRazon">
+                                                        <input id="txtCAB_Titular_NombreRazon" name="txtCAB_Titular_NombreRazon" data-bind="value: CAB_Titular_NombreRazon" disabled>
                                                     </label>
                                             </section>
                                             <section class="col col-md-3">
                                                 <label class="label" data-i18n="facturasEmitidas.CAB_Titular_NIF">CAB_Titular_NIF:</label>
                                                 <label class="input">
-                                                        <input id="txtCAB_Titular_NIF" name="txtCAB_Titular_NIF" data-bind="value: CAB_Titular_NIF">
+                                                        <input id="txtCAB_Titular_NIF" name="txtCAB_Titular_NIF" data-bind="value: CAB_Titular_NIF" disabled>
                                                     </label>
                                             </section>
                                             <section class="col col-md-3">
                                                 <label class="label" data-i18n="facturasEmitidas.CAB_Titular_NIFRepresentante">CAB_Titular_NIFRepresentante:</label>
                                                 <label class="input">
-                                                        <input id="txtCAB_Titular_NIFRepresentante" name="txtCAB_Titular_NIFRepresentante" data-bind="value: CAB_Titular_NIFRepresentante">
+                                                        <input id="txtCAB_Titular_NIFRepresentante" name="txtCAB_Titular_NIFRepresentante" data-bind="value: CAB_Titular_NIFRepresentante" disabled>
                                                     </label>
                                             </section>
                                         </div>
@@ -285,11 +289,15 @@
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.Emisor">Titular:</label>
+                                                <select style="width:100%;" id="cmbEmisores" name="cmbEmisores" data-bind="options: optionsEmisores, optionsText: 'nombre', optionsValue: 'emisorId', 
+                                                    value: sTitular, valueAllowUnset: true, selectedOptions: selectedEmisores, selected2:{}">
+                                                </select>                                                
                                             </section>
                                             <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.REG_IDF_IDEF_NIF">REG_IDF_IDEF_NIF:</label>
                                                 <label class="input">
-                                                        <input id="txtREG_IDF_IDEF_NIF" name="txtREG_IDF_IDEF_NIF" data-bind="value: REG_IDF_IDEF_NIF">
+                                                        <input id="txtREG_IDF_IDEF_NIF" name="txtREG_IDF_IDEF_NIF" data-bind="value: REG_IDF_IDEF_NIF" disabled>
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
@@ -331,6 +339,21 @@
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1">REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1" name="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1" data-bind="value: REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1">
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2">REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2:</label>
+                                                <label class="input">
+                                                        <input id="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2" name="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2" data-bind="value: REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2">
+                                                    </label>
+                                            </section>                                            
+
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.REG_FE_ImporteTotal">REG_FE_ImporteTotal:</label>
                                                 <label class="input">
                                                         <input id="txtREG_FE_ImporteTotal" name="txtREG_FE_ImporteTotal" data-bind="value: REG_FE_ImporteTotal">
@@ -342,7 +365,7 @@
                                                         <input id="txtREG_FE_BaseImponibleACoste" name="txtREG_FE_BaseImponibleACoste" data-bind="value: REG_FE_BaseImponibleACoste">
                                                     </label>
                                             </section>
-                                            <section class="col col-md-2">
+                                            <section class="col col-md-8">
                                                 <label class="label" data-i18n="facturasEmitidas.REG_FE_DescripcionOperacion">REG_FE_DescripcionOperacion:</label>
                                                 <label class="input">
                                                         <input id="txtREG_FE_DescripcionOperacion" name="txtREG_FE_DescripcionOperacion" data-bind="value: REG_FE_DescripcionOperacion">
@@ -1113,6 +1136,7 @@
     <script src="js/plugin/datatables/dataTables.tableTools.min.js"></script>
     <script src="js/plugin/datatables/dataTables.bootstrap.min.js"></script>
     <script src="js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+    <script src="js/plugin/select2/select2.min.js"></script>
     <!-- Idiomas -->
     <script src="js/libs/i18next/i18next-1.9.0.js"></script>
     <script src="locales/validator-languages.js"></script>

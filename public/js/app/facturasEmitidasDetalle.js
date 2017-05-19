@@ -21,14 +21,26 @@ var apiFacturasEmitidasDetalle = {
         $('#btnAceptar').click(apiFacturasEmitidasDetalle.aceptar);
         $('#btnSalir').click(apiFacturasEmitidasDetalle.salir);
 
+        // Titulares
+        $('#cmbTitulares').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarTitulares();
+        $("#cmbTitulares").select2().on('change', function (e) {
+            apiFacturasEmitidasDetalle.cambioTitular(e.added);
+        });
+        // Emisores
+        $('#cmbEmisores').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarEmisores();
+        $("#cmbEmisores").select2().on('change', function (e) {
+            apiFacturasEmitidasDetalle.cambioEmisor(e.added);
+        });
         IDEnvioFacturasEmitidas = apiComunGeneral.gup("id");
         if (IDEnvioFacturasEmitidas == 0) {
             vm.IDEnvioFacturasEmitidas(0);
         } else {
-            apiFacturasEmitidasDetalle.cargarGrupoUsuario(IDEnvioFacturasEmitidas);
+            apiFacturasEmitidasDetalle.cargarFacturasEmitidas(IDEnvioFacturasEmitidas);
         }
     },
-    cargarGrupoUsuario: function (id) {
+    cargarFacturasEmitidas: function (id) {
         apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/facturasEmitidas/" + id, null, function (err, data) {
             if (err) return;
             apiFacturasEmitidasDetalle.cargarDatosPagina(data);
@@ -68,6 +80,8 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_FE_IR_CuotaRecargoRectificado(data.REG_FE_IR_CuotaRecargoRectificado);
         vm.REG_FE_FechaOperacion(data.REG_FE_FechaOperacion);
         vm.REG_FE_ClaveRegimenEspecialOTrascendencia(data.REG_FE_ClaveRegimenEspecialOTrascendencia);
+        vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1);
+        vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2);
         vm.REG_FE_ImporteTotal(data.REG_FE_ImporteTotal);
         vm.REG_FE_BaseImponibleACoste(data.REG_FE_BaseImponibleACoste);
         vm.REG_FE_DescripcionOperacion(data.REG_FE_DescripcionOperacion);
@@ -197,6 +211,14 @@ var apiFacturasEmitidasDetalle = {
         self.CSV = ko.observable();
         self.Mensaje = ko.observable();
         self.XML_Enviado = ko.observable();
+        // Titulares
+        self.optionsTitulares = ko.observableArray([]);
+        self.selectedTitulares = ko.observableArray([]);
+        self.sTitular = ko.observable();        
+        // Emisores
+        self.optionsEmisores = ko.observableArray([]);
+        self.selectedEmisores = ko.observableArray([]);
+        self.sEmisor = ko.observable();           
         // Cabecera
         self.CAB_IDVersionSii = ko.observable();
         self.CAB_Titular_NombreRazon = ko.observable();
@@ -221,6 +243,8 @@ var apiFacturasEmitidasDetalle = {
         self.REG_FE_IR_CuotaRecargoRectificado = ko.observable();
         self.REG_FE_FechaOperacion = ko.observable();
         self.REG_FE_ClaveRegimenEspecialOTrascendencia = ko.observable();
+        self.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1 = ko.observable();
+        self.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2 = ko.observable();
         self.REG_FE_ImporteTotal = ko.observable();
         self.REG_FE_BaseImponibleACoste = ko.observable();
         self.REG_FE_DescripcionOperacion = ko.observable();
@@ -373,6 +397,8 @@ var apiFacturasEmitidasDetalle = {
             REG_FE_IR_CuotaRecargoRectificado: vm.REG_FE_IR_CuotaRecargoRectificado(),
             REG_FE_FechaOperacion: vm.REG_FE_FechaOperacion(),
             REG_FE_ClaveRegimenEspecialOTrascendencia: vm.REG_FE_ClaveRegimenEspecialOTrascendencia(),
+            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1: vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1(),
+            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2: vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2(),
             REG_FE_ImporteTotal: vm.REG_FE_ImporteTotal(),
             REG_FE_BaseImponibleACoste: vm.REG_FE_BaseImponibleACoste(),
             REG_FE_DescripcionOperacion: vm.REG_FE_DescripcionOperacion(),
@@ -511,7 +537,41 @@ var apiFacturasEmitidasDetalle = {
     },
     salir: function () {
         window.open(sprintf('FacturasEmitidasGeneral.html'), '_self');
-    }
+    },
+    cargarTitulares: function (id) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/titulares", null, function (err, data) {
+            if (err) return;
+            var options = [{ titularId: 0, nombre: " " }].concat(data);
+            vm.optionsTitulares(options);
+            $("#cmbTitulares").val([id]).trigger('change');
+        });
+    },
+    cambioTitular: function (data) {
+        if (!data) return;
+        var titularId = data.id;
+        llamadaAjax('GET', "/api/titulares/" + titularId, null, function (err, data) {
+            if (err) return;
+            vm.CAB_Titular_NombreRazon(data.nombreRazon);
+            vm.CAB_Titular_NIF(data.nifTitular);
+            vm.CAB_Titular_NIFRepresentante(data.nifRepresentante);
+        });
+    },
+    cargarEmisores: function (id) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/emisores", null, function (err, data) {
+            if (err) return;
+            var options = [{ emsiorId: 0, nombre: " " }].concat(data);
+            vm.optionsEmisores(options);
+            $("#cmbEmisores").val([id]).trigger('change');
+        });
+    },
+    cambioEmisor: function (data) {
+        if (!data) return;
+        var emisorId = data.id;
+        llamadaAjax('GET', "/api/emisores/" + emisorId, null, function (err, data) {
+            if (err) return;
+            vm.REG_IDF_IDEF_NIF(data.nif);
+        });
+    }        
 }
 
 
