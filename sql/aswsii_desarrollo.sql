@@ -16,6 +16,38 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`aswsii` /*!40100 DEFAULT CHARACTER SET 
 
 USE `aswsii`;
 
+/*Table structure for table `anulacion_agencias_viajes` */
+
+DROP TABLE IF EXISTS `anulacion_agencias_viajes`;
+
+CREATE TABLE `anulacion_agencias_viajes` (
+  `IDAnulacionAgenciasViajes` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Es un identificador único autoincremental para cualquier registro de la tabla.',
+  `Origen` varchar(255) NOT NULL COMMENT 'Indica el origen del registro. Es un campo libre y su intención es reflejar el sistema que creó esta información.\nPor ejemplo si proviene de la carga de un fichero Excel o CSV, aquí se indicará el nombre de fichero con extensión',
+  `FechaHoraCreacion` datetime NOT NULL COMMENT 'Fecha y hora en la que el sistema de alimentación creó el registro.',
+  `EnvioInmediato` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'Indica si se desea que el servicio de envío presente la factura inmediatamaente. Posibles valores:\n1 = Tan pronto como el sistema detecte el registro lo comunicará a la AEAT\n0 = Espera a la intervención manual del operador por el interfaz Web para proceder al envío',
+  `Enviada` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Indica si la factura ha sido enviada a la AEAT, independientemente de si ese envío ha provocado errores o no. Posibles valores:\n0 = Factura no enviada\n1 = Factura enviada\n\n',
+  `Resultado` varchar(255) DEFAULT NULL COMMENT 'Resultado del envío. Posibles valores:\nERROR: Se ha producido un error, bien porque la plataforma ha fallado o porque alguno de los campos es incorrecto, ver el campo "Mensaje para comprobar la razón"\nINCORRECTO: El envio ha sido incorrecto, ver el campo "Mensaje para comprobar la razón"\nCORRECTO: El envio ha sido correctamente registrado\n',
+  `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
+  `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
+  `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
+  `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
+  `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
+  `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLRAgenciasViajes - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
+  `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLRAgenciasViajes - PeriodoImpositivo - Periodo\nPeridod que se informa, al ser anual debe ser 0A\n0A  = Anual',
+  `REG_CNT_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
+  `REG_CNT_NIFRepresentante` varchar(45) DEFAULT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - NIFRepresentante\nNIF del representante de la contraparte de la operación',
+  `REG_CNT_NIF` varchar(9) NOT NULL COMMENT 'Registrp - Contraparte - NIF\nIdentificador del NIF contraparte de la operación (cliente) de facturas expedidas',
+  `REG_CNT_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
+  `REG_CNT_IDOtro_IDType` varchar(2) DEFAULT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - IDOtro - IDType\nClave para establecer el tipo de identificación en el pais de residencia. Posibles valores:\n02 = NIF-IVA\n03 = PASAPORTE\n04 = DOCUMENTO OFICIAL DE IDENTIFICACIÓN EXPEDIDO POR EL PAIS O TERRITORIO DE RESIDENCIA\n05 = CERTIFICADO DE RESIDENCIA\n06 = OTRO DOCUMENTO PROBATORIO\n',
+  `REG_CNT_IDOtro_ID` varchar(20) DEFAULT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - IDOtro - ID\nNúmero de identificación en el país de residencia',
+  PRIMARY KEY (`IDAnulacionAgenciasViajes`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='En esta tabla se guardan los mensajes que debe de procesar la utilidad de envío de operaciones agencias viajes al sistema SII. Debe grabar un registro por cada una de las facturas que quiera enviar o modificar tras su envío.';
+
+/*Data for the table `anulacion_agencias_viajes` */
+
 /*Table structure for table `anulacion_bienes_inversion` */
 
 DROP TABLE IF EXISTS `anulacion_bienes_inversion`;
@@ -30,19 +62,20 @@ CREATE TABLE `anulacion_bienes_inversion` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLRBajaBienesInversion - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
   `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLRBajaBienesInversion - PeriodoImpositivo - Periodo\nPeriodo impositivo de la factura. Posibles valores:\n01 = Enero\n02  = Febrero\n03  = Marzo\n04  = Abril\n05  = Mayo\n06  = Junio\n07  = Julio\n08  = Agosto\n09  = Septiembre\n10 =  Octubre\n11 =  Noviembre\n12  = Diciembre\n0A  = Anual',
-  `REG_IDF_IDEF_NombreRazon` varchar(9) NOT NULL COMMENT 'RegistroLRBajaBienesInversion - IDFactura - IDEmisorFactura - NombreRazon\nNombre / Razón solicial del emisor de la factura recibida',
+  `REG_IDF_IDEF_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRBajaBienesInversion - IDFactura - IDEmisorFactura - NombreRazon\nNombre / Razón solicial del emisor de la factura recibida',
   `REG_IDF_IDEF_NIF` varchar(9) NOT NULL COMMENT 'RegistroLRBajaBienesInversion - IDFactura - IDEmisorFactura - NIF\nNIF del emisor de la factura recibida',
   `REG_IDF_IDEF_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRBajaBienesInversion - IDFactura - IDEmisorFactura - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
   `REG_IDF_IDEF_IDOtro_IDType` varchar(2) DEFAULT NULL COMMENT 'RegistroLRBajaBienesInversion - IDFactura - IDEmisorFactura - IDOtro - IDType\nClave para establecer el tipo de identificación en el pais de residencia. Posibles valores:\n02 = NIF-IVA\n03 = PASAPORTE\n04 = DOCUMENTO OFICIAL DE IDENTIFICACIÓN EXPEDIDO POR EL PAIS O TERRITORIO DE RESIDENCIA\n05 = CERTIFICADO DE RESIDENCIA\n06 = OTRO DOCUMENTO PROBATORIO\n',
   `REG_IDF_IDEF_IDOtro_ID` varchar(20) DEFAULT NULL COMMENT 'RegistroLRBajaBienesInversion - IDFactura - IDEmisorFactura - IDOtro - ID\nNúmero de identificación en el país de residencia',
   `REG_IDF_NumSerieFacturaEmisor` varchar(60) NOT NULL COMMENT 'RegistroLRBajaBienesInversion - IDFactura - NumSerieFacturaEmisor\nNúmero+ Serie que identifica a la factura emitida',
   `REG_IDF_FechaExpedicionFacturaEmisor` date NOT NULL COMMENT 'RegistroLRBajaBienesInversion - IDFactura - FechaExpedicionFacturaEmisor\nFecha de expedición de la factura. En la base de datos se guarda como un tipo date, en el envío se trasmite en la forma ''DD-MM-YYYY''',
+  `REG_IDF_IdentificacionBien` varchar(40) DEFAULT NULL COMMENT 'RegistroLRBajaBienesInversion - IdentificacionBien\n',
   PRIMARY KEY (`IDAnulacionBienesInversion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -62,14 +95,14 @@ CREATE TABLE `anulacion_cobros_metalico` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
   `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLRCobrosMetalico - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
   `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLRCobrosMetalico - PeriodoImpositivo - Periodo\nPeridod que se informa, al ser anual debe ser 0A\n0A  = Anual',
-  `REG_CNT_NombreRazon` varchar(40) NOT NULL COMMENT 'RegistroLRCobrosMetalico - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
+  `REG_CNT_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRCobrosMetalico - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
   `REG_CNT_NIFRepresentante` varchar(45) DEFAULT NULL COMMENT 'RegistroLRCobrosMetalico - Contraparte - NIFRepresentante\nNIF del representante de la contraparte de la operación',
   `REG_CNT_NIF` varchar(9) NOT NULL COMMENT 'Registrp - Contraparte - NIF\nIdentificador del NIF contraparte de la operación (cliente) de facturas expedidas',
   `REG_CNT_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRCobrosMetalico - Contraparte - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
@@ -154,13 +187,13 @@ CREATE TABLE `anulacion_operaciones_intracomunitarias` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLRBajaDetOperacionIntracomunitaria - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
   `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLRBajaDetOperacionIntracomunitaria - PeriodoImpositivo - Periodo\nPeriodo impositivo de la factura. Posibles valores:\n01 = Enero\n02  = Febrero\n03  = Marzo\n04  = Abril\n05  = Mayo\n06  = Junio\n07  = Julio\n08  = Agosto\n09  = Septiembre\n10 =  Octubre\n11 =  Noviembre\n12  = Diciembre\n0A  = Anual',
-  `REG_IDF_IDEF_NombreRazon` varchar(9) NOT NULL COMMENT 'RegistroLRBajaDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - NombreRazon\nNombre / Razón solicial del emisor de la factura recibida',
+  `REG_IDF_IDEF_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRBajaDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - NombreRazon\nNombre / Razón solicial del emisor de la factura recibida',
   `REG_IDF_IDEF_NIF` varchar(9) NOT NULL COMMENT 'RegistroLRBajaDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - NIF\nNIF del emisor de la factura recibida',
   `REG_IDF_IDEF_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRBajaDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
   `REG_IDF_IDEF_IDOtro_IDType` varchar(2) DEFAULT NULL COMMENT 'RegistroLRBajaDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - IDOtro - IDType\nClave para establecer el tipo de identificación en el pais de residencia. Posibles valores:\n02 = NIF-IVA\n03 = PASAPORTE\n04 = DOCUMENTO OFICIAL DE IDENTIFICACIÓN EXPEDIDO POR EL PAIS O TERRITORIO DE RESIDENCIA\n05 = CERTIFICADO DE RESIDENCIA\n06 = OTRO DOCUMENTO PROBATORIO\n',
@@ -186,14 +219,14 @@ CREATE TABLE `anulacion_operaciones_seguros` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
   `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLROperacionesSeguros - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
   `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLROperacionesSeguros - PeriodoImpositivo - Periodo\nPeriodo impositivo de la factura. Posibles valores:0A  = Anual',
-  `REG_CNT_NombreRazon` varchar(40) NOT NULL COMMENT 'RegistroLROperacionesSeguros - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
+  `REG_CNT_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLROperacionesSeguros - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
   `REG_CNT_NIFRepresentante` varchar(45) DEFAULT NULL COMMENT 'RegistroLROperacionesSeguros - Contraparte - NIFRepresentante\nNIF del representante de la contraparte de la operación',
   `REG_CNT_NIF` varchar(9) NOT NULL COMMENT 'Registrp - Contraparte - NIF\nIdentificador del NIF contraparte de la operación (cliente) de facturas expedidas',
   `REG_CNT_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLROperacionesSeguros - Contraparte - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
@@ -220,6 +253,39 @@ CREATE TABLE `emisores` (
 
 insert  into `emisores`(`emisorId`,`nombre`,`nif`) values (2,'Ariadna Software SL','B96470190');
 
+/*Table structure for table `envio_agencias_viajes` */
+
+DROP TABLE IF EXISTS `envio_agencias_viajes`;
+
+CREATE TABLE `envio_agencias_viajes` (
+  `IDEnvioAgenciasViajes` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Es un identificador único autoincremental para cualquier registro de la tabla.',
+  `Origen` varchar(255) NOT NULL COMMENT 'Indica el origen del registro. Es un campo libre y su intención es reflejar el sistema que creó esta información.\nPor ejemplo si proviene de la carga de un fichero Excel o CSV, aquí se indicará el nombre de fichero con extensión',
+  `FechaHoraCreacion` datetime NOT NULL COMMENT 'Fecha y hora en la que el sistema de alimentación creó el registro.',
+  `EnvioInmediato` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'Indica si se desea que el servicio de envío presente la factura inmediatamaente. Posibles valores:\n1 = Tan pronto como el sistema detecte el registro lo comunicará a la AEAT\n0 = Espera a la intervención manual del operador por el interfaz Web para proceder al envío',
+  `Enviada` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Indica si la factura ha sido enviada a la AEAT, independientemente de si ese envío ha provocado errores o no. Posibles valores:\n0 = Factura no enviada\n1 = Factura enviada\n\n',
+  `Resultado` varchar(255) DEFAULT NULL COMMENT 'Resultado del envío. Posibles valores:\nERROR: Se ha producido un error, bien porque la plataforma ha fallado o porque alguno de los campos es incorrecto, ver el campo "Mensaje para comprobar la razón"\nINCORRECTO: El envio ha sido incorrecto, ver el campo "Mensaje para comprobar la razón"\nCORRECTO: El envio ha sido correctamente registrado\n',
+  `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
+  `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
+  `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
+  `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
+  `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
+  `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLRAgenciasViajes - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
+  `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLRAgenciasViajes - PeriodoImpositivo - Periodo\nPeridod que se informa, al ser anual debe ser 0A\n0A  = Anual',
+  `REG_CNT_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
+  `REG_CNT_NIFRepresentante` varchar(45) DEFAULT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - NIFRepresentante\nNIF del representante de la contraparte de la operación',
+  `REG_CNT_NIF` varchar(9) NOT NULL COMMENT 'Registrp - Contraparte - NIF\nIdentificador del NIF contraparte de la operación (cliente) de facturas expedidas',
+  `REG_CNT_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
+  `REG_CNT_IDOtro_IDType` varchar(2) DEFAULT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - IDOtro - IDType\nClave para establecer el tipo de identificación en el pais de residencia. Posibles valores:\n02 = NIF-IVA\n03 = PASAPORTE\n04 = DOCUMENTO OFICIAL DE IDENTIFICACIÓN EXPEDIDO POR EL PAIS O TERRITORIO DE RESIDENCIA\n05 = CERTIFICADO DE RESIDENCIA\n06 = OTRO DOCUMENTO PROBATORIO\n',
+  `REG_CNT_IDOtro_ID` varchar(20) DEFAULT NULL COMMENT 'RegistroLRAgenciasViajes - Contraparte - IDOtro - ID\nNúmero de identificación en el país de residencia',
+  `REG_ImporteTotal` decimal(14,2) NOT NULL COMMENT 'RegistroLRAgenciasViajes - ImporteTotal\n Importes superiores a 6.000 euros que se hubieran percibido en metálico de la misma persona o entidad por las operaciones realizadas durante el año natural.',
+  PRIMARY KEY (`IDEnvioAgenciasViajes`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='En esta tabla se guardan los mensajes que debe de procesar la utilidad de envío de operaciones agencias viajes al sistema SII. Debe grabar un registro por cada una de las facturas que quiera enviar o modificar tras su envío.';
+
+/*Data for the table `envio_agencias_viajes` */
+
 /*Table structure for table `envio_bienes_inversion` */
 
 DROP TABLE IF EXISTS `envio_bienes_inversion`;
@@ -234,14 +300,14 @@ CREATE TABLE `envio_bienes_inversion` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
   `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLRBienesInversion - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
   `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLRBienesInversion - PeriodoImpositivo - Periodo\nPeriodo impositivo de la factura. Posibles valores:\n01 = Enero\n02  = Febrero\n03  = Marzo\n04  = Abril\n05  = Mayo\n06  = Junio\n07  = Julio\n08  = Agosto\n09  = Septiembre\n10 =  Octubre\n11 =  Noviembre\n12  = Diciembre\n0A  = Anual',
-  `REG_IDF_IDEF_NombreRazon` varchar(9) NOT NULL COMMENT 'RegistroLRBienesInversion - IDFactura - IDEmisorFactura - NombreRazon\nNombre / Razón solicial del emisor de la factura recibida',
+  `REG_IDF_IDEF_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRBienesInversion - IDFactura - IDEmisorFactura - NombreRazon\nNombre / Razón solicial del emisor de la factura recibida',
   `REG_IDF_IDEF_NIF` varchar(9) NOT NULL COMMENT 'RegistroLRBienesInversion - IDFactura - IDEmisorFactura - NIF\nNIF del emisor de la factura recibida',
   `REG_IDF_IDEF_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRBienesInversion - IDFactura - IDEmisorFactura - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
   `REG_IDF_IDEF_IDOtro_IDType` varchar(2) DEFAULT NULL COMMENT 'RegistroLRBienesInversion - IDFactura - IDEmisorFactura - IDOtro - IDType\nClave para establecer el tipo de identificación en el pais de residencia. Posibles valores:\n02 = NIF-IVA\n03 = PASAPORTE\n04 = DOCUMENTO OFICIAL DE IDENTIFICACIÓN EXPEDIDO POR EL PAIS O TERRITORIO DE RESIDENCIA\n05 = CERTIFICADO DE RESIDENCIA\n06 = OTRO DOCUMENTO PROBATORIO\n',
@@ -273,8 +339,8 @@ CREATE TABLE `envio_cobros_emitidas` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
@@ -304,14 +370,14 @@ CREATE TABLE `envio_cobros_metalico` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
   `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLRCobrosMetalico - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
   `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLRCobrosMetalico - PeriodoImpositivo - Periodo\nPeridod que se informa, al ser anual debe ser 0A\n0A  = Anual',
-  `REG_CNT_NombreRazon` varchar(40) NOT NULL COMMENT 'RegistroLRCobrosMetalico - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
+  `REG_CNT_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRCobrosMetalico - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
   `REG_CNT_NIFRepresentante` varchar(45) DEFAULT NULL COMMENT 'RegistroLRCobrosMetalico - Contraparte - NIFRepresentante\nNIF del representante de la contraparte de la operación',
   `REG_CNT_NIF` varchar(9) NOT NULL COMMENT 'Registrp - Contraparte - NIF\nIdentificador del NIF contraparte de la operación (cliente) de facturas expedidas',
   `REG_CNT_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRCobrosMetalico - Contraparte - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
@@ -476,7 +542,7 @@ CREATE TABLE `envio_facturas_recibidas` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
   `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas recibidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
@@ -490,7 +556,7 @@ CREATE TABLE `envio_facturas_recibidas` (
   `REG_IDF_NumSerieFacturaEmisor` varchar(60) NOT NULL COMMENT 'RegistroLRFacturasRecibidas - IDFactura - NumSerieFacturaEmisor\nNúmero+Serie que identifica a la factura emitida',
   `REG_IDF_NumSerieFacturaEmisorResumenFin` varchar(60) DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - IDFactura - NumSerieFacturaEmisorResumenFin\nNúmero+serie que identifica a la ultima factura cuando el Tipo de Factura es un asiento resumen de facturas.',
   `REG_IDF_FechaExpedicionFacturaEmisor` date NOT NULL COMMENT 'RegistroLRFacturasRecibidas - IDFactura - FechaExpedicionFacturaEmisor\nFecha de expedición de la factura. En la base de datos se guarda como un tipo date, en el envío se trasmite en la forma ''DD-MM-YYYY''',
-  `REG_FR_TipoFactura` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - TipoFactura\nEspecificación del tipo de factura a dar de alta: factura normal, factura rectificativa, tickets, factura emitida en sustitución de facturas. Posibles valores:\nF1 = Factura\nF2  = Factura Simplificada (ticket)\nR1 = Factura Rectificativa (Art 80.1 y 80.2 y error fundado en derecho)\nR2 = Factura Rectificativa (Art. 80.3)\nR3 = Factura Rectificativa (Art. 80.4)\nR4 = Factura Rectificativa (Resto)\nR5 =  Factura Rectificativa en facturas simplificadas\nF3 = Factura emitida en sustitución de facturas simplificadas facturadas y declaradas\nF4 = Asiento resumen de facturas',
+  `REG_FR_TipoFactura` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - TipoFactura\nEspecificación del tipo de factura a dar de alta: factura normal, factura rectificativa, tickets, factura emitida en sustitución de facturas. Posibles valores:\nF1 = Factura\nF2 = Factura Simplificada (ticket)\nF3 = Factura emitida en sustitución de facturas simplificadas facturadas y declaradas\nF4  = Asiento resumen de facturas\nF5 = Importaciones (DUA)\nF6  =Justificantes contables\nR1 = Factura Rectificativa (Error fundado en derecho y Art. 80 Uno Dos y Seis LIVA)\nR2 = Factura Rectificativa (Art. 80.3)\nR3 = Factura Rectificativa (Art. 80.4)\nR4 = Factura Rectificativa (Resto)\nR5 = Factura Rectificativa en facturas simplificadas',
   `REG_FR_TipoRectificativa` varchar(1) DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - TipoRectificativa\nCampo que identifica si el tipo de factura rectificativa es por sustitución o por diferencia. Posibles valores:\nS =  Por sustitución\nI  = Por diferencias\n',
   `REG_FR_FA_IDFA_NumSerieFacturaEmisor` varchar(60) DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaRecibida - FacturasAgrupadas - IDFacturaAgrupada - NumSerieFacturaEmisor\nNúmero+Serie que identifica a la factura emitida.',
   `REG_FR_FA_IDFA_FechaExpedicionFacturaEmisor` date DEFAULT NULL COMMENT 'RegistroLRFacturasEmitidas - FacturaRecibida - FacturasAgrupadas - IDFacturaAgrupada - FechaExpedicionFacturaEmisor\nFecha de expedición de la factura',
@@ -500,12 +566,13 @@ CREATE TABLE `envio_facturas_recibidas` (
   `REG_FR_IR_CuotaRectificada` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - ImporteRectificacion - CuotaRectificada\nCuota de la factura sustituidas. Es decir, la cuota original de la factura que se quiere rectificar. Aunque el campo admite nulos si el tipo de la factura es rectificativa, entonces su información es obligatoria.\n',
   `REG_FR_IR_CuotaRecargoRectificado` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - ImporteRectificacion - CuotaRecargoRectificado\nCuota de recargo de la factura sustituidas. Es decir, la cuota de recargo original de la factura que se quiere rectificar. Aunque el campo admite nulos si el tipo de la factura es rectificativa, entonces su información es obligatoria, en el caso de que haya cuota de recargo.\n',
   `REG_FR_FechaOperacion` date DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - FechaOperacion\nFecha en la que se ha realizado la operación siempre que sea diferente a la fecha de expedición. La columna es tipo DATE y se informa como ''DD-MM-YYYY''\n',
-  `REG_FR_ClaveRegimenEspecialOTrascendencia` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - ClaveRegimenEspecialOTrascendencia\nClave que identificará el tipo de operación o el régimen especial con transcendencia tributaria. Posibles valores:\n01 = Operación de régimen común\n02 = Exportación\n03 = Operaciones a las que se aplique el régimen especial de bienes usados, objetos de arte, antigüedades y objetos de colección (135-139 de LIVA)\n04 = Régimen especial oro de inversión\n05 = Régimen especial agencias de viajes\n06 = Régimen especial grupo de entidades en IVA\n07 = Régimen especial grupo de entidades en IVA (Nivel Avanzado)\n08 = Régimen especial criterio de caja\n09 = Operaciones sujetas al IPSI / IGIC\n10 = Facturación de las prestaciones de servicios de agencias de viaje que actúan como mediadoras en nombre y por cuenta ajena (D.A.4ª RD1619/2012)\n11 = Cobros por cuenta de terceros de honorarios profesionales ....\n12 = Operaciones de seguros\n13 = Op. de arrendamiento sujetas a retención\n14 = Op. de arrendamiento no sujetos a retención\n15 = Op. de arren',
-  `REG_FR_ImporteTotal` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - ImporteTotal\nImporte total de la factura. No es obligatorio su cumplimentación, AEAT obtiene sus totales de la suma de bases y cuotas.',
+  `REG_FR_ClaveRegimenEspecialOTrascendencia` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - ClaveRegimenEspecialOTrascendencia\nClave que identificará el tipo de operación o el régimen especial con transcendencia tributaria. Posibles valores:\n01 = Operación de régimen común\n02 = Exportación\n03 = Operaciones a las que se aplique el régimen especial de bienes usados, objetos de arte, antigüedades y objetos de colección (135-139 de LIVA)\n04 = Régimen especial oro de inversión\n05 = Régimen especial agencias de viajes\n06 = Régimen especial grupo de entidades en IVA\n07 = Régimen especial grupo de entidades en IVA (Nivel Avanzado)\n08 = Régimen especial criterio de caja\n09 = Operaciones sujetas al IPSI / IGIC\n10 = Facturación de las prestaciones de servicios de agencias de viaje que actúan como mediadoras en nombre y por cuenta ajena (D.A.4ª RD1619/2012)\n11 = Cobros por cuenta de terceros de honorarios profesionales ....\n12 = Operaciones de seguros\n13 = Op. de arrendamiento sujetas a retención\nXX = Hay más tipos consulta documentación ...',
+  `REG_FR_ClaveRegimenEspecialOTrascendenciaAdicional1` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - ClaveRegimenEspecialOTrascendencia\nClave que identificará el tipo de operación o el régimen especial con transcendencia tributaria. Posibles valores:\n01 = Operación de régimen común\n02 = Exportación\n03 = Operaciones a las que se aplique el régimen especial de bienes usados, objetos de arte, antigüedades y objetos de colección (135-139 de LIVA)\n04 = Régimen especial oro de inversión\n05 = Régimen especial agencias de viajes\n06 = Régimen especial grupo de entidades en IVA\n07 = Régimen especial grupo de entidades en IVA (Nivel Avanzado)\n08 = Régimen especial criterio de caja\n09 = Operaciones sujetas al IPSI / IGIC\n10 = Facturación de las prestaciones de servicios de agencias de viaje que actúan como mediadoras en nombre y por cuenta ajena (D.A.4ª RD1619/2012)\n11 = Cobros por cuenta de terceros de honorarios profesionales ....\n12 = Operaciones de seguros\n13 = Op. de arrendamiento sujetas a retención\nXX = Hay más tipos consulta documentación ...',
+  `REG_FR_ClaveRegimenEspecialOTrascendenciaAdicional2` varchar(2) NOT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - ClaveRegimenEspecialOTrascendencia\nClave que identificará el tipo de operación o el régimen especial con transcendencia tributaria. Posibles valores:\n01 = Operación de régimen común\n02 = Exportación\n03 = Operaciones a las que se aplique el régimen especial de bienes usados, objetos de arte, antigüedades y objetos de colección (135-139 de LIVA)\n04 = Régimen especial oro de inversión\n05 = Régimen especial agencias de viajes\n06 = Régimen especial grupo de entidades en IVA\n07 = Régimen especial grupo de entidades en IVA (Nivel Avanzado)\n08 = Régimen especial criterio de caja\n09 = Operaciones sujetas al IPSI / IGIC\n10 = Facturación de las prestaciones de servicios de agencias de viaje que actúan como mediadoras en nombre y por cuenta ajena (D.A.4ª RD1619/2012)\n11 = Cobros por cuenta de terceros de honorarios profesionales ....\n12 = Operaciones de seguros\n13 = Op. de arrendamiento sujetas a retención\nXX = Hay más tipos consulta documentación ...',
+  `REG_FR_NumRegistroAcuerdoFacturacion` varchar(15) DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - NumRegistroAcuerdoFacturacion\nNúmero de registro obtenido al enviar la autorización en materia de facturación o de libros registro.',
+  `REG_FR_ImporteTotal` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - ImporteTotal\nDescripción del objeto de la factura. Aunque es un campo TEXT, en realidad el máximo de caracteres en la comunicación serán 500.',
   `REG_FR_BaseImponibleACoste` decimal(14,2) DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - BaseImponibleACoste\nSe utiliza sólo en los grupos de IVA.',
-  `REG_FR_DescripcionOperacion` text COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - DescripcionOperacion\nDescripción del objeto de la factura. Aunque es un campo TEXT, en realidad el máximo de caracteres en la comunicación serán 500.',
-  `REG_FR_AD_NumeroDUA` varchar(40) DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - Aduanas - NumeroDUA\nNúmero de DUA',
-  `REG_FR_AD_FechaRegContableDUA` date DEFAULT NULL COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - Aduanas - FechaRegContableDUA\nFecha de registro contable del DUA. Guardado en formato DATE se informa en formato ''DD-MM-YY''',
+  `REG_FR_DescripcionOperacion` text COMMENT 'RegistroLRFacturasRecibidas - FacturaRecibida - DescripcionOperacion\nDescripcion del objeto de la factura',
   `REG_FR_DF_ISP_DI_DT1_TipoImpositivo` decimal(5,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasRecibidas - FacturaRecibida -  DesgloseFactura - InversionSujetoPasivo - DetallaIVA1 - TipoImpositivo.\nPorcentaje aplicado sobre la Base Imponible para calcular la cuota.',
   `REG_FR_DF_ISP_DI_DT1_BaseImponible` decimal(14,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasRecibidas - FacturaRecibida - DesgloseFactura - InversionSujetoPasivo - DetalleIVA1 - BaseImponible.\nMagnitud dineraria sobre la cual se aplica un determinado tipo impositivo',
   `REG_FR_DF_ISP_DI_DT1_CuotaRepercutida` decimal(14,2) DEFAULT NULL COMMENT 'IVA 1 DE 6 POSIBLES\nRegistroLRFacturasRecibidas - FacturaRecibida - DesgloseFactura - InversionSujetoPasivo - DetalleIVA1 - CuotaRepercutida.\nCuota resultante de aplicar a la base imponible un determinado tipo impositivo',
@@ -593,21 +660,21 @@ CREATE TABLE `envio_operaciones_intracomunitarias` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.\n',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
   `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
   `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - PeriodoImpositivo - Periodo\nPeriodo impositivo de la factura. Posibles valores:\n01 = Enero\n02  = Febrero\n03  = Marzo\n04  = Abril\n05  = Mayo\n06  = Junio\n07  = Julio\n08  = Agosto\n09  = Septiembre\n10 =  Octubre\n11 =  Noviembre\n12  = Diciembre\n0A  = Anual',
-  `REG_IDF_IDEF_NombreRazon` varchar(9) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - NombreRazon\nNombre / Razón solicial del emisor de la factura recibida',
+  `REG_IDF_IDEF_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - NombreRazon\nNombre / Razón solicial del emisor de la factura recibida',
   `REG_IDF_IDEF_NIF` varchar(9) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - NIF\nNIF del emisor de la factura recibida',
   `REG_IDF_IDEF_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
   `REG_IDF_IDEF_IDOtro_IDType` varchar(2) DEFAULT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - IDOtro - IDType\nClave para establecer el tipo de identificación en el pais de residencia. Posibles valores:\n02 = NIF-IVA\n03 = PASAPORTE\n04 = DOCUMENTO OFICIAL DE IDENTIFICACIÓN EXPEDIDO POR EL PAIS O TERRITORIO DE RESIDENCIA\n05 = CERTIFICADO DE RESIDENCIA\n06 = OTRO DOCUMENTO PROBATORIO\n',
   `REG_IDF_IDEF_IDOtro_ID` varchar(20) DEFAULT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - IDFactura - IDEmisorFactura - IDOtro - ID\nNúmero de identificación en el país de residencia',
   `REG_IDF_NumSerieFacturaEmisor` varchar(60) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - IDFactura - NumSerieFacturaEmisor\nNúmero+Serie que identifica a la factura emitida',
   `REG_IDF_FechaExpedicionFacturaEmisor` date NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - IDFactura - FechaExpedicionFacturaEmisor\nFecha de expedición de la factura. En la base de datos se guarda como un tipo date, en el envío se trasmite en la forma ''DD-MM-YYYY''',
-  `REG_CNT_NombreRazon` varchar(40) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
+  `REG_CNT_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
   `REG_CNT_NIFRepresentante` varchar(45) DEFAULT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - Contraparte - NIFRepresentante\nNIF del representante de la contraparte de la operación',
   `REG_CNT_NIF` varchar(9) NOT NULL COMMENT 'Registrp - Contraparte - NIF\nIdentificador del NIF contraparte de la operación (cliente) de facturas expedidas',
   `REG_CNT_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - Contraparte - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
@@ -618,8 +685,8 @@ CREATE TABLE `envio_operaciones_intracomunitarias` (
   `REG_OI_EstadoMiembro` varchar(2) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - OperacionIntracomunitaria - EstadoMiembro\nCódigo del Estado miembro de origen o de envío',
   `REG_OI_PlazoOperacion` int(3) DEFAULT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - OperacionIntracomunitaria - PlazoOperacion\n',
   `REG_OI_DescripcionBienes` varchar(40) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - OperacionIntracomunitaria - TipoOperacion\nDescripción de los bienes adquiridos',
-  `REG_OI_DireccionOperador` varchar(1) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - OperacionIntracomunitaria - DireccionOperador\nDirección del operador intracomunitario',
-  `REG_OI_FacturasODocumentacion` varchar(1) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - OperacionIntracomunitaria - FacturasODocumentacion\nOtras facturas o documentación relativas a las operaciones de que se trate',
+  `REG_OI_DireccionOperador` varchar(120) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - OperacionIntracomunitaria - DireccionOperador\nDirección del operador intracomunitario',
+  `REG_OI_FacturasODocumentacion` varchar(150) NOT NULL COMMENT 'RegistroLRDetOperacionIntracomunitaria - OperacionIntracomunitaria - FacturasODocumentacion\nOtras facturas o documentación relativas a las operaciones de que se trate',
   PRIMARY KEY (`IDEnvioOperacionesIntracomunitarias`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='En esta tabla se guardan los mensajes que debe de procesar la utilidad de envío de facturas emitidas al sistema SII. Debe grabar un registro por cada una de las facturas que quiera enviar o modificar tras su envío.';
 
@@ -639,14 +706,14 @@ CREATE TABLE `envio_operaciones_seguros` (
   `CSV` varchar(255) DEFAULT NULL COMMENT 'Código seguro de verificación. Equivale al número de registro en los envios CORRECTO',
   `Mensaje` text COMMENT 'Mensaje resultado del envío, de transcendencia en envío con ERROR o INCORRECTO',
   `XML_Enviado` text COMMENT 'XML SOAP del último envío realizado',
-  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.5' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.5'' por eso tiene ese valor por defecto.\n',
-  `CAB_Titular_NombreRazon` varchar(40) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
+  `CAB_IDVersionSii` varchar(3) NOT NULL DEFAULT '0.7' COMMENT 'Cabecera - IDVersionSii\nIdentificación de la versión del esquema utilizado para el intercambio de información. La versión actual es ''0.7'' por eso tiene ese valor por defecto.',
+  `CAB_Titular_NombreRazon` varchar(120) NOT NULL COMMENT 'Cabecera - Titular - NombreRazon\nNombre-razón social del Titular del libro de registro de facturas expedidas',
   `CAB_Titular_NIFRepresentante` varchar(9) DEFAULT NULL COMMENT 'Cabecera - Titular - NIFRepresentante\nNIF del representante del titular del libro de registro',
   `CAB_Titular_NIF` varchar(9) NOT NULL COMMENT 'Cabecera - Titular - NIF\nNIF asociado al titular del libro de registro',
   `CAB_TipoComunicacion` varchar(2) NOT NULL COMMENT 'Cabecera - Titular - TipoComunicacion\nTipo de operación (alta, modificación). Posibles valores:\nA0 = Alta de facturas/registro\nA1 = Modificación de facturas/registros (errores registrales)\nA4 = Modificación Factura Régimen de Viajeros',
   `REG_PI_Ejercicio` int(4) NOT NULL COMMENT 'RegistroLROperacionesSeguros - PeriodoImpositivo - Ejercicio\nEjercicio impositivo de la factura, normalmente el año.',
   `REG_PI_Periodo` varchar(2) NOT NULL COMMENT 'RegistroLROperacionesSeguros - PeriodoImpositivo - Periodo\nPeriodo impositivo de la factura. Posibles valores:\n01 = Enero\n02  = Febrero\n03  = Marzo\n04  = Abril\n05  = Mayo\n06  = Junio\n07  = Julio\n08  = Agosto\n09  = Septiembre\n10 =  Octubre\n11 =  Noviembre\n12  = Diciembre\n0A  = Anual',
-  `REG_CNT_NombreRazon` varchar(40) NOT NULL COMMENT 'RegistroLROperacionesSeguros - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
+  `REG_CNT_NombreRazon` varchar(120) NOT NULL COMMENT 'RegistroLROperacionesSeguros - Contraparte - NombreRazon\nNombre-razón social de la contraparte de la operación (cliente) de facturas expedidas.',
   `REG_CNT_NIFRepresentante` varchar(45) DEFAULT NULL COMMENT 'RegistroLROperacionesSeguros - Contraparte - NIFRepresentante\nNIF del representante de la contraparte de la operación',
   `REG_CNT_NIF` varchar(9) NOT NULL COMMENT 'Registrp - Contraparte - NIF\nIdentificador del NIF contraparte de la operación (cliente) de facturas expedidas',
   `REG_CNT_IDOtro_CodigoPais` varchar(2) DEFAULT NULL COMMENT 'RegistroLROperacionesSeguros - Contraparte - IDOtro - CodigoPais\nIDOtro, solo es de obligado cumplimiento si hay que proporcionar información adicional de la contraparte. Si aun no siendo obligado se cumplimenta esta información aparece en la consulta directa de la web de AEAT.\nCódigo del país asociado contraparte de la operación (cliente) de facturas expedidas (ISO 3166-1 alpha-2 codes)',
@@ -742,7 +809,7 @@ CREATE TABLE `usuarios` (
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values (1,1,'Administrador','es','admin','admin','2017-05-17 08:35:29','2017-05-17 13:35:29','WDsjh',1);
+insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values (1,1,'Administrador','es','admin','admin','2017-05-19 16:22:05','2017-05-19 21:22:05','bb9u6',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
