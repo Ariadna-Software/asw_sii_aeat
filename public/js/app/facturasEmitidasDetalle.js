@@ -18,7 +18,9 @@ var apiFacturasEmitidasDetalle = {
 
         $('#facturasEmitidas').attr('class', 'active');
         $('#facturaEmitida-form').submit(function () { return false; });
+
         $('#btnAceptar').click(apiFacturasEmitidasDetalle.aceptar);
+        $('#btnEnviar').click(apiFacturasEmitidasDetalle.enviar);
         $('#btnSalir').click(apiFacturasEmitidasDetalle.salir);
 
         // Titulares
@@ -68,7 +70,7 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_IDF_IDEF_NIF(data.REG_IDF_IDEF_NIF);
         vm.REG_IDF_NumSerieFacturaEmisor(data.REG_IDF_NumSerieFacturaEmisor);
         vm.REG_IDF_NumSerieFacturaEmisorResumenFin(data.REG_IDF_NumSerieFacturaEmisorResumenFin);
-        vm.REG_IDF_FechaExpedicionFacturaEmisor(data.REG_IDF_FechaExpedicionFacturaEmisor);
+        vm.REG_IDF_FechaExpedicionFacturaEmisor(moment(data.REG_IDF_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
         vm.REG_FE_TipoFactura(data.REG_FE_TipoFactura);
         vm.REG_FE_TipoRectificativa(data.REG_FE_TipoRectificativa);
         vm.REG_FE_FA_IDFA_NumSerieFacturaEmisor(data.REG_FE_FA_IDFA_NumSerieFacturaEmisor);
@@ -107,35 +109,35 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia);
         vm.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia);
         // IVA 2
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT2_TipoImpositivo);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT2_BaseImponible);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaRepercutida);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT2_TipoREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia);
         // IVA 3
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT3_TipoImpositivo);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT3_BaseImponible);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaRepercutida);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT3_TipoREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia);
         // IVA 4
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT4_TipoImpositivo);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT4_BaseImponible);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaRepercutida);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT4_TipoREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia);
         // IVA 5
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT5_TipoImpositivo);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT5_BaseImponible);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaRepercutida);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT5_TipoREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia);
         // IVA 6
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaRepercutida);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoREquivalencia);
-        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT6_TipoImpositivo);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT6_BaseImponible);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaRepercutida(data.REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaRepercutida);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_TipoREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT6_TipoREquivalencia);
+        vm.REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia(data.REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia);
         //
         vm.REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros(data.REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros);
         vm.REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion(data.REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion);
@@ -545,6 +547,9 @@ var apiFacturasEmitidasDetalle = {
     salir: function () {
         window.open(sprintf('FacturasEmitidasGeneral.html'), '_self');
     },
+    enviar: function() {
+
+    },
     cargarTitulares: function (id) {
         apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/titulares", null, function (err, data) {
             if (err) return;
@@ -566,7 +571,7 @@ var apiFacturasEmitidasDetalle = {
     cargarEmisores: function (id) {
         apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/emisores", null, function (err, data) {
             if (err) return;
-            var options = [{ emsiorId: 0, nombre: " " }].concat(data);
+            var options = [{ emisorId: 0, nombre: " " }].concat(data);
             vm.optionsEmisores(options);
             $("#cmbEmisores").val([id]).trigger('change');
         });

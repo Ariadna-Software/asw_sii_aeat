@@ -20,7 +20,7 @@ var apiFacturasEmitidasGeneral = {
         var options = apiComunGeneral.initTableOptions('dt_facturasEmitidas', usuario.codigoIdioma);
         options.data = data;
         options.columns = [{
-            data: "IdEnvioFacturasEmitidas"
+            data: "IDEnvioFacturasEmitidas"
         }, {
             data: "Origen"
         }, {
@@ -44,7 +44,7 @@ var apiFacturasEmitidasGeneral = {
         }, {
             data: "Mensaje"
         }, {
-            data: "IdEnvioFacturasEmitidas",
+            data: "IDEnvioFacturasEmitidas",
             render: function (data, type, row) {
                 var bt1 = "<button class='btn btn-circle btn-danger btn-lg' onclick='apiFacturasEmitidasGeneral.eliminar(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
                 var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='apiFacturasEmitidasGeneral.editar(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";

@@ -244,6 +244,18 @@
                                             <h2>CABECERA</h2>
                                         </div>
                                         <div class="row">
+                                            <section class="col col-md-1">
+                                                <label class="label" data-i18n="facturasEmitidas.CAB_IDVersionSii">CAB_IDVersionSii:</label>
+                                                <label class="input">
+                                                        <input id="txtCAB_IDVersionSii" name="txtCAB_IDVersionSii" data-bind="value: CAB_IDVersionSii">
+                                                    </label>
+                                            </section>                                            
+                                            <section class="col col-md-1">
+                                                <label class="label" data-i18n="facturasEmitidas.CAB_TipoComunicacion">CAB_TipoComunicacion:</label>
+                                                <label class="input">
+                                                        <input id="txtCAB_TipoComunicacion" name="txtCAB_TipoComunicacion" data-bind="value: CAB_TipoComunicacion">
+                                                    </label>
+                                            </section>
                                             <section class="col col-md-3">
                                                 <label class="label" data-i18n="facturasEmitidas.titular">Titular:</label>
                                                 <select style="width:100%;" id="cmbTitulares" name="cmbTitulares" data-bind="options: optionsTitulares, optionsText: 'nombreRazon', optionsValue: 'titularId', 
@@ -256,13 +268,13 @@
                                                         <input id="txtCAB_Titular_NombreRazon" name="txtCAB_Titular_NombreRazon" data-bind="value: CAB_Titular_NombreRazon" disabled>
                                                     </label>
                                             </section>
-                                            <section class="col col-md-3">
+                                            <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.CAB_Titular_NIF">CAB_Titular_NIF:</label>
                                                 <label class="input">
                                                         <input id="txtCAB_Titular_NIF" name="txtCAB_Titular_NIF" data-bind="value: CAB_Titular_NIF" disabled>
                                                     </label>
                                             </section>
-                                            <section class="col col-md-3">
+                                            <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.CAB_Titular_NIFRepresentante">CAB_Titular_NIFRepresentante:</label>
                                                 <label class="input">
                                                         <input id="txtCAB_Titular_NIFRepresentante" name="txtCAB_Titular_NIFRepresentante" data-bind="value: CAB_Titular_NIFRepresentante" disabled>
@@ -1087,6 +1099,9 @@
                                             <button id="btnSalir" data-i18n="[title]salir" class="btn btn-warning btn-circle btn-lg">
                                                 <i class="fa fa-lg fa-sign-out"></i>
                                             </button>
+                                            <button id="btnEnviar" data-i18n="[title]enviar" class="btn btn-primary btn-circle btn-lg">
+                                                <i class="fa fa-lg fa-paper-plane"></i>
+                                            </button>                                            
                                             <button id="btnAceptar" data-i18n="[title]aceptar" class="btn btn-success btn-circle btn-lg">
                                                 <i class="fa fa-lg fa-check"></i>
                                             </button>
