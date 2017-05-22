@@ -38,6 +38,10 @@ var apiFacturasEmitidasDetalle = {
         IDEnvioFacturasEmitidas = apiComunGeneral.gup("id");
         if (IDEnvioFacturasEmitidas == 0) {
             vm.IDEnvioFacturasEmitidas(0);
+            vm.Origen("MANUAL");
+            vm.EnvioInmediato(0);
+            vm.CAB_IDVersionSii("0.7");
+            vm.FechaHoraCreacion(moment(new Date()).format("DD/MM/YYYY"));
         } else {
             apiFacturasEmitidasDetalle.cargarFacturasEmitidas(IDEnvioFacturasEmitidas);
         }
@@ -51,7 +55,8 @@ var apiFacturasEmitidasDetalle = {
     cargarDatosPagina: function (data) {
         vm.IDEnvioFacturasEmitidas(data.IDEnvioFacturasEmitidas);
         vm.Origen(data.Origen);
-        vm.FechaHoraCreacion(moment(data.FechaHoraCreacion).format(i18n.t('util.date_format')));
+        if (data.FechaHoraCreacion)
+            vm.FechaHoraCreacion(moment(data.FechaHoraCreacion).format(i18n.t('util.date_format')));
         vm.EnvioInmediato(data.EnvioInmediato);
         vm.Enviada(data.Enviada);
         vm.Resultado(data.Resultado);
@@ -70,17 +75,21 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_IDF_IDEF_NIF(data.REG_IDF_IDEF_NIF);
         vm.REG_IDF_NumSerieFacturaEmisor(data.REG_IDF_NumSerieFacturaEmisor);
         vm.REG_IDF_NumSerieFacturaEmisorResumenFin(data.REG_IDF_NumSerieFacturaEmisorResumenFin);
-        vm.REG_IDF_FechaExpedicionFacturaEmisor(moment(data.REG_IDF_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
+        if (data.REG_IDF_FechaExpedicionFacturaEmisor)
+            vm.REG_IDF_FechaExpedicionFacturaEmisor(moment(data.REG_IDF_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
         vm.REG_FE_TipoFactura(data.REG_FE_TipoFactura);
         vm.REG_FE_TipoRectificativa(data.REG_FE_TipoRectificativa);
         vm.REG_FE_FA_IDFA_NumSerieFacturaEmisor(data.REG_FE_FA_IDFA_NumSerieFacturaEmisor);
-        vm.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor(moment(data.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
+        if (data.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor)
+            vm.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor(moment(data.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
         vm.REG_FE_FR_IDR_NumSerieFacturaEmisor(data.REG_FE_FR_IDR_NumSerieFacturaEmisor);
-        vm.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor(moment(data.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
+        if (data.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor)
+            vm.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor(moment(data.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
         vm.REG_FE_IR_BaseRectificada(data.REG_FE_IR_BaseRectificada);
         vm.REG_FE_IR_CuotaRectificada(data.REG_FE_IR_CuotaRectificada);
         vm.REG_FE_IR_CuotaRecargoRectificado(data.REG_FE_IR_CuotaRecargoRectificado);
-        vm.REG_FE_FechaOperacion(moment(data.REG_FE_FechaOperacion).format(i18n.t('util.date_format')));
+        if (data.REG_FE_FechaOperacion)
+            vm.REG_FE_FechaOperacion(moment(data.REG_FE_FechaOperacion).format(i18n.t('util.date_format')));
         vm.REG_FE_ClaveRegimenEspecialOTrascendencia(data.REG_FE_ClaveRegimenEspecialOTrascendencia);
         vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1);
         vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2);
@@ -370,7 +379,6 @@ var apiFacturasEmitidasDetalle = {
         var data = {
             IDEnvioFacturasEmitidas: vm.IDEnvioFacturasEmitidas(),
             Origen: vm.Origen(),
-            FechaHoraCreacion: vm.FechaHoraCreacion(),
             EnvioInmediato: vm.EnvioInmediato(),
             Enviada: vm.Enviada(),
             Resultado: vm.Resultado(),
@@ -387,17 +395,13 @@ var apiFacturasEmitidasDetalle = {
             REG_IDF_IDEF_NIF: vm.REG_IDF_IDEF_NIF(),
             REG_IDF_NumSerieFacturaEmisor: vm.REG_IDF_NumSerieFacturaEmisor(),
             REG_IDF_NumSerieFacturaEmisorResumenFin: vm.REG_IDF_NumSerieFacturaEmisorResumenFin(),
-            REG_IDF_FechaExpedicionFacturaEmisor: vm.REG_IDF_FechaExpedicionFacturaEmisor(),
             REG_FE_TipoFactura: vm.REG_FE_TipoFactura(),
             REG_FE_TipoRectificativa: vm.REG_FE_TipoRectificativa(),
             REG_FE_FA_IDFA_NumSerieFacturaEmisor: vm.REG_FE_FA_IDFA_NumSerieFacturaEmisor(),
-            REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor: vm.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor(),
             REG_FE_FR_IDR_NumSerieFacturaEmisor: vm.REG_FE_FR_IDR_NumSerieFacturaEmisor(),
-            REG_FE_FR_IDR_FechaExpedicionFacturaEmisor: vm.REG_FE_FR_IDR_FechaExpedicionFacturaEmisor(),
             REG_FE_IR_BaseRectificada: vm.REG_FE_IR_BaseRectificada(),
             REG_FE_IR_CuotaRectificada: vm.REG_FE_IR_CuotaRectificada(),
             REG_FE_IR_CuotaRecargoRectificado: vm.REG_FE_IR_CuotaRecargoRectificado(),
-            REG_FE_FechaOperacion: vm.REG_FE_FechaOperacion(),
             REG_FE_ClaveRegimenEspecialOTrascendencia: vm.REG_FE_ClaveRegimenEspecialOTrascendencia(),
             REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1: vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1(),
             REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2: vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2(),
@@ -536,7 +540,7 @@ var apiFacturasEmitidasDetalle = {
     datosOk: function () {
         $('#facturaEmitida-form').validate({
             rules: {
-                txtNombre: { required: true }
+                txtFechaHoraCreacion: { required: true }
             },
             errorPlacement: function (error, element) {
                 error.insertAfter(element.parent());
@@ -547,8 +551,15 @@ var apiFacturasEmitidasDetalle = {
     salir: function () {
         window.open(sprintf('FacturasEmitidasGeneral.html'), '_self');
     },
-    enviar: function() {
-
+    enviar: function () {
+        if (!apiFacturasEmitidasDetalle.datosOk()) return;
+        apiFacturasEmitidasDetalle.aceptar(); // Guardamos el registro antes del envío
+        var verb = "POST";
+        var url = myconfig.apiUrl + "/api/facturasEmitidas/envDb/" + vm.IDEnvioFacturasEmitidas();
+        apiComunAjax.llamadaGeneral(verb, url, null, function (err, data) {
+            if (err) return;
+            window.open(sprintf('FacturasEmitidasGeneral.html'), '_self');
+        });
     },
     cargarTitulares: function (id) {
         apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/titulares", null, function (err, data) {

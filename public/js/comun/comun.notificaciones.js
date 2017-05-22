@@ -24,6 +24,7 @@ var apiComunNotificaciones = {
             color: "#C46A69",
             iconSmall: "fa fa-warning shake animated",
         });
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
     },
     mensajeAceptarCancelar: function (mensaje, fnAceptar, fnCancelar) {
         $.SmartMessageBox({

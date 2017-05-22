@@ -182,15 +182,15 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.IDEnvioFacturasEmitidas">ID:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.IDEnvioFacturasEmitidas" style="color:blue;">ID:</label>
                                                 <label class="input">
-                                                        <input id="txtIDEnvioFacturasEmitidas" name="txtIDEnvioFacturasEmitidas" data-bind="value: IDEnvioFacturasEmitidas">
+                                                        <input id="txtIDEnvioFacturasEmitidas" name="txtIDEnvioFacturasEmitidas" data-bind="value: IDEnvioFacturasEmitidas" disabled>
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.Origen">Origen:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.Origen" style="color:blue;">Origen:</label>
                                                 <label class="input">
-                                                        <input id="txtOrigen" name="txtOrigen" data-bind="value: Origen">
+                                                        <input id="txtOrigen" name="txtOrigen" data-bind="value: Origen" disabled>
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
@@ -200,41 +200,41 @@
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.EnvioInmediato">EnvioInmediato:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.EnvioInmediato" style="color:blue;">EnvioInmediato:</label>
                                                 <label class="input">
-                                                        <input id="txtEnvioInmediato" name="txtEnvioInmediato" data-bind="value: EnvioInmediato">
+                                                        <input id="txtEnvioInmediato" name="txtEnvioInmediato" data-bind="value: EnvioInmediato" disabled>
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.Enviada">Enviada:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.Enviada" style="color:blue;">Enviada:</label>
                                                 <label class="input">
-                                                        <input id="txtEnviada" name="txtEnviada" data-bind="value: Enviada">
+                                                        <input id="txtEnviada" name="txtEnviada" data-bind="value: Enviada" disabled>
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.Resultado">Resultado:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.Resultado" style="color:blue;">Resultado:</label>
                                                 <label class="input">
-                                                        <input id="txtResultado" name="txtResultado" data-bind="value: Resultado">
+                                                        <input id="txtResultado" name="txtResultado" data-bind="value: Resultado" disabled>
                                                     </label>
                                             </section>
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.CSV">CSV:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.CSV" style="color:blue;">CSV:</label>
                                                 <label class="input">
-                                                        <input id="txtCSV" name="txtCSV" data-bind="value: CSV">
+                                                        <input id="txtCSV" name="txtCSV" data-bind="value: CSV" disabled>
                                                     </label>
                                             </section>
                                             <section class="col col-md-5">
-                                                <label class="label" data-i18n="facturasEmitidas.Mensaje">Mensaje:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.Mensaje" style="color:blue;">Mensaje:</label>
                                                 <label class="input">
-                                                        <input id="txtMensaje" name="txtMensaje" data-bind="value: Mensaje">
+                                                        <input id="txtMensaje" name="txtMensaje" data-bind="value: Mensaje" disabled>
                                                     </label>
                                             </section>
                                             <section class="col col-md-5">
-                                                <label class="label" data-i18n="facturasEmitidas.XML_Enviado">XML_Enviado:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.XML_Enviado" style="color:blue;">XML_Enviado:</label>
                                                 <label class="input">
-                                                        <input id="txtXML_Enviado" name="txtXML_Enviado" data-bind="value: XML_Enviado">
+                                                        <input id="txtXML_Enviado" name="txtXML_Enviado" data-bind="value: XML_Enviado" disabled>
                                                     </label>
                                             </section>
                                         </div>
@@ -245,22 +245,28 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-1">
-                                                <label class="label" data-i18n="facturasEmitidas.CAB_IDVersionSii">CAB_IDVersionSii:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.CAB_IDVersionSii" style="color:blue;">CAB_IDVersionSii:</label>
                                                 <label class="input">
-                                                        <input id="txtCAB_IDVersionSii" name="txtCAB_IDVersionSii" data-bind="value: CAB_IDVersionSii">
+                                                        <input id="txtCAB_IDVersionSii" name="txtCAB_IDVersionSii" data-bind="value: CAB_IDVersionSii" disabled>
                                                     </label>
-                                            </section>                                            
-                                            <section class="col col-md-1">
-                                                <label class="label" data-i18n="facturasEmitidas.CAB_TipoComunicacion">CAB_TipoComunicacion:</label>
+                                            </section>
+                                            <section class="col col-md-2">
+                                                <label class="label">
+                                                <span  data-i18n="facturasEmitidas.CAB_TipoComunicacion">CAB_TipoComunicacion:</span>
+                                                <a href="javascript:void(0);" rel="popover" data-placement="top" data-original-title="<i class='fa fa-lg fa-info-circle'></i>"
+                                                    data-i18n="[data-content]facturasEmitidas.ayudaTipoComunicacion" data-html="true">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>
+                                                </label>                                                    
                                                 <label class="input">
                                                         <input id="txtCAB_TipoComunicacion" name="txtCAB_TipoComunicacion" data-bind="value: CAB_TipoComunicacion">
                                                     </label>
                                             </section>
-                                            <section class="col col-md-3">
+                                            <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.titular">Titular:</label>
                                                 <select style="width:100%;" id="cmbTitulares" name="cmbTitulares" data-bind="options: optionsTitulares, optionsText: 'nombreRazon', optionsValue: 'titularId', 
                                                     value: sTitular, valueAllowUnset: true, selectedOptions: selectedTitulares, selected2:{}">
-                                                </select>                                                
+                                                </select>
                                             </section>
                                             <section class="col col-md-3">
                                                 <label class="label" data-i18n="facturasEmitidas.CAB_Titular_NombreRazon">CAB_Titular_NombreRazon:</label>
@@ -304,7 +310,7 @@
                                                 <label class="label" data-i18n="facturasEmitidas.Emisor">Titular:</label>
                                                 <select style="width:100%;" id="cmbEmisores" name="cmbEmisores" data-bind="options: optionsEmisores, optionsText: 'nombre', optionsValue: 'emisorId', 
                                                     value: sTitular, valueAllowUnset: true, selectedOptions: selectedEmisores, selected2:{}">
-                                                </select>                                                
+                                                </select>
                                             </section>
                                             <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.REG_IDF_IDEF_NIF">REG_IDF_IDEF_NIF:</label>
@@ -361,7 +367,7 @@
                                                 <label class="input">
                                                         <input id="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2" name="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2" data-bind="value: REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2">
                                                     </label>
-                                            </section>                                            
+                                            </section>
 
                                         </div>
                                         <div class="row">
@@ -570,7 +576,7 @@
                                                         <label class="input">
                                                             <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT1_CuotaREquivalencia">
                                                         </label>
-                                                    </section>    
+                                                    </section>
                                                 </div>
                                                 <div class="row">
                                                     <section class="col col-md-2">IVA2</section>
@@ -598,8 +604,8 @@
                                                         <label class="input">
                                                             <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT2_CuotaREquivalencia">
                                                         </label>
-                                                    </section>    
-                                                </div>    
+                                                    </section>
+                                                </div>
                                                 <div class="row">
                                                     <section class="col col-md-2">IVA3</section>
                                                     <section class="col col-md-2">
@@ -626,8 +632,8 @@
                                                         <label class="input">
                                                             <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT3_CuotaREquivalencia">
                                                         </label>
-                                                    </section>    
-                                                </div>   
+                                                    </section>
+                                                </div>
                                                 <div class="row">
                                                     <section class="col col-md-2">IVA4</section>
                                                     <section class="col col-md-2">
@@ -654,8 +660,8 @@
                                                         <label class="input">
                                                             <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT4_CuotaREquivalencia">
                                                         </label>
-                                                    </section>    
-                                                </div>  
+                                                    </section>
+                                                </div>
                                                 <div class="row">
                                                     <section class="col col-md-2">IVA5</section>
                                                     <section class="col col-md-2">
@@ -682,8 +688,8 @@
                                                         <label class="input">
                                                             <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT5_CuotaREquivalencia">
                                                         </label>
-                                                    </section>    
-                                                </div>   
+                                                    </section>
+                                                </div>
                                                 <div class="row">
                                                     <section class="col col-md-2">IVA6</section>
                                                     <section class="col col-md-2">
@@ -710,8 +716,8 @@
                                                         <label class="input">
                                                             <input id="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia" name="txtREG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia" data-bind="value: REG_FE_TD_DF_SU_NEX_DI_DT6_CuotaREquivalencia">
                                                         </label>
-                                                    </section>    
-                                                </div>                                                                                                                                                                                                                                         
+                                                    </section>
+                                                </div>
                                             </section>
                                         </div>
                                         <div class="row">
@@ -730,7 +736,7 @@
                                                         <input id="txtREG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion" name="txtREG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion" data-bind="value: REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion">
                                                     </label>
                                             </section>
-                                        </div>      
+                                        </div>
                                         <!-- DESGLOSE POR TIPO [SERVICIOS] -->
                                         <div class="row">
                                             <h4>-- DESGLOSE POR TIPO [SERVICIOS] -- CASO Factura SUJETA Y EXENTA DE IVA</h4><br/>
@@ -873,7 +879,7 @@
                                                             <input id="txtREG_FE_TD_DTS_SU_NEX_DI_DT5_CuotaRepercutida" name="txtREG_FE_TD_DTS_SU_NEX_DI_DT5_CuotaRepercutida" data-bind="value: REG_FE_TD_DTS_SU_NEX_DI_DT5_CuotaRepercutida">
                                                         </label>
                                                     </section>
-                                                </div>      
+                                                </div>
                                                 <div class="row">
                                                     <section class="col col-md-2">IVA6</section>
                                                     <section class="col col-md-2">
@@ -891,9 +897,9 @@
                                                             <input id="txtREG_FE_TD_DTS_SU_NEX_DI_DT6_CuotaRepercutida" name="txtREG_FE_TD_DTS_SU_NEX_DI_DT6_CuotaRepercutida" data-bind="value: REG_FE_TD_DTS_SU_NEX_DI_DT6_CuotaRepercutida">
                                                         </label>
                                                     </section>
-                                                </div>                                                                                                                                                                                                                                                                                          
+                                                </div>
                                             </section>
-                                            
+
                                         </div>
                                         <div class="row">
                                             <h4>-- DESGLOSE POR TIPO [SERVICIOS] -- CASO Factura NO SUJETA</h4><br/>
@@ -911,7 +917,7 @@
                                                         <input id="txtREG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion" name="txtREG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion" data-bind="value: REG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion">
                                                     </label>
                                             </section>
-                                        </div>   
+                                        </div>
                                         <!-- DESGLOSE POR TIPO [ENTREGA] -->
                                         <div class="row">
                                             <h4>-- DESGLOSE POR TIPO [ENTREGA] -- CASO Factura SUJETA Y EXENTA DE IVA</h4><br/>
@@ -1054,7 +1060,7 @@
                                                             <input id="txtREG_FE_TD_DTE_SU_NEX_DI_DT5_CuotaRepercutida" name="txtREG_FE_TD_DTE_SU_NEX_DI_DT5_CuotaRepercutida" data-bind="value: REG_FE_TD_DTE_SU_NEX_DI_DT5_CuotaRepercutida">
                                                         </label>
                                                     </section>
-                                                </div>      
+                                                </div>
                                                 <div class="row">
                                                     <section class="col col-md-2">IVA6</section>
                                                     <section class="col col-md-2">
@@ -1072,9 +1078,9 @@
                                                             <input id="txtREG_FE_TD_DTE_SU_NEX_DI_DT6_CuotaRepercutida" name="txtREG_FE_TD_DTE_SU_NEX_DI_DT6_CuotaRepercutida" data-bind="value: REG_FE_TD_DTE_SU_NEX_DI_DT6_CuotaRepercutida">
                                                         </label>
                                                     </section>
-                                                </div>                                                                                                                                                                                                                                                                                          
+                                                </div>
                                             </section>
-                                            
+
                                         </div>
                                         <div class="row">
                                             <h4>-- DESGLOSE POR TIPO [ENTREGA] -- CASO Factura NO SUJETA</h4><br/>
@@ -1092,7 +1098,7 @@
                                                         <input id="txtREG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion" name="txtREG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion" data-bind="value: REG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion">
                                                     </label>
                                             </section>
-                                        </div>                                                                                                               
+                                        </div>
                                     </fieldset>
                                     <fieldset>
                                         <div class="pull-right">
@@ -1101,7 +1107,7 @@
                                             </button>
                                             <button id="btnEnviar" data-i18n="[title]enviar" class="btn btn-primary btn-circle btn-lg">
                                                 <i class="fa fa-lg fa-paper-plane"></i>
-                                            </button>                                            
+                                            </button>
                                             <button id="btnAceptar" data-i18n="[title]aceptar" class="btn btn-success btn-circle btn-lg">
                                                 <i class="fa fa-lg fa-check"></i>
                                             </button>

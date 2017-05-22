@@ -1,4 +1,5 @@
 {
+    "tipo": "TEST",
     "apiPort": 5080,
     "apiHost": "127.0.0.1",
     "smtpConfig": {
@@ -10,5 +11,17 @@
             "pass": "aritel2011"
         }
     },
-    "destinatario": "rafa@myariadna.com,ragare@gmail.com"
+    "destinatario": "rafa@myariadna.com,ragare@gmail.com",
+    "certs":{
+        "B96470190": {
+            "url": "/tmp/ariadna_sii.pfx",
+            "pass": "passsii"
+        }
+    },
+    "wsdl":{
+        "facturasEmitidas": "http://www.agenciatributaria.es/static_files/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Modelos_y_formularios/Suministro_inmediato_informacion/FicherosSuministros/V_07/SuministroFactEmitidas.wsdl"
+    },
+    "xsd": {
+        "facturasEmitidas": "http://www.agenciatributaria.es/static_files/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Modelos_y_formularios/Suministro_inmediato_informacion/FicherosSuministros/V_07/SuministroInformacion.xsd"
+    }
 }

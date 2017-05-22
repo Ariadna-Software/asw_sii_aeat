@@ -32,7 +32,11 @@ var apiFacturasEmitidasGeneral = {
         }, {
             data: "REG_IDF_NumSerieFacturaEmisor"
         }, {
-            data: "FechaHoraCreacion"
+            data: "FechaHoraCreacion",
+            render: function (data, type, row) {
+                var html = moment(data).format("DD/MM/YYYY");
+                return html;
+            }
         }, {
             data: "EnvioInmediato"
         }, {
@@ -67,19 +71,19 @@ var apiFacturasEmitidasGeneral = {
         if (data.length > 0) dt.fnAddData(data);
         dt.fnDraw();
     },
-    nuevo: function(){
+    nuevo: function () {
         window.open(sprintf('FacturasEmitidasDetalle.html?id=%s', 0), '_self');
     },
-    editar: function(id){
+    editar: function (id) {
         window.open(sprintf('FacturasEmitidasDetalle.html?id=%s', id), '_self');
     },
-    eliminar: function(id){
-        apiComunNotificaciones.mensajeAceptarCancelar(i18n.t("eliminar_pregunta"),function(){
-            apiComunAjax.llamadaGeneral("DELETE", myconfig.apiUrl + "/api/facturasEmitidas/" + id, null, function(err){
+    eliminar: function (id) {
+        apiComunNotificaciones.mensajeAceptarCancelar(i18n.t("eliminar_pregunta"), function () {
+            apiComunAjax.llamadaGeneral("DELETE", myconfig.apiUrl + "/api/facturasEmitidas/" + id, null, function (err) {
                 if (err) return;
                 apiFacturasEmitidasGeneral.cargarFacturasEmitidas();
             })
-        }, function(){})
+        }, function () { })
     }
 }
 
