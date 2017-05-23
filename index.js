@@ -18,6 +18,8 @@ var pack = require('./package.json');
 var config = require('./config.json');
 var loginDb = require('./lib/login/login_db_mysql');
 
+var forever = require('forever-monitor');
+
 
 // starting express
 var app = express();
@@ -81,3 +83,18 @@ console.log("-------------------------------------------");
 console.log(' VERSION: ' + pack.version);
 console.log(' PORT: ' + config.apiPort);
 console.log("-------------------------------------------");
+
+// -- arranque de los demonios
+// - Facturas emitidas
+
+var childFacEnviadas = new (forever.Monitor)('./lib/demonios/auto_facEnviadas.js', {
+    max: 3,
+    args: []
+});
+
+childFacEnviadas.on('exit', function () {
+    console.log('Demonio facEnviadas sin arrancar tras 3 intentos');
+});
+
+console.log("-- DEMONIO FACENVIADAS ARRANCADO --");
+childFacEnviadas.start();

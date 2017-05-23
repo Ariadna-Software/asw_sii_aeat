@@ -27,6 +27,7 @@
     "cors": "^2.7.1",
     "edge": "^4.0.0",
     "express": "^4.13.3",
+    "forever-monitor": "^1.7.1",
     "formidable": "^1.0.17",
     "moment": "^2.10.6",
     "multer": "^1.1.0",

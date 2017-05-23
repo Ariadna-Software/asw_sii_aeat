@@ -319,6 +319,7 @@ var mensError = function (mens) {
         color: "#C46A69",
         iconSmall: "fa fa-warning shake animated",
     });
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
 }
 
 var mensNormal = function (mens) {
@@ -331,6 +332,7 @@ var mensNormal = function (mens) {
         color: "#4E8975",
         iconSmall: "fa fa-warning shake animated"
     });
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
 }
 
 var mensErrorAjax = function (err) {

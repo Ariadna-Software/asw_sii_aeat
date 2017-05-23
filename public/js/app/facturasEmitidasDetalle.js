@@ -374,7 +374,7 @@ var apiFacturasEmitidasDetalle = {
         self.REG_FE_TD_DTE_NSU_ImportePorArticulos7_14_Otros = ko.observable();
         self.REG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion = ko.observable();
     },
-    aceptar: function () {
+    aceptar: function (done) {
         if (!apiFacturasEmitidasDetalle.datosOk()) return;
         var data = {
             IDEnvioFacturasEmitidas: vm.IDEnvioFacturasEmitidas(),
@@ -534,13 +534,30 @@ var apiFacturasEmitidasDetalle = {
         if (vm.IDEnvioFacturasEmitidas() == 0) verb = "POST";
         apiComunAjax.llamadaGeneral(verb, myconfig.apiUrl + "/api/facturasEmitidas", data, function (err, data) {
             if (err) return;
-            apiFacturasEmitidasDetalle.salir();
+            if (done) {
+                done();
+            } else {
+                apiFacturasEmitidasDetalle.salir();
+            }
         });
     },
     datosOk: function () {
         $('#facturaEmitida-form').validate({
             rules: {
-                txtFechaHoraCreacion: { required: true }
+                txtFechaHoraCreacion: { required: true },
+                txtCAB_Titular_NombreRazon: { required: true },
+                txtCAB_Titular_NIF: { required: true },
+                txtCAB_TipoComunicacion: { required: true },
+                txtREG_PI_Ejercicio: { required: true },
+                txtREG_PI_Periodo: { required: true },
+                txtREG_IDF_IDEF_NIF: { required: true },
+                txtREG_IDF_NumSerieFacturaEmisor: { required: true },
+                txtREG_IDF_FechaExpedicionFacturaEmisor: { required: true },
+                txtREG_FE_TipoFactura: { required: true },
+                txtREG_FE_ClaveRegimenEspecialOTrascendencia: { required: true },
+                txtREG_FE_DescripcionOperacion: { required: true },
+                txtREG_FE_CNT_NombreRazon: { required: true },
+                txtREG_FE_CNT_NIF: { required: true }
             },
             errorPlacement: function (error, element) {
                 error.insertAfter(element.parent());
@@ -552,13 +569,20 @@ var apiFacturasEmitidasDetalle = {
         window.open(sprintf('FacturasEmitidasGeneral.html'), '_self');
     },
     enviar: function () {
+        if (vm.Enviada() == 1) {
+            mensNormal("No se puede enviar una registro ya enviado");
+            return;
+        }
         if (!apiFacturasEmitidasDetalle.datosOk()) return;
-        apiFacturasEmitidasDetalle.aceptar(); // Guardamos el registro antes del envío
-        var verb = "POST";
-        var url = myconfig.apiUrl + "/api/facturasEmitidas/envDb/" + vm.IDEnvioFacturasEmitidas();
-        apiComunAjax.llamadaGeneral(verb, url, null, function (err, data) {
-            if (err) return;
-            window.open(sprintf('FacturasEmitidasGeneral.html'), '_self');
+        apiFacturasEmitidasDetalle.aceptar(function () {
+            // Guardamos el registro antes del envío
+            var verb = "POST";
+            var url = myconfig.apiUrl + "/api/facturasEmitidas/envDb/" + vm.IDEnvioFacturasEmitidas();
+            apiComunAjax.llamadaGeneral(verb, url, null, function (err, data) {
+                if (err) return;
+                window.open(sprintf('FacturasEmitidasGeneral.html'), '_self');
+            });
+
         });
     },
     cargarTitulares: function (id) {
