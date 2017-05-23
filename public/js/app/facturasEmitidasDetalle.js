@@ -374,7 +374,7 @@ var apiFacturasEmitidasDetalle = {
         self.REG_FE_TD_DTE_NSU_ImportePorArticulos7_14_Otros = ko.observable();
         self.REG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion = ko.observable();
     },
-    aceptar: function (done) {
+    aceptar: function (event, done) {
         if (!apiFacturasEmitidasDetalle.datosOk()) return;
         var data = {
             IDEnvioFacturasEmitidas: vm.IDEnvioFacturasEmitidas(),
@@ -574,7 +574,7 @@ var apiFacturasEmitidasDetalle = {
             return;
         }
         if (!apiFacturasEmitidasDetalle.datosOk()) return;
-        apiFacturasEmitidasDetalle.aceptar(function () {
+        apiFacturasEmitidasDetalle.aceptar(null,function () {
             // Guardamos el registro antes del envío
             var verb = "POST";
             var url = myconfig.apiUrl + "/api/facturasEmitidas/envDb/" + vm.IDEnvioFacturasEmitidas();
