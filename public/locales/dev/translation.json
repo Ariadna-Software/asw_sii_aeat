@@ -83,6 +83,7 @@
     },
     "facturasEmitidas": {
         "titulo": "Facturas Emitidas",
+        "tipoBusqueda": "¿Que registros desea ver?",
         "panel": "Facturas Emitidas",
         "nuevo": "Nueva factura emitida",
         "nombre": "Nombre factura emitida",

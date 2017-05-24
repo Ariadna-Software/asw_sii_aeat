@@ -130,7 +130,7 @@
                             <a href="EmisoresGeneral.html">
                                 <i class="fa fa-address-book-o"></i> <span data-i18n="menu.administracion.emisores">Emisores</span>
                             </a>
-                        </li>                                               
+                        </li>
                     </ul>
                 </li>
                 <li id="gestion">
@@ -177,10 +177,20 @@
                             <div class="row">
                                 <form id="facturasEmitidas-form" class="smart-form">
                                     <fieldset>
-                                        <div class="pull-right">
-                                            <button id="btnNuevo" data-i18n="[title]facturasEmitidas.nuevo" class="btn btn-success btn-circle btn-lg">
+                                        <div class="row">
+                                            <section class="col col-md-6">
+                                                <label class="label" data-i18n="facturasEmitidas.tipoBusqueda">Titular:</label>
+                                                <select style="width:100%;" id="cmbTipoBusqueda" name="cmbTipoBusqueda" data-bind="options: optionsTipoBusqueda, optionsText: 'nombre', optionsValue: 'codigo', 
+                                                    value: sTitular, valueAllowUnset: true, selectedOptions: selectedTipoBusqueda, selected2:{}">
+                                                </select>
+                                            </section>
+                                            <section class="col col-md-6">
+                                                <div class="pull-right">
+                                                    <button id="btnNuevo" data-i18n="[title]facturasEmitidas.nuevo" class="btn btn-success btn-circle btn-lg">
                                                 <i class="fa fa-lg fa-plus"></i>
                                             </button>
+                                                </div>
+                                            </section>
                                         </div>
                                     </fieldset>
                                 </form>

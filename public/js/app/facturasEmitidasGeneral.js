@@ -10,6 +10,10 @@ var apiFacturasEmitidasGeneral = {
     ini: function () {
         apiComunGeneral.initPage(usuario);
         apiComunAjax.establecerClave(usuario.apiKey);
+
+        vm = new apiFacturasEmitidasGeneral.datosPagina();
+        ko.applyBindings(vm);
+
         $('#facturasEmitidas').attr('class', 'active');
         $('#facturasEmitidas-form').submit(function () { return false; });
         apiFacturasEmitidasGeneral.iniFacturasEmitidasTabla();
@@ -59,6 +63,13 @@ var apiFacturasEmitidasGeneral = {
         var tabla = $('#dt_facturasEmitidas').DataTable(options);
         tabla.columns(0).visible(false);
     },
+    datosPagina: function () {
+        var self = this;
+        // Tipos de búsqueda
+        self.optionsTiposBusqueda = ko.observableArray([]);
+        self.selectedTiposBusqueda = ko.observableArray([]);
+        self.sTipoBusqueda = ko.observable();
+    },    
     cargarFacturasEmitidas: function () {
         apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/facturasEmitidas", null, function (err, data) {
             if (err) return;
