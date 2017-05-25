@@ -17,8 +17,14 @@ var apiFacturasEmitidasGeneral = {
         $('#facturasEmitidas').attr('class', 'active');
         $('#facturasEmitidas-form').submit(function () { return false; });
         apiFacturasEmitidasGeneral.iniFacturasEmitidasTabla();
-        apiFacturasEmitidasGeneral.cargarFacturasEmitidas();
+        apiFacturasEmitidasGeneral.cargarFacturasEmitidas("1");
         $('#btnNuevo').click(apiFacturasEmitidasGeneral.nuevo);
+
+        $('#cmbTiposBusqueda').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasGeneral.cargarTiposBusqueda();
+        $("#cmbTiposBusqueda").select2().on('change', function (e) {
+            apiFacturasEmitidasGeneral.cambioTiposBusqueda(e.added);
+        });
     },
     iniFacturasEmitidasTabla: function () {
         var options = apiComunGeneral.initTableOptions('dt_facturasEmitidas', usuario.codigoIdioma);
@@ -69,9 +75,24 @@ var apiFacturasEmitidasGeneral = {
         self.optionsTiposBusqueda = ko.observableArray([]);
         self.selectedTiposBusqueda = ko.observableArray([]);
         self.sTipoBusqueda = ko.observable();
-    },    
-    cargarFacturasEmitidas: function () {
-        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/facturasEmitidas", null, function (err, data) {
+    },
+    cargarFacturasEmitidas: function (codigo) {
+        var url = myconfig.apiUrl + "/api/facturasEmitidas/";
+        switch (codigo) {
+            case "1":
+                url = myconfig.apiUrl + "/api/facturasEmitidas/pendientes/";
+                break;
+            case "2":
+                url = myconfig.apiUrl + "/api/facturasEmitidas/enviados-incorrectos/";
+                break;
+            case "3":
+                url = myconfig.apiUrl + "/api/facturasEmitidas/enviados-correctos/";
+                break;
+            case "4":
+                url = myconfig.apiUrl + "/api/facturasEmitidas/";
+                break;
+        }
+        apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
             if (err) return;
             apiFacturasEmitidasGeneral.cargarFacturasEmitidasTabla(data);
         });
@@ -95,6 +116,21 @@ var apiFacturasEmitidasGeneral = {
                 apiFacturasEmitidasGeneral.cargarFacturasEmitidas();
             })
         }, function () { })
+    },
+    cargarTiposBusqueda: function () {
+        options = [
+            { "codigo": 1, "nombre": "Registros pendientes de envío" },
+            { "codigo": 2, "nombre": "Registros enviados incorrectos" },
+            { "codigo": 3, "nombre": "Registros enviados correctos" },
+            { "codigo": 4, "nombre": "Todos los registros" }
+        ];
+        vm.optionsTiposBusqueda(options);
+        $("#cmbTiposBusqueda").val([1]).trigger('change');
+    },
+    cambioTiposBusqueda: function (data) {
+        if (!data) return;
+        var codigo = data.id;
+        apiFacturasEmitidasGeneral.cargarFacturasEmitidas(codigo);
     }
 }
 
