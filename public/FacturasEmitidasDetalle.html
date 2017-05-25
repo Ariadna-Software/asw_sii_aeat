@@ -255,7 +255,12 @@
                                                 <span  data-i18n="facturasEmitidas.CAB_TipoComunicacion">CAB_TipoComunicacion:</span>
                                                 </label>                                                    
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtCAB_TipoComunicacion" name="txtCAB_TipoComunicacion" data-bind="value: CAB_TipoComunicacion">
+                                                    -->
+                                                <select style="width:100%;" id="cmbTipoComunicacion" name="cmbTipoComunicacion" data-bind="options: optionsTipoComunicacion, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sTipoComunicacion, valueAllowUnset: true, selectedOptions: selectedTipoComunicacion, selected2:{}">
+                                                </select>                                                        
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
@@ -299,7 +304,12 @@
                                             <section class="col col-md-1">
                                                 <label class="label" data-i18n="facturasEmitidas.REG_PI_Periodo">REG_PI_Periodo:</label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_PI_Periodo" name="txtREG_PI_Periodo" data-bind="value: REG_PI_Periodo">
+                                                    -->
+                                                <select style="width:100%;" id="cmbPeriodo" name="cmbPeriodo" data-bind="options: optionsPeriodo, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sPeriodo, valueAllowUnset: true, selectedOptions: selectedPeriodo, selected2:{}">
+                                                </select>                                                    
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
@@ -337,7 +347,12 @@
                                             <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.REG_FE_TipoFactura">REG_FE_TipoFactura:</label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_TipoFactura" name="txtREG_FE_TipoFactura" data-bind="value: REG_FE_TipoFactura">
+                                                    -->
+                                                <select style="width:100%;" id="cmbTipoEmitida" name="cmbTipoEmitida" data-bind="options: optionsTipoEmitida, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sTipoEmitida, valueAllowUnset: true, selectedOptions: selectedTipoEmitida, selected2:{}">
+                                                </select>                                                         
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
@@ -349,19 +364,34 @@
                                             <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.REG_FE_ClaveRegimenEspecialOTrascendencia">REG_FE_ClaveRegimenEspecialOTrascendencia:</label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_ClaveRegimenEspecialOTrascendencia" name="txtREG_FE_ClaveRegimenEspecialOTrascendencia" data-bind="value: REG_FE_ClaveRegimenEspecialOTrascendencia">
+                                                    -->
+                                                <select style="width:100%;" id="cmbRegimen" name="cmbRegimen" data-bind="options: optionsRegimen, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sRegimen, valueAllowUnset: true, selectedOptions: selectedRegimen, selected2:{}">
+                                                </select>                                                     
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1">REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1:</label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1" name="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1" data-bind="value: REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1">
+                                                    -->
+                                                <select style="width:100%;" id="cmbRegimen1" name="cmbRegimen1" data-bind="options: optionsRegimen1, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sRegimen1, valueAllowUnset: true, selectedOptions: selectedRegimen1, selected2:{}">
+                                                </select>                                                     
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
                                                 <label class="label" data-i18n="facturasEmitidas.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2">REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2:</label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2" name="txtREG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2" data-bind="value: REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2">
+                                                    -->
+                                                <select style="width:100%;" id="cmbRegimen2" name="cmbRegimen2" data-bind="options: optionsRegimen2, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sRegimen2, valueAllowUnset: true, selectedOptions: selectedRegimen2, selected2:{}">
+                                                </select>                                                         
                                                     </label>
                                             </section>
 

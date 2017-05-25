@@ -35,6 +35,25 @@ var apiFacturasEmitidasDetalle = {
         $("#cmbEmisores").select2().on('change', function (e) {
             apiFacturasEmitidasDetalle.cambioEmisor(e.added);
         });
+        // TipoComunicacion
+        $('#cmbTipoComunicacion').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarTipoComunicacion();
+        // Periodo
+        $('#cmbPeriodo').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarPeriodo();
+        // TipoEmitida
+        $('#cmbTipoEmitida').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarTipoEmitida();
+        // Regimen
+        $('#cmbRegimen').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarRegimen();
+        // Regimen1
+        $('#cmbRegimen1').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarRegimen1();
+        // Regimen2
+        $('#cmbRegimen2').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarRegimen2();
+
         IDEnvioFacturasEmitidas = apiComunGeneral.gup("id");
         if (IDEnvioFacturasEmitidas == 0) {
             vm.IDEnvioFacturasEmitidas(0);
@@ -69,15 +88,18 @@ var apiFacturasEmitidasDetalle = {
         vm.CAB_Titular_NIFRepresentante(data.CAB_Titular_NIFRepresentante);
         vm.CAB_Titular_NIF(data.CAB_Titular_NIF);
         vm.CAB_TipoComunicacion(data.CAB_TipoComunicacion);
+        apiFacturasEmitidasDetalle.cargarTipoComunicacion(data.CAB_TipoComunicacion);
         // Registro
         vm.REG_PI_Ejercicio(data.REG_PI_Ejercicio);
         vm.REG_PI_Periodo(data.REG_PI_Periodo);
+        apiFacturasEmitidasDetalle.cargarPeriodo(data.REG_PI_Periodo);
         vm.REG_IDF_IDEF_NIF(data.REG_IDF_IDEF_NIF);
         vm.REG_IDF_NumSerieFacturaEmisor(data.REG_IDF_NumSerieFacturaEmisor);
         vm.REG_IDF_NumSerieFacturaEmisorResumenFin(data.REG_IDF_NumSerieFacturaEmisorResumenFin);
         if (data.REG_IDF_FechaExpedicionFacturaEmisor)
             vm.REG_IDF_FechaExpedicionFacturaEmisor(moment(data.REG_IDF_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
         vm.REG_FE_TipoFactura(data.REG_FE_TipoFactura);
+        apiFacturasEmitidasDetalle.cargarTipoEmitida(data.REG_FE_TipoFactura);
         vm.REG_FE_TipoRectificativa(data.REG_FE_TipoRectificativa);
         vm.REG_FE_FA_IDFA_NumSerieFacturaEmisor(data.REG_FE_FA_IDFA_NumSerieFacturaEmisor);
         if (data.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor)
@@ -91,8 +113,11 @@ var apiFacturasEmitidasDetalle = {
         if (data.REG_FE_FechaOperacion)
             vm.REG_FE_FechaOperacion(moment(data.REG_FE_FechaOperacion).format(i18n.t('util.date_format')));
         vm.REG_FE_ClaveRegimenEspecialOTrascendencia(data.REG_FE_ClaveRegimenEspecialOTrascendencia);
+        apiFacturasEmitidasDetalle.cargarRegimen(data.REG_FE_ClaveRegimenEspecialOTrascendencia);
         vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1);
+        apiFacturasEmitidasDetalle.cargarRegimen1(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1);
         vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2);
+        apiFacturasEmitidasDetalle.cargarRegimen2(data.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2);
         vm.REG_FE_ImporteTotal(data.REG_FE_ImporteTotal);
         vm.REG_FE_BaseImponibleACoste(data.REG_FE_BaseImponibleACoste);
         vm.REG_FE_DescripcionOperacion(data.REG_FE_DescripcionOperacion);
@@ -373,6 +398,30 @@ var apiFacturasEmitidasDetalle = {
         //
         self.REG_FE_TD_DTE_NSU_ImportePorArticulos7_14_Otros = ko.observable();
         self.REG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion = ko.observable();
+        // TiposComunicacion
+        self.optionsTipoComunicacion = ko.observableArray([]);
+        self.selectedTipoComunicacion = ko.observableArray([]);
+        self.sTipoComunicacion = ko.observable();
+        // Periodo
+        self.optionsPeriodo = ko.observableArray([]);
+        self.selectedPeriodo = ko.observableArray([]);
+        self.sPeriodo = ko.observable();
+        // TipoEmitida
+        self.optionsTipoEmitida = ko.observableArray([]);
+        self.selectedTipoEmitida = ko.observableArray([]);
+        self.sTipoEmitida = ko.observable();
+        // Regimen
+        self.optionsRegimen = ko.observableArray([]);
+        self.selectedRegimen = ko.observableArray([]);
+        self.sRegimen = ko.observable();
+        // Regimen1
+        self.optionsRegimen1 = ko.observableArray([]);
+        self.selectedRegimen1 = ko.observableArray([]);
+        self.sRegimen1 = ko.observable();
+        // Regimen2
+        self.optionsRegimen2 = ko.observableArray([]);
+        self.selectedRegimen2 = ko.observableArray([]);
+        self.sRegimen2 = ko.observable();
     },
     aceptar: function (event, done) {
         if (!apiFacturasEmitidasDetalle.datosOk()) return;
@@ -389,22 +438,22 @@ var apiFacturasEmitidasDetalle = {
             CAB_Titular_NombreRazon: vm.CAB_Titular_NombreRazon(),
             CAB_Titular_NIFRepresentante: vm.CAB_Titular_NIFRepresentante(),
             CAB_Titular_NIF: vm.CAB_Titular_NIF(),
-            CAB_TipoComunicacion: vm.CAB_TipoComunicacion(),
+            CAB_TipoComunicacion: vm.sTipoComunicacion(),
             REG_PI_Ejercicio: vm.REG_PI_Ejercicio(),
-            REG_PI_Periodo: vm.REG_PI_Periodo(),
+            REG_PI_Periodo: vm.sPeriodo(),
             REG_IDF_IDEF_NIF: vm.REG_IDF_IDEF_NIF(),
             REG_IDF_NumSerieFacturaEmisor: vm.REG_IDF_NumSerieFacturaEmisor(),
             REG_IDF_NumSerieFacturaEmisorResumenFin: vm.REG_IDF_NumSerieFacturaEmisorResumenFin(),
-            REG_FE_TipoFactura: vm.REG_FE_TipoFactura(),
+            REG_FE_TipoFactura: vm.sTipoEmitida(),
             REG_FE_TipoRectificativa: vm.REG_FE_TipoRectificativa(),
             REG_FE_FA_IDFA_NumSerieFacturaEmisor: vm.REG_FE_FA_IDFA_NumSerieFacturaEmisor(),
             REG_FE_FR_IDR_NumSerieFacturaEmisor: vm.REG_FE_FR_IDR_NumSerieFacturaEmisor(),
             REG_FE_IR_BaseRectificada: vm.REG_FE_IR_BaseRectificada(),
             REG_FE_IR_CuotaRectificada: vm.REG_FE_IR_CuotaRectificada(),
             REG_FE_IR_CuotaRecargoRectificado: vm.REG_FE_IR_CuotaRecargoRectificado(),
-            REG_FE_ClaveRegimenEspecialOTrascendencia: vm.REG_FE_ClaveRegimenEspecialOTrascendencia(),
-            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1: vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1(),
-            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2: vm.REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2(),
+            REG_FE_ClaveRegimenEspecialOTrascendencia: vm.sRegimen(),
+            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1: vm.Regimen1(),
+            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2: vm.Regimen2(),
             REG_FE_ImporteTotal: vm.REG_FE_ImporteTotal(),
             REG_FE_BaseImponibleACoste: vm.REG_FE_BaseImponibleACoste(),
             REG_FE_DescripcionOperacion: vm.REG_FE_DescripcionOperacion(),
@@ -557,7 +606,11 @@ var apiFacturasEmitidasDetalle = {
                 txtREG_FE_ClaveRegimenEspecialOTrascendencia: { required: true },
                 txtREG_FE_DescripcionOperacion: { required: true },
                 txtREG_FE_CNT_NombreRazon: { required: true },
-                txtREG_FE_CNT_NIF: { required: true }
+                txtREG_FE_CNT_NIF: { required: true },
+                cmbTipoComunicacion: { required: true },
+                cmbPeriodo: { required: true },
+                cmbTipoEmitida: { required: true },
+                cmbRegimen: { required: true }
             },
             errorPlacement: function (error, element) {
                 error.insertAfter(element.parent());
@@ -574,7 +627,7 @@ var apiFacturasEmitidasDetalle = {
             return;
         }
         if (!apiFacturasEmitidasDetalle.datosOk()) return;
-        apiFacturasEmitidasDetalle.aceptar(null,function () {
+        apiFacturasEmitidasDetalle.aceptar(null, function () {
             // Guardamos el registro antes del envío
             var verb = "POST";
             var url = myconfig.apiUrl + "/api/facturasEmitidas/envDb/" + vm.IDEnvioFacturasEmitidas();
@@ -617,6 +670,54 @@ var apiFacturasEmitidasDetalle = {
         llamadaAjax('GET', "/api/emisores/" + emisorId, null, function (err, data) {
             if (err) return;
             vm.REG_IDF_IDEF_NIF(data.nif);
+        });
+    },
+    cargarTipoComunicacion: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/tipoComunicacion", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsTipoComunicacion(data);
+            $("#cmbTipoComunicacion").val([codigo]).trigger('change');
+        });
+    },
+    cargarPeriodo: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/periodo", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsPeriodo(data);
+            $("#cmbPeriodo").val([codigo]).trigger('change');
+        });
+    },
+    cargarTipoEmitida: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/tipoemitida", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsTipoEmitida(data);
+            $("#cmbTipoEmitida").val([codigo]).trigger('change');
+        });
+    },
+    cargarRegimen: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/regimenemitida", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsRegimen(data);
+            $("#cmbRegimen").val([codigo]).trigger('change');
+        });
+    },
+    cargarRegimen1: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/regimenemitida", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsRegimen1(data);
+            $("#cmbRegimen1").val([codigo]).trigger('change');
+        });
+    },
+    cargarRegimen2: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/regimenemitida", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsRegimen2(data);
+            $("#cmbRegimen2").val([codigo]).trigger('change');
         });
     }
 }

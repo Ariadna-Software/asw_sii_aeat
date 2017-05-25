@@ -70,6 +70,10 @@ app.use('/api/correoElectronico', require('./lib/correoElectronico/correoElectro
 app.use('/api/facturasEmitidas', require('./lib/facturasEmitidas/facturasEmitidas.controller'));
 app.use('/api/titulares', require('./lib/titulares/titulares.controller'));
 app.use('/api/emisores', require('./lib/emisores/emisores.controller'));
+app.use('/api/tipoComunicacion', require('./lib/tipoComunicacion/tipoComunicacion.controller'));
+app.use('/api/periodo', require('./lib/periodo/periodo.controller'));
+app.use('/api/tipoemitida', require('./lib/tipoemitida/tipoemitida.controller'));
+app.use('/api/regimenemitida', require('./lib/regimenemitida/regimenemitida.controller'));
 
 // -- start server
 app.listen(config.apiPort);
