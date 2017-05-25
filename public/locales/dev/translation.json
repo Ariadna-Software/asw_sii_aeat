@@ -112,7 +112,7 @@
         "Emisor": "Emisor",
         "XML_Enviado": "XML Enviado",
         "CAB_IDVersionSii": "VRS",
-        "CAB_TipoComunicacion": "Tipo Comunicación",
+        "CAB_TipoComunicacion": "Tipo comunicación",
         "CAB_Titular_NombreRazon": "Nombre / Razón titular",
         "CAB_Titular_NIFRepresentante": "Titular (NIF representante)",
         "CAB_Titular_NIF": "Titular (NIF)",
@@ -162,20 +162,7 @@
         "REG_FE_TD_DTE_SU_EX_BaseImponible": "Base imponible",
         "REG_FE_TD_DTE_SU_NEX_TipoNoExenta": "Tipo No Exenta",
         "REG_FE_TD_DTE_NSU_ImportePorArticulos7_14_Otros": "Importe Art. 7.14",
-        "REG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion": "Importe TAI Regla Loc.",
-        "ayudaTipoComunicacion": [
-            "<strong>OPORTUNIDAD NEGOCIO:</strong><br/>",
-            "Oportunidad de negocio en fase de desarrollo sin petición expresa del cliente<br/>",
-            "<strong>PRECALIFICACIÓN:</strong><br/>",
-            "Oportunidad para obtener la Invitación a una Oferta.<br/>",
-            "<strong>OFERTA:</strong><br/>",
-            "Oferta para un servicio ya conocido o similar a los que actualmente se realizan en la empresa/País/Área de Negocio<br/>",
-            "<strong>OFERTA DE CONTRATO:</strong><br/>",
-            "Oferta adherida a un contrato plurianual que ya se presupuestó anteriormente. Actualización de precios.<br/>",
-            "<strong>OFERTA DIVERSIFICACIÓN:</strong><br/>",
-            "Oferta de un servicio NUEVO, fuera del alcance actual del Grupo que proviene de alguna oportunidad de negocio desarrollada y que tiene solicitud del cliente<br/>"
-        ]        
-        
+        "REG_FE_TD_DTE_NSU_ImporteTAIReglasLocalizacion": "Importe TAI Regla Loc."
     },
     "titulares": {
         "titulo": "Titulares",
