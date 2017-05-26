@@ -443,9 +443,19 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TipoRectificativa">REG_FE_TipoRectificativa:</label>
+                                                <label class="label">
+                                                    <span data-i18n="facturasEmitidas.REG_FE_TipoRectificativa">REG_FE_TipoRectificativa:</span>
+                                                    <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570824" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                    
+                                                </label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_TipoRectificativa" name="txtREG_FE_TipoRectificativa" data-bind="value: REG_FE_TipoRectificativa">
+                                                    -->
+                                                <select style="width:100%;" id="cmbTipoRectificativa" name="cmbTipoRectificativa" data-bind="options: optionsTipoRectificativa, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sTipoRectificativa, valueAllowUnset: true, selectedOptions: selectedTipoRectificativa, selected2:{}">
+                                                </select>                                                        
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
@@ -484,9 +494,19 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_DI_DT_SituacionInmueble">REG_FE_DI_DT_SituacionInmueble:</label>
+                                                <label class="label">
+                                                    <span  data-i18n="facturasEmitidas.REG_FE_DI_DT_SituacionInmueble">REG_FE_DI_DT_SituacionInmueble:</span>
+                                                    <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570826" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                    
+                                                </label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_DI_DT_SituacionInmueble" name="txtREG_FE_DI_DT_SituacionInmueble" data-bind="value: REG_FE_DI_DT_SituacionInmueble">
+                                                    -->
+                                                <select style="width:100%;" id="cmbSituacionInmueble" name="cmbSituacionInmueble" data-bind="options: optionsSituacionInmueble, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sSituacionInmueble, valueAllowUnset: true, selectedOptions: selectedSituacionInmueble, selected2:{}">
+                                                </select>                                                        
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
@@ -502,19 +522,34 @@
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_EmitidaPorTercero">REG_FE_EmitidaPorTercero:</label>
+                                                <label class="label" >
+                                                    <span data-i18n="facturasEmitidas.REG_FE_EmitidaPorTercero">REG_FE_EmitidaPorTercero:</span>
+                                                    <a href="http://ariadna.myariadna.com:18090/display/ASWSII/Emitidas+por+Terceros" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                    
+                                                </label>
                                                 <label class="input">
                                                         <input id="txtREG_FE_EmitidaPorTercero" name="txtREG_FE_EmitidaPorTercero" data-bind="value: REG_FE_EmitidaPorTercero">
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_VariosDestinatarios">REG_FE_VariosDestinatarios:</label>
+                                                <label class="label">
+                                                    <span  data-i18n="facturasEmitidas.REG_FE_VariosDestinatarios">REG_FE_VariosDestinatarios:</span>
+                                                    <a href="http://ariadna.myariadna.com:18090/display/ASWSII/Varios+destinatarios" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                     
+                                                </label>
                                                 <label class="input">
                                                         <input id="txtREG_FE_VariosDestinatarios" name="txtREG_FE_VariosDestinatarios" data-bind="value: REG_FE_VariosDestinatarios">
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_Cupon">REG_FE_Cupon:</label>
+                                                <label class="label">
+                                                    <span  data-i18n="facturasEmitidas.REG_FE_Cupon">REG_FE_Cupon:</span>
+                                                    <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570850" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                    
+                                                </label>
                                                 <label class="input">
                                                         <input id="txtREG_FE_Cupon" name="txtREG_FE_Cupon" data-bind="value: REG_FE_Cupon">
                                                     </label>

@@ -53,6 +53,12 @@ var apiFacturasEmitidasDetalle = {
         // Regimen2
         $('#cmbRegimen2').select2(select2_languages[usuario.codigoIdioma]);
         apiFacturasEmitidasDetalle.cargarRegimen2();
+        // TipoRectificativa
+        $('#cmbTipoRectificativa').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarTipoRectificativa();
+        // SituacionInmueble
+        $('#cmbSituacionInmueble').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarSituacionInmueble();
 
         IDEnvioFacturasEmitidas = apiComunGeneral.gup("id");
         if (IDEnvioFacturasEmitidas == 0) {
@@ -101,6 +107,7 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_FE_TipoFactura(data.REG_FE_TipoFactura);
         apiFacturasEmitidasDetalle.cargarTipoEmitida(data.REG_FE_TipoFactura);
         vm.REG_FE_TipoRectificativa(data.REG_FE_TipoRectificativa);
+        apiFacturasEmitidasDetalle.cargarTipoRectificativa(data.REG_FE_TipoRectificativa);
         vm.REG_FE_FA_IDFA_NumSerieFacturaEmisor(data.REG_FE_FA_IDFA_NumSerieFacturaEmisor);
         if (data.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor)
             vm.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor(moment(data.REG_FE_FA_IDFA_FechaExpedicionFacturaEmisor).format(i18n.t('util.date_format')));
@@ -122,6 +129,7 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_FE_BaseImponibleACoste(data.REG_FE_BaseImponibleACoste);
         vm.REG_FE_DescripcionOperacion(data.REG_FE_DescripcionOperacion);
         vm.REG_FE_DI_DT_SituacionInmueble(data.REG_FE_DI_DT_SituacionInmueble);
+        apiFacturasEmitidasDetalle.cargarSituacionInmueble(data.REG_FE_DI_DT_SituacionInmueble);
         vm.REG_FE_DI_DT_ReferenciaCatastral(data.REG_FE_DI_DT_ReferenciaCatastral);
         vm.REG_FE_ImporteTransmisionSujetoAIVA(data.REG_FE_ImporteTransmisionSujetoAIVA);
         vm.REG_FE_EmitidaPorTercero(data.REG_FE_EmitidaPorTercero);
@@ -422,6 +430,14 @@ var apiFacturasEmitidasDetalle = {
         self.optionsRegimen2 = ko.observableArray([]);
         self.selectedRegimen2 = ko.observableArray([]);
         self.sRegimen2 = ko.observable();
+        // TipoRectificativa
+        self.optionsTipoRectificativa = ko.observableArray([]);
+        self.selectedTipoRectificativa = ko.observableArray([]);
+        self.sTipoRectificativa = ko.observable();
+        // SituacionInmueble
+        self.optionsSituacionInmueble = ko.observableArray([]);
+        self.selectedSituacionInmueble = ko.observableArray([]);
+        self.sSituacionInmueble = ko.observable();        
     },
     aceptar: function (event, done) {
         if (!apiFacturasEmitidasDetalle.datosOk()) return;
@@ -445,7 +461,7 @@ var apiFacturasEmitidasDetalle = {
             REG_IDF_NumSerieFacturaEmisor: vm.REG_IDF_NumSerieFacturaEmisor(),
             REG_IDF_NumSerieFacturaEmisorResumenFin: vm.REG_IDF_NumSerieFacturaEmisorResumenFin(),
             REG_FE_TipoFactura: vm.sTipoEmitida(),
-            REG_FE_TipoRectificativa: vm.REG_FE_TipoRectificativa(),
+            REG_FE_TipoRectificativa: vm.sTipoRectificativa(),
             REG_FE_FA_IDFA_NumSerieFacturaEmisor: vm.REG_FE_FA_IDFA_NumSerieFacturaEmisor(),
             REG_FE_FR_IDR_NumSerieFacturaEmisor: vm.REG_FE_FR_IDR_NumSerieFacturaEmisor(),
             REG_FE_IR_BaseRectificada: vm.REG_FE_IR_BaseRectificada(),
@@ -457,7 +473,7 @@ var apiFacturasEmitidasDetalle = {
             REG_FE_ImporteTotal: vm.REG_FE_ImporteTotal(),
             REG_FE_BaseImponibleACoste: vm.REG_FE_BaseImponibleACoste(),
             REG_FE_DescripcionOperacion: vm.REG_FE_DescripcionOperacion(),
-            REG_FE_DI_DT_SituacionInmueble: vm.REG_FE_DI_DT_SituacionInmueble(),
+            REG_FE_DI_DT_SituacionInmueble: vm.sSituacionInmueble(),
             REG_FE_DI_DT_ReferenciaCatastral: vm.REG_FE_DI_DT_ReferenciaCatastral(),
             REG_FE_ImporteTransmisionSujetoAIVA: vm.REG_FE_ImporteTransmisionSujetoAIVA(),
             REG_FE_EmitidaPorTercero: vm.REG_FE_EmitidaPorTercero(),
@@ -718,6 +734,22 @@ var apiFacturasEmitidasDetalle = {
             //var options = [{ codigo: "", nombre: " " }].concat(data);
             vm.optionsRegimen2(data);
             $("#cmbRegimen2").val([codigo]).trigger('change');
+        });
+    },
+    cargarTipoRectificativa: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/tiporectificativa", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsTipoRectificativa(data);
+            $("#cmbTipoRectificativa").val([codigo]).trigger('change');
+        });
+    },
+    cargarSituacionInmueble: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/situacionInmueble", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsSituacionInmueble(data);
+            $("#cmbSituacionInmueble").val([codigo]).trigger('change');
         });
     }
 }

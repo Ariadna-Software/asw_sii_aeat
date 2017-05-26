@@ -836,6 +836,23 @@ insert  into `regimenemitida`(`codigo`,`nombre`) values ('14',NULL);
 insert  into `regimenemitida`(`codigo`,`nombre`) values ('15',NULL);
 insert  into `regimenemitida`(`codigo`,`nombre`) values ('16',NULL);
 
+/*Table structure for table `situacioninmueble` */
+
+DROP TABLE IF EXISTS `situacioninmueble`;
+
+CREATE TABLE `situacioninmueble` (
+  `codigo` varchar(255) NOT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `situacioninmueble` */
+
+insert  into `situacioninmueble`(`codigo`,`nombre`) values ('1',NULL);
+insert  into `situacioninmueble`(`codigo`,`nombre`) values ('2',NULL);
+insert  into `situacioninmueble`(`codigo`,`nombre`) values ('3',NULL);
+insert  into `situacioninmueble`(`codigo`,`nombre`) values ('4',NULL);
+
 /*Table structure for table `tipo_comunicacion` */
 
 DROP TABLE IF EXISTS `tipo_comunicacion`;
@@ -873,6 +890,21 @@ insert  into `tipoemitida`(`codigo`,`nombre`) values ('R2',NULL);
 insert  into `tipoemitida`(`codigo`,`nombre`) values ('R3',NULL);
 insert  into `tipoemitida`(`codigo`,`nombre`) values ('R4',NULL);
 insert  into `tipoemitida`(`codigo`,`nombre`) values ('R5',NULL);
+
+/*Table structure for table `tiporectificativa` */
+
+DROP TABLE IF EXISTS `tiporectificativa`;
+
+CREATE TABLE `tiporectificativa` (
+  `codigo` varchar(255) NOT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `tiporectificativa` */
+
+insert  into `tiporectificativa`(`codigo`,`nombre`) values ('I',NULL);
+insert  into `tiporectificativa`(`codigo`,`nombre`) values ('S',NULL);
 
 /*Table structure for table `titulares` */
 
@@ -912,7 +944,7 @@ CREATE TABLE `usuarios` (
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values (1,1,'Administrador','es','admin','admin','2017-05-25 16:43:48','2017-05-25 21:43:48','Chb3F',1);
+insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values (1,1,'Administrador','es','admin','admin','2017-05-26 11:48:15','2017-05-26 16:48:15','Y2Bxb',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

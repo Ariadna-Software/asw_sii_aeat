@@ -74,6 +74,8 @@ app.use('/api/tipoComunicacion', require('./lib/tipoComunicacion/tipoComunicacio
 app.use('/api/periodo', require('./lib/periodo/periodo.controller'));
 app.use('/api/tipoemitida', require('./lib/tipoemitida/tipoemitida.controller'));
 app.use('/api/regimenemitida', require('./lib/regimenemitida/regimenemitida.controller'));
+app.use('/api/tiporectificativa', require('./lib/tiporectificativa/tiporectificativa.controller'));
+app.use('/api/situacioninmueble', require('./lib/situacioninmueble/situacioninmueble.controller'));
 
 // -- start server
 app.listen(config.apiPort);
