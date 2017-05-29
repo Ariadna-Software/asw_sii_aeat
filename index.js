@@ -76,6 +76,8 @@ app.use('/api/tipoemitida', require('./lib/tipoemitida/tipoemitida.controller'))
 app.use('/api/regimenemitida', require('./lib/regimenemitida/regimenemitida.controller'));
 app.use('/api/tiporectificativa', require('./lib/tiporectificativa/tiporectificativa.controller'));
 app.use('/api/situacioninmueble', require('./lib/situacioninmueble/situacioninmueble.controller'));
+app.use('/api/causaexencion', require('./lib/causaexencion/causaexencion.controller'));
+app.use('/api/tiponoexenta', require('./lib/tiponoexenta/tiponoexenta.controller'));
 
 // -- start server
 app.listen(config.apiPort);

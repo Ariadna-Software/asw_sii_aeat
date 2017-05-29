@@ -160,7 +160,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-title txt-color-blueDark">
-                        <i class="fa-fw fa fa-file-o"></i> <span data-i18n="facturasEmitidas.titulo">Facturas Emitidas</span> <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
+                        <i class="fa-fw fa fa-file-o"></i> <span data-i18n="facturasEmitidas.titulo">Facturas Emitidas</span>                        <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
                     </h1>
                 </div>
                 <!-- end col -->
@@ -256,7 +256,7 @@
                                                     <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570804" target="_blank">
                                                         <i class='fa fa-lg fa-info-circle'></i>
                                                     </a>                                                
-                                                </label>                                                    
+                                                </label>
                                                 <label class="input">
                                                     <!--
                                                         "value: CAB_TipoComunicacion"
@@ -522,7 +522,7 @@
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
-                                                <label class="label" >
+                                                <label class="label">
                                                     <span data-i18n="facturasEmitidas.REG_FE_EmitidaPorTercero">REG_FE_EmitidaPorTercero:</span>
                                                     <a href="http://ariadna.myariadna.com:18090/display/ASWSII/Emitidas+por+Terceros" target="_blank">
                                                         <i class='fa fa-lg fa-info-circle'></i>
@@ -602,9 +602,19 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_SU_EX_CausaExencion">REG_FE_TD_DF_SU_EX_CausaExencion:</label>
+                                                <label class="label">
+                                                    <span  data-i18n="facturasEmitidas.REG_FE_TD_DF_SU_EX_CausaExencion"> REG_FE_TD_DF_SU_EX_CausaExencion </span>
+                                                    <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570857" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                     
+                                                </label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_TD_DF_SU_EX_CausaExencion" name="txtREG_FE_TD_DF_SU_EX_CausaExencion" data-bind="value: REG_FE_TD_DF_SU_EX_CausaExencion">
+                                                    -->
+                                                <select style="width:100%;" id="cmbCausaExencion" name="cmbCausaExencion" data-bind="options: optionsCausaExencion, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sCausaExencion, valueAllowUnset: true, selectedOptions: selectedCausaExencion, selected2:{}">
+                                                </select>                                                         
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
@@ -619,9 +629,19 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DF_SU_NEX_TipoNoExenta">REG_FE_TD_DF_SU_NEX_TipoNoExenta:</label>
+                                                <label class="label" >
+                                                    <span data-i18n="facturasEmitidas.REG_FE_TD_DF_SU_NEX_TipoNoExenta">REG_FE_TD_DF_SU_NEX_TipoNoExenta:</span>
+                                                    <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570828" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                     
+                                                </label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_TD_DF_SU_NEX_TipoNoExenta" name="txtREG_FE_TD_DF_SU_NEX_TipoNoExenta" data-bind="value: REG_FE_TD_DF_SU_NEX_TipoNoExenta">
+                                                    -->
+                                                <select style="width:100%;" id="cmbTipoNoExenta" name="cmbTipoNoExenta" data-bind="options: optionsTipoNoExenta, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sTipoNoExenta, valueAllowUnset: true, selectedOptions: selectedTipoNoExenta, selected2:{}">
+                                                </select>                                                         
                                                     </label>
                                             </section>
                                             <section class="col col-md-10">
@@ -826,13 +846,25 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DTS_SU_EX_CausaExencion">REG_FE_TD_DTS_SU_EX_CausaExencion:</label>
+                                                <label class="label">
+                                                    <span data-i18n="facturasEmitidas.REG_FE_TD_DTS_SU_EX_CausaExencion">REG_FE_TD_DTS_SU_EX_CausaExencion:  </span>
+                                                    <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570857" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                    
+                                                </label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_TD_DTS_SU_EX_CausaExencion" name="txtREG_FE_TD_DTS_SU_EX_CausaExencion" data-bind="value: REG_FE_TD_DTS_SU_EX_CausaExencion">
+                                                    -->
+                                                <select style="width:100%;" id="cmbCausaExencion1" name="cmbCausaExencion1" data-bind="options: optionsCausaExencion1, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sCausaExencion1, valueAllowUnset: true, selectedOptions: selectedCausaExencion1, selected2:{}">
+                                                </select>                                                         
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DTS_SU_EX_BaseImponible">REG_FE_TD_DTS_SU_EX_BaseImponible:</label>
+                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DTS_SU_EX_BaseImponible">
+                                                    REG_FE_TD_DTS_SU_EX_BaseImponible:
+                                                </label>
                                                 <label class="input">
                                                         <input id="txtREG_FE_TD_DTS_SU_EX_BaseImponible" name="txtREG_FE_TD_DTS_SU_EX_BaseImponible" data-bind="value: REG_FE_TD_DTS_SU_EX_BaseImponible">
                                                     </label>
@@ -843,9 +875,19 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DTS_SU_NEX_TipoNoExenta">REG_FE_TD_DTS_SU_NEX_TipoNoExenta:</label>
+                                                <label class="label">
+                                                    <span data-i18n="facturasEmitidas.REG_FE_TD_DTS_SU_NEX_TipoNoExenta">REG_FE_TD_DTS_SU_NEX_TipoNoExenta:</span>
+                                                    <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570828" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                     
+                                                </label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_TD_DTS_SU_NEX_TipoNoExenta" name="txtREG_FE_TD_DTS_SU_NEX_TipoNoExenta" data-bind="value: REG_FE_TD_DTS_SU_NEX_TipoNoExenta">
+                                                    -->
+                                                    <select style="width:100%;" id="cmbTipoNoExenta1" name="cmbTipoNoExenta1" data-bind="options: optionsTipoNoExenta1, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                        value: sTipoNoExenta1, valueAllowUnset: true, selectedOptions: selectedTipoNoExenta1, selected2:{}">
+                                                    </select>                                                         
                                                     </label>
                                             </section>
                                             <section class="col col-md-10">
@@ -989,9 +1031,19 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DTE_SU_EX_CausaExencion">REG_FE_TD_DTE_SU_EX_CausaExencion:</label>
+                                                <label class="label">
+                                                    <span data-i18n="facturasEmitidas.REG_FE_TD_DTE_SU_EX_CausaExencion">REG_FE_TD_DTE_SU_EX_CausaExencion:</span>
+                                                    <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570857" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                    
+                                                </label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_TD_DTE_SU_EX_CausaExencion" name="txtREG_FE_TD_DTE_SU_EX_CausaExencion" data-bind="value: REG_FE_TD_DTE_SU_EX_CausaExencion">
+                                                    -->
+                                                <select style="width:100%;" id="cmbCausaExencion2" name="cmbCausaExencion2" data-bind="options: optionsCausaExencion2, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                    value: sCausaExencion2, valueAllowUnset: true, selectedOptions: selectedCausaExencion2, selected2:{}">
+                                                </select>                                                        
                                                     </label>
                                             </section>
                                             <section class="col col-md-2">
@@ -1006,9 +1058,19 @@
                                         </div>
                                         <div class="row">
                                             <section class="col col-md-2">
-                                                <label class="label" data-i18n="facturasEmitidas.REG_FE_TD_DTE_SU_NEX_TipoNoExenta">REG_FE_TD_DTE_SU_NEX_TipoNoExenta:</label>
+                                                <label class="label">
+                                                    <span data-i18n="facturasEmitidas.REG_FE_TD_DTE_SU_NEX_TipoNoExenta">REG_FE_TD_DTE_SU_NEX_TipoNoExenta:</span>
+                                                    <a href="http://ariadna.myariadna.com:18090/pages/viewpage.action?pageId=5570828" target="_blank">
+                                                        <i class='fa fa-lg fa-info-circle'></i>
+                                                    </a>                                                     
+                                                </label>
                                                 <label class="input">
+                                                    <!--
                                                         <input id="txtREG_FE_TD_DTE_SU_NEX_TipoNoExenta" name="txtREG_FE_TD_DTE_SU_NEX_TipoNoExenta" data-bind="value: REG_FE_TD_DTE_SU_NEX_TipoNoExenta">
+                                                     -->                   
+                                                    <select style="width:100%;" id="cmbTipoNoExenta2" name="cmbTipoNoExenta2" data-bind="options: optionsTipoNoExenta2, optionsText: 'codigo', optionsValue: 'codigo', 
+                                                        value: sTipoNoExenta2, valueAllowUnset: true, selectedOptions: selectedTipoNoExenta2, selected2:{}">
+                                                    </select>                                                         
                                                     </label>
                                             </section>
                                             <section class="col col-md-10">

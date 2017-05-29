@@ -59,6 +59,25 @@ var apiFacturasEmitidasDetalle = {
         // SituacionInmueble
         $('#cmbSituacionInmueble').select2(select2_languages[usuario.codigoIdioma]);
         apiFacturasEmitidasDetalle.cargarSituacionInmueble();
+        // CausaExencion
+        $('#cmbCausaExencion').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarCausaExencion();
+        // CausaExencion1
+        $('#cmbCausaExencion1').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarCausaExencion1();
+        // CausaExencion2
+        $('#cmbCausaExencion2').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarCausaExencion2();
+
+        // TipoNoExenta
+        $('#cmbTipoNoExenta').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarTipoNoExenta();
+        // TipoNoExenta1
+        $('#cmbTipoNoExenta1').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarTipoNoExenta1();
+        // TipoNoExenta2
+        $('#cmbTipoNoExenta2').select2(select2_languages[usuario.codigoIdioma]);
+        apiFacturasEmitidasDetalle.cargarTipoNoExenta2();
 
         IDEnvioFacturasEmitidas = apiComunGeneral.gup("id");
         if (IDEnvioFacturasEmitidas == 0) {
@@ -142,8 +161,10 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_FE_CNT_IDOtro_IDType(data.REG_FE_CNT_IDOtro_IDType);
         vm.REG_FE_CNT_IDOtro_ID(data.REG_FE_CNT_IDOtro_ID);
         vm.REG_FE_TD_DF_SU_EX_CausaExencion(data.REG_FE_TD_DF_SU_EX_CausaExencion);
+        apiFacturasEmitidasDetalle.cargarCausaExencion(data.REG_FE_TD_DF_SU_EX_CausaExencion);
         vm.REG_FE_TD_DF_SU_EX_BaseImponible(data.REG_FE_TD_DF_SU_EX_BaseImponible);
         vm.REG_FE_TD_DF_SU_NEX_TipoNoExenta(data.REG_FE_TD_DF_SU_NEX_TipoNoExenta);
+        apiFacturasEmitidasDetalle.cargarTipoNoExenta(data.REG_FE_TD_DF_SU_NEX_TipoNoExenta);
         // IVA 1
         vm.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo(data.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo);
         vm.REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible(data.REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible);
@@ -184,8 +205,10 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros(data.REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros);
         vm.REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion(data.REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion);
         vm.REG_FE_TD_DTS_SU_EX_CausaExencion(data.REG_FE_TD_DTS_SU_EX_CausaExencion);
+        apiFacturasEmitidasDetalle.cargarCausaExencion1(data.REG_FE_TD_DTS_SU_EX_CausaExencion);
         vm.REG_FE_TD_DTS_SU_EX_BaseImponible(data.REG_FE_TD_DTS_SU_EX_BaseImponible);
         vm.REG_FE_TD_DTS_SU_NEX_TipoNoExenta(data.REG_FE_TD_DTS_SU_NEX_TipoNoExenta);
+        apiFacturasEmitidasDetalle.cargarTipoNoExenta1(data.REG_FE_TD_DTS_SU_NEX_TipoNoExenta);
         // IVA 1
         vm.REG_FE_TD_DTS_SU_NEX_DI_DT1_TipoImpositivo(data.REG_FE_TD_DTS_SU_NEX_DI_DT1_TipoImpositivo);
         vm.REG_FE_TD_DTS_SU_NEX_DI_DT1_BaseImponible(data.REG_FE_TD_DTS_SU_NEX_DI_DT1_BaseImponible);
@@ -214,8 +237,10 @@ var apiFacturasEmitidasDetalle = {
         vm.REG_FE_TD_DTS_NSU_ImportePorArticulos7_14_Otros(data.REG_FE_TD_DTS_NSU_ImportePorArticulos7_14_Otros);
         vm.REG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion(data.REG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion);
         vm.REG_FE_TD_DTE_SU_EX_CausaExencion(data.REG_FE_TD_DTE_SU_EX_CausaExencion);
+        apiFacturasEmitidasDetalle.cargarCausaExencion2(data.REG_FE_TD_DTE_SU_EX_CausaExencion);
         vm.REG_FE_TD_DTE_SU_EX_BaseImponible(data.REG_FE_TD_DTE_SU_EX_BaseImponible);
         vm.REG_FE_TD_DTE_SU_NEX_TipoNoExenta(data.REG_FE_TD_DTE_SU_NEX_TipoNoExenta);
+        apiFacturasEmitidasDetalle.cargarTipoNoExenta2(data.REG_FE_TD_DTE_SU_NEX_TipoNoExenta);
         // IVA 1
         vm.REG_FE_TD_DTE_SU_NEX_DI_DT1_TipoImpositivo(data.REG_FE_TD_DTE_SU_NEX_DI_DT1_TipoImpositivo);
         vm.REG_FE_TD_DTE_SU_NEX_DI_DT1_BaseImponible(data.REG_FE_TD_DTE_SU_NEX_DI_DT1_BaseImponible);
@@ -437,7 +462,34 @@ var apiFacturasEmitidasDetalle = {
         // SituacionInmueble
         self.optionsSituacionInmueble = ko.observableArray([]);
         self.selectedSituacionInmueble = ko.observableArray([]);
-        self.sSituacionInmueble = ko.observable();        
+        self.sSituacionInmueble = ko.observable();
+
+        // CausaExencion
+        self.optionsCausaExencion = ko.observableArray([]);
+        self.selectedCausaExencion = ko.observableArray([]);
+        self.sCausaExencion = ko.observable();
+        // CausaExencion1
+        self.optionsCausaExencion1 = ko.observableArray([]);
+        self.selectedCausaExencion1 = ko.observableArray([]);
+        self.sCausaExencion1 = ko.observable();
+        // CausaExencion2
+        self.optionsCausaExencion2 = ko.observableArray([]);
+        self.selectedCausaExencion2 = ko.observableArray([]);
+        self.sCausaExencion2 = ko.observable();
+        
+        // TipoNoExenta
+        self.optionsTipoNoExenta = ko.observableArray([]);
+        self.selectedTipoNoExenta = ko.observableArray([]);
+        self.sTipoNoExenta = ko.observable();
+        // TipoNoExenta1
+        self.optionsTipoNoExenta1 = ko.observableArray([]);
+        self.selectedTipoNoExenta1 = ko.observableArray([]);
+        self.sTipoNoExenta1 = ko.observable();
+        // TipoNoExenta2
+        self.optionsTipoNoExenta2 = ko.observableArray([]);
+        self.selectedTipoNoExenta2 = ko.observableArray([]);
+        self.sTipoNoExenta2 = ko.observable();
+        
     },
     aceptar: function (event, done) {
         if (!apiFacturasEmitidasDetalle.datosOk()) return;
@@ -468,8 +520,8 @@ var apiFacturasEmitidasDetalle = {
             REG_FE_IR_CuotaRectificada: vm.REG_FE_IR_CuotaRectificada(),
             REG_FE_IR_CuotaRecargoRectificado: vm.REG_FE_IR_CuotaRecargoRectificado(),
             REG_FE_ClaveRegimenEspecialOTrascendencia: vm.sRegimen(),
-            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1: vm.Regimen1(),
-            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2: vm.Regimen2(),
+            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional1: vm.sRegimen1(),
+            REG_FE_ClaveRegimenEspecialOTrascendenciaAdicional2: vm.sRegimen2(),
             REG_FE_ImporteTotal: vm.REG_FE_ImporteTotal(),
             REG_FE_BaseImponibleACoste: vm.REG_FE_BaseImponibleACoste(),
             REG_FE_DescripcionOperacion: vm.REG_FE_DescripcionOperacion(),
@@ -485,9 +537,9 @@ var apiFacturasEmitidasDetalle = {
             REG_FE_CNT_IDOtro_CodigoPais: vm.REG_FE_CNT_IDOtro_CodigoPais(),
             REG_FE_CNT_IDOtro_IDType: vm.REG_FE_CNT_IDOtro_IDType(),
             REG_FE_CNT_IDOtro_ID: vm.REG_FE_CNT_IDOtro_ID(),
-            REG_FE_TD_DF_SU_EX_CausaExencion: vm.REG_FE_TD_DF_SU_EX_CausaExencion(),
+            REG_FE_TD_DF_SU_EX_CausaExencion: vm.sCausaExencion(),
             REG_FE_TD_DF_SU_EX_BaseImponible: vm.REG_FE_TD_DF_SU_EX_BaseImponible(),
-            REG_FE_TD_DF_SU_NEX_TipoNoExenta: vm.REG_FE_TD_DF_SU_NEX_TipoNoExenta(),
+            REG_FE_TD_DF_SU_NEX_TipoNoExenta: vm.sTipoNoExenta(),
 
             REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo: vm.REG_FE_TD_DF_SU_NEX_DI_DT1_TipoImpositivo(),
             REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible: vm.REG_FE_TD_DF_SU_NEX_DI_DT1_BaseImponible(),
@@ -527,9 +579,9 @@ var apiFacturasEmitidasDetalle = {
 
             REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros: vm.REG_FE_TD_DF_NSU_ImportePorArticulos7_14_Otros(),
             REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion: vm.REG_FE_TD_DF_NSU_ImporteTAIReglasLocalizacion(),
-            REG_FE_TD_DTS_SU_EX_CausaExencion: vm.REG_FE_TD_DTS_SU_EX_CausaExencion(),
+            REG_FE_TD_DTS_SU_EX_CausaExencion: vm.sCausaExencion1(),
             REG_FE_TD_DTS_SU_EX_BaseImponible: vm.REG_FE_TD_DTS_SU_EX_BaseImponible(),
-            REG_FE_TD_DTS_SU_NEX_TipoNoExenta: vm.REG_FE_TD_DTS_SU_NEX_TipoNoExenta(),
+            REG_FE_TD_DTS_SU_NEX_TipoNoExenta: vm.sTipoNoExenta1(),
 
             REG_FE_TD_DTS_SU_NEX_DI_DT1_TipoImpositivo: vm.REG_FE_TD_DTS_SU_NEX_DI_DT1_TipoImpositivo(),
             REG_FE_TD_DTS_SU_NEX_DI_DT1_BaseImponible: vm.REG_FE_TD_DTS_SU_NEX_DI_DT1_BaseImponible(),
@@ -557,9 +609,9 @@ var apiFacturasEmitidasDetalle = {
 
             REG_FE_TD_DTS_NSU_ImportePorArticulos7_14_Otros: vm.REG_FE_TD_DTS_NSU_ImportePorArticulos7_14_Otros(),
             REG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion: vm.REG_FE_TD_DTS_NSU_ImporteTAIReglasLocalizacion(),
-            REG_FE_TD_DTE_SU_EX_CausaExencion: vm.REG_FE_TD_DTE_SU_EX_CausaExencion(),
+            REG_FE_TD_DTE_SU_EX_CausaExencion: vm.sCausaExencion2(),
             REG_FE_TD_DTE_SU_EX_BaseImponible: vm.REG_FE_TD_DTE_SU_EX_BaseImponible(),
-            REG_FE_TD_DTE_SU_NEX_TipoNoExenta: vm.REG_FE_TD_DTE_SU_NEX_TipoNoExenta(),
+            REG_FE_TD_DTE_SU_NEX_TipoNoExenta: vm.sTipoNoExenta2(),
 
             REG_FE_TD_DTE_SU_NEX_DI_DT1_TipoImpositivo: vm.REG_FE_TD_DTE_SU_NEX_DI_DT1_TipoImpositivo(),
             REG_FE_TD_DTE_SU_NEX_DI_DT1_BaseImponible: vm.REG_FE_TD_DTE_SU_NEX_DI_DT1_BaseImponible(),
@@ -750,6 +802,54 @@ var apiFacturasEmitidasDetalle = {
             //var options = [{ codigo: "", nombre: " " }].concat(data);
             vm.optionsSituacionInmueble(data);
             $("#cmbSituacionInmueble").val([codigo]).trigger('change');
+        });
+    },
+    cargarCausaExencion: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/causaexencion", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsCausaExencion(data);
+            $("#cmbCausaExencion").val([codigo]).trigger('change');
+        });
+    },
+    cargarCausaExencion1: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/causaexencion", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsCausaExencion1(data);
+            $("#cmbCausaExencion1").val([codigo]).trigger('change');
+        });
+    },
+    cargarCausaExencion2: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/causaexencion", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsCausaExencion2(data);
+            $("#cmbCausaExencion2").val([codigo]).trigger('change');
+        });
+    },
+    cargarTipoNoExenta: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/tiponoexenta", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsTipoNoExenta(data);
+            $("#cmbTipoNoExenta").val([codigo]).trigger('change');
+        });
+    },
+    cargarTipoNoExenta1: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/tiponoexenta", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsTipoNoExenta1(data);
+            $("#cmbTipoNoExenta1").val([codigo]).trigger('change');
+        });
+    },
+    cargarTipoNoExenta2: function (codigo) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/tiponoexenta", null, function (err, data) {
+            if (err) return;
+            //var options = [{ codigo: "", nombre: " " }].concat(data);
+            vm.optionsTipoNoExenta2(data);
+            $("#cmbTipoNoExenta2").val([codigo]).trigger('change');
         });
     }
 }
