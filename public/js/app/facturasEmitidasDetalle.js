@@ -108,7 +108,7 @@ var apiFacturasEmitidasDetalle = {
         vm.Resultado(data.Resultado);
         vm.CSV(data.CSV);
         vm.Mensaje(data.Mensaje);
-        vm.XML_Enviado(data.XML_Enviado);
+        vm.XML_Enviado(vkbeautify.xml(data.XML_Enviado));
         // Cabecera
         vm.CAB_IDVersionSii(data.CAB_IDVersionSii);
         vm.CAB_Titular_NombreRazon(data.CAB_Titular_NombreRazon);

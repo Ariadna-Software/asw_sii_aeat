@@ -225,16 +225,10 @@
                                                         <input id="txtCSV" name="txtCSV" data-bind="value: CSV" disabled>
                                                     </label>
                                             </section>
-                                            <section class="col col-md-5">
+                                            <section class="col col-md-10">
                                                 <label class="label" data-i18n="facturasEmitidas.Mensaje" style="color:blue;">Mensaje:</label>
                                                 <label class="input">
                                                         <input id="txtMensaje" name="txtMensaje" data-bind="value: Mensaje" disabled>
-                                                    </label>
-                                            </section>
-                                            <section class="col col-md-5">
-                                                <label class="label" data-i18n="facturasEmitidas.XML_Enviado" style="color:blue;">XML_Enviado:</label>
-                                                <label class="input">
-                                                        <input id="txtXML_Enviado" name="txtXML_Enviado" data-bind="value: XML_Enviado" disabled>
                                                     </label>
                                             </section>
                                         </div>
@@ -1222,6 +1216,16 @@
                                             </button>
                                         </div>
                                     </fieldset>
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-md-12">
+                                                <label class="label" data-i18n="facturasEmitidas.XML_Enviado" style="color:blue;">XML_Enviado:</label>
+                                                <label class="textarea textarea-resizable">
+                                                    <textarea id="txtXML_Enviado" rows="10" class="custom-scroll" data-bind="value:XML_Enviado" disabled></textarea>
+                                                </label>                                                
+                                            </section>                                            
+                                        </div>
+                                    </fieldset>
                                 </form>
                             </div>
                         </div>
@@ -1267,6 +1271,8 @@
     <script src="js/plugin/datatables/dataTables.bootstrap.min.js"></script>
     <script src="js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
     <script src="js/plugin/select2/select2.min.js"></script>
+    <!-- XML -->
+    <script src="js/vkbeautify.0.99.00.beta.js"></script>
     <!-- Idiomas -->
     <script src="js/libs/i18next/i18next-1.9.0.js"></script>
     <script src="locales/validator-languages.js"></script>
