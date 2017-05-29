@@ -67,7 +67,10 @@ app.use('/api', router);
 app.use('/api/grupos-usuarios', require('./lib/grupos-usuarios/grupos-usuarios.controller'));
 app.use('/api/usuarios', require('./lib/usuarios/usuarios.controller'));
 app.use('/api/correoElectronico', require('./lib/correoElectronico/correoElectronico.controller'));
+
 app.use('/api/facturasEmitidas', require('./lib/facturasEmitidas/facturasEmitidas.controller'));
+app.use('/api/facturasRecibidas', require('./lib/facturasRecibidas/facturasRecibidas.controller'));
+
 app.use('/api/titulares', require('./lib/titulares/titulares.controller'));
 app.use('/api/emisores', require('./lib/emisores/emisores.controller'));
 app.use('/api/tipoComunicacion', require('./lib/tipoComunicacion/tipoComunicacion.controller'));
@@ -93,8 +96,8 @@ console.log(' PORT: ' + config.apiPort);
 console.log("-------------------------------------------");
 
 // -- arranque de los demonios
-// - Facturas emitidas
 
+// - Facturas emitidas
 var childFacEnviadas = new (forever.Monitor)('./lib/demonios/auto_facEnviadas.js', {
     max: 3,
     args: []
@@ -106,3 +109,16 @@ childFacEnviadas.on('exit', function () {
 
 console.log("-- DEMONIO FACENVIADAS ARRANCADO --");
 childFacEnviadas.start();
+
+// - Facturas recibidas
+var childFacRecibidas = new (forever.Monitor)('./lib/demonios/auto_facRecibidas.js', {
+    max: 3,
+    args: []
+});
+
+childFacRecibidas.on('exit', function () {
+    console.log('Demonio facRecibidas sin arrancar tras 3 intentos');
+});
+
+console.log("-- DEMONIO FACRECIBIDAS ARRANCADO --");
+childFacRecibidas.start();

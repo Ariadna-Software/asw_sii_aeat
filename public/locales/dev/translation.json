@@ -34,7 +34,8 @@
         },
         "gestion": {
             "cab": "Gestión",
-            "facturasEmitidas": "Facturas emitidas"
+            "facturasEmitidas": "Facturas emitidas",
+            "facturasRecibidas": "Facturas recibidas"
         }
     },
     "login": {
