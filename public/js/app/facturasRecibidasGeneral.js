@@ -1,36 +1,36 @@
 ﻿/*
- facturasEmitidas.js
- Funciones propias de la página FacturasEmitidas.html
+ facturasRecibidas.js
+ Funciones propias de la página FacturasRecibidas.html
 */
 
 var usuario = apiComunGeneral.obtenerUsuario();
 var data = null;
 
-var apiFacturasEmitidasGeneral = {
+var apiFacturasRecibidasGeneral = {
     ini: function () {
         apiComunGeneral.initPage(usuario);
         apiComunAjax.establecerClave(usuario.apiKey);
 
-        vm = new apiFacturasEmitidasGeneral.datosPagina();
+        vm = new apiFacturasRecibidasGeneral.datosPagina();
         ko.applyBindings(vm);
 
-        $('#facturasEmitidas').attr('class', 'active');
-        $('#facturasEmitidas-form').submit(function () { return false; });
-        apiFacturasEmitidasGeneral.iniFacturasEmitidasTabla();
-        apiFacturasEmitidasGeneral.cargarFacturasEmitidas("1");
-        $('#btnNuevo').click(apiFacturasEmitidasGeneral.nuevo);
+        $('#facturasRecibidas').attr('class', 'active');
+        $('#facturasRecibidas-form').submit(function () { return false; });
+        apiFacturasRecibidasGeneral.iniFacturasRecibidasTabla();
+        apiFacturasRecibidasGeneral.cargarFacturasRecibidas("1");
+        $('#btnNuevo').click(apiFacturasRecibidasGeneral.nuevo);
 
         $('#cmbTiposBusqueda').select2(select2_languages[usuario.codigoIdioma]);
-        apiFacturasEmitidasGeneral.cargarTiposBusqueda();
+        apiFacturasRecibidasGeneral.cargarTiposBusqueda();
         $("#cmbTiposBusqueda").select2().on('change', function (e) {
-            apiFacturasEmitidasGeneral.cambioTiposBusqueda(e.added);
+            apiFacturasRecibidasGeneral.cambioTiposBusqueda(e.added);
         });
     },
-    iniFacturasEmitidasTabla: function () {
-        var options = apiComunGeneral.initTableOptions('dt_facturasEmitidas', usuario.codigoIdioma);
+    iniFacturasRecibidasTabla: function () {
+        var options = apiComunGeneral.initTableOptions('dt_facturasRecibidas', usuario.codigoIdioma);
         options.data = data;
         options.columns = [{
-            data: "IDEnvioFacturasEmitidas"
+            data: "IDEnvioFacturasRecibidas"
         }, {
             data: "Origen"
         }, {
@@ -58,15 +58,15 @@ var apiFacturasEmitidasGeneral = {
         }, {
             data: "Mensaje"
         }, {
-            data: "IDEnvioFacturasEmitidas",
+            data: "IDEnvioFacturasRecibidas",
             render: function (data, type, row) {
-                var bt1 = "<button class='btn btn-circle btn-danger btn-lg' onclick='apiFacturasEmitidasGeneral.eliminar(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
-                var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='apiFacturasEmitidasGeneral.editar(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
+                var bt1 = "<button class='btn btn-circle btn-danger btn-lg' onclick='apiFacturasRecibidasGeneral.eliminar(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
+                var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='apiFacturasRecibidasGeneral.editar(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
                 var html = "<div class='pull-right'>" + bt1 + " " + bt2 + "</div>";
                 return html;
             }
         }];
-        var tabla = $('#dt_facturasEmitidas').DataTable(options);
+        var tabla = $('#dt_facturasRecibidas').DataTable(options);
         tabla.columns(0).visible(false);
     },
     datosPagina: function () {
@@ -76,44 +76,44 @@ var apiFacturasEmitidasGeneral = {
         self.selectedTiposBusqueda = ko.observableArray([]);
         self.sTipoBusqueda = ko.observable();
     },
-    cargarFacturasEmitidas: function (codigo) {
-        var url = myconfig.apiUrl + "/api/facturasEmitidas/";
+    cargarFacturasRecibidas: function (codigo) {
+        var url = myconfig.apiUrl + "/api/facturasRecibidas/";
         switch (codigo) {
             case "1":
-                url = myconfig.apiUrl + "/api/facturasEmitidas/pendientes/";
+                url = myconfig.apiUrl + "/api/facturasRecibidas/pendientes/";
                 break;
             case "2":
-                url = myconfig.apiUrl + "/api/facturasEmitidas/enviados-incorrectos/";
+                url = myconfig.apiUrl + "/api/facturasRecibidas/enviados-incorrectos/";
                 break;
             case "3":
-                url = myconfig.apiUrl + "/api/facturasEmitidas/enviados-correctos/";
+                url = myconfig.apiUrl + "/api/facturasRecibidas/enviados-correctos/";
                 break;
             case "4":
-                url = myconfig.apiUrl + "/api/facturasEmitidas/";
+                url = myconfig.apiUrl + "/api/facturasRecibidas/";
                 break;
         }
         apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
             if (err) return;
-            apiFacturasEmitidasGeneral.cargarFacturasEmitidasTabla(data);
+            apiFacturasRecibidasGeneral.cargarFacturasRecibidasTabla(data);
         });
     },
-    cargarFacturasEmitidasTabla: function (data) {
-        var dt = $('#dt_facturasEmitidas').dataTable();
+    cargarFacturasRecibidasTabla: function (data) {
+        var dt = $('#dt_facturasRecibidas').dataTable();
         dt.fnClearTable();
         if (data.length > 0) dt.fnAddData(data);
         dt.fnDraw();
     },
     nuevo: function () {
-        window.open(sprintf('FacturasEmitidasDetalle.html?id=%s', 0), '_self');
+        window.open(sprintf('FacturasRecibidasDetalle.html?id=%s', 0), '_self');
     },
     editar: function (id) {
-        window.open(sprintf('FacturasEmitidasDetalle.html?id=%s', id), '_self');
+        window.open(sprintf('FacturasRecibidasDetalle.html?id=%s', id), '_self');
     },
     eliminar: function (id) {
         apiComunNotificaciones.mensajeAceptarCancelar(i18n.t("eliminar_pregunta"), function () {
-            apiComunAjax.llamadaGeneral("DELETE", myconfig.apiUrl + "/api/facturasEmitidas/" + id, null, function (err) {
+            apiComunAjax.llamadaGeneral("DELETE", myconfig.apiUrl + "/api/facturasRecibidas/" + id, null, function (err) {
                 if (err) return;
-                apiFacturasEmitidasGeneral.cargarFacturasEmitidas();
+                apiFacturasRecibidasGeneral.cargarFacturasRecibidas();
             })
         }, function () { })
     },
@@ -130,7 +130,7 @@ var apiFacturasEmitidasGeneral = {
     cambioTiposBusqueda: function (data) {
         if (!data) return;
         var codigo = data.id;
-        apiFacturasEmitidasGeneral.cargarFacturasEmitidas(codigo);
+        apiFacturasRecibidasGeneral.cargarFacturasRecibidas(codigo);
     }
 }
 
