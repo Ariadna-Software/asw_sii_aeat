@@ -15,7 +15,7 @@ var apiFacturasEmitidasDetalle = {
 
         vm = new apiFacturasEmitidasDetalle.datosPagina();
         ko.applyBindings(vm);
-        if (usuario.esAdministrador){
+        if (usuario.esAdministrador) {
             $("#txtEnviada").prop('disabled', false);
         }
         $('#facturasEmitidas').attr('class', 'active');
@@ -108,7 +108,8 @@ var apiFacturasEmitidasDetalle = {
         vm.Resultado(data.Resultado);
         vm.CSV(data.CSV);
         vm.Mensaje(data.Mensaje);
-        vm.XML_Enviado(vkbeautify.xml(data.XML_Enviado));
+        if (data.XML_Enviado)
+            vm.XML_Enviado(vkbeautify.xml(data.XML_Enviado));
         // Cabecera
         vm.CAB_IDVersionSii(data.CAB_IDVersionSii);
         vm.CAB_Titular_NombreRazon(data.CAB_Titular_NombreRazon);
@@ -478,7 +479,7 @@ var apiFacturasEmitidasDetalle = {
         self.optionsCausaExencion2 = ko.observableArray([]);
         self.selectedCausaExencion2 = ko.observableArray([]);
         self.sCausaExencion2 = ko.observable();
-        
+
         // TipoNoExenta
         self.optionsTipoNoExenta = ko.observableArray([]);
         self.selectedTipoNoExenta = ko.observableArray([]);
@@ -491,7 +492,7 @@ var apiFacturasEmitidasDetalle = {
         self.optionsTipoNoExenta2 = ko.observableArray([]);
         self.selectedTipoNoExenta2 = ko.observableArray([]);
         self.sTipoNoExenta2 = ko.observable();
-        
+
     },
     aceptar: function (event, done) {
         if (!apiFacturasEmitidasDetalle.datosOk()) return;
