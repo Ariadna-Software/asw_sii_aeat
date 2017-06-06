@@ -561,7 +561,7 @@ var apiFacturasRecibidasDetalle = {
         });
     },
     datosOk: function () {
-        $('#facturaEmitida-form').validate({
+        var options = {
             rules: {
                 txtFechaHoraCreacion: { required: true },
                 txtCAB_Titular_NombreRazon: { required: true },
@@ -587,7 +587,14 @@ var apiFacturasRecibidasDetalle = {
             errorPlacement: function (error, element) {
                 error.insertAfter(element.parent());
             }
-        });
+        };
+        if (vm.REG_IDF_IDEF_IDOtro_ID()){
+            options.rules.txtREG_IDF_IDEF_NIF.required = false;
+        }
+        if (vm.REG_FR_CNT_IDOtro_ID()){
+            options.rules.txtREG_FR_CNT_NIF.required = false;
+        }
+        $('#facturaEmitida-form').validate(options);
         return $('#facturaEmitida-form').valid();
     },
     salir: function () {

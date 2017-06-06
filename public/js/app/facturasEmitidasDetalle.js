@@ -662,7 +662,7 @@ var apiFacturasEmitidasDetalle = {
         });
     },
     datosOk: function () {
-        $('#facturaEmitida-form').validate({
+        var options = {
             rules: {
                 txtFechaHoraCreacion: { required: true },
                 txtCAB_Titular_NombreRazon: { required: true },
@@ -686,7 +686,11 @@ var apiFacturasEmitidasDetalle = {
             errorPlacement: function (error, element) {
                 error.insertAfter(element.parent());
             }
-        });
+        };
+        if (vm.REG_FE_CNT_IDOtro_ID()){
+            options.rules.txtREG_FE_CNT_NIF.required = false;
+        }        
+        $('#facturaEmitida-form').validate(options);
         return $('#facturaEmitida-form').valid();
     },
     salir: function () {
