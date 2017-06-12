@@ -1,5 +1,5 @@
 /*
-SQLyog Community v12.4.2 (64 bit)
+SQLyog Community
 MySQL - 5.7.17-log : Database - aswsii
 *********************************************************************
 */
@@ -1043,7 +1043,7 @@ CREATE TABLE `usuarios` (
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values (1,1,'Administrador','es','admin','admin','2017-06-01 16:23:20','2017-06-01 21:23:20','Q21Y6',1);
+insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values (1,1,'Administrador','es','admin','admin','2017-06-08 08:45:13','2017-06-08 13:45:13','1cG1O',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
