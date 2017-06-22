@@ -33,10 +33,15 @@
             "emisores": "Emisores"
         },
         "gestion": {
-            "cab": "Gestión",
-            "facturasEmitidas": "Facturas emitidas",
-            "facturasRecibidas": "Facturas recibidas"
-        }
+            "cab": "Registros",
+            "facturasEmitidas": "R. Facturas emitidas",
+            "facturasRecibidas": "R. Facturas recibidas"
+        },
+        "facturas": {
+            "cab": "Facturas",
+            "facemitidas": "Facturas emitidas",
+            "facrecibidas": "Facturas recibidas"
+        }        
     },
     "login": {
         "acceso": "Acceso a la aplicación",
@@ -112,7 +117,7 @@
         "Resultado": "Resultado",
         "Titular": "Titular",
         "Emisor": "Emisor",
-        "XML_Enviado": "XML Enviado",
+        "XML_Enviado": "Último XML enviado correcto",
         "CAB_IDVersionSii": "VRS",
         "CAB_TipoComunicacion": "Tipo comunicación",
         "CAB_Titular_NombreRazon": "Nombre / Razón titular",
@@ -220,7 +225,7 @@
         "Resultado": "Resultado",
         "Titular": "Titular",
         "Emisor": "Emisor",
-        "XML_Enviado": "XML Enviado",
+        "XML_Enviado": "Último XML enviado correcto",
         "CAB_IDVersionSii": "VRS",
         "CAB_TipoComunicacion": "Tipo comunicación",
         "CAB_Titular_NombreRazon": "Nombre / Razón titular",

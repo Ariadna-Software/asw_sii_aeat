@@ -1,5 +1,5 @@
 {
-    "host": "192.168.1.69",
+    "host": "localhost",
     "user": "root",
     "password": "aritel",
     "database": "aswsii",

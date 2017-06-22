@@ -83,6 +83,8 @@ app.use('/api/causaexencion', require('./lib/causaexencion/causaexencion.control
 app.use('/api/tiponoexenta', require('./lib/tiponoexenta/tiponoexenta.controller'));
 app.use('/api/tiporecibida', require('./lib/tiporecibida/tiporecibida.controller'));
 app.use('/api/regimenrecibida', require('./lib/regimenrecibida/regimenrecibida.controller'));
+app.use('/api/facrecibidas', require('./lib/facrecibidas/facrecibidas.controller'));
+app.use('/api/facemitidas', require('./lib/facemitidas/facemitidas.controller'));
 
 // -- start server
 app.listen(config.apiPort);

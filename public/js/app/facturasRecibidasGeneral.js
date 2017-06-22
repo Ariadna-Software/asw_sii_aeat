@@ -17,7 +17,7 @@ var apiFacturasRecibidasGeneral = {
         $('#facturasRecibidas').attr('class', 'active');
         $('#facturasRecibidas-form').submit(function () { return false; });
         apiFacturasRecibidasGeneral.iniFacturasRecibidasTabla();
-        apiFacturasRecibidasGeneral.cargarFacturasRecibidas("1");
+
         $('#btnNuevo').click(apiFacturasRecibidasGeneral.nuevo);
 
         $('#cmbTiposBusqueda').select2(select2_languages[usuario.codigoIdioma]);
@@ -25,6 +25,12 @@ var apiFacturasRecibidasGeneral = {
         $("#cmbTiposBusqueda").select2().on('change', function (e) {
             apiFacturasRecibidasGeneral.cambioTiposBusqueda(e.added);
         });
+        var id = apiComunGeneral.gup("id");
+        if (id && id != "") {
+            apiFacturasRecibidasGeneral.cargarFacturasRecibidas(null, id);
+        } else {
+            apiFacturasRecibidasGeneral.cargarFacturasRecibidas("1");
+        }
     },
     iniFacturasRecibidasTabla: function () {
         var options = apiComunGeneral.initTableOptions('dt_facturasRecibidas', usuario.codigoIdioma);
@@ -76,24 +82,34 @@ var apiFacturasRecibidasGeneral = {
         self.selectedTiposBusqueda = ko.observableArray([]);
         self.sTipoBusqueda = ko.observable();
     },
-    cargarFacturasRecibidas: function (codigo) {
+    cargarFacturasRecibidas: function (codigo, id) {
         var url = myconfig.apiUrl + "/api/facturasRecibidas/";
-        switch (codigo) {
-            case "1":
-                url = myconfig.apiUrl + "/api/facturasRecibidas/pendientes/";
-                break;
-            case "2":
-                url = myconfig.apiUrl + "/api/facturasRecibidas/enviados-incorrectos/";
-                break;
-            case "3":
-                url = myconfig.apiUrl + "/api/facturasRecibidas/enviados-correctos/";
-                break;
-            case "4":
-                url = myconfig.apiUrl + "/api/facturasRecibidas/";
-                break;
+        if (id) {
+            url = myconfig.apiUrl + "/api/facturasRecibidas/" + id;
+        } else {
+            switch (codigo) {
+                case "1":
+                    url = myconfig.apiUrl + "/api/facturasRecibidas/pendientes/";
+                    break;
+                case "2":
+                    url = myconfig.apiUrl + "/api/facturasRecibidas/enviados-incorrectos/";
+                    break;
+                case "3":
+                    url = myconfig.apiUrl + "/api/facturasRecibidas/enviados-correctos/";
+                    break;
+                case "4":
+                    url = myconfig.apiUrl + "/api/facturasRecibidas/";
+                    break;
+            }
+
         }
         apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
             if (err) return;
+            if (data.length == undefined) {
+                var data2 = [];
+                data2.push(data);
+                data = data2;
+            }            
             apiFacturasRecibidasGeneral.cargarFacturasRecibidasTabla(data);
         });
     },

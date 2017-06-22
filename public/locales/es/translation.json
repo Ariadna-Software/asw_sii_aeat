@@ -29,8 +29,8 @@
             "usuarios": "Usuarios"
         },
         "gestion": {
-            "cab": "Gestión",
-            "facturasEmitidas": "Facturas emitidas"
+            "cab": "Registros",
+            "facturasEmitidas": "R. Facturas emitidas"
         }
     },
     "login": {

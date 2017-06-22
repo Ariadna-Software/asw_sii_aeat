@@ -687,9 +687,9 @@ var apiFacturasEmitidasDetalle = {
                 error.insertAfter(element.parent());
             }
         };
-        if (vm.REG_FE_CNT_IDOtro_ID()){
+        if (vm.REG_FE_CNT_IDOtro_ID()) {
             options.rules.txtREG_FE_CNT_NIF.required = false;
-        }        
+        }
         $('#facturaEmitida-form').validate(options);
         return $('#facturaEmitida-form').valid();
     },
@@ -708,7 +708,7 @@ var apiFacturasEmitidasDetalle = {
             var url = myconfig.apiUrl + "/api/facturasEmitidas/envDb/" + vm.IDEnvioFacturasEmitidas();
             apiComunAjax.llamadaGeneral(verb, url, null, function (err, data) {
                 if (err) return;
-                window.open(sprintf('FacturasEmitidasGeneral.html'), '_self');
+                window.open(sprintf('FacturasEmitidasGeneral.html?id=' + vm.IDEnvioFacturasEmitidas()), '_self');
             });
 
         });

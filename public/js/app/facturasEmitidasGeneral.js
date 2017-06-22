@@ -17,7 +17,7 @@ var apiFacturasEmitidasGeneral = {
         $('#facturasEmitidas').attr('class', 'active');
         $('#facturasEmitidas-form').submit(function () { return false; });
         apiFacturasEmitidasGeneral.iniFacturasEmitidasTabla();
-        apiFacturasEmitidasGeneral.cargarFacturasEmitidas("1");
+
         $('#btnNuevo').click(apiFacturasEmitidasGeneral.nuevo);
 
         $('#cmbTiposBusqueda').select2(select2_languages[usuario.codigoIdioma]);
@@ -25,6 +25,12 @@ var apiFacturasEmitidasGeneral = {
         $("#cmbTiposBusqueda").select2().on('change', function (e) {
             apiFacturasEmitidasGeneral.cambioTiposBusqueda(e.added);
         });
+        var id = apiComunGeneral.gup("id");
+        if (id && id != "") {
+            apiFacturasEmitidasGeneral.cargarFacturasEmitidas(null, id);
+        } else {
+            apiFacturasEmitidasGeneral.cargarFacturasEmitidas("1");
+        }
     },
     iniFacturasEmitidasTabla: function () {
         var options = apiComunGeneral.initTableOptions('dt_facturasEmitidas', usuario.codigoIdioma);
@@ -76,24 +82,33 @@ var apiFacturasEmitidasGeneral = {
         self.selectedTiposBusqueda = ko.observableArray([]);
         self.sTipoBusqueda = ko.observable();
     },
-    cargarFacturasEmitidas: function (codigo) {
+    cargarFacturasEmitidas: function (codigo, id) {
         var url = myconfig.apiUrl + "/api/facturasEmitidas/";
-        switch (codigo) {
-            case "1":
-                url = myconfig.apiUrl + "/api/facturasEmitidas/pendientes/";
-                break;
-            case "2":
-                url = myconfig.apiUrl + "/api/facturasEmitidas/enviados-incorrectos/";
-                break;
-            case "3":
-                url = myconfig.apiUrl + "/api/facturasEmitidas/enviados-correctos/";
-                break;
-            case "4":
-                url = myconfig.apiUrl + "/api/facturasEmitidas/";
-                break;
+        if (id) {
+            url = myconfig.apiUrl + "/api/facturasEmitidas/" + id;
+        } else {
+            switch (codigo) {
+                case "1":
+                    url = myconfig.apiUrl + "/api/facturasEmitidas/pendientes/";
+                    break;
+                case "2":
+                    url = myconfig.apiUrl + "/api/facturasEmitidas/enviados-incorrectos/";
+                    break;
+                case "3":
+                    url = myconfig.apiUrl + "/api/facturasEmitidas/enviados-correctos/";
+                    break;
+                case "4":
+                    url = myconfig.apiUrl + "/api/facturasEmitidas/";
+                    break;
+            }
         }
         apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
             if (err) return;
+            if (data.length == undefined) {
+                var data2 = [];
+                data2.push(data);
+                data = data2;
+            }
             apiFacturasEmitidasGeneral.cargarFacturasEmitidasTabla(data);
         });
     },
