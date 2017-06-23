@@ -21,7 +21,7 @@ USE `aswsii`;
 DROP TABLE IF EXISTS `facemitidas`;
 
 CREATE TABLE `facemitidas` (
-  `FacEmitidaId` int(11) NOT NULL COMMENT 'Identificador único de la fcatura emitida',
+  `FacEmitidaId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador único de la fcatura emitida',
   `NifEmisor` varchar(255) DEFAULT NULL COMMENT 'Nif del emisor',
   `NombreEmisor` varchar(255) DEFAULT NULL COMMENT 'Nombre del emisor',
   `NifReceptor` varchar(255) DEFAULT NULL COMMENT 'Nif del receptor',
@@ -38,33 +38,14 @@ CREATE TABLE `facemitidas` (
   PRIMARY KEY (`FacEmitidaId`),
   KEY `ref_fac_envios` (`UltRegistroID`),
   CONSTRAINT `ref_fac_envios` FOREIGN KEY (`UltRegistroID`) REFERENCES `envio_facturas_emitidas` (`IDEnvioFacturasEmitidas`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
-/*Data for the table `facemitidas` */
-
-/*Table structure for table `relfacemitidaregistro` */
-
-DROP TABLE IF EXISTS `relFacEmit`;
-
-CREATE TABLE `relFacEmit` (
-  `RelFacEmitId` int(11) NOT NULL,
-  `FacEmitidaId` int(11) DEFAULT NULL,
-  `IDEnvioFacturasEmitidas` int(11) DEFAULT NULL,
-  PRIMARY KEY (`RelFacEmitId`),
-  KEY `rel_emitidas_reg1` (`FacEmitidaId`),
-  KEY `rel_emitidas_reg2` (`IDEnvioFacturasEmitidas`),
-  CONSTRAINT `rel_emitidas_reg1` FOREIGN KEY (`FacEmitidaId`) REFERENCES `facemitidas` (`FacEmitidaId`),
-  CONSTRAINT `rel_emitidas_reg2` FOREIGN KEY (`IDEnvioFacturasEmitidas`) REFERENCES `envio_facturas_emitidas` (`IDEnvioFacturasEmitidas`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `relfacemitidaregistro` */
-
-/*Table structure for table `facemitidas` */
+/*Table structure for table `facrecibidas` */
 
 DROP TABLE IF EXISTS `facrecibidas`;
 
 CREATE TABLE `facrecibidas` (
-  `FacRecibidaId` int(11) NOT NULL COMMENT 'Identificador único de la factura emitida',
+  `FacRecibidaId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador único de la factura emitida',
   `NifEmisor` varchar(255) DEFAULT NULL COMMENT 'Nif del emisor',
   `NombreEmisor` varchar(255) DEFAULT NULL COMMENT 'Nombre del emisor',
   `NifReceptor` varchar(255) DEFAULT NULL COMMENT 'Nif del receptor',
@@ -83,14 +64,27 @@ CREATE TABLE `facrecibidas` (
   CONSTRAINT `ref_fac_recibidos` FOREIGN KEY (`UltRegistroID`) REFERENCES `envio_facturas_recibidas` (`IDEnvioFacturasRecibidas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `facrecibidas` */
+/*Table structure for table `relfacemit` */
 
-/*Table structure for table `relFacRec` */
+DROP TABLE IF EXISTS `relfacemit`;
 
-DROP TABLE IF EXISTS relFacRec;
+CREATE TABLE `relfacemit` (
+  `RelFacEmitId` int(11) NOT NULL AUTO_INCREMENT,
+  `FacEmitidaId` int(11) DEFAULT NULL,
+  `IDEnvioFacturasEmitidas` int(11) DEFAULT NULL,
+  PRIMARY KEY (`RelFacEmitId`),
+  KEY `rel_emitidas_reg1` (`FacEmitidaId`),
+  KEY `rel_emitidas_reg2` (`IDEnvioFacturasEmitidas`),
+  CONSTRAINT `rel_emitidas_reg1` FOREIGN KEY (`FacEmitidaId`) REFERENCES `facemitidas` (`FacEmitidaId`),
+  CONSTRAINT `rel_emitidas_reg2` FOREIGN KEY (`IDEnvioFacturasEmitidas`) REFERENCES `envio_facturas_emitidas` (`IDEnvioFacturasEmitidas`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `relFacRec` (
-  `RelFacRecId` int(11) NOT NULL,
+/*Table structure for table `relfacrec` */
+
+DROP TABLE IF EXISTS `relfacrec`;
+
+CREATE TABLE `relfacrec` (
+  `RelFacRecId` int(11) NOT NULL AUTO_INCREMENT,
   `FacRecibidaId` int(11) DEFAULT NULL,
   `IDEnvioFacturasRecibidas` int(11) DEFAULT NULL,
   PRIMARY KEY (`RelFacRecId`),
@@ -99,10 +93,6 @@ CREATE TABLE `relFacRec` (
   CONSTRAINT `rel_recibidas_reg1` FOREIGN KEY (`FacRecibidaId`) REFERENCES `facrecibidas` (`FacRecibidaId`),
   CONSTRAINT `rel_recibidas_reg2` FOREIGN KEY (`IDEnvioFacturasRecibidas`) REFERENCES `envio_facturas_recibidas` (`IDEnvioFacturasRecibidas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `relfacemitidaregistro` */
-
-
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
