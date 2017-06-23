@@ -168,7 +168,7 @@
                     </ul>
                 </li>
         </nav>
-        <span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
+        <span id="minMenu" class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
     </aside>
     <!-- END NAVIGATION -->
     <!-- MAIN PANEL -->
@@ -200,11 +200,22 @@
                                 <form id="facEmitidas-form" class="smart-form">
                                     <fieldset>
                                         <div class="row">
-                                            <section class="col col-md-12">
+                                            <section class="col col-md-8">
                                                 <label class="label" data-i18n="facEmitidas.tipoBusqueda">tiposBusqueda:</label>
                                                 <select style="width:100%;" id="cmbTiposBusqueda" name="cmbTiposBusqueda" data-bind="options: optionsTiposBusqueda, optionsText: 'nombre', optionsValue: 'codigo', 
                                                     value: sTipoBusqueda, valueAllowUnset: true, selectedOptions: selectedTiposBusqueda, selected2:{}">
                                                 </select>
+                                            </section>
+                                            <section class="col col-md-4">
+                                                <div class="pull-right">
+                                                    <button id="btnEnviar" data-i18n="[title]enviar" class="btn btn-primary btn-circle btn-lg">
+                                                        <i class="fa fa-lg fa-paper-plane"></i>
+                                                    </button>
+                                                    <span id="process">
+                                                        <i class="fa fa-spinner fa-spin fa-3x fa-fw primary"></i>
+                                                        <span class="sr-only">Enviando...</span>
+                                                    </span>
+                                                </div>
                                             </section>
                                         </div>
                                     </fieldset>
@@ -214,6 +225,50 @@
                                 <div id="tb_facEmitidas">
                                     <table id="dt_facEmitidas" class="table table-striped table-bordered table-hover" width="100%">
                                         <thead>
+                                            <tr>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>           
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th> 
+                                                <th class="hasinput">
+                                                    <input type="text" class="form-control" placeholder="" />
+                                                </th>  
+                                                <th >
+                                                    
+                                                </th>                                                                                                                                     
+                                            </tr>
                                             <tr>
                                                 <th data-hide="phone">
                                                     <span data-i18n="facEmitidas.id">ID</span>

@@ -7,6 +7,7 @@
     "aceptar": "Aceptar",
     "salir": "Salir",
     "xml": "XML",
+    "procesando": "Procesando",
     "enviar": "Enviar",
     "verReg": "Ver registro asociado",
     "si": "SI",
@@ -267,7 +268,7 @@
     },
     "facEmitidas": {
         "titulo": "Facturas Emitidas",
-        "tipoBusqueda": "¿Que registros desea ver?",
+        "tipoBusqueda": "¿Que facturas desea ver?",
         "panel": "Facturas Emitidas",
         "nuevo": "Nueva factura emitida",
         "nombre": "Nombre factura emitida",
@@ -289,6 +290,6 @@
         "Mensaje": "Mensaje",
         "IDEnvioFacturasEmitidas": "ID",
         "Origen": "Origen",
-        "UltRegistroID": "REGISTRO RELACIONADO"
+        "UltRegistroID": "ULT. REGISTRO RELACIONADO"
     }
 }

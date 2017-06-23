@@ -31,6 +31,7 @@ var apiComunGeneral = {
         if (ahora > expTime) window.open('login.html', '_self');
 
         pageSetUp();
+        $("#minMenu").click();
 
         var lg = i18n.lng();
         if (usuario.codigoIdioma) lg = usuario.codigoIdioma;
@@ -101,44 +102,11 @@ var apiComunGeneral = {
     },
     initTableOptions: function (table, lang) {
         var options = {
-            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l C T >r>" +
+            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs' C  >r>" +
             "t" +
             "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
             "oColVis": {
                 "buttonText": "Mostrar / ocultar columnas"
-            },
-            "oTableTools": {
-                "aButtons": [
-                    {
-                        "sExtends": "pdf",
-                        "sTitle": "Registros Seleccionadas",
-                        "sPdfMessage": "proasistencia PDF Export",
-                        "sPdfSize": "A4",
-                        "sPdfOrientation": "landscape",
-                        "oSelectorOpts": { filter: 'applied', order: 'current' }
-                    },
-                    {
-                        "sExtends": "copy",
-                        "sMessage": "Registros filtradas <i>(pulse Esc para cerrar)</i>",
-                        "oSelectorOpts": { filter: 'applied', order: 'current' }
-                    },
-                    {
-                        "sExtends": "csv",
-                        "sMessage": "Registros filtradas <i>(pulse Esc para cerrar)</i>",
-                        "oSelectorOpts": { filter: 'applied', order: 'current' }
-                    },
-                    {
-                        "sExtends": "xls",
-                        "sMessage": "Registros filtradas <i>(pulse Esc para cerrar)</i>",
-                        "oSelectorOpts": { filter: 'applied', order: 'current' }
-                    },
-                    {
-                        "sExtends": "print",
-                        "sMessage": "Registros filtradas <i>(pulse Esc para cerrar)</i>",
-                        "oSelectorOpts": { filter: 'applied', order: 'current' }
-                    }
-                ],
-                "sSwfPath": "js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
             },
             "autoWidth": true,
             "preDrawCallback": function () {

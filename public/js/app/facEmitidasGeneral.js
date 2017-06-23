@@ -18,7 +18,8 @@ var apiFacEmitidasGeneral = {
         $('#facEmitidas-form').submit(function () { return false; });
         apiFacEmitidasGeneral.iniFacEmitidasTabla();
 
-        $('#btnNuevo').click(apiFacEmitidasGeneral.nuevo);
+        $("#process").hide();
+        $('#btnEnviar').click(apiFacEmitidasGeneral.enviar);
 
         $('#cmbTiposBusqueda').select2(select2_languages[usuario.codigoIdioma]);
         apiFacEmitidasGeneral.cargarTiposBusqueda();
@@ -79,7 +80,22 @@ var apiFacEmitidasGeneral = {
                 return html;
             }
         }];
+        options.fnRowCallback = function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            if (aData.Enviada == "0") {
+                $('td', nRow).css('background-color', '#99ffbb');
+            }
+            if (aData.Resultado == "Incorrecto") {
+                $('td', nRow).css('background-color', '#ffcccc');
+            }
+        }
         var tabla = $('#dt_facEmitidas').DataTable(options);
+        // Apply the filter
+        $("#dt_facEmitidas thead th input[type=text]").on('keyup change', function () {
+            tabla
+                .column($(this).parent().index() + ':visible')
+                .search(this.value)
+                .draw();
+        });
         tabla.columns(0).visible(false);
         tabla.columns(11).visible(false);
         tabla.columns(12).visible(false);
@@ -127,8 +143,26 @@ var apiFacEmitidasGeneral = {
         if (data.length > 0) dt.fnAddData(data);
         dt.fnDraw();
     },
-    nuevo: function () {
-        window.open(sprintf('FacEmitidasDetalle.html?id=%s', 0), '_self');
+    enviar: function () {
+        $("#btnEnviar").hide();
+        $("#process").show();
+        var url = myconfig.apiUrl + "/api/facemitidas/enviar";
+        apiComunAjax.llamadaGeneral("POST", url, null, function (err, data) {
+            if (err) return;
+            $("#btnEnviar").show();
+            $("#process").hide();
+            apiComunNotificaciones.mensajeAyuda("Se han procesado todos los registros de presentación, seguirá viendo en pendientes aquellos que hayna dado algún tipo de error.");
+            url = myconfig.apiUrl + "/api/facemitidas/pendientes/";
+            apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
+                if (err) return;
+                if (data.length == undefined) {
+                    var data2 = [];
+                    data2.push(data);
+                    data = data2;
+                }
+                apiFacEmitidasGeneral.cargarFacEmitidasTabla(data);
+            });
+        });
     },
     editar: function (id) {
         window.open(sprintf('FacEmitidasDetalle.html?id=%s', id), '_self');
@@ -146,7 +180,7 @@ var apiFacEmitidasGeneral = {
             { "codigo": 1, "nombre": "Facturas pendientes" },
             { "codigo": 2, "nombre": "Facturas enviadas incorrectas" },
             { "codigo": 3, "nombre": "Facturas enviadas correctas" },
-            { "codigo": 4, "nombre": "Todos los registros" }
+            { "codigo": 4, "nombre": "Todos las facturas" }
         ];
         vm.optionsTiposBusqueda(options);
         $("#cmbTiposBusqueda").val([1]).trigger('change');
