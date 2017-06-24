@@ -27,7 +27,7 @@ var apiFacRecibidasDetalle = {
         } else {
             apiFacRecibidasDetalle.cargarFacRecibidas(FacRecibidaId);
         }
-        apiFacRecibidasDetalle.iniFacturasEmitidasTabla();
+        apiFacRecibidasDetalle.iniFacturasRecibidasTabla();
     },
     cargarFacRecibidas: function (id) {
         apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/facrecibidas/" + id, null, function (err, data) {
@@ -52,7 +52,7 @@ var apiFacRecibidasDetalle = {
         vm.CSV(data.CSV);
         vm.Mensaje(data.Mensaje);
         vm.UltRegistroID(data.UltRegistroID);
-        apiFacRecibidasDetalle.cargarFacturasEmitidas();
+        apiFacRecibidasDetalle.cargarFacturasRecibidas();
     },
     datosPagina: function () {
         var self = this;
@@ -72,10 +72,10 @@ var apiFacRecibidasDetalle = {
         self.UltRegistroID = ko.observable();
     },
     aceptar: function (id) {
-        window.open(sprintf('FacturasEmitidasDetalle.html?id=' + vm.UltRegistroID()), '_new');
+        window.open(sprintf('FacturasRecibidasDetalle.html?id=' + vm.UltRegistroID()), '_new');
     },
     aceptar2: function (id) {
-        window.open(sprintf('FacturasEmitidasDetalle.html?id=' + id), '_new');
+        window.open(sprintf('FacturasRecibidasDetalle.html?id=' + id), '_new');
     },
     datosOk: function () {
 
@@ -83,11 +83,11 @@ var apiFacRecibidasDetalle = {
     salir: function () {
         window.open(sprintf('FacRecibidasGeneral.html'), '_self');
     },
-    iniFacturasEmitidasTabla: function () {
-        var options = apiComunGeneral.initTableOptions('dt_facturasEmitidas', usuario.codigoIdioma);
+    iniFacturasRecibidasTabla: function () {
+        var options = apiComunGeneral.initTableOptions('dt_facturasRecibidas', usuario.codigoIdioma);
         options.data = data;
         options.columns = [{
-            data: "IDEnvioFacturasEmitidas"
+            data: "IDEnvioFacturasRecibidas"
         }, {
             data: "Origen"
         }, {
@@ -115,30 +115,30 @@ var apiFacRecibidasDetalle = {
         }, {
             data: "Mensaje"
         }, {
-            data: "IDEnvioFacturasEmitidas",
+            data: "IDEnvioFacturasRecibidas",
             render: function (data, type, row) {
                 var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='apiFacRecibidasDetalle.aceptar2(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
                 var html = "<div class='pull-right'>" + bt2 + "</div>";
                 return html;
             }
         }];
-        var tabla = $('#dt_facturasEmitidas').DataTable(options);
+        var tabla = $('#dt_facturasRecibidas').DataTable(options);
         tabla.columns(0).visible(false);
     },
-    cargarFacturasEmitidasTabla: function (data) {
-        var dt = $('#dt_facturasEmitidas').dataTable();
+    cargarFacturasRecibidasTabla: function (data) {
+        var dt = $('#dt_facturasRecibidas').dataTable();
         dt.fnClearTable();
         if (data.length > 0) dt.fnAddData(data);
         dt.fnDraw();
     },
-    cargarFacturasEmitidas: function () {
+    cargarFacturasRecibidas: function () {
         var nifEmisor = vm.NifEmisor();
         var numFactura = vm.NumFactura();
         var fechaFactura = moment(vm.FechaFactura(), 'DD/MM/YYYY').format('YYYY-MM-DD');
-        var url = myconfig.apiUrl + "/api/facturasEmitidas/relacionados/" + nifEmisor + "/" + numFactura + "/" + fechaFactura;
+        var url = myconfig.apiUrl + "/api/facturasRecibidas/relacionados/" + nifEmisor + "/" + numFactura + "/" + fechaFactura;
         apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
             if (err) return;
-            apiFacRecibidasDetalle.cargarFacturasEmitidasTabla(data);
+            apiFacRecibidasDetalle.cargarFacturasRecibidasTabla(data);
         });
     }
 }
