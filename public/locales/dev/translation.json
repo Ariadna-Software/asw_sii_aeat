@@ -291,5 +291,31 @@
         "IDEnvioFacturasEmitidas": "ID",
         "Origen": "Origen",
         "UltRegistroID": "ULT. REGISTRO RELACIONADO"
+    },
+    "facRecibidas": {
+        "titulo": "Facturas Recibidas",
+        "tipoBusqueda": "¿Que facturas desea ver?",
+        "panel": "Facturas Recibidas",
+        "nuevo": "Nueva factura emitida",
+        "nombre": "Nombre factura emitida",
+        "id": "ID",
+        "editar": "Editar factura emitida",
+        "eliminar": "Eliminar factura emitida",
+        "valNombre": "Nombre necesario",
+        "NifEmisor": "NIF Emisor",
+        "NombreEmisor": "Nombre emisor",
+        "NifReceptor": "NIF Receptor",
+        "NombreReceptor": "Nombre receptor",
+        "NumFactura": "Numero factura",
+        "FechaFactura": "Fecha factura",
+        "FechaOperacion": "Fecha operación",
+        "Importe": "Importe",
+        "Enviada": "Enviada",
+        "Resultado": "Resultado",
+        "CSV": "CSV",
+        "Mensaje": "Mensaje",
+        "IDEnvioFacturasRecibidas": "ID",
+        "Origen": "Origen",
+        "UltRegistroID": "ULT. REGISTRO RELACIONADO"
     }
 }
