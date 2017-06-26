@@ -14,6 +14,8 @@
     "no": "NO",
     "ayuda": "<div>AYUDA</div>",
     "cerrar": "Haga clic aquí para cerrar el recuadro",
+    "prodMsg": "APLICACIÓN EN PRODUCCION:  Esta aplicación está configurada para el envío de los registros a la plataforma de producción de la Agencia Tributaria. Las facturas que se envien tendrán trascendecia tributaria.",
+    "testMsg": "APLICACIÓN EN TEST:  Esta aplicación está configurada para el envío de los registros a la plataforma de pruebas de la Agencia Tributaria. Las facturas que se envien NO tendrán trascendecia tributaria.",
     "error": {
         "general": "Error",
         "ajax_general": "Error comunicado",

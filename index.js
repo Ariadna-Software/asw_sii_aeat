@@ -20,6 +20,8 @@ var loginDb = require('./lib/login/login_db_mysql');
 
 var forever = require('forever-monitor');
 
+var axapta = require('./lib/sqls/axapta')
+
 
 // starting express
 var app = express();
@@ -128,15 +130,23 @@ childFacRecibidas.on('exit', function () {
 console.log("-- DEMONIO FACRECIBIDAS ARRANCADO --");
 childFacRecibidas.start();
 
-// - Axapta
-var childFacAx = new (forever.Monitor)('./lib/demonios/auto_facAx.js', {
-    max: 3,
-    args: []
-});
+if (config.Axapta == "S") {
+    // - Axapta
+    var childFacAx = new (forever.Monitor)('./lib/demonios/auto_facAx.js', {
+        max: 3,
+        args: []
+    });
 
-childFacAx.on('exit', function () {
-    console.log('Demonio AXAPTA sin arrancar tras 3 intentos');
-});
+    childFacAx.on('exit', function () {
+        console.log('Demonio AXAPTA sin arrancar tras 3 intentos');
+    });
 
-console.log("-- DEMONIO AXAPTA ARRANCADO --");
-childFacAx.start();
+    console.log("-- DEMONIO AXAPTA ARRANCADO --");
+    childFacAx.start();
+}
+
+// ----- QUITAR
+console.log("-- AX --");
+axapta.axCallSync(function(err){
+    console.log("-- ACABOOOOOOOO !!!!! ----");
+});
