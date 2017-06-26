@@ -30,6 +30,7 @@
     "forever-monitor": "^1.7.1",
     "formidable": "^1.0.17",
     "moment": "^2.10.6",
+    "mssql": "^4.0.4",
     "multer": "^1.1.0",
     "mysql": "^2.0.0",
     "nodemailer": "2.4.2",

@@ -127,3 +127,16 @@ childFacRecibidas.on('exit', function () {
 
 console.log("-- DEMONIO FACRECIBIDAS ARRANCADO --");
 childFacRecibidas.start();
+
+// - Axapta
+var childFacAx = new (forever.Monitor)('./lib/demonios/auto_facAx.js', {
+    max: 3,
+    args: []
+});
+
+childFacAx.on('exit', function () {
+    console.log('Demonio AXAPTA sin arrancar tras 3 intentos');
+});
+
+console.log("-- DEMONIO AXAPTA ARRANCADO --");
+childFacAx.start();
