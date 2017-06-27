@@ -148,5 +148,8 @@ if (config.Axapta == "S") {
 // ----- QUITAR
 console.log("-- AX --");
 axapta.axCallSync(function(err){
+    if (err) {
+        console.log("ERR AX: ", err.message);
+    }
     console.log("-- ACABOOOOOOOO !!!!! ----");
 });
