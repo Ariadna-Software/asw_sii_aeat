@@ -86,7 +86,7 @@ var apiFacturasEmitidasDetalle = {
             vm.IDEnvioFacturasEmitidas(0);
             vm.Origen("MANUAL");
             vm.EnvioInmediato(0);
-            vm.CAB_IDVersionSii("0.7");
+            vm.CAB_IDVersionSii("1.0");
             vm.FechaHoraCreacion(moment(new Date()).format("DD/MM/YYYY"));
         } else {
             apiFacturasEmitidasDetalle.cargarFacturasEmitidas(IDEnvioFacturasEmitidas);

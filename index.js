@@ -20,7 +20,7 @@ var loginDb = require('./lib/login/login_db_mysql');
 
 var forever = require('forever-monitor');
 
-var axapta = require('./lib/sqls/axapta')
+var axapta = require('./lib/sqls/axapta2')
 
 
 // starting express
@@ -145,11 +145,3 @@ if (config.Axapta == "S") {
     childFacAx.start();
 }
 
-// ----- QUITAR
-console.log("-- AX --");
-axapta.axCallSync(function(err){
-    if (err) {
-        console.log("ERR AX: ", err.message);
-    }
-    console.log("-- ACABOOOOOOOO !!!!! ----");
-});

@@ -65,7 +65,7 @@ var apiFacturasRecibidasDetalle = {
             vm.Origen("MANUAL");
             vm.EnvioInmediato(0);
             vm.Enviada(0);
-            vm.CAB_IDVersionSii("0.7");
+            vm.CAB_IDVersionSii("1.0");
             vm.FechaHoraCreacion(moment(new Date()).format("DD/MM/YYYY"));
         } else {
             apiFacturasRecibidasDetalle.cargarFacturasRecibidas(IDEnvioFacturasRecibidas);
