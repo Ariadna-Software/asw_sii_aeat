@@ -29,12 +29,12 @@ soap.createClient(url, function (err, client) {
         };
         myInputFacNormal = {
             Cabecera: {
-                IDVersionSii: "0.6",
+                IDVersionSii: "1.0",
                 Titular: {
                     NombreRazon: "Ariadna Software SL",
                     NIF: "B96470190"
                 },
-                TipoComunicacion: "A1"
+                TipoComunicacion: "A0"
             },
             RegistroLRFacturasEmitidas: 
                 {
@@ -46,18 +46,14 @@ soap.createClient(url, function (err, client) {
                         IDEmisorFactura: {
                             NIF: "B96470190"
                         },
-                        NumSerieFacturaEmisor: "PR00015",
+                        NumSerieFacturaEmisor: "SIMP0005",
                         FechaExpedicionFacturaEmisor: "21-02-2017"
                     },
                     FacturaExpedida: {
-                        TipoFactura: "F1",
+                        TipoFactura: "F2",
                         ClaveRegimenEspecialOTrascendencia: "01",
                         ImporteTotal: 26.70,
-                        DescripcionOperacion: "PRUEBA 15",
-                        Contraparte: {
-                            NombreRazon: "CLIENTE DE PRUEBA",
-                            NIF: "F46026696"
-                        },
+                        DescripcionOperacion: "PRUEBA SIMPLIFICASA",
                         TipoDesglose: {
                             DesgloseFactura: {
                                 Sujeta: {
@@ -68,9 +64,7 @@ soap.createClient(url, function (err, client) {
                                                 {
                                                     TipoImpositivo: 21,
                                                     BaseImponible: 100,
-                                                    CuotaRepercutida: 21,
-                                                    TipoRecargoEquivalencia: 0,
-                                                    CuotaRecargoEquivalencia: 0
+                                                    CuotaRepercutida: 21
                                                 }
                                             ]
                                         }
@@ -83,7 +77,7 @@ soap.createClient(url, function (err, client) {
         };
         myInputFacAnula = {
             Cabecera: {
-                IDVersionSii: "0.6",
+                IDVersionSii: "1.0",
                 Titular: {
                     NombreRazon: "Ariadna Software SL",
                     NIF: "B96470190"
