@@ -8,6 +8,11 @@ var data = null;
 var gruposUsuarioId = 0;
 var vm;
 
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
 var apiFacRecibidasDetalle = {
     ini: function () {
         apiComunGeneral.initPage(usuario);
@@ -133,7 +138,7 @@ var apiFacRecibidasDetalle = {
     },
     cargarFacturasRecibidas: function () {
         var nifEmisor = vm.NifEmisor();
-        var numFactura = vm.NumFactura();
+        var numFactura = vm.NumFactura().replaceAll('/','@');
         var fechaFactura = moment(vm.FechaFactura(), 'DD/MM/YYYY').format('YYYY-MM-DD');
         var url = myconfig.apiUrl + "/api/facturasRecibidas/relacionados/" + nifEmisor + "/" + numFactura + "/" + fechaFactura;
         apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
