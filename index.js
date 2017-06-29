@@ -102,6 +102,18 @@ console.log(' VERSION: ' + pack.version);
 console.log(' PORT: ' + config.apiPort);
 console.log("-------------------------------------------");
 
+//  var envios = require('./lib/demonios/envios');
+//  envios.enviarGrupo(function(err){
+//      if (err) console.log("ERR ", err.message);
+//  })
+
+//  var recibidas = require('./lib/demonios/recibidas');
+//  recibidas.enviarGrupo(function(err){
+//      if (err) console.log("ERR ", err.message);
+//  })
+
+
+
 // -- arranque de los demonios
 
 // - Facturas emitidas
@@ -116,6 +128,9 @@ childFacEnviadas.on('exit', function () {
 
 console.log("-- DEMONIO FACENVIADAS ARRANCADO --");
 childFacEnviadas.start();
+//
+
+
 
 // - Facturas recibidas
 var childFacRecibidas = new (forever.Monitor)('./lib/demonios/auto_facRecibidas.js', {
