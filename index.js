@@ -88,6 +88,7 @@ app.use('/api/regimenrecibida', require('./lib/regimenrecibida/regimenrecibida.c
 app.use('/api/facrecibidas', require('./lib/facrecibidas/facrecibidas.controller'));
 app.use('/api/facemitidas', require('./lib/facemitidas/facemitidas.controller'));
 app.use('/api/facrecibidas', require('./lib/facrecibidas/facrecibidas.controller'));
+app.use('/api/upload', require('./lib/upload/upload.controller'));
 
 // -- start server
 app.listen(config.apiPort);

@@ -25,10 +25,11 @@
     "body-parser": "^1.14.0",
     "connect": "^3.4.0",
     "cors": "^2.7.1",
+    "csv": "^1.1.1",
     "edge": "^4.0.0",
     "express": "^4.13.3",
     "forever-monitor": "^1.7.1",
-    "formidable": "^1.0.17",
+    "formidable": "^1.1.1",
     "moment": "^2.10.6",
     "mssql": "^4.0.4",
     "multer": "^1.1.0",
@@ -37,7 +38,8 @@
     "numeral": "^1.5.3",
     "serve-index": "^1.7.2",
     "soap": "^0.19.0",
-    "sprintf-js": "^1.0.3"
+    "sprintf-js": "^1.0.3",
+    "xlsx": "^0.10.6"
   },
   "devDependencies": {
     "mysql": "^2.12.0"
