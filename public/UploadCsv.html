@@ -101,7 +101,7 @@
         <!-- NAVIGATION : -->
         <nav>
             <ul>
-                <li id="inicio">
+                <li id="uploadcsv">
                     <a href="index.html" title="Inicio">
                         <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent" data-i18n="menu.inicio">INICIO</span>
                     </a>
@@ -130,7 +130,7 @@
                             <a href="EmisoresGeneral.html">
                                 <i class="fa fa-address-book-o"></i> <span data-i18n="menu.administracion.emisores">Emisores</span>
                             </a>
-                        </li>                                               
+                        </li>
                     </ul>
                 </li>
                 <li id="facturas">
@@ -147,9 +147,9 @@
                             <a href="FacRecibidasGeneral.html">
                                 <i class="fa fa-fw fa-sign-in"></i> <span data-i18n="menu.gestion.facrecibidas">Facturas recibidas</span>
                             </a>
-                        </li>                        
+                        </li>
                     </ul>
-                </li>                
+                </li>
                 <li id="gestion">
                     <a href="#">
                         <i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent" data-i18n="menu.gestion.cab">GESTION</span>
@@ -164,7 +164,7 @@
                             <a href="FacturasRecibidasGeneral.html">
                                 <i class="fa fa-fw fa-file-o"></i> <span data-i18n="menu.gestion.facturasRecibidas">Facturas recibidas</span>
                             </a>
-                        </li>                        
+                        </li>
                     </ul>
                 </li>
                 <li id="utilidades">
@@ -187,14 +187,16 @@
     <div id="main" role="main" style="min-height: 800px;">
         <div id="ribbon">
             <ol class="breadcrumb">
-                <li data-i18n="usuarios.titulo">Grupo usuarios</li>
+                <li>Utilidades</li>
+                <li>Ficheros EXCEL / CSV</li>
             </ol>
         </div>
         <div id="content">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-title txt-color-blueDark">
-                        <i class="fa-fw fa fa-user"></i> <span data-i18n="usuarios.titulo">Usuarios</span> <a href="#" title="Ayuda"><i class="fa fa-question"></i></a>
+                        <i class="fa-fw fa fa-wrench"></i> <span data-i18n="uploadcsv.titulo">Inicio *</span> <a href="#"
+                            title="Ayuda"><i class="fa fa-question"></i></a>
                     </h1>
                 </div>
                 <!-- end col -->
@@ -205,42 +207,57 @@
                     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
                             <header>
-                                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                                <h2 data-i18n="usuarios.panel"> Panel</h2>
+                                <span class="widget-icon"> <i class="fa fa-wrench"></i> </span>
+                                <h2 data-i18n="uploadcsv.panel"> Panel de uploadcsv *</h2>
                             </header>
                             <div class="row">
-                                <form id="usuarios-form" class="smart-form">
+                                <h2 data-i18n="uploadcsv.mensaje0"> Panel de uploadcsv *</h2>
+                            </div>
+                            <div>
+                                <form id="uploadcsv" class="smart-form">
                                     <fieldset>
-                                        <div class="pull-right">
-                                            <button id="btnNuevo" data-i18n="[title]usuarios.nuevo" class="btn btn-success btn-circle btn-lg">
-                                                <i class="fa fa-lg fa-plus"></i>
-                                            </button>
+                                        <div class="row">
+                                            <h3 data-i18n="uploadcsv.paso1">P1</h3>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-12">
+                                                <label class="label" data-i18n="uploadcsv.tipofichero">TF:</label>
+                                                <select style="width:100%;" id="cmbTipos" name="cmbTipos" data-bind="options: optionsTipos, optionsText: 'nombre', optionsValue: 'grupoUsuarioId', 
+                                                    value: sTipo, valueAllowUnset: true, selectedOptions: selectedTipos, selected2:{}">
+                                                </select>
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <h3 data-i18n="uploadcsv.paso2">P2</h3>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-6">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar"></div>
+                                                </div>
+                                            </section>
+                                            <section class="col col-md-6">
+                                                <button id="btnAceptar" data-i18n="[title]subir" class="btn btn-success btn-circle btn-lg">
+                                                    <i class="fa fa-lg fa-upload"></i>
+                                                </button>                                                
+                                            </section>
                                         </div>
                                     </fieldset>
+                                    <fieldset>
+                                        <div class="row">
+                                            <h3 data-i18n="uploadcsv.paso3">P1</h3>
+                                        </div>                                        
+                                        <div class="pull-right">
+                                            <button id="btnSalir" data-i18n="[title]salir" class="btn btn-warning btn-circle btn-lg">
+                                                <i class="fa fa-lg fa-sign-out"></i>
+                                            </button>
+                                            <button id="btnAceptar" data-i18n="[title]aceptar" class="btn btn-success btn-circle btn-lg">
+                                                <i class="fa fa-lg fa-check"></i>
+                                            </button>
+                                        </div>                                        
+                                    </fieldset>
                                 </form>
-                            </div>
-                            <div class="row">
-                                <div id="tb_usuarios">
-                                    <table id="dt_usuarios" class="table table-striped table-bordered table-hover" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th data-hide="phone">
-                                                    <span data-i18n="usuarios.id">ID</span>
-                                                </th>
-                                                <th data-class="expand">
-                                                    <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
-                                                    <span data-i18n="usuarios.nombre">Nombre</span>
-                                                </th>
-                                                <th data-hide="phone">
-                                                    <span data-i18n="usuarios.grupo">Grupo</span>
-                                                </th>
-                                                <th style="text-align: center;">
-                                                    <i class="fa fa-fw fa-cogs text-muted hidden-md hidden-sm hidden-xs"></i>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
                             </div>
                         </div>
                     </article>
@@ -253,7 +270,7 @@
     <div class="page-footer">
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <span class="txt-color-white">ASWSII <span id="version">NO VERSION</span> <span class="hidden-xs"> - Aplicación general</span> © Ariadna Software S.L. 2017-2018</span>
+                <span class="txt-color-white">ASWSII <span id="version">NO VERSION</span> <span class="hidden-xs"> - Aplicación general</span>                © Ariadna Software S.L. 2017-2018</span>
             </div>
             <div class="col-xs-6 col-sm-6 text-right hidden-xs">
                 <div class="txt-color-white inline-block">
@@ -284,6 +301,7 @@
     <script src="js/plugin/datatables/dataTables.tableTools.min.js"></script>
     <script src="js/plugin/datatables/dataTables.bootstrap.min.js"></script>
     <script src="js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+    <script src="js/plugin/select2/select2.min.js"></script>
     <!-- Idiomas -->
     <script src="js/libs/i18next/i18next-1.9.0.js"></script>
     <script src="locales/validator-languages.js"></script>
@@ -303,13 +321,13 @@
     <script src="js/comun/comun.ajax.js"></script>
     <script src="js/comun/comun.general.js"></script>
     <!-- Funciones propias de esta página -->
-    <script src="js/app/usuariosGeneral.js"></script>
+    <script src="js/app/uploadCsv.js"></script>
     <script type="text/javascript">
-    (function($) {
-        $(document).ready(function() {
-            apiPaginaUsuariosGeneral.ini();
-        });
-    })(jQuery);
+        (function ($) {
+            $(document).ready(function () {
+                apiUploadCsv.ini();
+            });
+        })(jQuery);
     </script>
 </body>
 

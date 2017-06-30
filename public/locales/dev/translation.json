@@ -8,6 +8,7 @@
     "salir": "Salir",
     "xml": "XML",
     "procesando": "Procesando",
+    "subir": "Subir",
     "enviar": "Enviar",
     "verReg": "Ver registro asociado",
     "si": "SI",
@@ -45,6 +46,10 @@
             "cab": "Facturas",
             "facemitidas": "Facturas emitidas",
             "facrecibidas": "Facturas recibidas"
+        },
+        "utilidades": {
+            "cab": "Utilidades",
+            "uploadcsv": "Ficheros CSV / EXCEL"
         }
     },
     "login": {
@@ -320,5 +325,14 @@
         "IDEnvioFacturasRecibidas": "ID",
         "Origen": "Origen",
         "UltRegistroID": "ULT. REGISTRO RELACIONADO"
+    },
+    "uploadcsv": {
+        "titulo": "Utilidad importación ficheros EXCEL /CSV",
+        "panel": "Importación EXCEL / CSV",
+        "mensaje0": "Siga los pasos indicados para importar un fichero en formatos EXCEL / CSV a los registros de SII",
+        "paso1": "PASO (1): Seleccion el tipo de fichero que va a importar",
+        "paso2": "PASO (2): Seleccione y suba el fichero que EXCEL / CSV que contiene los registros",
+        "paso3": "PASO (3): Acepte para procesar los registros o salga de la utilidad",
+        "tipofichero": "Tipo de fichero"
     }
 }
