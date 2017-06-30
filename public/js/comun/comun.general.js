@@ -140,6 +140,15 @@ var apiComunGeneral = {
     controlPermisos: function (usuario) {
         if (!usuario.esAdministrador) {
             $("#administracion").hide();
+            $("#facemitidas").hide();
+            $("#facrecibidas").hide();
+            $("#gestion").hide();
+            if (usuario.verFacEmitidas) {
+                $("#facemitidas").show();
+            }
+            if (usuario.verFacRecibidas) {
+                $("#facrecibidas").show();
+            }
         }
     },
     redondeo2Decimales: function (num) {

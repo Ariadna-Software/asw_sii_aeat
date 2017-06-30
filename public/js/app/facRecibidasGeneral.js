@@ -127,6 +127,9 @@ var apiFacRecibidasGeneral = {
                     break;
             }
         }
+        if (!usuario.esAdministrador && usuario.nifTitular) {
+            url += "?nifTitular=" + usuario.nifTitular;
+        }
         apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
             if (err) return;
             if (data.length == undefined) {

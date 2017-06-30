@@ -227,7 +227,42 @@
                                                         <i></i><span data-i18n="usuarios.esAdministrador">ESD</span>
                                                     </label>
                                             </section>
-                                            <section class="col col-md-6"></section>
+                                            <section class="col col-md-3">
+                                                <label class="label" data-i18n="usuarios.login">Login:</label>
+                                                <label class="input">
+                                                    <input id="txtLogin" name="txtLogin" data-bind="value: login">
+                                                </label>                                                
+                                            </section>
+                                            <section class="col col-md-3">
+                                                <label class="label" data-i18n="usuarios.password">Password:</label>
+                                                <label class="input">
+                                                    <input id="txtPassword" name="txtPassword" data-bind="value: password">
+                                                </label>                                                
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <header data-i18n="usuarios.perespecial">Permisos especiales</header>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <section class="col col-md-4">
+                                                <label class="label" data-i18n="usuarios.titulares">Titulares:</label>
+                                                <select style="width:100%;" id="cmbTitulares" name="cmbTitulares" data-bind="options: optionsTitulares, optionsText: 'nombreRazon', optionsValue: 'titularId', 
+                                                    value: sTitular, valueAllowUnset: true, selectedOptions: selectedTitulares, selected2:{}">
+                                                </select>                                            
+                                            </section>
+                                            <section class="col col-md-3">
+                                                <label class="checkbox">
+                                                        <input id="chkVerFacEmitidas" type="checkbox" name="chkVerFacEmitidas" data-bind="checked: verFacEmitidas">
+                                                        <i></i><span data-i18n="usuarios.verFacEmitidas">ESD1</span>
+                                                    </label>
+                                            </section>
+                                            <section class="col col-md-3">
+                                                <label class="checkbox">
+                                                        <input id="chkVerFacRecibidas" type="checkbox" name="chkVerFacRecibidas" data-bind="checked: verFacRecibidas">
+                                                        <i></i><span data-i18n="usuarios.verFacRecibidas">ESD</span>
+                                                    </label>
+                                            </section>                                                                                        
                                         </div>
                                     </fieldset>
                                     <fieldset>
@@ -239,6 +274,7 @@
                                                 <i class="fa fa-lg fa-check"></i>
                                             </button>
                                         </div>
+                                        
                                     </fieldset>
                                 </form>
                             </div>

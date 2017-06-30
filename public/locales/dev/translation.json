@@ -84,13 +84,14 @@
         "eliminar": "Eliminar usuario",
         "valNombre": "Nombre necesario",
         "grupo": "Grupo",
-        "pais": "Pais por defecto",
-        "empresa": "Empresa por defecto",
-        "area": "Area por defecto",
-        "centro": "Centro por defecto",
         "codigoIdioma": "Codigo idioma",
         "esAdministrador": "Este usuario es administrador",
-        "verOfertasGrupo": "Este usuario puede ver ofertas de los responsables de su grupo de usuarios"
+        "login": "Login",
+        "password": "Contraseña",
+        "titulares": "Solo ve este titular",
+        "verFacEmitidas": "Ver facturas emitidas",
+        "verFacRecibidas": "Ver facturas recibidas",
+        "perespecial": "  Los permisos a continuación sólo se aplican a usuarios no administradores, los administradores no tiene limitación"
     },
     "facturasEmitidas": {
         "titulo": "Registro facturas emitidas",

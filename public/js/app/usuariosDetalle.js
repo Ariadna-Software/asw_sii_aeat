@@ -21,7 +21,9 @@ var apiPaginaUsuariosDetalle = {
         $('#btnAceptar').click(apiPaginaUsuariosDetalle.aceptar);
         $('#btnSalir').click(apiPaginaUsuariosDetalle.salir);
         $('#cmbGrupos').select2(select2_languages[usuario.codigoIdioma]);
-        apiPaginaUsuariosDetalle.cargarGrupos();        
+        apiPaginaUsuariosDetalle.cargarGrupos();
+        $('#cmbTitulares').select2(select2_languages[usuario.codigoIdioma]);
+        apiPaginaUsuariosDetalle.cargarTitulares();
 
         usuarioId = apiComunGeneral.gup("id");
         if (usuarioId == 0) {
@@ -38,6 +40,14 @@ var apiPaginaUsuariosDetalle = {
             $("#cmbGrupos").val([id]).trigger('change');
         });
     },
+    cargarTitulares: function (id) {
+        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/titulares", null, function (err, data) {
+            if (err) return;
+            var options = [{ titularId: 0, nombre: " " }].concat(data);
+            vm.optionsTitulares(options);
+            $("#cmbTitulares").val([id]).trigger('change');
+        });
+    },    
     cargarUsuario: function (id) {
         apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/api/usuarios/" + id, null, function (err, data) {
             if (err) return;
@@ -50,6 +60,11 @@ var apiPaginaUsuariosDetalle = {
         vm.codigoIdioma(data.codigoIdioma);
         apiPaginaUsuariosDetalle.cargarGrupos(data.grupoUsuarioId);
         vm.esAdministrador(data.esAdministrador);
+        apiPaginaUsuariosDetalle.cargarTitulares(data.titularId);
+        vm.verFacEmitidas(data.verFacEmitidas);
+        vm.verFacRecibidas(data.verFacRecibidas);
+        vm.password(data.password);
+        vm.login(data.login);
     },
     datosPagina: function () {
         var self = this;
@@ -57,11 +72,18 @@ var apiPaginaUsuariosDetalle = {
         self.nombre = ko.observable();
         self.codigoIdioma = ko.observable();
         self.esAdministrador = ko.observable();
-
-
+        self.verFacEmitidas = ko.observable();
+        self.verFacRecibidas = ko.observable();
         self.optionsGrupos = ko.observableArray([]);
         self.selectedGrupos = ko.observableArray([]);
         self.sGrupo = ko.observable();
+        self.password = ko.observable();
+        self.login = ko.observable();
+
+        self.optionsTitulares = ko.observableArray([]);
+        self.selectedTitulares = ko.observableArray([]);
+        self.sTitular = ko.observable();
+
 
     },
     aceptar: function () {
@@ -71,7 +93,12 @@ var apiPaginaUsuariosDetalle = {
             nombre: vm.nombre(),
             esAdministrador: vm.esAdministrador(),
             grupoUsuarioId: vm.sGrupo(),
-            codigoIdioma: vm.codigoIdioma()
+            codigoIdioma: vm.codigoIdioma(),
+            titularId: vm.sTitular(),
+            verFacEmitidas: vm.verFacEmitidas(),
+            verFacRecibidas: vm.verFacRecibidas(),
+            password: vm.password(),
+            login: vm.login()
         };
         var verb = "PUT";
         if (vm.usuarioId() == 0) verb = "POST";
