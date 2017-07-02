@@ -89,6 +89,7 @@ app.use('/api/facrecibidas', require('./lib/facrecibidas/facrecibidas.controller
 app.use('/api/facemitidas', require('./lib/facemitidas/facemitidas.controller'));
 app.use('/api/facrecibidas', require('./lib/facrecibidas/facrecibidas.controller'));
 app.use('/api/upload', require('./lib/upload/upload.controller'));
+app.use('/api/csv', require('./lib/upload/csv.controller'));
 
 // -- start server
 app.listen(config.apiPort);

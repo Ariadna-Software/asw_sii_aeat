@@ -4,19 +4,20 @@
 */
 
 var usuario = apiComunGeneral.obtenerUsuario();
+var filename = "";
 
 var apiUploadCsv = {
     ini: function () {
         apiComunGeneral.initPage(usuario);
         apiComunAjax.establecerClave(usuario.apiKey);
-        
+
         vm = new apiUploadCsv.datosPagina();
         ko.applyBindings(vm);
 
-        $('#inicio').attr('class', 'active');
-        apiComunAjax.llamadaGeneral("GET", myconfig.apiUrl + "/version", null, function (err, data) {
-            if (err) return;
-        });
+        $('#utilcsv').attr('class', 'active');
+        $('#uploadcsv-form').submit(function () { return false; });
+
+        $("#btnAceptar").click(apiUploadCsv.procesarCSV);
         $('#uploadcsv').submit(function () { return false; });
         $('#cmbTipos').select2(select2_languages[usuario.codigoIdioma]);
         apiUploadCsv.cargarTipos();
@@ -49,7 +50,7 @@ var apiUploadCsv = {
                     processData: false,
                     contentType: false,
                     success: function (data) {
-                        console.log('upload successful!\n' + data);
+                        filename = data;
                     },
                     xhr: function () {
                         // create an XMLHttpRequest
@@ -95,8 +96,24 @@ var apiUploadCsv = {
             { "codigo": 2, "nombre": "Facturas recibidas" }
         ];
         vm.optionsTipos(options);
-        $("#cmbTipos").val([1]).trigger('change');
+        //$("#cmbTipos").val([1]).trigger('change');
+    },
+    procesarCSV: function () {
+        if (!apiUploadCsv.datosOk()) return;
+        apiComunAjax.llamadaGeneral("POST", myconfig.apiUrl + "/api/csv/?filename=" + filename, null, function (err, data) {
+            if (err) return;
+        });
+    },
+    datosOk: function () {
+        $('#uploadcsv-form').validate({
+            rules: {
+                cmbTipos: { required: true }
+            },
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.parent());
+            }
+        });
+        return $('#uploadcsv-form').valid();
     }
 }
-
 

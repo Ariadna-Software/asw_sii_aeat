@@ -172,7 +172,7 @@
                         <i class="fa fa-lg fa-fw fa-wrench"></i> <span class="menu-item-parent" data-i18n="menu.utilidades.cab">Util</span>
                     </a>
                     <ul>
-                        <li id="facturasEmitidas">
+                        <li id="utilcsv">
                             <a href="UploadCsv.html">
                                 <i class="fa fa-fw fa-wrench"></i> <span data-i18n="menu.utilidades.uploadcsv">Util</span>
                             </a>
@@ -214,7 +214,7 @@
                                 <h2 data-i18n="uploadcsv.mensaje0"> Panel de uploadcsv *</h2>
                             </div>
                             <div>
-                                <form id="uploadcsv" class="smart-form">
+                                <form id="uploadcsv-form" class="smart-form">
                                     <fieldset>
                                         <div class="row">
                                             <h3 data-i18n="uploadcsv.paso1">P1</h3>
@@ -222,7 +222,7 @@
                                         <div class="row">
                                             <section class="col col-md-12">
                                                 <label class="label" data-i18n="uploadcsv.tipofichero">TF:</label>
-                                                <select style="width:100%;" id="cmbTipos" name="cmbTipos" data-bind="options: optionsTipos, optionsText: 'nombre', optionsValue: 'grupoUsuarioId', 
+                                                <select style="width:100%;" id="cmbTipos" name="cmbTipos" data-bind="options: optionsTipos, optionsText: 'nombre', optionsValue: 'codigo', 
                                                     value: sTipo, valueAllowUnset: true, selectedOptions: selectedTipos, selected2:{}">
                                                 </select>
                                             </section>
