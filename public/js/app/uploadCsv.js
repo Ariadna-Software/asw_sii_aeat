@@ -8,6 +8,8 @@ var usuario = apiComunGeneral.obtenerUsuario();
 var apiUploadCsv = {
     ini: function () {
         apiComunGeneral.initPage(usuario);
+        apiComunAjax.establecerClave(usuario.apiKey);
+        
         vm = new apiUploadCsv.datosPagina();
         ko.applyBindings(vm);
 
