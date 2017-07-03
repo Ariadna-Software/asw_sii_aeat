@@ -1187,11 +1187,13 @@ CREATE TABLE `titulares` (
   `nifTitular` varchar(9) DEFAULT NULL,
   `nifRepresentante` varchar(9) DEFAULT NULL,
   PRIMARY KEY (`titularId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `titulares` */
 
 insert  into `titulares`(`titularId`,`nombreRazon`,`nifTitular`,`nifRepresentante`) values (2,'Ariadna Software SL','B96470190','25375586P');
+insert  into `titulares`(`titularId`,`nombreRazon`,`nifTitular`,`nifRepresentante`) values (3,'FALCK SCI, S.A.','A46205431',NULL);
+insert  into `titulares`(`titularId`,`nombreRazon`,`nifTitular`,`nifRepresentante`) values (4,'GD ENERGY SERVICES, SAU','A46103594',NULL);
 
 /*Table structure for table `usuarios` */
 
@@ -1208,14 +1210,21 @@ CREATE TABLE `usuarios` (
   `expKeyTime` datetime DEFAULT NULL COMMENT 'Fecha y hora en la que expira la clave API',
   `apiKey` varchar(255) DEFAULT NULL COMMENT 'Clave API utilizada para identificar al usuario en las llamadas',
   `esAdministrador` tinyint(1) DEFAULT '0' COMMENT 'Indica si el usuario es administrador',
+  `titularId` int(11) DEFAULT NULL,
+  `verFacEmitidas` tinyint(1) DEFAULT '1',
+  `verFacRecibidas` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`usuarioId`),
   KEY `usuarios_grupos` (`grupoUsuarioId`),
-  CONSTRAINT `usuarios_grupos` FOREIGN KEY (`grupoUsuarioId`) REFERENCES `grupos_usuarios` (`grupoUsuarioId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Tabla de usuarios. Todos los usuarios pertenecen a un grupo';
+  KEY `usuarios_titulares` (`titularId`),
+  CONSTRAINT `usuarios_grupos` FOREIGN KEY (`grupoUsuarioId`) REFERENCES `grupos_usuarios` (`grupoUsuarioId`),
+  CONSTRAINT `usuarios_titulares` FOREIGN KEY (`titularId`) REFERENCES `titulares` (`titularId`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Tabla de usuarios. Todos los usuarios pertenecen a un grupo';
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`) values (1,1,'Administrador','es','admin','admin','2017-06-29 16:24:02','2017-06-29 21:24:02','ZEzJY',1);
+insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`,`titularId`,`verFacEmitidas`,`verFacRecibidas`) values (1,1,'Administrador','es','admin','admin','2017-07-03 08:20:36','2017-07-03 13:20:36','WXZwM',1,NULL,1,1);
+insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`,`titularId`,`verFacEmitidas`,`verFacRecibidas`) values (3,1,'Usuario GDES','es','gdes','gdes','2017-06-30 10:59:08','2017-06-30 15:59:08','EGeD1',0,4,1,1);
+insert  into `usuarios`(`usuarioId`,`grupoUsuarioId`,`nombre`,`codigoIdioma`,`login`,`password`,`getKeyTime`,`expKeyTime`,`apiKey`,`esAdministrador`,`titularId`,`verFacEmitidas`,`verFacRecibidas`) values (4,1,'Usuario FALCK','es','falck','falck','2017-06-30 11:05:54','2017-06-30 16:05:54','Vsxgc',0,3,1,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

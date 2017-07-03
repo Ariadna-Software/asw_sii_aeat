@@ -16,7 +16,7 @@ var apiUploadCsv = {
 
         $('#utilcsv').attr('class', 'active');
         $('#uploadcsv-form').submit(function () { return false; });
-
+        $("#process").hide();
         $("#btnAceptar").click(apiUploadCsv.procesarCSV);
         $('#uploadcsv').submit(function () { return false; });
         $('#cmbTipos').select2(select2_languages[usuario.codigoIdioma]);
@@ -100,8 +100,13 @@ var apiUploadCsv = {
     },
     procesarCSV: function () {
         if (!apiUploadCsv.datosOk()) return;
-        apiComunAjax.llamadaGeneral("POST", myconfig.apiUrl + "/api/csv/?filename=" + filename, null, function (err, data) {
+        $("#btnAceptar").hide();
+        $("#process").show();
+        apiComunAjax.llamadaGeneral("POST", myconfig.apiUrl + "/api/csv/?filename=" + filename + "&tipo=" + vm.sTipo(), null, function (err, data) {
+            // $("#btnAceptar").show();
+            $("#process").hide();
             if (err) return;
+            apiComunNotificaciones.mensajeAyuda("Proceso finalizado correctamente. Consulte los registros o facturas creados en los puntos de menú respectivos");
         });
     },
     datosOk: function () {
