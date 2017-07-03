@@ -143,7 +143,7 @@ var apiComunGeneral = {
             $("#facemitidas").hide();
             $("#facrecibidas").hide();
             $("#gestion").hide();
-            $("#utilidades").hide();
+            $("#utilidades").hide();w
             if (usuario.verFacEmitidas) {
                 $("#facemitidas").show();
             }
