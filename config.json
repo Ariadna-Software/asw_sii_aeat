@@ -16,7 +16,11 @@
         "B96470190": {
             "url": "/tmp/ariadna_sii.pfx",
             "pass": "passsii"
-        }
+        },
+        "A46103594": {
+            "url": "/tmp/lai.pfx",
+            "pass": "Jgaq3524"
+        }        
     },
     "wsdl":{
         "facturasEmitidas": "http://www.agenciatributaria.es/static_files/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Modelos_y_formularios/Suministro_inmediato_informacion/FicherosSuministros/V_07/SuministroFactEmitidas.wsdl",
@@ -26,5 +30,5 @@
         "facturasEmitidas": "http://www.agenciatributaria.es/static_files/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Modelos_y_formularios/Suministro_inmediato_informacion/FicherosSuministros/V_07/SuministroInformacion.xsd",
         "facturasRecibidas": "http://www.agenciatributaria.es/static_files/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Modelos_y_formularios/Suministro_inmediato_informacion/FicherosSuministros/V_07/SuministroInformacion.xsd"
     },
-    "Axapta": "N"
+    "Axapta": "S"
 }
