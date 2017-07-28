@@ -15,9 +15,7 @@ var apiFacturasEmitidasDetalle = {
 
         vm = new apiFacturasEmitidasDetalle.datosPagina();
         ko.applyBindings(vm);
-        if (usuario.esAdministrador) {
-            $("#txtEnviada").prop('disabled', false);
-        }
+        $("#txtEnviada").prop('disabled', false);
         $('#facturasEmitidas').attr('class', 'active');
         $('#facturaEmitida-form').submit(function () { return false; });
 
