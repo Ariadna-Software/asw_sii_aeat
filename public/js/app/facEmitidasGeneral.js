@@ -127,7 +127,7 @@ var apiFacEmitidasGeneral = {
                     break;
             }
         }
-        if (!usuario.esAdministrador && usuario.nifTitular){
+        if (!usuario.esAdministrador && usuario.nifTitular) {
             url += "?nifTitular=" + usuario.nifTitular;
         }
         apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
@@ -150,12 +150,18 @@ var apiFacEmitidasGeneral = {
         $("#btnEnviar").hide();
         $("#process").show();
         var url = myconfig.apiUrl + "/api/facemitidas/enviar";
+        if (!usuario.esAdministrador && usuario.nifTitular) {
+            url += "?nifTitular=" + usuario.nifTitular;
+        }
         apiComunAjax.llamadaGeneral("POST", url, null, function (err, data) {
             if (err) return;
             $("#btnEnviar").show();
             $("#process").hide();
             apiComunNotificaciones.mensajeAyuda("Se han procesado todos los registros de presentación, seguirá viendo en pendientes aquellos que hayna dado algún tipo de error.");
             url = myconfig.apiUrl + "/api/facemitidas/pendientes/";
+            if (!usuario.esAdministrador && usuario.nifTitular) {
+                url += "?nifTitular=" + usuario.nifTitular;
+            }
             apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
                 if (err) return;
                 if (data.length == undefined) {
