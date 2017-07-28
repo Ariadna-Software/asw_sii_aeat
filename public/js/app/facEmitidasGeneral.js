@@ -75,8 +75,9 @@ var apiFacEmitidasGeneral = {
         }, {
             data: "FacEmitidaId",
             render: function (data, type, row) {
-                var bt2 = "<button class='btn btn-circle btn-success btn-lg' onclick='apiFacEmitidasGeneral.editar(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
-                var html = "<div class='pull-right'>" + bt2 + "</div>";
+                var bt1 = "<button class='btn btn-circle btn-primary' onclick='apiFacEmitidasGeneral.enviarUna(" + data + ");' title='Enviar registro'> <i class='fa fa-paper-plane fa-fw'></i> </button>";
+                var bt2 = "<button class='btn btn-circle btn-success' onclick='apiFacEmitidasGeneral.editar(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
+                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + "</div>";
                 return html;
             }
         }];
@@ -198,6 +199,31 @@ var apiFacEmitidasGeneral = {
         if (!data) return;
         var codigo = data.id;
         apiFacEmitidasGeneral.cargarFacEmitidas(codigo);
+    },
+    enviarUna: function (id) {
+        $("#btnEnviar").hide();
+        $("#process").show();
+        var url = myconfig.apiUrl + "/api/facemitidas/enviar";
+        url += "?facId=" + id;
+        apiComunAjax.llamadaGeneral("POST", url, null, function (err, data) {
+            if (err) return;
+            $("#btnEnviar").show();
+            $("#process").hide();
+            apiComunNotificaciones.mensajeAyuda("Se han procesado todos los registros de presentación, seguirá viendo en pendientes aquellos que hayan dado algún tipo de error.");
+            url = myconfig.apiUrl + "/api/facemitidas/pendientes/";
+            if (!usuario.esAdministrador && usuario.nifTitular) {
+                url += "?nifTitular=" + usuario.nifTitular;
+            }            
+            apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
+                if (err) return;
+                if (data.length == undefined) {
+                    var data2 = [];
+                    data2.push(data);
+                    data = data2;
+                }
+                apiFacEmitidasGeneral.cargarFacEmitidasTabla(data);
+            });
+        });
     }
 }
 
