@@ -78,7 +78,7 @@ var apiFacEmitidasGeneral = {
                 var bt1 = "<button class='btn btn-circle btn-primary' onclick='apiFacEmitidasGeneral.enviarUna(" + data + ");' title='Enviar registro'> <i class='fa fa-paper-plane fa-fw'></i> </button>";
                 var bt2 = "<button class='btn btn-circle btn-success' onclick='apiFacEmitidasGeneral.editar(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
                 var bt3 = "<button class='btn btn-circle btn-danger' onclick='apiFacEmitidasGeneral.eliminar(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
-                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + "</div>";
+                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + " " + bt3 + "</div>";
                 return html;
             }
         }];
@@ -206,7 +206,7 @@ var apiFacEmitidasGeneral = {
             url = myconfig.apiUrl + "/api/facemitidas/pendientes/";
             if (!usuario.esAdministrador && usuario.nifTitular) {
                 url += "?nifTitular=" + usuario.nifTitular;
-            }            
+            }
             apiComunAjax.llamadaGeneral("GET", url, null, function (err, data) {
                 if (err) return;
                 if (data.length == undefined) {
@@ -225,7 +225,7 @@ var apiFacEmitidasGeneral = {
                 apiFacEmitidasGeneral.cargarFacEmitidas();
             })
         }, function () { })
-    }    
+    }
 }
 
 
