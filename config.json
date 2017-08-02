@@ -30,5 +30,5 @@
         "facturasEmitidas": "http://www.agenciatributaria.es/static_files/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Modelos_y_formularios/Suministro_inmediato_informacion/FicherosSuministros/V_07/SuministroInformacion.xsd",
         "facturasRecibidas": "http://www.agenciatributaria.es/static_files/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Modelos_y_formularios/Suministro_inmediato_informacion/FicherosSuministros/V_07/SuministroInformacion.xsd"
     },
-    "Axapta": "N"
+    "Axapta": "S"
 }
