@@ -78,7 +78,7 @@ var apiFacRecibidasGeneral = {
                 var bt1 = "<button class='btn btn-circle btn-primary' onclick='apiFacRecibidasGeneral.enviarUna(" + data + ");' title='Enviar registro'> <i class='fa fa-paper-plane fa-fw'></i> </button>";
                 var bt2 = "<button class='btn btn-circle btn-success' onclick='apiFacRecibidasGeneral.editar(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
                 var bt3 = "<button class='btn btn-circle btn-danger' onclick='apiFacRecibidasGeneral.eliminar(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
-                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + " " + "</div>";
+                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + " " + " " + bt3 +"</div>";
                 return html;
             }
         }];
@@ -182,7 +182,7 @@ var apiFacRecibidasGeneral = {
         apiComunNotificaciones.mensajeAceptarCancelar(i18n.t("eliminar_pregunta"), function () {
             apiComunAjax.llamadaGeneral("DELETE", myconfig.apiUrl + "/api/facrecibidas/" + id, null, function (err) {
                 if (err) return;
-                apiFacRecibidasGeneral.cargarFacRecibidas();
+                window.open('FacRecibidasGeneral.html', '_self');
             })
         }, function () { })
     },
