@@ -298,7 +298,9 @@
         "Mensaje": "Mensaje",
         "IDEnvioFacturasEmitidas": "ID",
         "Origen": "Origen",
-        "UltRegistroID": "ULT. REGISTRO RELACIONADO"
+        "UltRegistroID": "ULT. REGISTRO RELACIONADO",
+        "Ejercicio": "Ejercicio",
+        "Periodo": "Periodo"
     },
     "facRecibidas": {
         "titulo": "Facturas Recibidas",
@@ -324,7 +326,9 @@
         "Mensaje": "Mensaje",
         "IDEnvioFacturasRecibidas": "ID",
         "Origen": "Origen",
-        "UltRegistroID": "ULT. REGISTRO RELACIONADO"
+        "UltRegistroID": "ULT. REGISTRO RELACIONADO",
+        "Ejercicio": "Ejercicio",
+        "Periodo": "Periodo"
     },
     "uploadcsv": {
         "titulo": "Utilidad importación ficheros EXCEL /CSV",

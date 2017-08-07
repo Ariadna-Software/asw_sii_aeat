@@ -39,6 +39,10 @@ var apiFacEmitidasGeneral = {
         options.columns = [{
             data: "FacEmitidaId"
         }, {
+            data: "Ejercicio"
+        }, {
+            data: "Periodo"
+        }, {
             data: "NifEmisor"
         }, {
             data: "NombreEmisor"
@@ -99,8 +103,8 @@ var apiFacEmitidasGeneral = {
                 .draw();
         });
         tabla.columns(0).visible(false);
-        tabla.columns(11).visible(false);
-        tabla.columns(12).visible(false);
+        tabla.columns(13).visible(false);
+        tabla.columns(14).visible(false);
     },
     datosPagina: function () {
         var self = this;

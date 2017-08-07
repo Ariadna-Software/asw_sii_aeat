@@ -39,6 +39,10 @@ var apiFacRecibidasGeneral = {
         options.columns = [{
             data: "FacRecibidaId"
         }, {
+            data: "Ejercicio"
+        }, {
+            data: "Periodo"
+        }, {
             data: "NifEmisor"
         }, {
             data: "NombreEmisor"
@@ -78,7 +82,7 @@ var apiFacRecibidasGeneral = {
                 var bt1 = "<button class='btn btn-circle btn-primary' onclick='apiFacRecibidasGeneral.enviarUna(" + data + ");' title='Enviar registro'> <i class='fa fa-paper-plane fa-fw'></i> </button>";
                 var bt2 = "<button class='btn btn-circle btn-success' onclick='apiFacRecibidasGeneral.editar(" + data + ");' title='Editar registro'> <i class='fa fa-edit fa-fw'></i> </button>";
                 var bt3 = "<button class='btn btn-circle btn-danger' onclick='apiFacRecibidasGeneral.eliminar(" + data + ");' title='Eliminar registro'> <i class='fa fa-trash-o fa-fw'></i> </button>";
-                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + " " + " " + bt3 +"</div>";
+                var html = "<div class='pull-right'>" + bt1 + " " + bt2 + " " + " " + bt3 + "</div>";
                 return html;
             }
         }];
@@ -99,8 +103,8 @@ var apiFacRecibidasGeneral = {
                 .draw();
         });
         tabla.columns(0).visible(false);
-        tabla.columns(11).visible(false);
-        tabla.columns(12).visible(false);
+        tabla.columns(13).visible(false);
+        tabla.columns(14).visible(false);
     },
     datosPagina: function () {
         var self = this;
@@ -225,7 +229,7 @@ var apiFacRecibidasGeneral = {
                 apiFacRecibidasGeneral.cargarFacRecibidasTabla(data);
             });
         });
-    },    
+    },
 }
 
 
