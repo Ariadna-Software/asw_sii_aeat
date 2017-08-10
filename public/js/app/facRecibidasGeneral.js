@@ -163,7 +163,7 @@ var apiFacRecibidasGeneral = {
             if (err) return;
             $("#btnEnviar").show();
             $("#process").hide();
-            apiComunNotificaciones.mensajeAyuda("Se han procesado todos los registros de presentación, seguirá viendo en pendientes aquellos que hayna dado algún tipo de error.");
+            apiComunNotificaciones.mensajeAyuda("Se han procesado todos los registros de presentación, seguirá viendo en pendientes aquellos que hayan dado algún tipo de error. <br/> IMPORTANTE: Las facturas marcadas como enviadas no se vuelven a enviar por este proceso, para eso debe entrar en su registro asociado y mandarlas manualmente.");
             url = myconfig.apiUrl + "/api/facrecibidas/pendientes/";
             if (!usuario.esAdministrador && usuario.nifTitular) {
                 url += "?nifTitular=" + usuario.nifTitular;
@@ -214,7 +214,7 @@ var apiFacRecibidasGeneral = {
             if (err) return;
             $("#btnEnviar").show();
             $("#process").hide();
-            apiComunNotificaciones.mensajeAyuda("Se han procesado todos los registros de presentación, seguirá viendo en pendientes aquellos que hayna dado algún tipo de error.");
+            apiComunNotificaciones.mensajeAyuda("Se han procesado todos los registros de presentación, seguirá viendo en pendientes aquellos que hayan dado algún tipo de error. <br/> IMPORTANTE: Las facturas marcadas como enviadas no se vuelven a enviar por este proceso, para eso debe entrar en su registro asociado y mandarlas manualmente.");
             url = myconfig.apiUrl + "/api/facrecibidas/pendientes/";
             if (!usuario.esAdministrador && usuario.nifTitular) {
                 url += "?nifTitular=" + usuario.nifTitular;
