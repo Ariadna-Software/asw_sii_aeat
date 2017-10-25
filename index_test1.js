@@ -1,10 +1,9 @@
 console.log("-- NODE SII START --");
 var soap = require('soap');
-var parseString = require('xml2js').parseString;
 var fs = require('fs');
 
 
-var url = 'http://www.agenciatributaria.es/static_files/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Modelos_y_formularios/Suministro_inmediato_informacion/FicherosSuministros/V_05/SuministroFactEmitidas.wsdl';
+var url = 'http://www.agenciatributaria.es/static_files/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Modelos_y_formularios/Suministro_inmediato_informacion/FicherosSuministros/V_07/SuministroFactEmitidas.wsdl';
 soap.createClient(url, function (err, client) {
     if (err) {
         console.log(err);
@@ -14,7 +13,7 @@ soap.createClient(url, function (err, client) {
         var myInput = input;
         myInput = {
             Cabecera: {
-                IDVersionSii: "0.5",
+                IDVersionSii: "1.0",
                 Titular: {
                     NombreRazon: "Ariadna Software SL",
                     NIF: "B96470190"
@@ -27,11 +26,13 @@ soap.createClient(url, function (err, client) {
                 }
             }
         };
-        client.setSecurity( new soap.ClientSSLSecurityPFX("./cert/ariadna.pfx","xxxxxx"));
+        client.setSecurity( new soap.ClientSSLSecurityPFX("./cert/ariadna2019.pfx","aritel"));
         client.siiService.SuministroFactEmitidasPruebas.ConsultaLRFacturasEmitidas(myInput, function (err, result, raw, soapHeader) {
             if (err) {
                 // console.log(err);
                 console.log(raw);
+            } else {
+                fs.writeFileSync('/tmp/resultCons.json', JSON.stringify(result, null, 2));
             }
         })
     }
