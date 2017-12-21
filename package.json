@@ -1,6 +1,6 @@
 {
   "name": "gdes_pipeline",
-  "version": "1.0.39",
+  "version": "1.0.40",
   "description": "ASWSII AEAT",
   "main": "index.js",
   "scripts": {
