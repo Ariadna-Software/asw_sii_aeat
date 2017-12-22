@@ -65,6 +65,7 @@ router.get('/', function (req, res) {
 // -- registering routes
 app.use('/login', require('./lib/login/login_controller'));
 app.use('/version', require('./lib/version/version_controller'));
+app.use('/consulta', require('./lib/consulta/consulta.controller'));
 app.use('/api', router);
 app.use('/api/grupos-usuarios', require('./lib/grupos-usuarios/grupos-usuarios.controller'));
 app.use('/api/usuarios', require('./lib/usuarios/usuarios.controller'));
