@@ -15,7 +15,7 @@ soap.createClient(url, function (err, client) {
             Cabecera: {
                 IDVersionSii: "1.0",
                 Titular: {
-                    NombreRazon: "Ariadna Software SL",
+                    NombreRazon: "B96470190",
                     NIF: "B96470190"
                 }
             },
