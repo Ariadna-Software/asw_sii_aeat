@@ -13,7 +13,7 @@ soap.createClient(url, function (err, client) {
         var myInput = input;
         myInput = {
             Cabecera: {
-                IDVersionSii: "1.0",
+                IDVersionSii: "1.1",
                 Titular: {
                     NombreRazon: "B96470190",
                     NIF: "B96470190"

@@ -29,7 +29,7 @@ soap.createClient(url, function (err, client) {
         };
         myInputFacNormal = {
             Cabecera: {
-                IDVersionSii: "1.0",
+                IDVersionSii: "1.1",
                 Titular: {
                     NombreRazon: "Ariadna Software SL",
                     NIF: "B96470190"
