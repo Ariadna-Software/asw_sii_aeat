@@ -14,8 +14,8 @@
     "destinatario": "rafa@myariadna.com,ragare@gmail.com",
     "certs":{
         "B96470190": {
-            "url": "/tmp/ariadna2019.pfx",
-            "pass": "aritel"
+            "url": "C:\\ElementosFirma\\Ariadna\\ariadnaRaf.pfx",
+            "pass": "20ariadna19"
         },
         "A46103594": {
             "url": "/tmp/lai.pfx",
