@@ -1,6 +1,6 @@
 {
-  "name": "gdes_pipeline",
-  "version": "1.2.2",
+  "name": "aswsii_aeat",
+  "version": "1.2.3",
   "description": "ASWSII AEAT",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "keywords": [
     "node",
-    "gdes_pipeline"
+    "aswsii_aeat"
   ],
   "author": "'Rafael Garcia <'rafa@myariadna.com'>",
   "license": "CC-BY-NC-4.0",
@@ -31,7 +31,7 @@
     "forever-monitor": "^1.7.1",
     "formidable": "^1.1.1",
     "moment": "^2.10.6",
-    "mssql": "^4.0.4",
+    "mssql": "^7.1.0",
     "multer": "^1.1.0",
     "mysql": "^2.0.0",
     "nodemailer": "2.4.2",

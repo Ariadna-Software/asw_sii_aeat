@@ -1,6 +1,9 @@
 {
-    "user": "partehoras",
-    "password": "partehoras",
-    "server": "svrax.grupodominguis.local",
-    "database": "AxDev"
+    "user": "sa",
+    "password": "20Aritel12",
+    "server": "demos.ariadnasw.com",
+    "database": "AxSii",
+    "options": {
+        "trustServerCertificate": true
+    }
 }
