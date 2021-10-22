@@ -145,36 +145,42 @@ var apiFacturasRecibidasDetalle = {
         vm.REG_FR_DF_ISP_DI_DT1_CuotaSoportada(data.REG_FR_DF_ISP_DI_DT1_CuotaSoportada);
         vm.REG_FR_DF_ISP_DI_DT1_TipoREquivalencia(data.REG_FR_DF_ISP_DI_DT1_TipoREquivalencia);
         vm.REG_FR_DF_ISP_DI_DT1_CuotaREquivalencia(data.REG_FR_DF_ISP_DI_DT1_CuotaREquivalencia);
+        vm.REG_FR_DF_ISP_DI_DT1_BienInversion(data.REG_FR_DF_ISP_DI_DT1_BienInversion);
         // IVA 2
         vm.REG_FR_DF_ISP_DI_DT2_TipoImpositivo(data.REG_FR_DF_ISP_DI_DT2_TipoImpositivo);
         vm.REG_FR_DF_ISP_DI_DT2_BaseImponible(data.REG_FR_DF_ISP_DI_DT2_BaseImponible);
         vm.REG_FR_DF_ISP_DI_DT2_CuotaSoportada(data.REG_FR_DF_ISP_DI_DT2_CuotaSoportada);
         vm.REG_FR_DF_ISP_DI_DT2_TipoREquivalencia(data.REG_FR_DF_ISP_DI_DT2_TipoREquivalencia);
         vm.REG_FR_DF_ISP_DI_DT2_CuotaREquivalencia(data.REG_FR_DF_ISP_DI_DT2_CuotaREquivalencia);
+        vm.REG_FR_DF_ISP_DI_DT2_BienInversion(data.REG_FR_DF_ISP_DI_DT2_BienInversion);
         // IVA 3
         vm.REG_FR_DF_ISP_DI_DT3_TipoImpositivo(data.REG_FR_DF_ISP_DI_DT3_TipoImpositivo);
         vm.REG_FR_DF_ISP_DI_DT3_BaseImponible(data.REG_FR_DF_ISP_DI_DT3_BaseImponible);
         vm.REG_FR_DF_ISP_DI_DT3_CuotaSoportada(data.REG_FR_DF_ISP_DI_DT3_CuotaSoportada);
         vm.REG_FR_DF_ISP_DI_DT3_TipoREquivalencia(data.REG_FR_DF_ISP_DI_DT3_TipoREquivalencia);
         vm.REG_FR_DF_ISP_DI_DT3_CuotaREquivalencia(data.REG_FR_DF_ISP_DI_DT3_CuotaREquivalencia);
+        vm.REG_FR_DF_ISP_DI_DT3_BienInversion(data.REG_FR_DF_ISP_DI_DT3_BienInversion);
         // IVA 4
         vm.REG_FR_DF_ISP_DI_DT4_TipoImpositivo(data.REG_FR_DF_ISP_DI_DT4_TipoImpositivo);
         vm.REG_FR_DF_ISP_DI_DT4_BaseImponible(data.REG_FR_DF_ISP_DI_DT4_BaseImponible);
         vm.REG_FR_DF_ISP_DI_DT4_CuotaSoportada(data.REG_FR_DF_ISP_DI_DT4_CuotaSoportada);
         vm.REG_FR_DF_ISP_DI_DT4_TipoREquivalencia(data.REG_FR_DF_ISP_DI_DT4_TipoREquivalencia);
         vm.REG_FR_DF_ISP_DI_DT4_CuotaREquivalencia(data.REG_FR_DF_ISP_DI_DT4_CuotaREquivalencia);
+        vm.REG_FR_DF_ISP_DI_DT4_BienInversion(data.REG_FR_DF_ISP_DI_DT4_BienInversion);
         // IVA 5
         vm.REG_FR_DF_ISP_DI_DT5_TipoImpositivo(data.REG_FR_DF_ISP_DI_DT5_TipoImpositivo);
         vm.REG_FR_DF_ISP_DI_DT5_BaseImponible(data.REG_FR_DF_ISP_DI_DT5_BaseImponible);
         vm.REG_FR_DF_ISP_DI_DT5_CuotaSoportada(data.REG_FR_DF_ISP_DI_DT5_CuotaSoportada);
         vm.REG_FR_DF_ISP_DI_DT5_TipoREquivalencia(data.REG_FR_DF_ISP_DI_DT5_TipoREquivalencia);
         vm.REG_FR_DF_ISP_DI_DT5_CuotaREquivalencia(data.REG_FR_DF_ISP_DI_DT5_CuotaREquivalencia);
+        vm.REG_FR_DF_ISP_DI_DT5_BienInversion(data.REG_FR_DF_ISP_DI_DT5_BienInversion);
         // IVA 6
         vm.REG_FR_DF_ISP_DI_DT6_TipoImpositivo(data.REG_FR_DF_ISP_DI_DT6_TipoImpositivo);
         vm.REG_FR_DF_ISP_DI_DT6_BaseImponible(data.REG_FR_DF_ISP_DI_DT6_BaseImponible);
         vm.REG_FR_DF_ISP_DI_DT6_CuotaSoportada(data.REG_FR_DF_ISP_DI_DT6_CuotaSoportada);
         vm.REG_FR_DF_ISP_DI_DT6_TipoREquivalencia(data.REG_FR_DF_ISP_DI_DT6_TipoREquivalencia);
         vm.REG_FR_DF_ISP_DI_DT6_CuotaREquivalencia(data.REG_FR_DF_ISP_DI_DT6_CuotaREquivalencia);
+        vm.REG_FR_DF_ISP_DI_DT6_BienInversion(data.REG_FR_DF_ISP_DI_DT6_BienInversion);
 
         // IVA 1
         vm.REG_FR_DF_DGI_DI_DT1_TipoImpositivo(data.REG_FR_DF_DGI_DI_DT1_TipoImpositivo);
@@ -184,6 +190,7 @@ var apiFacturasRecibidasDetalle = {
         vm.REG_FR_DF_DGI_DI_DT1_CuotaREquivalencia(data.REG_FR_DF_DGI_DI_DT1_CuotaREquivalencia);
         vm.REG_FR_DF_DGI_DI_DT1_PorcentCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT1_PorcentCompensacionREAGYP);
         vm.REG_FR_DF_DGI_DI_DT1_ImporteCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT1_ImporteCompensacionREAGYP);
+        vm.REG_FR_DF_DGI_DI_DT1_BienInversion(data.REG_FR_DF_DGI_DI_DT1_BienInversion);
         // IVA 2
         vm.REG_FR_DF_DGI_DI_DT2_TipoImpositivo(data.REG_FR_DF_DGI_DI_DT2_TipoImpositivo);
         vm.REG_FR_DF_DGI_DI_DT2_BaseImponible(data.REG_FR_DF_DGI_DI_DT2_BaseImponible);
@@ -192,6 +199,7 @@ var apiFacturasRecibidasDetalle = {
         vm.REG_FR_DF_DGI_DI_DT2_CuotaREquivalencia(data.REG_FR_DF_DGI_DI_DT2_CuotaREquivalencia);
         vm.REG_FR_DF_DGI_DI_DT2_PorcentCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT2_PorcentCompensacionREAGYP);
         vm.REG_FR_DF_DGI_DI_DT2_ImporteCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT2_ImporteCompensacionREAGYP);
+        vm.REG_FR_DF_DGI_DI_DT2_BienInversion(data.REG_FR_DF_DGI_DI_DT2_BienInversion);
         // IVA 3
         vm.REG_FR_DF_DGI_DI_DT3_TipoImpositivo(data.REG_FR_DF_DGI_DI_DT3_TipoImpositivo);
         vm.REG_FR_DF_DGI_DI_DT3_BaseImponible(data.REG_FR_DF_DGI_DI_DT3_BaseImponible);
@@ -200,6 +208,7 @@ var apiFacturasRecibidasDetalle = {
         vm.REG_FR_DF_DGI_DI_DT3_CuotaREquivalencia(data.REG_FR_DF_DGI_DI_DT3_CuotaREquivalencia);
         vm.REG_FR_DF_DGI_DI_DT3_PorcentCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT3_PorcentCompensacionREAGYP);
         vm.REG_FR_DF_DGI_DI_DT3_ImporteCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT3_ImporteCompensacionREAGYP);
+        vm.REG_FR_DF_DGI_DI_DT3_BienInversion(data.REG_FR_DF_DGI_DI_DT3_BienInversion);
         // IVA 4
         vm.REG_FR_DF_DGI_DI_DT4_TipoImpositivo(data.REG_FR_DF_DGI_DI_DT4_TipoImpositivo);
         vm.REG_FR_DF_DGI_DI_DT4_BaseImponible(data.REG_FR_DF_DGI_DI_DT4_BaseImponible);
@@ -208,6 +217,7 @@ var apiFacturasRecibidasDetalle = {
         vm.REG_FR_DF_DGI_DI_DT4_CuotaREquivalencia(data.REG_FR_DF_DGI_DI_DT4_CuotaREquivalencia);
         vm.REG_FR_DF_DGI_DI_DT4_PorcentCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT4_PorcentCompensacionREAGYP);
         vm.REG_FR_DF_DGI_DI_DT4_ImporteCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT4_ImporteCompensacionREAGYP);
+        vm.REG_FR_DF_DGI_DI_DT4_BienInversion(data.REG_FR_DF_DGI_DI_DT4_BienInversion);
         // IVA 5
         vm.REG_FR_DF_DGI_DI_DT5_TipoImpositivo(data.REG_FR_DF_DGI_DI_DT5_TipoImpositivo);
         vm.REG_FR_DF_DGI_DI_DT5_BaseImponible(data.REG_FR_DF_DGI_DI_DT5_BaseImponible);
@@ -216,6 +226,7 @@ var apiFacturasRecibidasDetalle = {
         vm.REG_FR_DF_DGI_DI_DT5_CuotaREquivalencia(data.REG_FR_DF_DGI_DI_DT5_CuotaREquivalencia);
         vm.REG_FR_DF_DGI_DI_DT5_PorcentCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT5_PorcentCompensacionREAGYP);
         vm.REG_FR_DF_DGI_DI_DT5_ImporteCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT5_ImporteCompensacionREAGYP);
+        vm.REG_FR_DF_DGI_DI_DT5_BienInversion(data.REG_FR_DF_DGI_DI_DT5_BienInversion);
         // IVA 6
         vm.REG_FR_DF_DGI_DI_DT6_TipoImpositivo(data.REG_FR_DF_DGI_DI_DT6_TipoImpositivo);
         vm.REG_FR_DF_DGI_DI_DT6_BaseImponible(data.REG_FR_DF_DGI_DI_DT6_BaseImponible);
@@ -224,6 +235,7 @@ var apiFacturasRecibidasDetalle = {
         vm.REG_FR_DF_DGI_DI_DT6_CuotaREquivalencia(data.REG_FR_DF_DGI_DI_DT6_CuotaREquivalencia);
         vm.REG_FR_DF_DGI_DI_DT6_PorcentCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT6_PorcentCompensacionREAGYP);
         vm.REG_FR_DF_DGI_DI_DT6_ImporteCompensacionREAGYP(data.REG_FR_DF_DGI_DI_DT6_ImporteCompensacionREAGYP);
+        vm.REG_FR_DF_DGI_DI_DT6_BienInversion(data.REG_FR_DF_DGI_DI_DT6_BienInversion);
         //
         vm.REG_FR_CuotaDeducible(data.REG_FR_CuotaDeducible);
         if (data.REG_FR_FechaRegContable)
@@ -293,36 +305,42 @@ var apiFacturasRecibidasDetalle = {
         self.REG_FR_DF_ISP_DI_DT1_CuotaSoportada = ko.observable();
         self.REG_FR_DF_ISP_DI_DT1_TipoREquivalencia = ko.observable();
         self.REG_FR_DF_ISP_DI_DT1_CuotaREquivalencia = ko.observable();
+        self.REG_FR_DF_ISP_DI_DT1_BienInversion = ko.observable();
         // IVA 2
         self.REG_FR_DF_ISP_DI_DT2_TipoImpositivo = ko.observable();
         self.REG_FR_DF_ISP_DI_DT2_BaseImponible = ko.observable();
         self.REG_FR_DF_ISP_DI_DT2_CuotaSoportada = ko.observable();
         self.REG_FR_DF_ISP_DI_DT2_TipoREquivalencia = ko.observable();
         self.REG_FR_DF_ISP_DI_DT2_CuotaREquivalencia = ko.observable();
+        self.REG_FR_DF_ISP_DI_DT2_BienInversion = ko.observable();
         // IVA 3
         self.REG_FR_DF_ISP_DI_DT3_TipoImpositivo = ko.observable();
         self.REG_FR_DF_ISP_DI_DT3_BaseImponible = ko.observable();
         self.REG_FR_DF_ISP_DI_DT3_CuotaSoportada = ko.observable();
         self.REG_FR_DF_ISP_DI_DT3_TipoREquivalencia = ko.observable();
         self.REG_FR_DF_ISP_DI_DT3_CuotaREquivalencia = ko.observable();
+        self.REG_FR_DF_ISP_DI_DT3_BienInversion = ko.observable();
         // IVA 4
         self.REG_FR_DF_ISP_DI_DT4_TipoImpositivo = ko.observable();
         self.REG_FR_DF_ISP_DI_DT4_BaseImponible = ko.observable();
         self.REG_FR_DF_ISP_DI_DT4_CuotaSoportada = ko.observable();
         self.REG_FR_DF_ISP_DI_DT4_TipoREquivalencia = ko.observable();
         self.REG_FR_DF_ISP_DI_DT4_CuotaREquivalencia = ko.observable();
+        self.REG_FR_DF_ISP_DI_DT4_BienInversion = ko.observable();
         // IVA 5
         self.REG_FR_DF_ISP_DI_DT5_TipoImpositivo = ko.observable();
         self.REG_FR_DF_ISP_DI_DT5_BaseImponible = ko.observable();
         self.REG_FR_DF_ISP_DI_DT5_CuotaSoportada = ko.observable();
         self.REG_FR_DF_ISP_DI_DT5_TipoREquivalencia = ko.observable();
         self.REG_FR_DF_ISP_DI_DT5_CuotaREquivalencia = ko.observable();
+        self.REG_FR_DF_ISP_DI_DT5_BienInversion = ko.observable();
         // IVA 6
         self.REG_FR_DF_ISP_DI_DT6_TipoImpositivo = ko.observable();
         self.REG_FR_DF_ISP_DI_DT6_BaseImponible = ko.observable();
         self.REG_FR_DF_ISP_DI_DT6_CuotaSoportada = ko.observable();
         self.REG_FR_DF_ISP_DI_DT6_TipoREquivalencia = ko.observable();
         self.REG_FR_DF_ISP_DI_DT6_CuotaREquivalencia = ko.observable();
+        self.REG_FR_DF_ISP_DI_DT6_BienInversion = ko.observable();
 
         // IVA 1
         self.REG_FR_DF_DGI_DI_DT1_TipoImpositivo = ko.observable();
@@ -332,6 +350,7 @@ var apiFacturasRecibidasDetalle = {
         self.REG_FR_DF_DGI_DI_DT1_CuotaREquivalencia = ko.observable();
         self.REG_FR_DF_DGI_DI_DT1_PorcentCompensacionREAGYP = ko.observable();
         self.REG_FR_DF_DGI_DI_DT1_ImporteCompensacionREAGYP = ko.observable();
+        self.REG_FR_DF_DGI_DI_DT1_BienInversion = ko.observable();
         // IVA 2
         self.REG_FR_DF_DGI_DI_DT2_TipoImpositivo = ko.observable();
         self.REG_FR_DF_DGI_DI_DT2_BaseImponible = ko.observable();
@@ -340,6 +359,7 @@ var apiFacturasRecibidasDetalle = {
         self.REG_FR_DF_DGI_DI_DT2_CuotaREquivalencia = ko.observable();
         self.REG_FR_DF_DGI_DI_DT2_PorcentCompensacionREAGYP = ko.observable();
         self.REG_FR_DF_DGI_DI_DT2_ImporteCompensacionREAGYP = ko.observable();
+        self.REG_FR_DF_DGI_DI_DT2_BienInversion = ko.observable();
         // IVA 3
         self.REG_FR_DF_DGI_DI_DT3_TipoImpositivo = ko.observable();
         self.REG_FR_DF_DGI_DI_DT3_BaseImponible = ko.observable();
@@ -348,6 +368,7 @@ var apiFacturasRecibidasDetalle = {
         self.REG_FR_DF_DGI_DI_DT3_CuotaREquivalencia = ko.observable();
         self.REG_FR_DF_DGI_DI_DT3_PorcentCompensacionREAGYP = ko.observable();
         self.REG_FR_DF_DGI_DI_DT3_ImporteCompensacionREAGYP = ko.observable();
+        self.REG_FR_DF_DGI_DI_DT3_BienInversion = ko.observable();
         // IVA 4
         self.REG_FR_DF_DGI_DI_DT4_TipoImpositivo = ko.observable();
         self.REG_FR_DF_DGI_DI_DT4_BaseImponible = ko.observable();
@@ -356,6 +377,7 @@ var apiFacturasRecibidasDetalle = {
         self.REG_FR_DF_DGI_DI_DT4_CuotaREquivalencia = ko.observable();
         self.REG_FR_DF_DGI_DI_DT4_PorcentCompensacionREAGYP = ko.observable();
         self.REG_FR_DF_DGI_DI_DT4_ImporteCompensacionREAGYP = ko.observable();
+        self.REG_FR_DF_DGI_DI_DT4_BienInversion = ko.observable();
         // IVA 5
         self.REG_FR_DF_DGI_DI_DT5_TipoImpositivo = ko.observable();
         self.REG_FR_DF_DGI_DI_DT5_BaseImponible = ko.observable();
@@ -364,6 +386,7 @@ var apiFacturasRecibidasDetalle = {
         self.REG_FR_DF_DGI_DI_DT5_CuotaREquivalencia = ko.observable();
         self.REG_FR_DF_DGI_DI_DT5_PorcentCompensacionREAGYP = ko.observable();
         self.REG_FR_DF_DGI_DI_DT5_ImporteCompensacionREAGYP = ko.observable();
+        self.REG_FR_DF_DGI_DI_DT5_BienInversion = ko.observable();
         // IVA 6
         self.REG_FR_DF_DGI_DI_DT6_TipoImpositivo = ko.observable();
         self.REG_FR_DF_DGI_DI_DT6_BaseImponible = ko.observable();
@@ -372,6 +395,7 @@ var apiFacturasRecibidasDetalle = {
         self.REG_FR_DF_DGI_DI_DT6_CuotaREquivalencia = ko.observable();
         self.REG_FR_DF_DGI_DI_DT6_PorcentCompensacionREAGYP = ko.observable();
         self.REG_FR_DF_DGI_DI_DT6_ImporteCompensacionREAGYP = ko.observable();
+        self.REG_FR_DF_DGI_DI_DT6_BienInversion = ko.observable();
         //
         self.REG_FR_FechaRegContable = ko.observable();
         self.REG_FR_CuotaDeducible = ko.observable();
