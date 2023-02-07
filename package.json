@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Ariadna-Software/asw_sii_aeat/#readme",
   "dependencies": {
-    "async": "^2.0.0",
+    "async": "^2.6.4",
     "body-parser": "^1.14.0",
     "connect": "^3.4.0",
     "cors": "^2.7.1",
