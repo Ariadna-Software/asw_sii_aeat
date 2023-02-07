@@ -23,6 +23,10 @@ var forever = require('forever-monitor');
 var axapta = require('./lib/sqls/axapta2')
 
 
+//
+//process.env.NODE_EXTRA_CA_CERTS = "AC_Intermediia.cer"
+
+
 // starting express
 var app = express();
 // to parse body content
@@ -39,7 +43,9 @@ app.use(cors());
 app.use(express.static(__dirname + "/public"));
 app.use('/ficheros', serveIndex(__dirname + '/public/ficheros', { 'icons': true, 'view': 'details' }));
 
-
+// Eliminar control certificado
+// console.log("Verificacion de primario omitida")
+// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 
 // mounting routes
 var router = express.Router();
