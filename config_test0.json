@@ -1,0 +1,34 @@
+{
+    "tipo": "TEST",
+    "apiPort": 5080,
+    "apiHost": "127.0.0.1",
+    "smtpConfig": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true, 
+        "auth": {
+            "user": "rafa@myariadna.com",
+            "pass": "XXXX"
+        }
+    },
+    "destinatario": "rafa@myariadna.com,ragare@gmail.com",
+    "certs":{
+        "B96470190": {
+            "url": "C:\\ElementosFirma\\Ariadna\\ariadnaRaf.pfx",
+            "pass": "20ariadna19"
+        },
+        "A46103594": {
+            "url": "/tmp/lai.pfx",
+            "pass": "Jgaq3524"
+        }        
+    },
+    "wsdl":{
+        "facturasEmitidas": "https://prewww2.aeat.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii_1_1_bis/fact/ws/SuministroFactEmitidas.wsdl",
+        "facturasRecibidas": "https://prewww2.aeat.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii_1_1_bis/fact/ws/SuministroFactRecibidas.wsdl"
+    },
+    "xsd": {
+        "facturasEmitidas": "https://prewww2.aeat.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii_1_1_bis/fact/ws/SuministroInformacion.xsd",
+        "facturasRecibidas": "https://prewww2.aeat.es/static_files/common/internet/dep/aplicaciones/es/aeat/ssii_1_1_bis/fact/ws/SuministroInformacion.xsd"
+    },
+    "Axapta": "S"
+}

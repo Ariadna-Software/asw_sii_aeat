@@ -1,8 +1,8 @@
 {
-    "user": "partehoras",
-    "password": "partehoras",
-    "server": "svrax.grupodominguis.local",
-    "database": "AxSii",
+    "user": "app_d365",
+    "password": "xqsRWZh9cEbdC64n",
+    "server": "intelligenceax.francecentral.cloudapp.azure.com",
+    "database": "AriSII_Test",
     "options": {
         "trustServerCertificate": true
     }
